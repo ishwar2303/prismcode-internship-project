@@ -1,0 +1,2 @@
+database name in php my admin is:-
+certification_system

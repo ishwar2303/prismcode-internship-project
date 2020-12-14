@@ -1,0 +1,48 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.main
+{
+	width : 60%;
+	
+
+}
+table
+{
+	width: 100%;
+}
+td,th
+{
+	margin : 10px;
+	background: #bdc3c7;
+	padding : 15px;
+}
+.score
+{
+	text-align: center;
+}
+.table-container
+{
+	font-family: courier new;
+	font-size: 1.5em;
+	display :flex;
+	flex-direction: row;
+}
+select
+{
+	width : 75%;
+	height: 35px;
+	font-size: x-large;
+}
+#CHECK
+{
+	width: 100px;
+}
+.check-score
+{
+	width: 20%;
+	height: 35px;
+	font-family: courier new;
+	font-size: large;
+}
