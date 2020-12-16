@@ -250,9 +250,16 @@ include('includes/navbar.php');
                 });
               </script>
               <td style="text-align: center;" class="text-center">
+                <!--
                 <a id="delete-exam-link" onclick="return confirmation()" class="icon" href="delete_exam_query.php?exam_id=<?php echo $row['quiz_id']?>">
-                  <i class="fas fa-trash-alt text-danger"></i>
-                </a>
+                -->
+                  <?php 
+                    $QID = "'".$row['quiz_id']."'";
+                  ?>
+                  <i style="cursor: pointer;" onclick="confirmQuizDeletion(<?php echo $QID; ?>)" class="fas fa-trash-alt text-danger">
+                    
+                  </i>
+                <!-- </a> -->
               </td>
             </tr>
           </tbody>

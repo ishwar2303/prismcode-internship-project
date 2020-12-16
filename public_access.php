@@ -230,7 +230,7 @@
    					<li>This is how it will look :</li>
    				</ul>
    			
-   			<img class="reveal-key" src="images/key_reveal.png">
+   			<img class="reveal-key" src="images/key_reveal.png" alt="view not able to load">
    		<br>
    		<br>
    		<h5>What revealing EVALUATION will do?</h5>
@@ -244,12 +244,12 @@
    				<ul>
    					<li>This is what candidate will see if Evaluation is concealed after finishing Quiz :</li>
    				</ul>
-   					<img class="conceal-result" src="images/concealed_quiz_result.png">
+   					<img class="conceal-result" src="images/concealed_quiz_result.png" alt="view not able to load">
    				<ul>
    					<li>Candidates can check their results if evaluation is revealed after Quiz completion  </li>
    					<li>See below :</li>
    				</ul>
-   				<img class="check-result" src="images/check_result.png">
+   				<img class="check-result" src="images/check_result.png" alt="view not able to load">
    			
     </div>
 	</div>

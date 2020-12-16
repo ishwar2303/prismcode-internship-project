@@ -282,6 +282,21 @@
         z-index: 3;
         display: none;
       }
+
+      .black-cover-quiz-delete{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left : 0;
+        top : 0;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: rgba(75, 75, 75,0.5);
+        z-index: 3;
+        display: none;
+      }
       #quiz-details-content{
         overflow-y: scroll;
         height: 400px;
@@ -649,10 +664,135 @@
       document.getElementsByClassName('black-cover-for-confirmation')[0].style.display='none';
     }
 </script>
+<style type="text/css">
+  #confirm-quiz-delete-popup{
+    height: 300px;
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    left: 50%;
+    top : 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    z-index: 10;
+    border : 0.5px solid #95a5a6;
+    display: none;
+    position: fixed;
+  }
+  #confirm-quiz-delete-popup-content-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  #delete-me{
+    margin-top: 20px;
+    margin-bottom: 15px;
+    height: 30px;
+    width: 200px;
+    border-radius: 5px;
+    border : 0.5px solid #95a5a6;
+    padding: 0px 5px;
+    color: green;
+  }
+  #delete-me:focus{
+    outline:  none;
+    box-shadow: 0px 0px 0px 3px #96c7e8;
+  }
+  .delete-yes-no-btn-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0px 15px;
+  }
+  #delete-no{
+
+    border-radius: 5px;
+    background: #95a5a6;
+    border : none;
+    background: #c0392b;
+    color: white;
+    padding: 5px 8px;
+  }
+  #delete-yes{
+    border-radius: 5px;
+    background: #95a5a6;
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 3px 5px;
+    display: none;
+  }
+  #delete-yes:focus{
+    outline: none;
+
+  }
+  #delete-yes:hover{
+    background: #2ecc71;
+  }
+  #delete-no:focus{
+    outline: none;
+
+  }
+  #delete-no:hover{
+    background: #e74c3c;
+  }
+</style>
+<script type="text/javascript">
+  var DeleteQUIZID;
+  function checkUserConfirmation(){
+    var x = document.getElementById('delete-me').value;
+    if(x == 'DELETE ME'){
+      document.getElementById('delete-yes').style.display = 'block';
+    }
+    else{
+      document.getElementById('delete-yes').style.display = 'none';
+    }
+
+  }
+  function deleteThisQuiz(){
+    var URL = 'delete_exam_query.php?exam_id='+DeleteQUIZID;
+    location.href= URL;
+  }
+  function confirmQuizDeletion(QID){
+    DeleteQUIZID = QID;
+
+    document.getElementById('delete-yes').style.display = 'none';
+    var x = document.getElementById('delete-me');
+    x.value = '';
+    document.getElementById('confirm-quiz-delete-popup').style.display='block';
+    document.getElementsByClassName('black-cover-quiz-delete')[0].style.display = 'block';
+  }
+  function hideConfirmationPOPUP(){
+    document.getElementById('confirm-quiz-delete-popup').style.display='none';
+    document.getElementsByClassName('black-cover-quiz-delete')[0].style.display = 'none';
+  }
+</script>
 </head>
 
 <body id="page-top" >
 <div class="black-cover-for-confirmation"></div>
+<div class="black-cover-quiz-delete"></div>
+<div id="confirm-quiz-delete-popup">
+  <div id="confirm-quiz-delete-popup-content-container">
+    <i style="color : red;font-size: 50px;margin-bottom: 25px;" class="fas fa-trash-alt"></i>
+    <div style="display: flex; flex-direction: column;">
+    <h5>To confirm deletion</h5>
+    <label>
+    Write '<span style="color: green; font-weight: bold;">DELETE ME</span>' in  input box
+    </label>
+  </div>
+  <input oninput="checkUserConfirmation()" id="delete-me" type="text" name="checkDeleteConfirmation" required>
+  <div class="delete-yes-no-btn-container">
+        <button onclick="hideConfirmationPOPUP()" id="delete-no">Cancel</button>
+        <button onclick="deleteThisQuiz()" id="delete-yes">Confirm</button>
+  </div>
+  <h5 style="color: blue;margin-top: 15px;">Note : No Backup</h5>
+  </div>
+</div>
   <div class="custom-confirmation">
     <div>
       <div>Are You Sure!</div>

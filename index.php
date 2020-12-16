@@ -1226,14 +1226,14 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                     </li>
                     <li class="mx-4">
                         <p>
-                            <span class="fa fa-phone mr-2"></span>+91 7988202484<!--+919017527234, +919821671707-->
+                            <span class="fa fa-phone mr-2"></span>+919017527234, +919821671707
                         </p>
                     </li>
                     <li>
                         <p class="text-wh">
                             <span class="fa fa-envelope-open mr-2"></span>
                             <a href="mailto:info@example.com">
-                              <span>jain.naman765@gmail.com<!--ishwar2303@gmail.com, tapasbaranwal@gmail.com--></span>
+                              <span>ishwar2303@gmail.com, tapasbaranwal@gmail.com</span>
                             </a>
                         </p>
                     </li>
