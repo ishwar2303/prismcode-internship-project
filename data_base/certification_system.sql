@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2020 at 04:03 PM
+-- Generation Time: Feb 06, 2021 at 09:07 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -49,9 +49,7 @@ CREATE TABLE `attempts` (
 
 INSERT INTO `attempts` (`attempt_id`, `quiz_id`, `fullname`, `registration_no`, `email`, `score`, `total_marks`, `correct`, `wrong`, `not_attempted`, `pass_percentage`, `no_of_questions`, `time_stamp`) VALUES
 (1, 135, 'JATIN KUMAR', 'RA1811003030224', 'jatin@gmail.com', 2, 14, 2, 2, 3, 70, 7, '2020-09-24 18:35:51'),
-(2, 134, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 3, 5, 3, 0, 2, 60, 5, '2020-10-05 13:15:50'),
-(3, 103, 'DHRUV KASANA', 'RA1811003030224', 'dhruvkasana100@gmail.com', 4, 10, 4, 3, 3, 60, 10, '2020-10-12 10:24:00'),
-(4, 103, 'John', 'RA200', 'xyz123@gmail.com', 8, 10, 8, 2, 0, 70, 10, '2020-10-24 07:23:31');
+(6, 134, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 5, 5, 5, 0, 0, 60, 5, '2021-02-06 08:02:29');
 
 -- --------------------------------------------------------
 
@@ -71,8 +69,7 @@ CREATE TABLE `feedback` (
 
 INSERT INTO `feedback` (`feedback_id`, `comment`, `attempt_id`) VALUES
 (1, 'Stimulating Exam!!!', 1),
-(2, 'wow', 2),
-(3, 'stimulating exam\r\n', 3);
+(4, 'Stimulating Exam\r\nWould like to attempt more quizes on this platform very flexible\r\nGreat work!', 6);
 
 -- --------------------------------------------------------
 
@@ -170,26 +167,11 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 (198, 126, 'Which of the following sorting procedures is the slowest?', 'Quick sort', 'Heap sort', 'Shell sort', 'Bubble sort', 4, ''),
 (199, 126, 'Two main measures for the efficiency of an algorithm are', 'Processor and memory', 'Complexity and capacity', 'Time and space', 'Data and space', 3, ''),
 (200, 126, 'The space factor when determining the efficiency of algorithm is measured by', 'Counting the maximum memory needed by the algorithm', 'Counting the minimum memory needed by the algorithm', 'Counting the average memory needed by the algorithm', 'Counting the maximum disk space needed by the algorithm', 1, ''),
-(204, 129, 'With reference to Hard water, consider the\r\nfollowing statements:\r\n1. Hardness in water is caused by soluble\r\nsalts of calcium and magnesium.\r\n2. Hard water is known to reduce the\r\nefficiency of boilers.\r\n3. Treatment with washing soda removes\r\nhardness of the water.\r\nWhich of the statements given above is/are\r\ncorrect?', '1 and 2 only', '1 and 3 only', '2 and 3 only', '1, 2 and 3', 1, ''),
-(205, 129, 'Which among the following phenomena\r\nexplains the fact that we see lightning much\r\nbefore we hear its thunder?', 'Light waves can travel in vacuum whereas sound waves cannot.', 'Light waves travels faster than sound waves.', 'Intensity of light waves is more than sound waves.', 'Light waves are scattered more than sound waves', 1, ''),
-(206, 129, 'Which of the followings is/are application of\r\nUltrasound?\r\n1. Cleaning of objects\r\n2. Detecting cracks in metal blocks\r\n3. Images of internal organs of the human\r\nbody\r\n4. Determining the depth of the sea\r\nSelect the correct answer using the code\r\ngiven below.', '1 and 2 only', '2, 3 and 4 only', '3 and 4 only', '1, 2, 3 and 4', 1, ''),
-(207, 129, 'Drinking soda helps us during digestion.\r\nWhich among the following correctly\r\nexplains this process?', 'The acids in soda water help in neutralizing the bases in stomach.', 'Soda water causes bloating, which stretches the stomach.', 'The bases in soda water help in neutralizing the acids in stomach.', 'Soda water enhances the activity of gut bacteria', 1, ''),
-(208, 129, 'Oceans are the largest carbon sinks on earth.\r\nThrough which among the following ways\r\ncarbon-dioxide is transferred from\r\natmosphere into oceans?\r\n1. Carbon-dioxide reacts with sea water to\r\nform Carbonic Acid\r\n2. Absorption of carbon-dioxide by\r\nphotosynthetic phytoplankton\r\n3. Carbon-dioxide reacts with sea water to\r\nform Carbonates and Bicarbon', '1 and 3 only', '2 only', '2 and 3 only', '1, 2 and 3', 1, ''),
-(209, 129, 'Consider the following statements:\r\n1. Sound gets reflected at the surface of a\r\nsolid or liquid and follows the same laws\r\nof reflection as Light.\r\n2. The working of a hearing aid involves\r\nconverting the sound waves into\r\nelectrical signals.\r\nWhich of the statements given above is/are\r\ncorrect?', '1 only', '2 only', 'Both 1 and 2', 'Neither 1 nor 2', 1, ''),
-(210, 129, 'Which of the following help owls in their\r\nnight vision adaptability?\r\n1. Large cornea\r\n2. Large Pupil\r\n3. Large number of cons on retina\r\ncompared to rods.\r\nSelect the correct answer using the code\r\ngiven below.', '1 and 2 only', '1 and 3 only', '2 and 3 only', '1, 2 and 3', 1, ''),
-(211, 129, 'With reference to ‘Impulse’, consider the\r\nfollowing statements:\r\n1. It is rate of change in momentum of a\r\nbody.\r\n2. It can be used to explain why a cricketer\r\nmoves his hand backward when taking a\r\ncatch.\r\nWhich of the statements given above is/are\r\ncorrect?', '1 only', '2 only', 'Both 1 and 2', 'Neither 1 nor 2', 1, ''),
-(212, 129, 'Chips manufacturer usually flush bags of\r\nchips with nitrogen gas, for which of the\r\nfollowing purposes?', 'To prevent growth of microorganisms.', 'To prevent oxidation of the chips.', 'To prevent reaction of salts in chips with the inner layering of the packet', 'To enhance the flavour of the chips', 1, ''),
-(213, 129, 'The major advantage of an alternating\r\ncurrent (AC) over direct current (DC) is that', 'The cost of installations of AC is less than DC.', 'AC contains more electrical energy than DC.', 'AC is free from voltage fluctuation.', 'AC voltages can be readily transformed to higher or lower voltage levels.', 1, ''),
-(214, 129, 'Which of the following best explains the\r\nreason why women have shriller voice than\r\nmen?', 'Higher frequency', 'Lower frequency', 'Higher amplitude', 'Lower amplitude', 1, ''),
-(215, 129, 'Which of the following reasons best explains\r\nwhy metal utensils do not work in\r\nmicrowave ovens?', 'They deflect microwaves from the food', 'They produce sparks on coming in contact with microwaves', 'They are bad conductors of heat.', 'They absorb all microwaves not allowing heat to reach the food.', 1, ''),
-(216, 129, 'With reference to Acute Flaccid Paralysis,\r\nconsider the following statements:\r\n1. It is a paralysis caused by bacteria.\r\n2. It is symptomatic of a polio vaccine\r\ngiven to children.\r\nWhich of the statements given above is/are\r\ncorrect?', '1 only', '2 only', 'Both 1 and 2', 'Neither 1 nor 2', 1, ''),
-(217, 129, 'With reference to aqua regia, consider the\r\nfollowing statements:\r\n1. It a mixture of concentrated hydrochloric\r\nand concentrated sulphuric acid.\r\n2. It has ability to dissolve gold and\r\nplatinum.\r\nWhich of the statements given above is/are\r\ncorrect?', '1 only', '2 only', 'Both 1 and 2', 'Neither 1 nor 2', 1, ''),
-(218, 129, 'asdfghjk', 'A', 'B', 'C', 'D', 2, ''),
 (237, 134, 'What is the output of below program?<br/>int main()<br/>{<br/> if(0)<br/> {<br/>&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;&quot;Hi&quot;;<br/> }<br/> else<br/> {<br/>&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;&quot;Bye&quot;;<br/> }<br/>return 0;<br/>}', 'Hi', 'Bye', 'HiBye', 'Compilation Error', 2, 'if(0) evaluates to false condition that is why else condition is executed. In C++ programming 0 is false 1 is true.'),
 (238, 134, 'What should be the output of below program?<br/><br/>int main()<br/>{<br/>int a=10; <br/>cout&lt;&lt;a++;<br/>return 0;<br/>}<br/>', '11', '10', 'Error', '0', 2, 'Post Increment'),
 (239, 134, '#include&lt;iostream.h&gt;\r<br/>void Execute(int &amp;x, int y = 200)\r<br/>{\r<br/> int TEMP = x + y;\r<br/> x+= TEMP;\r<br/> if(y!=200)\r<br/>&nbsp;&nbsp;&nbsp;&nbsp; cout&lt;&lt;TEMP&lt;&lt;x&lt;&lt;y&quot;--&quot;;\r<br/>}\r<br/>\r<br/>int main()\r<br/>{\r<br/> int A=50, B=20;\r<br/> cout&lt;&lt;A&lt;&lt;B&lt;&lt;&quot;--&quot;;\r<br/> Execute(A,B);\r<br/> cout&lt;&lt;A&lt;&lt;B&lt;&lt;&quot;--&quot;;\r<br/> return 0;\r<br/>}', '5020--5020--', '5020--7012020--12020--', '5020--70120200--5020', '5020--7050200--5020--', 2, ''),
-(240, 134, 'How many times CppBuzz.com is printed?\r<br/>\r<br/>int main()\r<br/>{\r<br/>&nbsp;&nbsp;&nbsp;&nbsp;int i=0;\r<br/>&nbsp;&nbsp;&nbsp;&nbsp;lbl:\r<br/>&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;&quot;CppBuzz.com&quot;;\r<br/>&nbsp;&nbsp;&nbsp;&nbsp;i++;\r<br/>&nbsp;&nbsp;&nbsp;&nbsp;if(i&lt;5)\r<br/>&nbsp;&nbsp;&nbsp;&nbsp;{\r<br/>	goto lbl;\r<br/>&nbsp;&nbsp;&nbsp;&nbsp;}\r<br/>return 0;\r<br/>\r<br/>}\r<br/>\r<br/>', 'Error', '5 times', '4 times', '6 times', 2, ''),
-(241, 134, 'What is output of below program?\r<br/>\r<br/>int main()\r<br/>{\r<br/>&nbsp;&nbsp;int a=10;\r<br/>&nbsp;&nbsp;int b,c;\r<br/>&nbsp;&nbsp;b = a++;\r<br/>&nbsp;&nbsp;c = a;\r<br/>&nbsp;&nbsp;cout&lt;&lt;a&lt;&lt;b&lt;&lt;c;\r<br/>&nbsp;&nbsp;return 0;\r<br/>}', '111011', '111111', '101011', '101010', 1, ''),
+(240, 134, 'How many times CppBuzz.com is printed?<br/><br/>int main()<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;int i=0;<br/>&nbsp;&nbsp;&nbsp;&nbsp;lbl:<br/>&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;&quot;CppBuzz.com&quot;;<br/>&nbsp;&nbsp;&nbsp;&nbsp;i++;<br/>&nbsp;&nbsp;&nbsp;&nbsp;if(i&lt;5)<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>	goto lbl;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>return 0;<br/><br/>}<br/><br/>', 'Error', '5 times', '4 times', '6 times', 2, ''),
+(241, 134, 'What is output of below program?<br/><br/>int main()<br/>{<br/>&nbsp;&nbsp;int a=10;<br/>&nbsp;&nbsp;int b,c;<br/>&nbsp;&nbsp;b = a++;<br/>&nbsp;&nbsp;c = a;<br/>&nbsp;&nbsp;cout&lt;&lt;a&lt;&lt;b&lt;&lt;c;<br/>&nbsp;&nbsp;return 0;<br/>}', '111011', '111111', '101011', '101010', 1, ''),
 (244, 135, 'Abbreviate ACID.', 'Atomicity, Consistency, Isolation, Durability', 'Atomicity, Concurrency, Isolation, Duplicity', 'Aggregation, Consistency, Isolation, Durability', 'Atomicity, Consistency, Identity, Durability', 3, 'No explanation is available for this question!'),
 (245, 135, 'What data structure is used to construct a Prev LSN in a database log?', 'Queue', 'Link List', 'Graph', 'Tree', 2, 'No explanation is available for this question!'),
 (246, 135, 'What stores the metadata about the structure of the database, in particular the schema of the database?', 'Indices', 'Database log', 'Data files', 'Data Dictionary', 4, 'No explanation is available for this question!'),
@@ -211,6 +193,8 @@ CREATE TABLE `quizes` (
   `description` varchar(1000) NOT NULL,
   `number_of_questions` int(11) NOT NULL,
   `is_active` int(11) NOT NULL,
+  `active_timing` bigint(20) NOT NULL,
+  `inactive_timing` bigint(20) NOT NULL,
   `Exam_key` varchar(30) NOT NULL,
   `key_access` tinyint(4) NOT NULL,
   `show_evaluation` tinyint(4) NOT NULL,
@@ -219,22 +203,21 @@ CREATE TABLE `quizes` (
   `negative_marking` double NOT NULL,
   `passing_percentage` int(11) NOT NULL,
   `admin_email_id` int(11) NOT NULL,
-  `time_stamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `time_stamp` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `quizes`
 --
 
-INSERT INTO `quizes` (`quiz_id`, `quiz_name`, `difficulty_level`, `description`, `number_of_questions`, `is_active`, `Exam_key`, `key_access`, `show_evaluation`, `time_duration`, `marks_per_question`, `negative_marking`, `passing_percentage`, `admin_email_id`, `time_stamp`) VALUES
-(46, 'General Knowledge', 'Intermediate', 'General knowledge is information that has been accumulated over time through various mediums. It excludes specialized learning that can only be obtained with extensive training and information confined to a single medium. General knowledge is an essential component of crystallized intelligence.\r<br/>\r<br/>', 10, 0, 'gk@1947', 1, 1, 1800, 4, 0.5, 80, 24, '2020-09-24 18:33:03'),
-(67, 'History ', 'Beginner', 'General knowledge', 5, 1, 'yr25op', 0, 1, 900, 1, 0.5, 60, 5, '2020-08-30 18:22:02'),
-(103, 'C++ Programming', 'Intermediate', 'This Online C Programming Test is specially designed for you by industry experts.', 10, 1, '9911', 0, 1, 1800, 1, 0, 60, 5, '2020-08-30 18:22:28'),
-(118, 'Operating System', 'Intermediate', 'Exam Key : op@linux<br/>\r\n<br/>An operating system, or \"OS,\" is software that communicates with the hardware and allows other programs to run. ... Every desktop computer, tablet, and smartphone includes an operating system that provides basic functionality for the device. Common desktop operating systems include Windows, OS X, and Linux\r\n', 5, 1, 'ishwar1999', 1, 0, 900, 0, 0, 0, 24, '2020-09-01 12:46:09'),
-(126, 'Design and Analysis of Algorithms', 'Intermediate', 'Exam Key : daa@1999\r\n<br/>\r\n<br/>Design and Analysis of Algorithm is very important for designing algorithm to solve different types of problems in the branch of computer science and information technology.', 10, 1, 'daa@1999', 1, 1, 2700, 0, 0, 0, 24, '2020-10-24 07:16:37'),
-(129, 'GENERAL STUDIES (P) 2020 – Test ', 'Intermediate', 'General studies', 15, 0, 'gs@2020', 1, 0, 10800, 0, 0, 0, 24, '2020-10-24 07:18:36'),
-(134, 'CODE - C', 'Intermediate', 'C and C++ Programming', 5, 1, '23031999', 0, 1, 900, 1, 0.5, 60, 24, '2020-10-05 13:17:28'),
-(135, 'DODNetHTML', 'Advance', 'Question are based on Data Base, Operating System, Data Structure, Networking, HTML. ', 7, 1, 'in@100', 1, 1, 1800, 2, 1, 70, 25, '2020-09-01 13:33:00');
+INSERT INTO `quizes` (`quiz_id`, `quiz_name`, `difficulty_level`, `description`, `number_of_questions`, `is_active`, `active_timing`, `inactive_timing`, `Exam_key`, `key_access`, `show_evaluation`, `time_duration`, `marks_per_question`, `negative_marking`, `passing_percentage`, `admin_email_id`, `time_stamp`) VALUES
+(46, 'General Knowledge', 'Intermediate', 'General knowledge is information that has been accumulated over time through various mediums. It excludes specialized learning that can only be obtained with extensive training and information confined to a single medium. General knowledge is an essential component of crystallized intelligence.\r<br/>\r<br/>', 10, 0, 0, 0, 'gk@1947', 1, 1, 1800, 4, 0.5, 80, 24, '2020-09-25 00:03:03'),
+(67, 'History ', 'Beginner', 'General knowledge', 5, 0, 0, 0, 'yr25op', 0, 1, 900, 1, 0.5, 60, 5, '2020-12-14 23:36:04'),
+(103, 'C++ Programming', 'Intermediate', 'This Online C Programming Test is specially designed for you by industry experts.', 10, 0, 0, 0, '9911', 0, 1, 1800, 1, 0, 60, 5, '2020-12-14 23:36:05'),
+(118, 'Operating System', 'Intermediate', 'An operating system, or \"OS,\" is software that communicates with the hardware and allows other programs to run. ... Every desktop computer, tablet, and smartphone includes an operating system that provides basic functionality for the device. Common desktop operating systems include Windows, OS X, and Linux\r<br/>', 5, 0, 0, 0, 'ishwar1999', 1, 0, 900, 2, 0, 60, 24, '2020-12-15 14:57:16'),
+(126, 'Design and Analysis of Algorithms', 'Intermediate', 'Exam Key : daa@1999\r\n<br/>\r\n<br/>Design and Analysis of Algorithm is very important for designing algorithm to solve different types of problems in the branch of computer science and information technology.', 10, 0, 0, 0, 'daa@1999', 1, 1, 2700, 0, 0, 0, 24, '2020-12-15 14:54:36'),
+(134, 'CODE - C', 'Intermediate', 'C and C++ Programming based Questions.\r<br/>Types\r<br/>-> Output based\r<br/>-> Error search\r<br/>-> Theory\r<br/>- >Architecture\r<br/>-> OOPS\r<br/>', 5, 1, 1611859500, 1611861300, '23031999', 1, 1, 900, 1, 0.5, 60, 24, '2020-12-15 14:54:23'),
+(135, 'DODNetHTML', 'Advance', 'Question are based on Data Base, Operating System, Data Structure, Networking, HTML. ', 7, 0, 0, 0, 'in@100', 1, 1, 1800, 2, 1, 70, 25, '2020-12-14 23:36:27');
 
 -- --------------------------------------------------------
 
@@ -261,9 +244,10 @@ CREATE TABLE `registered_admin` (
 --
 
 INSERT INTO `registered_admin` (`admin_id`, `first_name`, `last_name`, `admin_contact`, `admin_gender`, `state`, `date_of_birth`, `admin_address`, `institution_name`, `admin_email`, `admin_password`) VALUES
-(5, 'Tapas', 'Baranwal', 9017527234, 'male', 'Haryana', '1999-04-13', 'Sirsa', 'SRM-IST', 'tapasbaranwal@gmail.com', 'asdf@123'),
+(5, 'Tapas', 'Baranwal', 9017527234, 'male', 'Haryana', '1999-04-13', 'Sirsa', 'SRM-IST', 'tapasbaranwal@gmail.com', '23031999'),
 (24, 'Ishwar', 'Baisla', 9821671707, 'male', 'Delhi', '1999-03-23', 'wazirabad village gali no 6', 'SRM-IST', 'ishwar2303@gmail.com', '23031999'),
-(25, 'SAMARTH', 'TANDON', 9140521693, 'male', 'Uttar Pradesh', '2020-09-10', 'Mirzapur', 'SRM-IST', 'samarth@gmail.com', '12345678');
+(25, 'SAMARTH', 'TANDON', 9140521693, 'male', 'Uttar Pradesh', '2020-09-10', 'Mirzapur', 'SRM-IST', 'samarth@gmail.com', '12345678'),
+(28, 'ISHWAR', 'BAISLA', 9821671707, 'male', 'Delhi', '2020-12-17', 'Delhi', '', 'admin@quizwit.in', '12345678');
 
 --
 -- Indexes for dumped tables
@@ -322,13 +306,13 @@ ALTER TABLE `registered_admin`
 -- AUTO_INCREMENT for table `attempts`
 --
 ALTER TABLE `attempts`
-  MODIFY `attempt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `attempt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -340,25 +324,25 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `profile_photo`
 --
 ALTER TABLE `profile_photo`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `question_bank`
 --
 ALTER TABLE `question_bank`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=254;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
 
 --
 -- AUTO_INCREMENT for table `quizes`
 --
 ALTER TABLE `quizes`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT for table `registered_admin`
 --
 ALTER TABLE `registered_admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables

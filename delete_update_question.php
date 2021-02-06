@@ -86,6 +86,7 @@ if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID'])
 														var url = 'delete_update_question.php';
 														showCustomConfirmation();
 														$("#cancel").click(function(){
+															$("#confirm").off();
 															hideCustomConfirmation();
 														});
 
@@ -301,6 +302,7 @@ else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quiz
 														var url = 'delete_update_question.php';
 														showCustomConfirmation();
 														$("#cancel").click(function(){
+															$("#confirm").off();
 															hideCustomConfirmation();
 														});
 

@@ -83,6 +83,7 @@
                           var url = 'delete_attempt.php';
                           showCustomConfirmation();
                             $("#cancel").click(function(){
+                              $("#confirm").off();
                               hideCustomConfirmation();
                             });
 
@@ -200,6 +201,7 @@
                         var url = 'delete_attempt.php';
                         showCustomConfirmation();
                             $("#cancel").click(function(){
+                              $("#confirm").off();
                               hideCustomConfirmation();
                             });
 

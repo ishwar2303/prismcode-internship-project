@@ -202,6 +202,7 @@ echo "</div>";
 														var url = 'delete_update_question.php';
 														showCustomConfirmation();
 														$("#cancel").click(function(){
+															$("#confirm").off();
 															hideCustomConfirmation();
 														});
 														
