@@ -89,7 +89,8 @@
     <title>Evaluation</title>
      <!-- Compiled and minified CSS -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+    <script src="https://kit.fontawesome.com/f9bbf9ac4e.js"></script>
     <link href="css/materialize.css" rel="stylesheet">
      <link href="css/dashboard.css" rel="stylesheet">
      <link rel="stylesheet" href="css/sb-admin-2.css">
@@ -144,7 +145,7 @@
           height: 15px;
           font-size: 35px;
         }
-      }
+      
         .brand{
             background: #cbb09b !important;
             border-radius: 15px;
@@ -225,6 +226,7 @@
         border-radius: 50%;
         cursor: pointer;
         color: black;
+        margin-bottom: 0;
       }
 
       .up-arrow-container:hover, .down-arrow-container:hover{
@@ -242,7 +244,7 @@
         align-items: center;
       }
       .feedback-btn{
-        border-radius: 5px;
+        border-radius: 3px;
         background: #2980b9;
         color: white;
         width: 200px;
@@ -252,6 +254,7 @@
       }
       .feedback-btn:hover{
         background: #3498db;
+    box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
       }
       .feedback-btn:focus{
         outline: none;
@@ -259,13 +262,14 @@
       .skip-btn{
         background: #2c3e50;
         margin-top: 15px;
-        border-radius: 5px;
+        border-radius: 3px;
         color: white;
         width: 200px;
         height: 40px;
         border : none;
       }
       .skip-btn:hover{
+    box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
       background : #34495e;
       }
       .skip-btn:focus{
@@ -328,20 +332,80 @@
         }
       }
       .border-success > div:nth-child(1){
-        background: #27ae60;
+        background: #80a25c;
         color: white;
       }
       .border-danger > div:nth-child(1){
-        background: #e74c3c; 
+        background: #a0403f; 
         color: white;   
       }
       .border-secondary > div:nth-child(1){
-        background: #e6e6e6;
+        background: #ac9740;
+        color: white;
       }
       .question-answer{
         background: white;
         color : black;
         padding: 5px;
+      }
+
+      .certification-clear{
+        border-radius: 5px;
+        padding: 25px;
+        text-align:center; 
+        color:white;
+        background : #668f3c;
+      }
+      .certification-failed{
+        border-radius: 5px;
+        padding: 25px;
+        text-align:center; 
+        color:white;
+        background : #cd201f;
+      }
+      @media screen and (max-width : 600px){
+        .certification-clear, .certification-failed{
+          padding: 10px;
+        }
+      }
+      .unselected{
+        border : 2px solid rgb(138 138 138 / 40%);
+        border-radius: 3px;
+        padding: 5px;
+        margin-bottom: 5px;
+      }
+      .selected{
+        border : 2px solid rgb(138 138 138 / 40%);
+        border-radius: 3px;
+        padding: 5px;
+        margin-bottom: 5px;
+        background: #2980b9;
+      }
+      .correct-option{
+        border: 2px solid #608f2f;
+        border-radius: 3px;
+        padding: 5px;
+        background: #608f2f;
+        color: white;
+        margin-bottom: 5px;
+
+      }
+      .wrong-option{
+        border : 2px solid #a0403f;
+        border-radius: 3px;
+        padding: 5px;
+        background: #a0403f;
+        color : white;
+        margin-bottom: 5px;
+      }
+      .mcq-option > pre > code{
+        display: flex;
+      }
+      .bold {
+        font-weight: bold;
+      }
+      .shadow-c{
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
       }
     </style>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -379,9 +443,9 @@
           var p = window.open('','','height=500','width=500');
           p.document.write('<html>');
           p.document.write('<head>');
-          p.document.write("<style>td{text-align: center; border:0.5px solid #bdc3c7;}table{margin-top:15px;}</style>");
+          p.document.write("<style>td{text-align: center; border:0.5px solid #bdc3c7;}table{margin-top:15px;}.mcq-option{border: 0.5px solid rgba(0,0,0,0.4);border-radius: 3px;padding: 5px;}pre{display:flex;}</style>");
           p.document.write('</head>');
-          p.document.write('<body>');
+          p.document.write('<body style="font-family:monospace;">');
           p.document.write("<div style='display:flex;width:100%;justify-content-space-between;font-weight:bold;font-size:25px;'>");
           p.document.write("<div>");
           p.document.write(quizName);
@@ -391,17 +455,41 @@
           p.document.write("</div>")
           p.document.write("</div>");
           var questions = document.getElementsByClassName('questions');
+          console.log(questions)
+          var option1 = document.getElementsByClassName('mcq-option-1')
+          var option2 = document.getElementsByClassName('mcq-option-2')
+          var option3 = document.getElementsByClassName('mcq-option-3')
+          var option4 = document.getElementsByClassName('mcq-option-4')
           var answers = document.getElementsByClassName('answers');
           var i;
           for(i=0;i<questions.length;i++){
-            p.document.write("<div style='border : 0.5px solid #bdc3c7; padding:10px; margin : 5px 0px; border-radius : 5px;'>");  // main container
-              p.document.write("<div style='display:flex;'>") //question container
+            p.document.write("<div style='border : 3px solid #bdc3c7; padding:10px; margin : 5px 0px; border-radius : 5px;'>");  // main container
+              p.document.write("<div style='display:flex; flex-direction:column'>") //question container
                 p.document.write("<div style='width:35px;'>"); // Q no
                   p.document.write((i+1)+".&nbsp;");
                 p.document.write("</div>");
                 p.document.write("<div>"); // question
-                  p.document.write(questions[i].innerHTML);
+                  p.document.write('<pre>')
+                  p.document.write(questions[i].innerHTML.replaceAll(/\n/g, '<br/>'));
+                  console.log(questions[i].innerHTML)
+                  p.document.write('</pre>')
                 p.document.write("</div>");
+                
+                p.document.write("<div>"); // options
+                  p.document.write('<pre class="mcq-option">')
+                  p.document.write(option1[i].innerHTML.replaceAll(/\n/g, '<br/>'));
+                  p.document.write('</pre>')
+                  p.document.write('<pre class="mcq-option">')
+                  p.document.write(option2[i].innerHTML.replaceAll(/\n/g, '<br/>'));
+                  p.document.write('</pre>')
+                  p.document.write('<pre class="mcq-option">')
+                  p.document.write(option3[i].innerHTML.replaceAll(/\n/g, '<br/>'));
+                  p.document.write('</pre>')
+                  p.document.write('<pre class="mcq-option">')
+                  p.document.write(option4[i].innerHTML.replaceAll(/\n/g, '<br/>'));
+                  p.document.write('</pre>')
+                p.document.write("</div>");
+
               p.document.write("</div>");
               p.document.write("<div style='display:flex; margin-top:5px;'>");
                 p.document.write("<div>"); // Ans
@@ -443,16 +531,22 @@ if($showEvaluation){
   </label>
     <div style="margin-top: 5px;margin-right: 7px;display: flex;justify-content: center;" class="my-3 my-md-5">
         <div style="padding : 10px 5px; margin : 0;" class="container">
-            <div style="margin:0; border : 0.5px solid ;border-radius: 5px;padding: 5px;" class="page-header">
+            <?php 
+              if((int)$ans>=$passingPercentage){
+                $class = 'certification-clear';
+              }
+              else $class = 'certification-failed';
+            ?>
+            <div class="page-header <?php echo $class; ?> shadow-c">
                 <h4 class="page-tilte">
                     <?php  if((int)$ans>=$passingPercentage)
-        echo "Congratulation, You have clear the certification.";
-      else echo "Thank you for attempting the exam. Unfortunately, you need more practice before you clear the certification."; ?>
+        echo "&nbsp;&nbsp;<i class='fas fa-check'></i>&nbsp;&nbsp;"."Congratulation, You have clear the certification.";
+      else echo "&nbsp;&nbsp;<i class='fas fa-exclamation-circle'></i>&nbsp;&nbsp;"."Thank you for attempting the exam. Unfortunately, you need more practice before you clear the certification."; ?>
                 </h4>
             </div>
             <div class="row row-cards row-deck">
                 <div  class="col-xl-3 col-md-6 mb-4 height115">
-                    <div style="padding: 0;"class="card border-bottom-primary shadow h-100 py-2">
+                    <div style="padding: 0;"class="card border-bottom-primary h-100 py-2 shadow-c">
                         <div class="card-body p-3 text-center">
                             <div class="h4 m-0"><?php echo $score."/".$totalMarks; ?></div>
                             <div class="text-xxs font-weight-bold text-primary text-uppercase mb-1">Your Score</div>
@@ -460,7 +554,7 @@ if($showEvaluation){
                     </div>
                  </div>
                 <div class="col-xl-3 col-md-6 mb-4 height115">
-                    <div style="padding: 0;" class="card border-bottom-primary shadow h-100 py-2">
+                    <div style="padding: 0;" class="card border-bottom-primary h-100 py-2 shadow-c">
                         <div class="card-body p-3 text-center">
                             <div class="h4 m-0"><?php echo $ans."%";?></div>
                             <div class="text-xxs font-weight-bold text-primary text-uppercase mb-1">Percentage</div>
@@ -468,7 +562,7 @@ if($showEvaluation){
                     </div>
                  </div>
                 <div class="col-xl-3 col-md-6 mb-4 height115">
-                    <div style="padding: 0;" class="card border-bottom-primary shadow h-100 py-2">
+                    <div style="padding: 0;" class="card border-bottom-primary shadow-c h-100 py-2">
                         <div class="card-body p-3 text-center">
                             <div class="h4 m-0"><?php echo $_SESSION['question_no'];?></div>
                             <div class="text-xxs font-weight-bold text-primary text-uppercase mb-1">Total Question</div>
@@ -476,7 +570,7 @@ if($showEvaluation){
                     </div>
                  </div>
                 <div class="col-xl-3 col-md-6 mb-4 height115">
-                    <div style="padding: 0;" class="card border-bottom-success shadow h-100 py-2">
+                    <div style="padding: 0;" class="card border-bottom-success shadow-c h-100 py-2">
                         <div class="card-body p-3 text-center">
                             <div class="h4 m-0 attempted"><?php echo sizeof($right); ?></div>
                             <div class="text-success text-xxs font-weight-bold text-primary text-uppercase mb-1 ">Correct</div>
@@ -484,7 +578,7 @@ if($showEvaluation){
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6 mb-4 height115">
-                    <div style="padding: 0;" class="card shadow border-bottom-warning h-100 py-2">
+                    <div style="padding: 0;" class="card shadow-c border-bottom-warning h-100 py-2">
                         <div class="card-body p-3 text-center">
                             <div class="h4 m-0 remaining"><?php echo sizeof($wrong); ?></div>
                             <div class="text-danger text-xxs font-weight-bold text-primary text-uppercase mb-1">Wrong</div>
@@ -492,7 +586,7 @@ if($showEvaluation){
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6 mb-4 height115">
-                    <div style="padding: 0;" class="card shadow border-bottom-info h-100 py-2">
+                    <div style="padding: 0;" class="card shadow-c border-bottom-info h-100 py-2">
                         <div class="card-body p-3 text-center">
                             <div  class="h4 m-0 timer-test"><?php echo sizeof($not_attempt); ?></div>
                             <div class="text-cyan text-xxs font-weight-bold text-uppercase mb-1">Not Attempted</div>
@@ -507,7 +601,7 @@ if($showEvaluation){
                             <h3 class="card-title">Performance Chart</h3>
                         </div>
                         <div class="card-body">
-                           <div id="piechart" >
+                           <div id="piechart">
                            </div>                        
                         </div>
                      </div>
@@ -548,8 +642,8 @@ if($showEvaluation){
                                 $add = "danger";
                     ?>
                        
-                        <div  class="card border border-<?php echo $add;?>">
-                            <div style="border-radius : 5px; padding : 3px 10px;display: flex; justify-content: space-between; align-items: center;" class="card-header" id="headingOne">
+                        <div  class="border-<?php echo $add;?>" style="margin-bottom: 6px;border-radius : 3px; box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);">
+                            <div style="border-radius : 3px; padding : 3px 10px;display: flex; justify-content: space-between; align-items: center; " id="headingOne">
                                 <h5 onclick="hide_show()" class="mb-0">
                                     
                                     Question <?php echo $num;?>
@@ -566,60 +660,140 @@ if($showEvaluation){
                             </div>
                             <div class="question-answer" id="collapse1<?php echo $num;?>"  aria-labelledby="headingOne" data-parent="#accordionExample" style>
                                 <div class="card-body text-justify">
-                                    <p class="questions">
-                                        
-                                            <?php echo $row['question'];?>
-                                        
-                                    </p>
-                                    <p></p>
                                     <p>
-                                        <span style="border-radius: 3px;" class="text-white bg-primary p-1">Selected Option</span>
+<pre>
+<code  class="questions"><?php echo $row['question'];?></code>
+</pre>
                                     </p>
-                                    <p >
+                                    <p>
+                                        <span style="border-radius: 3px; padding : 5px 10px;" class="text-white bg-primary">Options</span>
+                                    </p>
                                     <?php
-                                           
+                                        $option_1 = 'unselected';
+                                        $option_2 = 'unselected';
+                                        $option_3 = 'unselected';
+                                        $option_4 = 'unselected';
+                                        $selection = true;
                                         if($selected_answer["$ans_index"]!=0)
                                         {
                                            $option_no = $selected_answer["$ans_index"];
                                            if($option_no == 1)
-                                            echo $row['option_1'];
+                                            $option_1 = 'selected';
                                            if($option_no == 2)
-                                            echo $row['option_2'];
+                                            $option_2 = 'selected';
                                            if($option_no == 3)
-                                            echo $row['option_3'];
+                                            $option_3 = 'selected';
                                            if($option_no == 4)
-                                            echo $row['option_4'];
+                                            $option_4 = 'selected';
                                         }
-                                        else echo "Not attempted";
+                                        else $selection = false;
+                                        $correct = false;
+                                        if($selection){
+                                          if($row['answer'] == 1){
+                                            $option_1 = $option_1.' correct-option';
+                                            $correct = true;
+                                          }
+                                          if($row['answer'] == 2){
+                                            $option_2 = $option_2.' correct-option';
+                                            $correct = true;
+                                          }
+                                          if($row['answer'] == 3){
+                                            $option_3 = $option_3.' correct-option';
+                                            $correct = true;
+                                          }
+                                          if($row['answer'] == 4){
+                                            $option_4 = $option_4.' correct-option';
+                                            $correct = true;
+                                          }
+                                        }
+                                        if($selection){
+                                          if($option_no == 1 && $row['answer'] != 1)
+                                           $option_1 = $option_1.' wrong-option';
+                                          if($option_no == 2 && $row['answer'] != 2)
+                                           $option_2 =  $option_2.' wrong-option';
+                                          if($option_no == 3 && $row['answer'] != 3)
+                                           $option_3 =  $option_3.' wrong-option';
+                                          if($option_no == 4 && $row['answer'] != 4)
+                                           $option_4 =  $option_4.' wrong-option';
+                                        }
                                     ?> 
-                                    </p>
-                                    <p>
-                                        <span style="border-radius: 3px;" class="text-white bg-success p-1">Correct Option</span>
-                                    </p>
-                                    <P class="answers">
-                                       <?php
-                                           $option_no = $row['answer'];
+                                    
+                                    <div style="display:flex;flex-direction:column;" class="mcq-options">
+                                      <span class="mcq-option">
+<pre class="option-layout <?php echo $option_1; ?>">
+<code class="mcq-option-1"><span class="bold">A </span><span><?php echo $row['option_1']; ?></span></code>
+</pre>
+                                      </span>
+                                      <span class="mcq-option">
+<pre class="option-layout <?php echo $option_2; ?>">
+<code class="mcq-option-2"><span class="bold">B </span><span><?php echo $row['option_2']; ?></span></code>
+</pre>
+                                      </span>
+                                      <span class="mcq-option">
+<pre class="option-layout <?php echo $option_3; ?>">
+<code class="mcq-option-3"><span class="bold">C </span><span><?php echo $row['option_3']; ?></span></code>
+</pre>
+                                      </span>
+                                      <span class="mcq-option">
+<pre class="option-layout <?php echo $option_4; ?>">
+<code class="mcq-option-4"><span class="bold">D </span><span><?php echo $row['option_4']; ?></span></code>
+</pre>
+                                      </span>
+                                    </div>
 
-                                           if($option_no == 1)
-                                            echo $row['option_1'];
-                                           if($option_no == 2)
-                                            echo $row['option_2'];
-                                           if($option_no == 3)
-                                            echo $row['option_3'];
-                                           if($option_no == 4)
-                                            echo $row['option_4'];
-                                       ?>     
+                                    <p style="margin-top: 5px;">
+                                      <?php 
+                                        if(!$selection){
+                                          ?>   
+                                           <span style="border-radius: 3px; padding : 5px 10px; background: #608f2f;" class="text-white">Correct Option : 
+                                          
+
+                                          <?php
+                                            $option_no = $row['answer'];
+                                            if($option_no == 1)
+                                            echo 'A';
+                                            if($option_no == 2)
+                                            echo 'B';
+                                            if($option_no == 3)
+                                            echo 'C';
+                                            if($option_no == 4)
+                                            echo 'D';
+                                            ?>
+                                           </span>
+                                            <?php
+                                        }
+                                      ?> 
+                                    </p>
+                                    <P class="answers" style="display: none;"> 
+                                      <?php
+                                          $option_no = $row['answer'];
+
+                                          if($option_no == 1)
+                                          echo 'A';
+                                          if($option_no == 2)
+                                          echo 'B';
+                                          if($option_no == 3)
+                                          echo 'C';
+                                          if($option_no == 4)
+                                          echo 'D';
+                                      ?>   
                                     </P>
                                     
                                     <p>
-                                        <span style="border-radius: 3px;" class="text-white bg-secondary p-1">Explanation</span>
+                                        <span style="border-radius: 3px; padding : 5px 10px;" class="text-white bg-secondary">Explanation</span>
                                     </p>
                                     <p>
                                         <i>
                                             <?php 
                                             if($row['reason'] == '')
                                               echo "Not Provided!";
-                                            else echo $row['reason'];
+                                            else {
+                                              ?>
+<pre>
+<code class="reason"><?php echo $row['reason']; ?></code>
+</pre>
+                                              <?php
+                                            }
                                             ?>
                                         </i>
                                     </p>

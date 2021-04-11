@@ -40,11 +40,11 @@ if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID'])
 						 				?>
 						 				<input class="question-id" type="number" name="questionID[]" value="<?php echo $row['question_id'];?>" required disabled="true">
 										<div style="margin:3px 0px;" class="row p-4 mb-2 border rounded border-muted set-container">
-											<span onclick="enableOption(<?php echo $i-1;?>)" class="edit-icon">												<i  class="fas fa-edit"></i>
+											<span onclick="enableOption(<?php echo $i-1;?>)" class="edit-icon">												<i  class="fas fa-pencil-alt"></i>
 												<span class="edit-hint">Edit</span>
 											</span>
 											<span  class="update-question">
-												<i  class="fas fa-upload"></i>
+												<i  class="fas fa-save"></i>
 												<span class="update-hint">Update</span>
 											</span>
 											<span class="delete-question">
@@ -112,25 +112,25 @@ if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID'])
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 1</label>
-													<input type="text" name="option1[]" class="form-control option1" placeholder="Option 1" value="<?php echo $option1;?>" required="true" disabled="true">
+													<textarea type="text" name="option1[]" class="form-control option1" placeholder="Option 1" required="true" disabled="true"><?php echo $option1;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 2</label>
-													<input type="text" name="option2[]" class="form-control option2" placeholder="Option 2" value="<?php echo $option2;?>" required="true" disabled="true">
+													<textarea type="text" name="option2[]" class="form-control option2" placeholder="Option 2" required="true" disabled="true"><?php echo $option2;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 3</label>
-													<input type="text" name="option3[]" class="form-control option3" placeholder="Option 3" value="<?php echo $option3;?>" required="true" disabled="true">
+													<textarea type="text" name="option3[]" class="form-control option3" placeholder="Option 3" required="true" disabled="true"><?php echo $option3;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 4</label>
-													<input type="text" name="option4[]" class="form-control option4" placeholder="Option 4" value="<?php echo $option4;?>" required="true" disabled="true">
+													<textarea type="text" name="option4[]" class="form-control option4" placeholder="Option 4" required="true" disabled="true"><?php echo $option4;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-12">
@@ -197,7 +197,7 @@ if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID'])
 else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quizID']) && isset($_POST['quesNum'])){
 
   $QuizID = $_POST['quizID'];
-	$QueNum = $_POST['quesNum'];
+  $QueNum = $_POST['quesNum'];
   $que = $_POST['que'];
   $o1  = $_POST['op1'];
   $o2  = $_POST['op2'];
@@ -206,30 +206,21 @@ else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quiz
   $ans   = $_POST['ans'];
   $res   = $_POST['res'];
 
-      $que = htmlentities($que);
-      $que = str_replace("  ", "&nbsp;&nbsp;", $que);
-      $que = str_replace("'", "&#39;", $que);
-      $que = str_replace("\n", "<br/>", $que);
-      $o1 = htmlentities($o1);
-      $o1 = str_replace("  ", "&nbsp;&nbsp;", $o1);
-      $o1 = str_replace("'", "&#39;", $o1);
-      $o1 = str_replace("\n", "<br/>", $o1);
-      $o2 = htmlentities($o2);
-      $o2 = str_replace("  ", "&nbsp;&nbsp;", $o2);
-      $o2 = str_replace("'", "&#39;", $o2);
-      $o2 = str_replace("\n", "<br/>", $o2);
-      $o3 = htmlentities($o3);
-      $o3 = str_replace("  ", "&nbsp;&nbsp;", $o3);
-      $o3 = str_replace("'", "&#39;", $o3);
-      $o3 = str_replace("\n", "<br/>", $o3);
-      $o4 = htmlentities($o4);
-      $o4 = str_replace("  ", "&nbsp;&nbsp;", $o4);
-      $o4 = str_replace("'", "&#39;", $o4);
-      $o4 = str_replace("\n", "<br/>", $o4);
-      $res = htmlentities($res);
-      $res = str_replace("  ", "&nbsp;&nbsp;", $res);
-      $res = str_replace("'", "&#39;", $res);
-      $res = str_replace("\n", "<br/>", $res);
+  function convertEntities($string){
+    $string = trim($string);
+    $string = htmlentities($string);
+    $string = str_replace(" ", "&nbsp;", $string);
+    $string = str_replace("'", "&#39;", $string);
+    $string = str_replace("\n", "<br/>", $string);
+    $string = str_replace("\\", "&#92;", $string);
+    return $string;
+   }
+      $que = convertEntities($que);
+      $o1 = convertEntities($o1);
+      $o2 = convertEntities($o2);
+      $o3 = convertEntities($o3);
+      $o4 = convertEntities($o4);
+      $res = convertEntities($res);
       $sql = "UPDATE question_bank SET question='$que', option_1='$o1', option_2='$o2', option_3='$o3', option_4='$o4', answer='$ans', reason='$res' WHERE question_id='$_POST[quesID]'";
       mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
@@ -257,11 +248,11 @@ else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quiz
 						 				?>
 						 				<input class="question-id" type="number" name="questionID[]" value="<?php echo $row['question_id'];?>" required disabled="true">
 										<div style="margin:3px 0px;" class="row p-4 mb-2 border rounded border-muted set-container">
-											<span onclick="enableOption(<?php echo $i-1;?>)" class="edit-icon">				<i  class="fas fa-edit"></i>
+											<span onclick="enableOption(<?php echo $i-1;?>)" class="edit-icon">				<i  class="fas fa-pencil-alt"></i>
 												<span class="edit-hint">Edit</span>
 											</span>
 											<span  class="update-question">
-												<i  class="fas fa-upload"></i>
+												<i  class="fas fa-save"></i>
 												<span class="update-hint">Update</span>
 											</span>
 											<span class="delete-question">
@@ -328,25 +319,25 @@ else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quiz
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 1</label>
-													<input type="text" name="option1[]" class="form-control option1" placeholder="Option 1" value="<?php echo $option1;?>" required="true" disabled="true">
+													<textarea type="text" name="option1[]" class="form-control option1" placeholder="Option 1" required="true" disabled="true"><?php echo $option1;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 2</label>
-													<input type="text" name="option2[]" class="form-control option2" placeholder="Option 2" value="<?php echo $option2;?>" required="true" disabled="true">
+													<textarea type="text" name="option2[]" class="form-control option2" placeholder="Option 2" required="true" disabled="true"><?php echo $option2;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 3</label>
-													<input type="text" name="option3[]" class="form-control option3" placeholder="Option 3" value="<?php echo $option3;?>" required="true" disabled="true">
+													<textarea type="text" name="option3[]" class="form-control option3" placeholder="Option 3" required="true" disabled="true"><?php echo $option3;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 4</label>
-													<input type="text" name="option4[]" class="form-control option4" placeholder="Option 4" value="<?php echo $option4;?>" required="true" disabled="true">
+													<textarea type="text" name="option4[]" class="form-control option4" placeholder="Option 4" required="true" disabled="true"><?php echo $option4;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-12">

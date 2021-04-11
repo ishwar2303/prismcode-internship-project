@@ -1,61 +1,64 @@
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript">
 
-$(document).ready(function(){
-  $('body').bind("cut copy paste",function(e) {
-     e.preventDefault();
-  });
-});
-jQuery(document).ready(function() {
-    function disableSelection(e) {
-        if (typeof e.onselectstart != "undefined") e.onselectstart = function() {
-            return false
-        };
-        else if (typeof e.style.MozUserSelect != "undefined") e.style.MozUserSelect = "none";
-        else e.onmousedown = function() {
-            return false
-        };
-        e.style.cursor = "default"
-    }
-    window.onload = function() {
-        hideAll();setInterval(Timer,1000);
-        Timer();
-        count();
-        disableSelection(document.body);
-    };
+// $(document).ready(function(){
+//   $('body').bind("cut copy paste",function(e) {
+//      e.preventDefault();
+//   });
+// });
+// jQuery(document).ready(function() {
+//     function disableSelection(e) {
+//         if (typeof e.onselectstart != "undefined") e.onselectstart = function() {
+//             return false
+//         };
+//         else if (typeof e.style.MozUserSelect != "undefined") e.style.MozUserSelect = "none";
+//         else e.onmousedown = function() {
+//             return false
+//         };
+//         e.style.cursor = "default"
+//     }
+//     window.onload = function() {
+//         hideAll();setInterval(Timer,1000);
+//         Timer();
+//         count();
+//         disableSelection(document.body);
+//     };
 
-    window.addEventListener("keydown", function(e) {
-        if (e.ctrlKey && (e.which == 65 || e.which == 66 || e.which == 67 || e.which == 70 || e.which == 73 || e.which == 80 || e.which == 83 || e.which == 85 || e.which == 86)) {
-            e.preventDefault()
-        }
-    });
-    document.keypress = function(e) {
-        if (e.ctrlKey && (e.which == 65 || e.which == 66 || e.which == 70 || e.which == 67 || e.which == 73 || e.which == 80 || e.which == 83 || e.which == 85 || e.which == 86)) {}
-        return false
-    };
+//     window.addEventListener("keydown", function(e) {
+//         if (e.ctrlKey && (e.which == 65 || e.which == 66 || e.which == 67 || e.which == 70 || e.which == 73 || e.which == 80 || e.which == 83 || e.which == 85 || e.which == 86)) {
+//             e.preventDefault()
+//         }
+//     });
+//     document.keypress = function(e) {
+//         if (e.ctrlKey && (e.which == 65 || e.which == 66 || e.which == 70 || e.which == 67 || e.which == 73 || e.which == 80 || e.which == 83 || e.which == 85 || e.which == 86)) {}
+//         return false
+//     };
 
-    document.onkeydown = function(e) {
-        e = e || window.event;
-        if (e.keyCode == 123 || e.keyCode == 18) {
-            return false
-        }
-    };
+//     document.onkeydown = function(e) {
+//         e = e || window.event;
+//         if (e.keyCode == 123 || e.keyCode == 18) {
+//             return false
+//         }
+//     };
 
-    document.oncontextmenu = function(e) {
-        var t = e || window.event;
-        var n = t.target || t.srcElement;
-        if (n.nodeName != "A") return false
-    };
-    document.ondragstart = function() {
-        return false
-    };
-});
+//     document.oncontextmenu = function(e) {
+//         var t = e || window.event;
+//         var n = t.target || t.srcElement;
+//         if (n.nodeName != "A") return false
+//     };
+//     document.ondragstart = function() {
+//         return false
+//     };
+// });
   </script>
 
 <style>
+    pre{
+        background: white;
+        /* padding: 0; */
+    }
     .uncheck-option{
     height: 30px;
     background: linear-gradient(90deg, #FEC001, #FA990A);
@@ -126,16 +129,21 @@ jQuery(document).ready(function() {
         text-align: left;
     }
     .question-switch-container{
-        width: 240px;
-        display: flex;
-        border : 0.5px solid #bdc3c7;
-        flex-direction: column;
-        align-items: center;
-        background: white;
-        border-radius: 5px;
-        border-bottom: 0.25rem solid #bdc3c7 !important;
-        margin-top : 5px;
-        margin-bottom: -22px;
+        height: 100%;
+        z-index: 60;
+    width: 260px;
+    display: flex;
+    /* border: 0.5px solid #bdc3c7; */
+    flex-direction: column;
+    align-items: center;
+    background: #333333;
+    border-radius: 3px;
+    /* border-bottom: 0.25rem solid #bdc3c7 !important; */
+    margin-top: 5px;
+    margin-bottom: -32px;
+    padding: 5px 10px;
+    color: white;
+            box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
     }
     .questions-labels-status{
 
@@ -152,15 +160,16 @@ jQuery(document).ready(function() {
         height: 0;
     }
     .question-switch-container > span{
-        height: 30px;
+        /* height: 40px; */
         display: flex;
         align-items: center;
-        border-bottom : 2px solid #bdc3c7;
+        /* border-bottom : 2px solid #bdc3c7; */
         width: 100%;
         justify-content: center;
         font-size: 18px;
-        font-weight: 650;
+        font-weight: 400;
         color : #95a5a6;
+        text-align: center;
     }
     .question-switch-container div > label{
         font-size: 17px;
@@ -173,7 +182,7 @@ jQuery(document).ready(function() {
         height: 35px;
         margin: 3px;
         cursor: pointer;
-        border-radius: 3px;
+        border-radius: 0px;
     }
     .question-switch-container div > label:hover{
         background: #ecf0f1;
@@ -186,23 +195,25 @@ jQuery(document).ready(function() {
         margin-bottom: 5px;
     }
     .container-left{
-        width: 300px;
+        /* width: 300px; */
         display: flex;
         justify-content: center;
-        padding-bottom: 62px;
+        padding-bottom: 11px;
     }
     .container-right{
-        width: 85%;
+        /* width: 85%; */
+        position: relative;
         display: flex;
-        justify-content: center;
+        flex: 1;
         flex-direction: column;
         padding: 0px 10px;
     }  
     .question-answer-container{
-        background: #2980b9;
+            box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
+        background: #333333;
         color: white;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
         padding: 5px;
         display: none;
     } 
@@ -210,22 +221,27 @@ jQuery(document).ready(function() {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        margin-top: -0px;
     }
     .status-card{
-        background: white;
+        background: #333333;
+        color: white;
         width: 49.5%;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        padding: 10px 15px; 
-        background: white;
-        border : 0.5px solid #bdc3c7;
-        border-radius: 5px;
-        border-bottom : 3px solid blue;
+        padding: 7px 15px; 
+        /* border : 0.5px solid #bdc3c7; */
+        border-radius: 3px;
+            box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
+    /* border-left: 5px solid #333333; */
         margin-top: 5px;
     }
-    .s-one{
-        border-color: #bdc3c7;
+    .status-card > i{
+        font-size: 20px;
+    }
+    /* .s-one{
+        border-color: #5783a0;
     }
     .s-two{
         border-color :rgb(94, 186, 0);
@@ -235,6 +251,20 @@ jQuery(document).ready(function() {
     }
     .s-four{
         border-color: #9b59b6;
+    } */
+    
+    
+    .s-one > i{
+        color: #6faed8;
+    }
+    .s-two > i{
+        color :rgb(94, 186, 0);
+    }
+    .s-three > i{
+        color: #f1c40f;
+    }
+    .s-four > i{
+        color: #d085ee;
     }
     .totalquestion{
         display: flex;
@@ -259,13 +289,16 @@ jQuery(document).ready(function() {
 
         font-weight: 600;
         font-size: 18px;
-        color : #cd201f;
+        color : #f1c40f;
     }
     .review{
         font-weight: 600;
         font-size: 18px;
-        color : #9b59b6;
+        color : #d085ee;
 
+    }
+    .totalquestion{
+        color: #6faed8;
     }
     .status-labels{
         font-weight: bold;
@@ -273,27 +306,39 @@ jQuery(document).ready(function() {
         justify-content: center;
     }
     .question-sno{
-        height: 70px;
+        /* height: 70px; */
         display: flex;
         justify-content: space-between;
         flex-direction: column;
+
+
+    }
+    .question-sno-padding{
+        height: 36px;
     }
     .question-sno > div{
         display: flex;
         justify-content: space-between;
     }
     .question-no{
+        padding-top: 5px;
         font-size: 18px;
     }
     .question{
+        font-family: monospace;
         padding: 5px 10px;
         background: white;
-        color: black;
-        border-radius: 5px;
+        font-weight: bold;
+        color: #233058;
+        font-size: 17px;
+        border-radius: 3px;
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
-        box-shadow: 0px 1px 2px 0px #bdc3c7;
-        margin-bottom: 1px;
+        /* box-shadow: 0px 1px 2px 0px #bdc3c7;
+        margin-bottom: 1px; */
+    }
+    .question > pre{
+        color : #233058;
     }
     .answer-container{
         padding: 5px 10px;
@@ -301,9 +346,25 @@ jQuery(document).ready(function() {
         color: white;
         margin-top: 0px;
         padding-top: 15px;
-        border-radius: 5px;
+        border-radius: 3px;
         border-top-right-radius: 0;
         border-top-left-radius: 0;
+        /* max-height: 200px; */
+        overflow-y: auto;
+    }
+    .answer-container > label{
+        display: flex;
+        flex-direction: row;
+        flex : 1;
+    }
+    .answer-container > label > span{
+        border-radius: 5px;
+        display: flex;
+        width: 100%;
+    }
+    .option-serial{
+        margin-right : 15px;
+        color : black;
     }
     .options{
         width: 100%;
@@ -368,10 +429,12 @@ jQuery(document).ready(function() {
     }
     @media screen and (min-width:901px){
         .status-card{
+        background: #333333;
+        color: white;
             width: 24%;
         }
         .top-padding{
-            height: 0px;
+            height: 65px;
         }
     }
 @media screen and (max-width: 900px) {
@@ -401,7 +464,6 @@ jQuery(document).ready(function() {
     .container-right{
         width: 100%;
         display: flex;
-        justify-content: center;
         flex-direction: column;
         padding: 0;
     }.question-switch-container{
@@ -415,6 +477,9 @@ jQuery(document).ready(function() {
         transform: translate(-50%);
         margin-top: 0;
     }   
+    .question-switch-container > span{
+        color: white;
+    }
     .question-switch-container > div{
         justify-content: flex-start;
         padding-left: 10px;
@@ -423,6 +488,7 @@ jQuery(document).ready(function() {
         width: 100%;
     }
     .question-container{
+        overflow-x: auto;
     }
     .answer-container{
 
@@ -432,40 +498,94 @@ jQuery(document).ready(function() {
     }
 }
 .question{
-    height: 250px;
+    /* height: 250px; */
     overflow-y: scroll;
 }
 .text-left{
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .all-questions-container{
     margin-top: 5px;
 }
+form{
+    margin-bottom: 0;
+}
+.question-switch-container{
+    margin-right: 10px;
+}
+#show-question-switch:focus{
+    outline: none;
+}
+#toggle-question-switch-icon-close{
+    display: none;
+}
+#toggle-question-switch-icon-open{
+
+}
+pre{
+    
+    padding: 3px;
+}
+.question-no-padding{
+    height: 30px;
+}
 </style>
 <script type="text/javascript">
-    var toggleSwitch = 1;
+    var toggleSwitch = 0;
     function showSwitchQuestionOption(){
+        let x = document.getElementsByClassName('question-switch-container')[0]
+        let y = document.getElementById('toggle-question-switch-icon-close')
+        let z = document.getElementById('toggle-question-switch-icon-open')
         if(toggleSwitch == 1)
             {
-                document.getElementsByClassName('question-switch-container')[0].style.display = 'block';
+                x.style.display = 'none';
+                x.style.marginRight = '0px';
+                z.style.display = 'block'
+                y.style.display = 'none'
                 toggleSwitch = 0;
             }
             else{
 
-                document.getElementsByClassName('question-switch-container')[0].style.display = 'none';
+                x.style.display = 'flex';
+                x.style.marginRight = '10px';
+                z.style.display = 'none'
+                y.style.display = 'block'
                 toggleSwitch = 1;
             }
+        setQuestionHeaderWidth(toggleSwitch)
     }
 </script>
 	<title>Quiz</title>
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
+    <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f9bbf9ac4e.js"></script>
 	 <!-- Compiled and minified CSS -->
     <link href="css/sb-admin-2.css" rel="stylesheet">
   <link href="css/dashboard.css" rel="stylesheet">
+<style>
 
+body{
+        overflow-y: hidden;
+        height: 100vh;
+    }
+    .question-answer-container{
+        height: 50vh;
+        overflow-y: auto;
+    }
+    .question-container{
+        position: relative;
+    }
+    .question-sno{
+        position: fixed;
+        z-index: 10;
+        background: #333333;
+        margin-left: -1px;
+        margin-top: -5px;
+        padding: 0px 1px;
+    }
+
+    </style>
        <!-- <script>
             function check_password()
             {
@@ -506,7 +626,6 @@ jQuery(document).ready(function() {
         }
     	form{
     		max-width: 460px;
-    		margin: 20px auto;
     		padding: 40px;
     		border-radius: 15px;
     	}
@@ -525,20 +644,20 @@ jQuery(document).ready(function() {
           }
           .custom-alert{
 
-              position: absolute;
-              top : 50%;
-              left : 50%;
-              transform: translate(-50%,-50%);
-              border : 0.5px solid #bdc3c7;
-              border-radius: 15px;
-              height:200px;
-              width: 220px;
-              background: white;
-              box-shadow: 0px 0px 3px 0px black;
-              position: fixed;
-              z-index: 7;
-              display: none;
-              padding: 25px 0px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border: 0.5px solid #bdc3c7;
+            border-radius: 4px;
+            height: 200px;
+            width: 220px;
+            background: white;
+            box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
+            z-index: 150;
+            display: none;
+            padding: 25px 0px;
+            position: fixed;
           }
           .custom-alert > div{
             display: flex;
@@ -558,30 +677,32 @@ jQuery(document).ready(function() {
             width: 80px;
             height: 35px;
 
-            border-radius: 5px;
+            border-radius: 3px;
             color: white;
             border : none;
             cursor: pointer;
-            background: #c0392b;
+            background: #cd201f;
           }
           #yes-btn{
             width: 80px;
             height: 35px;
 
-            border-radius: 5px;
+            border-radius: 3px;
             color: white;
             border : none;
-            cursor: pointer;background: #27ae60
+            cursor: pointer;background: #507828;
 
           }
           #no-btn:hover{
-            background: #e74c3c;
+            background: #cd201f;
+            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
           }
           #no-btn:focus{
             outline: none;
           }
           #yes-btn:hover{
-            background: #2ecc71;
+            background: #507828;
+            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
           }
           #yes-btn:focus{
             outline: none;
@@ -603,27 +724,32 @@ jQuery(document).ready(function() {
 
           #prev{
             background: #3d3d3d;
-            border-radius: 5px;
+            border-radius: 3px;
             color : white;
             width: 120px;
             height: 35px;
             border : none;
+            box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 60%);
           }
           #next{
             background: #2980b9;
-            border-radius: 5px;
+            border-radius: 3px;
             color : white;
             width: 120px;
             height: 35px;
             border : none;
+            margin-right: 3px;
+    box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 60%);
           }
           #btn-submit{
             background: rgb(94, 186, 0);
-            border-radius: 5px;
+            border-radius: 3px;
             color : white;
             width: 120px;
             height: 35px;
             border : none;
+            margin-right: 3px;
+    box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 60%);
           }
           #next:hover{
             background: #3498db;
@@ -671,7 +797,7 @@ jQuery(document).ready(function() {
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 5px;
+        border-radius: 3px;
         background: #ecf0f1;
         cursor: pointer;
         font-weight: 500;
@@ -686,6 +812,79 @@ jQuery(document).ready(function() {
       .timer-test{
         color : white;
       }
+      .exam-header-fixed{
+          position: fixed;
+          z-index: 100;
+          width: 100%;
+          box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+      }
+      .exam-header-fixed > div > div{
+          
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+      }
+      .timer-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color:white;
+      }
+      .timer-container > i
+      {
+    font-size: 23px;
+    color: #1cc88a;
+    margin-right: 5px;
+      }
+      /* .next-prev-sub-container{
+    position: absolute;
+    left : 0;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    padding-bottom: 10px;
+      } */
+      .next-prev-sub-container button{
+          z-index: 100;
+      }
+      .next-prev-sub-container #prev{
+      }
+      .next-prev-sub-container #right{
+          margin-right: 5px;
+      }
+      .question-no-padding{
+          height: 30px;
+      }
+      .question-switch-container{
+          z-index: 80;
+          display: none;
+      }
+      .next-prev-sub-container{
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    right: 0px;
+    width: 100%;
+    position: fixed;
+    /* background: blue; */
+    z-index: 50;
+    padding: 7px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+    .mini-text{
+        font-size: 15px;
+    }
+form{
+    background: #333333;
+    border-radius: 3px;
+    border-bottom: 5px solid #333333;
+}
     </style>
     <script type="text/javascript">
         function showCustomAlertPopup(){
@@ -696,14 +895,6 @@ jQuery(document).ready(function() {
             document.getElementsByClassName('custom-alert')[0].style.display='none';
             document.getElementsByClassName('black-cover')[0].style.display='none';
         }
-
-      function showMarkingpopup(){
-        document.getElementsByClassName('marking-popup')[0].style.display = 'block';
-      }
-      function hideMarkingpopup(){
-        document.getElementsByClassName('marking-popup')[0].style.display = 'none';
-
-      }
     function autoSubmit()
     {
       showCustomAlertPopup();
@@ -739,22 +930,25 @@ jQuery(document).ready(function() {
         <div>
             <label style="color : red;font-size: 19px;font-weight: bold;">Are you sure!</label>
             <label style="font-size: 17px;">Submit Quiz</label>
-            <div style=";display: flex;justify-content: space-evenly;align-items: center;width: 100%;" class="custom-alert-btn-container">
+            <div style="display: flex;justify-content: space-evenly;align-items: center;width: 100%;" class="custom-alert-btn-container">
                 <button onclick="hideCustomAlertPopup();" id="no-btn">No</button>
                 <button id="yes-btn">Yes</button>
             </div>   
         </div>
     </div>
-    <div style="display: flex;align-items: center;height: 65px;justify-content: center;" class="header py-4">
+    <div style="display: flex;align-items: center;height: 65px;justify-content: center;background:#333333;" class="header py-4 exam-header-fixed">
         <div style="margin: 0px 0px; width: 95%;" >
 
             <div style="display: flex;justify-content: space-between;">
-                <div style="color : blue;font-size: 28px;" class="date-day">QuizWit<?php /*echo "Date : ".date('d-m-yy')."<br />"."Day &nbsp;: ".date("l");*/?></div>
-
                 <button onclick="showSwitchQuestionOption()" id="show-question-switch" >
-                    <i style="color:#2980b9" class="fas fa-bars"></i>
+                    <i id="toggle-question-switch-icon-close" class="fas fa-times"></i>
+                    <i id="toggle-question-switch-icon-open" class="fas fa-bars"></i>
                 </button>
+                <div style="color : white;font-size: 28px;" class="date-day">QuizWit | <span class="mini-text"><?php echo $_SESSION['name'];?></span><?php /*echo "Date : ".date('d-m-yy')."<br />"."Day &nbsp;: ".date("l");*/?></div>
 
+                <div class="timer-container">
+                    <span>Time Remaining</span>
+                    <!-- <i class="fas fa-clock"></i> -->
                                    <div  style="align-self: center;" class="h2 m-0 timer-test">
                                         <?php 
                                         $_SESSION['page_refresh_time'] = time();
@@ -770,7 +964,8 @@ jQuery(document).ready(function() {
                                         }
                                         ?>
                                     </div>
-                <button style="margin-left: 0" class="btn btn-outline-danger ml-auto end-quiz" onclick="autoSubmit()">
+                </div>
+                <button style="margin-left: 0;background:#cd201f;color:white;" class="btn btn-outline-danger ml-auto end-quiz" onclick="autoSubmit()">
                     End Quiz
                 </button>
             </div>

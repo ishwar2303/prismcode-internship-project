@@ -103,13 +103,11 @@
 }
 #key:focus{
   outline : none;
-  box-shadow: 0px 0px 0px 3px rgba(52, 152, 219,0.5); 
+  box-shadow: 0px 0px 0px 4px rgba(52, 152, 219,0.3); 
   border-color: #3498db;
 }
 #select-exam:focus{
   outline : none;
-  box-shadow: 0px 0px 0px 3px rgba(52, 152, 219,0.5);
-  border-color: #3498db;
 }
 .field-container{
   display: flex;
@@ -175,6 +173,22 @@ footer{
     padding: 25px 15px; 
   }
 }
+#myform{
+  
+  box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
+}
+.logged-in-as{
+  color: #000;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+.highlight-email{
+  background: #5d925f;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 3px;
+  font-weight: 300;
+}
 </style>
 </head>
 <?php if($num>0)
@@ -184,6 +198,7 @@ footer{
   <div class="wrapper">
   <div class="form-container">
 		<form id="myform" class="white" action="check_attempt.php" method="POST">
+    <div class="logged-in-as">Logged In as <br/><br/> <span class="highlight-email"><?php echo $_SESSION['email']; ?></span></div>
 			<div class="field-container">
       <label style="font-size: 18px;"><b>Select Exam</b></label>
 				
@@ -212,7 +227,7 @@ footer{
                   if($temp->num_rows>0)
                   {    
                       if($row['is_active'] == 1)  // for active test
-                      echo "<option value ='$row[quiz_id]'>$row[quiz_name]</option>";
+                      echo "<option value ='$row[quiz_id]'>$row[quiz_name], ID : $row[quiz_id]</option>";
                   }  
                }
          ?>

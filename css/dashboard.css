@@ -525,6 +525,7 @@ code {
   font-size: 85%;
   color: inherit;
   word-break: break-word;
+  background: transparent;
 }
 
 a > code {
@@ -10001,11 +10002,11 @@ hr {
 
 pre {
   color: #343a40;
-  padding: 1rem;
+  /* padding: 0; */
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
-  background-color: #f8fafc;
+  background-color: transparent;
   border-radius: 3px;
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -10015,6 +10016,7 @@ pre {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
+  margin : 0;
 }
 
 img {
@@ -15173,7 +15175,7 @@ a.tag-addon:hover {
 
 .selectgroup-button {
   display: block;
-  border: 1px solid rgba(0, 40, 100, 0.12);
+  border: 3px solid rgb(0 0 0 / 16%);
   text-align: center;
   padding: 0.375rem 1rem;
   position: relative;
@@ -15196,12 +15198,14 @@ a.tag-addon:hover {
 }
 
 .selectgroup-input:checked + .selectgroup-button {
-  border-color: #467fcf;
-  z-index: 1;
-  color: #467fcf;
-  background: #edf2fa;
+  border-color: #79a2dc;
+  z-index: 0;
+  color: white;
+  background: #79a2dc;
 }
-
+.selectgroup-input:checked + .selectgroup-button > pre > code{
+  color:white;
+}
 .selectgroup-input:focus + .selectgroup-button {
   border-color: #467fcf;
   z-index: 2;
@@ -18733,10 +18737,28 @@ a{
 }
 
           #show-question-switch{
-            height: 50px;
-            width: 50px;
+            border : none;
+            height: 45px;
+            width: 45px;
+            font-size: 23px;
+            background: transparent;
             z-index: 3;
-            display: none;
+            border-radius: 50%;
+            /* display: none; */
+            /* border: 0.5px solid rgba(0,0,0,0.5); */
+            /* display: none; */
+          }
+          #show-question-switch > i{
+            color : white;
+          }
+          #show-question-switch:focus{
+            outline : none;
+          }
+          #show-question-switch:hover{
+            transition: 300ms;
+            color: white;
+          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+
           }
 @media screen and (max-width: 899px) {
 .mb-4,.my-4{
@@ -18772,10 +18794,11 @@ a{
             width: 50px;
             z-index: 3;
             display: block;
-            border: 0px solid #bdc3c7;
-            border-radius: 5px;
+            /* border: 0px solid #bdc3c7; */
+            border-radius: 50%;
             font-size : 29px;
-            background: white;
+            border : none;
+            background: transparent;
           }
           #show-question-switch:focus{
             outline : none;

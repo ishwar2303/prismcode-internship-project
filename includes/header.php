@@ -24,9 +24,9 @@
 
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
+<script src="https://kit.fontawesome.com/f9bbf9ac4e.js"></script>
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.css" rel="stylesheet">
   <link href="css/dashboard.css" rel="stylesheet">
@@ -262,7 +262,7 @@
           height: 450px;
           width: 500px;
           background: white;
-          box-shadow: 0px 0px 3px 0px black;
+    box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 60%);
           position: fixed;
           z-index: 4;
           display: none;
@@ -619,6 +619,10 @@
       border-radius: 5px;
       display: none;
       position: fixed;
+      box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
+    }
+    #cancel:hover, #confirm:hover{
+      box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
     }
     .custom-confirmation > div{
       display: flex;
@@ -628,7 +632,7 @@
       height: 100%;
     }
     #cancel, #confirm{
-      border-radius: 5px; 
+      border-radius: 3px; 
       width: 60px;
       height: 35px; 
       border: 0.5px solid #bdc3c7;
@@ -639,11 +643,11 @@
     }
 
     #confirm{
-      background: #27ae60;
+      background: #6c9f38;
       color: white;
     }
     #cancel{
-      background: #e74c3c;
+      background: #b0a5a5;
       color: white;
     }
     .custom-btn-container{
@@ -818,7 +822,6 @@
     {
             echo $_SESSION['message'];
         }
-
   ?>
 </div>
 <?php 
@@ -829,3 +832,21 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
       unset($_SESSION['color']);
     }
 ?>
+
+<script>
+document.getElementById('textbox').addEventListener('keydown', function(e) {
+  if (e.key == 'Tab') {
+    e.preventDefault();
+    var start = this.selectionStart;
+    var end = this.selectionEnd;
+
+    // set textarea value to: text before caret + tab + text after caret
+    this.value = this.value.substring(0, start) +
+      "\t" + this.value.substring(end);
+
+    // put caret at right position again
+    this.selectionStart =
+      this.selectionEnd = start + 1;
+  }
+});
+</script>

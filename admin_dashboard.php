@@ -236,7 +236,7 @@ include('includes/navbar.php');
                 ?>
               </td>
               <td><?php echo $row['time_stamp'];?></td>
-              <td style="text-align: center;"><i style="color: #2980b9; cursor: pointer;" class="fas fa-edit quiz-edit-icon"></i></td>
+              <td style="text-align: center;"><i style="color: #2980b9; cursor: pointer;" class="fas fa-pencil-alt quiz-edit-icon"></i></td>
               <script type="text/javascript">
                 $(document).ready(function(){
                   $('.quiz-edit-icon').eq(<?php echo $i-1;?>).click(function(){

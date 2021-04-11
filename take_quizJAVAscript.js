@@ -53,6 +53,11 @@ function prevQuestion()
 }
 
 function switchToQuestion(index){
+  let switchCont = document.getElementsByClassName('question-switch-container')[0]
+  var targetWidth = 900;
+  if ( $(window).width() <= targetWidth) {
+    $('#show-question-switch').click()
+  }
   var x =  document.getElementsByClassName("question-answer-container");
   var i=0;
   for(i=0;i<x.length;i++){
@@ -144,7 +149,7 @@ var T = 0;
       {
           x[0].style.color = "red";
       }
-      else x[0].style.color ="black";
+      else x[0].style.color ="white";
 
       if(T<=0)
       {
@@ -179,7 +184,6 @@ var T = 0;
       count();
     }
     function updateStatus(queNumber){
-
       var x = document.getElementsByClassName('review-checkbox');
       if(x[queNumber-1].checked == false){
       var x = document.getElementsByClassName('question-switch-container')[0].getElementsByTagName('label');
@@ -196,10 +200,12 @@ var T = 0;
 
 		function count()       //rebuild
     {
-
+    console.log('counting')
     var x = document.getElementsByClassName('question-switch-container')[0].getElementsByTagName('label');
     var y =  document.getElementsByClassName("selectgroup-input");
     var u = document.getElementsByClassName('uncheck-option');
+    var qsp = document.getElementsByClassName('question-sno-padding')
+
     var num = y.length;
     let p = 0;
     var i = 0;
@@ -215,6 +221,8 @@ var T = 0;
                 x[m].style.background = '#5eba00';
                 x[m].style.color = 'white';
                 u[m].style.display='block';
+                console.log(m)
+                qsp[m].style.height = '70px'
                 break;
               }
               m++;
@@ -247,7 +255,61 @@ var T = 0;
    
     }
     
+function caughtCheating(){
+  alert('bsdk')
+}
+function disableNewTabClick() {  
+  var listCtrl = document.getElementsByTagName('a');  
+  for (var i = 0; i < listCtrl.length; i++) {  
+      listCtrl[i].onmousedown = function(event) {  
+          if (!event) event = window.event;  
+          if (event.ctrlKey) {  
+              alert("Functionality for Opening links in a new tab/window is disabled !");  
+              return false;  
+          }  
+          if (event.shiftKey) {  
+              alert("Functionality for Opening links in a new tab/window is disabled !");  
+              return false;  
+          }  
+          if (event.shiftKey && event.ctrlKey) {  
+              alert("Functionality for Opening links in a new tab/window is disabled !");  
+              return false;  
+          }  
+      }  
+  }  
+} 
 
+const registerOpenTab = () => {
+  let tabsOpen = 1;
+  while (localStorage.getItem('openTab' + tabsOpen) !== null) {
+    tabsOpen++;
+  }
+  localStorage.setItem('openTab' + tabsOpen, 'open');
+  if (localStorage.getItem('openTab2') !== null) {
+      alert('Warning ' + (tabsOpen - 1) + ', Your are being proctored.')
+  }
+}
+// unregisterOpenTab FUNCTION
+const unregisterOpenTab = () => {
+  let tabsOpen = 1;
+  while (localStorage.getItem('openTab' + tabsOpen) !== null) {
+    tabsOpen++;
+  }
+  localStorage.removeItem('openTab' + (tabsOpen - 1));
+  if(tabsOpen >= 3){
+    var frm =  document.getElementsByTagName("form");
+    frm[0].submit();
+  }
+}
 
-
+// EVENT LISTENERS
+// window.addEventListener('load', registerOpenTab);
+// window.addEventListener('beforeunload', unregisterOpenTab);
+  
+$(window).blur(() => {
+  //disableNewTabClick()
+  //caughtCheating()
+  //registerOpenTab()
+})
+// Wrap in an IIFE accepting jQuery as a parameter.
 

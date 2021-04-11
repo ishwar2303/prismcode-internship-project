@@ -25,11 +25,11 @@
           left : 50%;
           transform: translate(-50%,-50%);
           border : 0.5px solid #bdc3c7;
-          border-radius: 15px;
+          border-radius: 5px;
           height: 100px;
           width: 200px;
           background: white;
-          box-shadow: 0px 0px 3px 0px black;
+    box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
           position: fixed;
           z-index: 4;
           display: none;
@@ -40,11 +40,11 @@
           left : 50%;
           transform: translate(-50%,-50%);
           border : 0.5px solid #bdc3c7;
-          border-radius: 15px;
+          border-radius: 5px;
           height: 100px;
           width: 200px;
           background: white;
-          box-shadow: 0px 0px 3px 0px black;
+    box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
           position: fixed;
           z-index: 4;
           display: none;
@@ -78,7 +78,7 @@
           height: 500px;
           width: 500px;
           background: white;
-          box-shadow: 0px 0px 3px 0px black;
+    box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 40%);
           position: fixed;
           z-index: 4;
           display: none;
@@ -97,17 +97,20 @@
           width: 100px;
           height: 35px;
           color: white;
-          background: #27ae60;
-          border-radius: 10px;
+          background: #4caf50;
+          border-radius: 3px;
           border : none;
+        }
+        #start-exam-btn:hover, #cancel-btn:hover{
+          box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 60%);
         }
         #cancel-btn{
 
           width: 100px;
           height: 35px;
           color: white;
-          background: #e74c3c;
-          border-radius: 10px;
+          background: #979797;
+          border-radius: 3px;
           border : none;
         }
         #start-exam-btn, #cancel-btn{
@@ -205,7 +208,7 @@
         background:#2980b9;
         color: white;
         padding: 5px 15px; 
-        border-radius: 5px;
+        border-radius: 3px;
         height: 35px;
         display: flex;
         justify-content: space-between;
@@ -213,25 +216,25 @@
       }
       #logout-link{
         border : 0.5px solid #bdc3c7;
-        background:#2980b9;
+        background:#445560;
         color: white;
-        padding: 5px 15px; 
-        border-radius: 5px;
+        padding: 8px 15px; 
+        border-radius: 3px;
         height: 35px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+      }
+      #logout-link > i{
+        display: inline;
       }
     </style>
-
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<script src="https://kit.fontawesome.com/f9bbf9ac4e.js"></script>
+    <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body class="grey lighten-4">
-	<nav class="white z-depth-0">
+	<nav  style="box-shadow:0px 0px 18px 0px rgba(0,0,0,0.6);" class="white">
 		<div class="container" style="height:100%;display:flex;justify-content: space-between;align-items: center;">
           <a style="line-height: 0" id="home-link" href="index.php"><span><b>Home</b></span></a>
-          <a style="line-height: 0" id="logout-link" href="logout.php"><b>Logout</b></a>
+          <a style="line-height: 0" id="logout-link" href="logout.php"><i class="fa fa-sign-out"></i> <b>Logout</b></a>
 		</div>
 	</nav>
 	

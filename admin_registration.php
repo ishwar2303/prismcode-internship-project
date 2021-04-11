@@ -195,7 +195,7 @@ form{
         background:#2980b9;
         color: white;
         padding: 5px 10px; 
-        border-radius: 5px;
+        border-radius: 3px;
         height: 25px;
         display: flex;
         justify-content: space-between;

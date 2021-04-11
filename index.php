@@ -29,9 +29,10 @@ if(isset($_SESSION['test_started'])){
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
     <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
     <!-- font-awesome icons -->
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link href="css/font-awesome.min.css" rel="stylesheet"> -->
     <!-- //Custom Theme files -->
     <!-- online-fonts -->
+    <script src="https://kit.fontawesome.com/f9bbf9ac4e.js"></script>
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/dashboard.css">
     <link rel="stylesheet" type="text/css" href="css/sb-admin-2.css">
@@ -64,11 +65,11 @@ if(isset($_SESSION['test_started'])){
           left : 50%;
           transform: translate(-50%,-50%);
           border : 0.5px solid #bdc3c7;
-          border-radius: 15px;
+          border-radius: 5px;
           height: 100px;
           width: 200px;
           background: white;
-          box-shadow: 0px 0px 3px 0px black;
+    box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
           position: fixed;
           z-index: 4;
           display: none;
@@ -79,11 +80,11 @@ if(isset($_SESSION['test_started'])){
           left : 50%;
           transform: translate(-50%,-50%);
           border : 0.5px solid #bdc3c7;
-          border-radius: 15px;
+          border-radius: 5px;
           height: 100px;
           width: 200px;
           background: white;
-          box-shadow: 0px 0px 3px 0px black;
+    box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
           position: fixed;
           z-index: 4;
           display: none;
@@ -334,6 +335,7 @@ if(isset($_SESSION['test_started'])){
         padding-right: 15px;
         align-items: center;
         width: 250px;
+    border-radius: 3px;
       }
       .top-laptop-menu > a > span, .bottom-laptop-menu > a > span{
         padding-left: 10px;
@@ -355,6 +357,7 @@ if(isset($_SESSION['test_started'])){
         width: 250px;
         margin-bottom: 0;
         cursor: pointer;
+    border-radius: 3px;
       }
       .top-laptop-menu > label > span, .bottom-laptop-menu > label > span{
         padding-left: 10px;
@@ -1166,7 +1169,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                
                while($row = $result->fetch_assoc())
                {    
-                      echo "<option value ='$row[quiz_id]'>$row[quiz_name]</option>";
+                      echo "<option value ='$row[quiz_id]'>$row[quiz_name], ID :  $row[quiz_id]</option>";
                }
          ?>
          </select>

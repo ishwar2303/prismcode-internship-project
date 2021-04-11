@@ -156,11 +156,11 @@ echo "</div>";
 						 				?>
 						 				<input class="question-id" type="number" name="questionID[]" value="<?php echo $row['question_id'];?>" required disabled="true">
 										<div style="margin:3px 0px;" class="row p-4 mb-2 border rounded border-muted set-container">
-											<span onclick="enableOption(<?php echo $i-1;?>)" class="edit-icon">												<i  class="fas fa-edit"></i>
+											<span onclick="enableOption(<?php echo $i-1;?>)" class="edit-icon">												<i  class="fas fa-pencil-alt"></i>
 												<span class="edit-hint">Edit</span>
 											</span>
 											<span  class="update-question">
-												<i  class="fas fa-upload"></i>
+												<i  class="fas fa-save"></i>
 												<span class="update-hint">Update</span>
 											</span>
 											<span class="delete-question">
@@ -228,25 +228,25 @@ echo "</div>";
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 1</label>
-													<input type="text" name="option1[]" class="form-control option1" placeholder="Option 1" value="<?php echo $option1;?>" required="true" disabled="true">
+													<textarea type="text" name="option1[]" class="form-control option1" placeholder="Option 1" required="true" disabled="true"><?php echo $option1;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 2</label>
-													<input type="text" name="option2[]" class="form-control option2" placeholder="Option 2" value="<?php echo $option2;?>" required="true" disabled="true">
+													<textarea type="text" name="option2[]" class="form-control option2" placeholder="Option 2" required="true" disabled="true"><?php echo $option2;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 3</label>
-													<input type="text" name="option3[]" class="form-control option3" placeholder="Option 3" value="<?php echo $option3;?>" required="true" disabled="true">
+													<textarea type="text" name="option3[]" class="form-control option3" placeholder="Option 3" required="true" disabled="true"><?php echo $option3;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 4</label>
-													<input type="text" name="option4[]" class="form-control option4" placeholder="Option 4" value="<?php echo $option4;?>" required="true" disabled="true">
+													<textarea type="text" name="option4[]" class="form-control option4" placeholder="Option 4" required="true" disabled="true"><?php echo $option4;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-12">
@@ -314,9 +314,9 @@ echo "</div>";
 			<h4>Select a Quiz</h4>
 			<h5>To Update a Question</h5>
 			<ul>
-				<li>Click on Edit <i style="color: blue;" class="fas fa-edit"></i> icon</li>
+				<li>Click on Edit <i style="color: blue;" class="fas fa-pencil-alt"></i> icon</li>
 				<li>Do amends</li>
-				<li>Click on Upload <i style="color: blue;" class="fas fa-upload"></i> icon</li>
+				<li>Click on Upload <i style="color: blue;" class="fas fa-save"></i> icon</li>
 			</ul>
 			<h5>To delete a Question</h5>
 			<ul>
