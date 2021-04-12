@@ -1,4 +1,3 @@
-  
 <?php
     session_start();
     
@@ -92,19 +91,28 @@
 					</div>
 				</div>
 				<div class="question-mark-hint">
+				<span style="font-size:12px;">Marks Per Question : <?php echo $marksPerQuestion; ?></span>
+				<span  style="font-size:12px;">
+					<?php 
+						if($negativeMarking == 0)
+							echo 'No Negative Marking'; 
+						else echo 'Negative Marking : '.$negativeMarking;
+					?>
+				</span>
+				<span style="font-size:12px;"> Certification : <?php echo $passingPercentage.'%'; ?></span>
 					
-	                        			<span style="width: 100%;padding: 3px 5px;color:#94d5ff;">Click on blocks to switch.</span>	
+	                        			<span style="width: 100%;padding: 3px 0px;color:#94d5ff;font-size:13px">Click on blocks to switch.</span>	
 					<div>
 						<span style="margin-right: 10px;" id="attempted-block"></span>
-						<span>Attempted</span>
+						<span style="font-size:12px;">Attempted</span>
 					</div>
 					<div>
 						<span style="margin-right: 10px;" id="review-block"></span>
-						<span>Review</span>
+						<span style="font-size:12px;">Review</span>
 					</div>
 					<div>
 						<span style="margin-right: 10px;" id="remaining-block"></span>
-						<span>Remaining</span>
+						<span style="font-size:12px;">Remaining</span>
 					</div>
 				</div>
 			</div>
@@ -156,11 +164,11 @@ $t = 0;
                         	<div class="question-container">
 	                        	<div class="question-sno">
 	                        		<div>
-	                        			<label class="question-no"><?php echo "Question $i";?></label>
+	                        			<label class="question-no"><?php echo "Q $i";?></label>
 	                        		</div>
 	                        		<div>	
- 	                        			<span class="mark-as-review">Mark as Review</span>
- 	                        			<span class="remove-from-review">Remove from Review</span>
+ 	                        			<span class="mark-as-review">Mark As Review</span>
+ 	                        			<span class="remove-from-review">Remove From Review</span>
 	                        			<span class="uncheck-option">Clear Response</span>
 	                        		</div>
 									<?php 
@@ -248,7 +256,7 @@ $t = 0;
                         	<div class="answer-container">
 												<label class="selectgroup-item options">
 													<input class="selectgroup-input" type="radio" name="ans[<?php echo $j;?>]" value="1" onclick="updateStatus(<?php echo $i;?>)">
-													<span style="border-radius: 5px;" class="selectgroup-button text-left">
+													<span style="border-radius: 5px; border:3px solid rgba(0,0,0,0.2)" class="selectgroup-button text-left border-3px">
 <span class="option-serial">A</span>
 <pre>
 <code><?php echo $row['option_1'];?></code>
@@ -265,7 +273,7 @@ $t = 0;
 												<script type="text/javascript">
 													$(document).ready(function(){
 														$('.selectgroup-item').eq(<?php echo $t; $t++;?>).click(function(){
-															document.getElementsByClassName('question-sno-padding')[<?php echo $i-1; ?>].style.height = '70px'
+															// document.getElementsByClassName('question-sno-padding')[<?php echo $i-1; ?>].style.height = '70px'
 															var url = 'save_answer_in_session.php';
 															$('#for-load').load(url,{
 																ques : <?php echo $i;?>,
@@ -276,7 +284,7 @@ $t = 0;
 												</script>
 												<label class="selectgroup-item options">
 													<input class="selectgroup-input " type="radio" name="ans[<?php echo $j;?>]" value="2" onclick="updateStatus(<?php echo $i;?>)">
-													<span style="border-radius: 5px;" class="selectgroup-button text-left">
+													<span style="border-radius: 5px; border:3px solid rgba(0,0,0,0.2)" class="selectgroup-button text-left border-3px">
 													<span class="option-serial">B</span>
 <pre>
 <code><?php echo $row['option_2'];?></code>
@@ -293,7 +301,7 @@ $t = 0;
 												<script type="text/javascript">
 													$(document).ready(function(){
 														$('.selectgroup-item').eq(<?php echo $t; $t++;?>).click(function(){
-															document.getElementsByClassName('question-sno-padding')[<?php echo $i-1; ?>].style.height = '70px'
+															// document.getElementsByClassName('question-sno-padding')[<?php echo $i-1; ?>].style.height = '70px'
 															var url = 'save_answer_in_session.php';
 															$('#for-load').load(url,{
 																ques : <?php echo $i;?>,
@@ -305,7 +313,7 @@ $t = 0;
 									
 												<label class="selectgroup-item options">
 													<input class="selectgroup-input" type="radio" name="ans[<?php echo $j;?>]" value="3" onclick="updateStatus(<?php echo $i;?>)">
-													<span style="border-radius: 5px;" class="selectgroup-button text-left">
+													<span style="border-radius: 5px; border:3px solid rgba(0,0,0,0.2)" class="selectgroup-button text-left border-3px">
 													<span class="option-serial">C</span>
 <pre>
 <code><?php echo $row['option_3'];?></code>
@@ -322,7 +330,7 @@ $t = 0;
 												<script type="text/javascript">
 													$(document).ready(function(){
 														$('.selectgroup-item').eq(<?php echo $t; $t++;?>).click(function(){
-															document.getElementsByClassName('question-sno-padding')[<?php echo $i-1; ?>].style.height = '70px'
+															// document.getElementsByClassName('question-sno-padding')[<?php echo $i-1; ?>].style.height = '70px'
 															var url = 'save_answer_in_session.php';
 															$('#for-load').load(url,{
 																ques : <?php echo $i;?>,
@@ -333,7 +341,7 @@ $t = 0;
 												</script>
 												<label class="selectgroup-item options">
 													<input class="selectgroup-input" type="radio" name="ans[<?php echo $j;?>]" value="4" onclick="updateStatus(<?php echo $i;?>)">
-													<span style="border-radius: 5px;" class="selectgroup-button text-left">
+													<span style="border-radius: 5px; border:3px solid rgba(0,0,0,0.2)" class="selectgroup-button text-left border-3px">
 													<span class="option-serial">D</span>
 <pre>
 <code><?php echo $row['option_4'];?></code>
@@ -350,7 +358,7 @@ $t = 0;
 												<script type="text/javascript">
 													$(document).ready(function(){
 														$('.selectgroup-item').eq(<?php echo $t; $t++;?>).click(function(){
-															document.getElementsByClassName('question-sno-padding')[<?php echo $i-1; ?>].style.height = '70px'
+															// document.getElementsByClassName('question-sno-padding')[<?php echo $i-1; ?>].style.height = '70px'
 															var url = 'save_answer_in_session.php';
 															$('#for-load').load(url,{
 																ques : <?php echo $i;?>,
@@ -421,9 +429,12 @@ $t = 0;
 		function setQuestionContainerHeight(){
 			let x = document.getElementsByClassName('progress-sm')[0].offsetTop
 			let y = document.getElementsByTagName('body')[0].offsetHeight
+			console.log('remainig height : ' + y-x)
 			let z = document.getElementsByClassName('question-answer-container')
+			let q = document.getElementsByClassName('question')
 			for(i=0; i<z.length; i++){
 				z[i].style.height = y-x-127 + 'px'
+				q[i].style.minHeight = y-x-395 + 'px'
 			}
 		}
 		setQuestionContainerHeight()

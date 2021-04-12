@@ -289,9 +289,9 @@ echo "</div>";
 										
 											<!-- <input class="btn btn-primary ml-auto " id="save-changes" type="submit" value="Save Changes">  -->
 									  <div class="card-footer text-right">
-								         <div style="display: flex;justify-content: flex-end;" class="d-flex">
+								         <!-- <div style="display: flex;justify-content: flex-end;" class="d-flex">
 								           <button  type="submit" class="btn btn-primary ml-auto" id="save-changes" value="Save Changes">Save Changes</button>
-								         </div>
+								         </div> -->
 								       </div> 
 								         
 									</form>

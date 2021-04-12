@@ -222,7 +222,7 @@ var T = 0;
                 x[m].style.color = 'white';
                 u[m].style.display='block';
                 console.log(m)
-                qsp[m].style.height = '70px'
+                // qsp[m].style.height = '70px'
                 break;
               }
               m++;

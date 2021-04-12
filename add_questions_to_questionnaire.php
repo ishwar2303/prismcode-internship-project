@@ -19,7 +19,7 @@
   function convertEntities($string){
     $string = trim($string);
     $string = htmlentities($string);
-    $string = str_replace(" ", "&nbsp;", $string);
+    $string = str_replace("&nbsp;", " ", $string);
     $string = str_replace("'", "&#39;", $string);
     $string = str_replace("\n", "<br/>", $string);
     $string = str_replace("\\", "&#92;", $string);

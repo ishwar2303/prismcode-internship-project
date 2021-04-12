@@ -3,55 +3,55 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript">
 
-// $(document).ready(function(){
-//   $('body').bind("cut copy paste",function(e) {
-//      e.preventDefault();
-//   });
-// });
-// jQuery(document).ready(function() {
-//     function disableSelection(e) {
-//         if (typeof e.onselectstart != "undefined") e.onselectstart = function() {
-//             return false
-//         };
-//         else if (typeof e.style.MozUserSelect != "undefined") e.style.MozUserSelect = "none";
-//         else e.onmousedown = function() {
-//             return false
-//         };
-//         e.style.cursor = "default"
-//     }
-//     window.onload = function() {
-//         hideAll();setInterval(Timer,1000);
-//         Timer();
-//         count();
-//         disableSelection(document.body);
-//     };
+$(document).ready(function(){
+  $('body').bind("cut copy paste",function(e) {
+     e.preventDefault();
+  });
+});
+jQuery(document).ready(function() {
+    function disableSelection(e) {
+        if (typeof e.onselectstart != "undefined") e.onselectstart = function() {
+            return false
+        };
+        else if (typeof e.style.MozUserSelect != "undefined") e.style.MozUserSelect = "none";
+        else e.onmousedown = function() {
+            return false
+        };
+        e.style.cursor = "default"
+    }
+    window.onload = function() {
+        hideAll();setInterval(Timer,1000);
+        Timer();
+        count();
+        disableSelection(document.body);
+    };
 
-//     window.addEventListener("keydown", function(e) {
-//         if (e.ctrlKey && (e.which == 65 || e.which == 66 || e.which == 67 || e.which == 70 || e.which == 73 || e.which == 80 || e.which == 83 || e.which == 85 || e.which == 86)) {
-//             e.preventDefault()
-//         }
-//     });
-//     document.keypress = function(e) {
-//         if (e.ctrlKey && (e.which == 65 || e.which == 66 || e.which == 70 || e.which == 67 || e.which == 73 || e.which == 80 || e.which == 83 || e.which == 85 || e.which == 86)) {}
-//         return false
-//     };
+    window.addEventListener("keydown", function(e) {
+        if (e.ctrlKey && (e.which == 65 || e.which == 66 || e.which == 67 || e.which == 70 || e.which == 73 || e.which == 80 || e.which == 83 || e.which == 85 || e.which == 86)) {
+            e.preventDefault()
+        }
+    });
+    document.keypress = function(e) {
+        if (e.ctrlKey && (e.which == 65 || e.which == 66 || e.which == 70 || e.which == 67 || e.which == 73 || e.which == 80 || e.which == 83 || e.which == 85 || e.which == 86)) {}
+        return false
+    };
 
-//     document.onkeydown = function(e) {
-//         e = e || window.event;
-//         if (e.keyCode == 123 || e.keyCode == 18) {
-//             return false
-//         }
-//     };
+    document.onkeydown = function(e) {
+        e = e || window.event;
+        if (e.keyCode == 123 || e.keyCode == 18) {
+            return false
+        }
+    };
 
-//     document.oncontextmenu = function(e) {
-//         var t = e || window.event;
-//         var n = t.target || t.srcElement;
-//         if (n.nodeName != "A") return false
-//     };
-//     document.ondragstart = function() {
-//         return false
-//     };
-// });
+    document.oncontextmenu = function(e) {
+        var t = e || window.event;
+        var n = t.target || t.srcElement;
+        if (n.nodeName != "A") return false
+    };
+    document.ondragstart = function() {
+        return false
+    };
+});
   </script>
 
 <style>
@@ -61,46 +61,51 @@
     }
     .uncheck-option{
     height: 30px;
-    background: linear-gradient(90deg, #FEC001, #FA990A);
+    background: linear-gradient(90deg, #d5ab29, #e99923);
     color: black;
     border-radius: 3px;
     cursor: pointer;
     display: none;
     padding: 0px 7px;
     line-height: 30px;
-    margin-bottom: 5px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 5px;
     }
     .marking{
 
     height: 30px;
-    background: linear-gradient(90deg, #FEC001, #FA990A);
+    background: linear-gradient(90deg, #d5ab29, #e99923);
     color: black;
     border-radius: 3px;
     cursor: pointer;
     padding: 0px 30px;
     line-height: 30px;
-    margin-bottom: 5px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 5px;
     }
     .marking:hover, .mark-as-review:hover, .remove-from-review:hover,.uncheck-option:hover{
-        background: linear-gradient(90deg, #FA990A, #FEC001);
+    background: linear-gradient(90deg, #e99923, #d5ab29);
     }
     .mark-as-review{
+    margin-top: 5px;
+    margin-right: 5px;
     height: 30px;
-    background: linear-gradient(90deg, #FEC001, #FA990A);
+    background: linear-gradient(90deg, #d5ab29, #e99923);
     color: black;
     border-radius: 3px;
     cursor: pointer;
     padding: 0px 7px;
     line-height: 30px;
     margin-bottom: 5px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 400;
     }
     .remove-from-review{
-
+    margin-right: 5px;
     height: 30px;
-    background: linear-gradient(90deg, #FEC001, #FA990A);
+    background: linear-gradient(90deg, #d5ab29, #e99923);
     color: black;
     border-radius: 3px;
     cursor: pointer;
@@ -108,7 +113,9 @@
     line-height: 30px;
     margin-bottom: 5px;
     display: none;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 5px;
     }
     .border-buttom-red{
         border-bottom: 0.25rem #FC1A1A;
@@ -309,9 +316,6 @@
         /* height: 70px; */
         display: flex;
         justify-content: space-between;
-        flex-direction: column;
-
-
     }
     .question-sno-padding{
         height: 36px;
@@ -325,6 +329,7 @@
         font-size: 18px;
     }
     .question{
+        /* min-height: 100px; */
         font-family: monospace;
         padding: 5px 10px;
         background: white;
@@ -391,8 +396,8 @@
         justify-content: center;
         border: 0.5px solid #bdc3c7;
         margin: 0;
-        width: 20px;
-        height: 20px;
+        width: 15px;
+        height: 15px;
         margin: 3px;
         cursor: pointer;
         border-radius: 3px;
@@ -405,8 +410,8 @@
         justify-content: center;
         border: 0.5px solid #bdc3c7;
         margin: 0;
-        width: 20px;
-        height: 20px;
+        width: 15px;
+        height: 15px;
         margin: 3px;
         cursor: pointer;
         border-radius: 3px;
@@ -420,8 +425,8 @@
         justify-content: center;
         border: 0.5px solid #bdc3c7;
         margin: 0;
-        width: 20px;
-        height: 20px;
+        width: 15px;
+        height: 15px;
         margin: 3px;
         cursor: pointer;
         border-radius: 3px;
@@ -529,6 +534,9 @@ pre{
 }
 .question-no-padding{
     height: 30px;
+}
+.border-3px{
+    border: 3px solid rgb(0 0 0 / 16%);
 }
 </style>
 <script type="text/javascript">
@@ -643,7 +651,7 @@ body{
             font-size: large;
           }
           .custom-alert{
-
+            font-family: monospace;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -732,7 +740,7 @@ body{
             box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 60%);
           }
           #next{
-            background: #2980b9;
+            background: #2974a5;
             border-radius: 3px;
             color : white;
             width: 120px;
@@ -742,7 +750,7 @@ body{
     box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 60%);
           }
           #btn-submit{
-            background: rgb(94, 186, 0);
+            background: rgb(91 127 53);
             border-radius: 3px;
             color : white;
             width: 120px;

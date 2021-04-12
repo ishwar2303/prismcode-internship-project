@@ -9923,7 +9923,7 @@ body {
 
 body *::-webkit-scrollbar {
   width: 6px;
-  height: 6px;
+  height: 15px;
   transition: .3s background;
 }
 
@@ -15175,7 +15175,7 @@ a.tag-addon:hover {
 
 .selectgroup-button {
   display: block;
-  border: 3px solid rgb(0 0 0 / 16%);
+  border: 1px solid rgb(0 0 0 / 16%);
   text-align: center;
   padding: 0.375rem 1rem;
   position: relative;
@@ -15198,13 +15198,11 @@ a.tag-addon:hover {
 }
 
 .selectgroup-input:checked + .selectgroup-button {
-  border-color: #79a2dc;
+  border-color: #94b6e7;
   z-index: 0;
-  color: white;
-  background: #79a2dc;
+  background: #006aff29;
 }
 .selectgroup-input:checked + .selectgroup-button > pre > code{
-  color:white;
 }
 .selectgroup-input:focus + .selectgroup-button {
   border-color: #467fcf;
