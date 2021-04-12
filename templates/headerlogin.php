@@ -19,6 +19,9 @@
     
   
     <style type="text/css">
+    body{
+      /* font-family: monospace; */
+    }
       .incorrect-key{
           position: absolute;
           top : 50%;

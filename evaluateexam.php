@@ -783,7 +783,6 @@ if($showEvaluation){
                                         <span style="border-radius: 3px; padding : 5px 10px;" class="text-white bg-secondary">Explanation</span>
                                     </p>
                                     <p>
-                                        <i>
                                             <?php 
                                             if($row['reason'] == '')
                                               echo "Not Provided!";
@@ -795,7 +794,6 @@ if($showEvaluation){
                                               <?php
                                             }
                                             ?>
-                                        </i>
                                     </p>
                                     <p></p>
                                 </div>

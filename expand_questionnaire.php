@@ -158,29 +158,36 @@ echo "</div>";
 													<label class="form-label">Question<?php echo  $i; ?></label>
 													<textarea name="question[]" class="form-control" rows="4" placeholder="Question <?php echo  $i; ?>" required></textarea>
 												</div>
+												<div>
+													<label class="formatted-label">Formatted : </label>
+													<select name="formatted[]" class="select-prop-format formatted">
+														<option value="0">No</option>
+														<option value="1">Yes</option>
+													</select>
+												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 1</label>
-													<input type="text" name="option1[]" class="form-control" placeholder="Option 1"  required>
+													<textarea type="text" name="option1[]" class="form-control" placeholder="Option 1"  required></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 2</label>
-													<input type="text" name="option2[]" class="form-control" placeholder="Option 2"  required>
+													<textarea type="text" name="option2[]" class="form-control" placeholder="Option 2"  required></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 3</label>
-													<input type="text" name="option3[]" class="form-control" placeholder="Option 3"  required>
+													<textarea type="text" name="option3[]" class="form-control" placeholder="Option 3"  required></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
 													<label class="form-label">Option 4</label>
-													<input type="text" name="option4[]" class="form-control" placeholder="Option 4"  required>
+													<textarea type="text" name="option4[]" class="form-control" placeholder="Option 4"  required></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-12">

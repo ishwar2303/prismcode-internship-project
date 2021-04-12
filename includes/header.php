@@ -670,9 +670,9 @@
 </script>
 <style type="text/css">
   #confirm-quiz-delete-popup{
-    height: 300px;
+    /* height: 300px; */
     width: 250px;
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px;
     position: absolute;
     left: 50%;
@@ -693,41 +693,45 @@
     height: 100%;
   }
   #delete-me{
-    margin-top: 20px;
-    margin-bottom: 15px;
-    height: 30px;
-    width: 200px;
-    border-radius: 5px;
+    /* margin-top: 20px; */
+    /* margin-bottom: 15px; */
+    height: 40px;
+    width: 100%;
+    border-radius: 3px;
     border : 0.5px solid #95a5a6;
     padding: 0px 5px;
     color: green;
   }
   #delete-me:focus{
     outline:  none;
-    box-shadow: 0px 0px 0px 3px #96c7e8;
+    box-shadow: 0px 0px 0px 4px blue;
+    border-color: #2980b9;
+    transition: 300ms; */
+    border: 0.5px solid #3a6cff;
+    box-shadow: 0px 0px 0px 4px rgb(123 123 241 / 20%);
   }
   .delete-yes-no-btn-container{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 0px 15px;
+    /* padding: 0px 15px; */
+    margin-top: 15px;
   }
   #delete-no{
 
-    border-radius: 5px;
+    border-radius: 3px;
     background: #95a5a6;
     border : none;
-    background: #c0392b;
+    /* background: #c0392b; */
     color: white;
-    padding: 5px 8px;
+    padding: 5px 13px;
   }
   #delete-yes{
-    border-radius: 5px;
-    background: #95a5a6;
-    background: #27ae60;
+    border-radius: 3px;
+    background: #659b2d;
     color: white;
     border: none;
-    padding: 3px 5px;
+    padding: 3px 13px;
     display: none;
   }
   #delete-yes:focus{
@@ -735,14 +739,15 @@
 
   }
   #delete-yes:hover{
-    background: #2ecc71;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
   }
   #delete-no:focus{
     outline: none;
 
   }
   #delete-no:hover{
-    background: #e74c3c;
+    /* background: #e74c3c; */
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
   }
 </style>
 <script type="text/javascript">
@@ -782,11 +787,11 @@
 <div class="black-cover-quiz-delete"></div>
 <div id="confirm-quiz-delete-popup">
   <div id="confirm-quiz-delete-popup-content-container">
-    <i style="color : red;font-size: 50px;margin-bottom: 25px;" class="fas fa-trash-alt"></i>
+    <i style="color : #cd201f;font-size: 50px;margin-bottom: 25px;" class="fas fa-trash-alt"></i>
     <div style="display: flex; flex-direction: column;">
     <h5>To confirm deletion</h5>
     <label>
-    Write '<span style="color: green; font-weight: bold;">DELETE ME</span>' in  input box
+    Write '<span style="color: green; font-weight: bold;">DELETE ME</span>'
     </label>
   </div>
   <input oninput="checkUserConfirmation()" id="delete-me" type="text" name="checkDeleteConfirmation" required>

@@ -59,6 +59,7 @@
 		document.getElementsByClassName('option4')[index].disabled = false;
 		document.getElementsByClassName('answer')[index].disabled = false;
 		document.getElementsByClassName('reason')[index].disabled = false;
+		document.getElementsByClassName('formatted')[index].disabled = false;
 		document.getElementsByClassName('question-id')[index].disabled = false;
 		document.getElementsByClassName('edit-icon')[index].style.display = 'none';
 		document.getElementsByClassName('update-question')[index].style.display = 'block';
@@ -153,6 +154,7 @@ echo "</div>";
 								 				$option4 = str_replace("<br/>", "\n", $option4);
 								 				$reason = $row['reason'] ;
 								 				$reason = str_replace("<br/>", "\n", $reason);
+												$formatted = $row['formatted'];
 						 				?>
 						 				<input class="question-id" type="number" name="questionID[]" value="<?php echo $row['question_id'];?>" required disabled="true">
 										<div style="margin:3px 0px;" class="row p-4 mb-2 border rounded border-muted set-container">
@@ -178,6 +180,7 @@ echo "</div>";
 													var option4 = document.getElementsByClassName('option4')[<?php echo $i-1;?>].value;
 													var answer = document.getElementsByClassName('answer')[<?php echo $i-1;?>].value;
 													var reason = document.getElementsByClassName('reason')[<?php echo $i-1;?>].value;
+													var formatted = document.getElementsByClassName('formatted')[<?php echo $i-1;?>].value;
 														var url = 'delete_update_question.php';
 															$("#all-questions").load(url,{
 																quesID : <?php echo $row['question_id'];?>,
@@ -190,7 +193,8 @@ echo "</div>";
 																op3 : option3,
 																op4 : option4,
 																ans : answer,
-																res : reason
+																res : reason,
+																formatted : formatted
 															});
 													});
 												});
@@ -223,6 +227,20 @@ echo "</div>";
 												<div class="form-group">
 													<label class="form-label">Question&nbsp;<?php echo  $i; ?></label>
 													<textarea name="question[]" class="form-control question" rows="4" placeholder="Question <?php echo  $i; ?>" required="true" disabled="true"><?php echo $question;?></textarea>
+												</div>
+												<div>
+													<?php 
+														$yes = '';
+														$no = '';
+														if($formatted)
+															$yes = 'selected';
+														else $no = 'selected';
+													?>
+													<label class="formatted-label">Formatted : </label>
+													<select name="formatted[]" class="select-prop-format formatted" disabled="true">
+														<option value="0" <?php echo $no; ?>>No</option>
+														<option value="1" <?php echo $yes; ?>>Yes</option>
+													</select>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">

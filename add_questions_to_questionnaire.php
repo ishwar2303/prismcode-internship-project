@@ -12,6 +12,7 @@
   $option4  = $_POST['option4'];
   $answer   = $_POST['answer'];
   $reason   = $_POST['reason'];
+  $formatted = $_POST['formatted'];
   $num      = $_SESSION['question_num'];
   $quiz_id  = $_SESSION['quiz_id'];
   
@@ -21,7 +22,6 @@
     $string = htmlentities($string);
     $string = str_replace("&nbsp;", " ", $string);
     $string = str_replace("'", "&#39;", $string);
-    $string = str_replace("\n", "<br/>", $string);
     $string = str_replace("\\", "&#92;", $string);
     return $string;
    }
@@ -33,7 +33,8 @@
       $o3 = convertEntities($option3[$i]);
       $o4 = convertEntities($option4[$i]);
       $res = convertEntities($reason[$i]);
-      $sql = "INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `option_2`, `option_3`, `option_4`, `answer`, `reason`) VALUES (NULL, '$quiz_id', '$que', '$o1', '$o2', '$o3', '$o4', '$answer[$i]', '$res')";
+      $form = convertEntities($formatted[$i]);
+      $sql = "INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `option_2`, `option_3`, `option_4`, `answer`, `reason`, `formatted`) VALUES (NULL, '$quiz_id', '$que', '$o1', '$o2', '$o3', '$o4', '$answer[$i]', '$res', '$form')";
  	    mysqli_query($conn,$sql);
  	   }
    $total = $_SESSION['prev_que_no'] + $num;

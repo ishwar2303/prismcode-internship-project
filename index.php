@@ -554,7 +554,7 @@ a{
   align-items: center;
   flex-direction: column;
   background: rgba(236, 240, 241,0.3);
-    padding: 25px;
+  padding: 25px;
 }
 .email-or-reg-for-result > input{
   width: 300px;
@@ -566,8 +566,9 @@ a{
 }
 .email-or-reg-for-result > input:focus{
   outline : none;
-  box-shadow: 0px 0px 0px 3px rgba(52, 152, 219,0.5); 
+  box-shadow: 0px 0px 0px 3px rgba(52, 152, 219,0.2); 
   border-color: #3498db;
+  transition: 300;
 }
 .select-exam-for-result > select{
   width: 300px;
@@ -578,8 +579,6 @@ a{
 }
 .select-exam-for-result > select:focus{
   outline : none;
-  box-shadow: 0px 0px 0px 3px rgba(52, 152, 219,0.5);
-  border-color: #3498db;
 }
 #check-result-btn{
   width: 300px;

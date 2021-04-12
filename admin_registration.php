@@ -231,7 +231,6 @@ form{
 <body>
   <div class="wrapper">
   <header>
-    
           <a style="line-height: 0" id="home-link" href="index.php"><span><b>Home</b></span></a>
   </header>
       <div class="form-container">

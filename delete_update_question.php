@@ -37,6 +37,7 @@ if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID'])
 								 				$option4 = str_replace("<br/>", "\n", $option4);
 								 				$reason = $row['reason'] ;
 								 				$reason = str_replace("<br/>", "\n", $reason);
+												$formatted = $row['formatted'];
 						 				?>
 						 				<input class="question-id" type="number" name="questionID[]" value="<?php echo $row['question_id'];?>" required disabled="true">
 										<div style="margin:3px 0px;" class="row p-4 mb-2 border rounded border-muted set-container">
@@ -63,6 +64,7 @@ if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID'])
 													var option4 = document.getElementsByClassName('option4')[<?php echo $i-1;?>].value;
 													var answer = document.getElementsByClassName('answer')[<?php echo $i-1;?>].value;
 													var reason = document.getElementsByClassName('reason')[<?php echo $i-1;?>].value;
+													var formatted = document.getElementsByClassName('formatted')[<?php echo $i-1;?>].value;
 														var url = 'delete_update_question.php';
 															$("#all-questions").load(url,{
 																quesID : <?php echo $row['question_id'];?>,
@@ -75,7 +77,8 @@ if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID'])
 																op3 : option3,
 																op4 : option4,
 																ans : answer,
-																res : reason
+																res : reason,
+																formatted : formatted
 															});
 													});
 												});
@@ -107,6 +110,20 @@ if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID'])
 												<div class="form-group">
 													<label class="form-label">Question&nbsp;<?php echo  $i; ?></label>
 													<textarea name="question[]" class="form-control question" rows="4" placeholder="Question <?php echo  $i; ?>" required="true" disabled="true"><?php echo $question;?></textarea>
+												</div>
+												<div>
+													<?php 
+														$yes = '';
+														$no = '';
+														if($formatted)
+															$yes = 'selected';
+														else $no = 'selected';
+													?>
+													<label class="formatted-label">Formatted : </label>
+													<select name="formatted[]" class="select-prop-format formatted" disabled="true">
+														<option value="0" <?php echo $no; ?>>No</option>
+														<option value="1" <?php echo $yes; ?>>Yes</option>
+													</select>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
@@ -177,9 +194,9 @@ if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID'])
 											if($minOneQue){
 											?>
 									  <div class="card-footer text-right">
-								         <div style="display: flex;justify-content: flex-end;" class="d-flex">
+								         <!-- <div style="display: flex;justify-content: flex-end;" class="d-flex">
 								           <button  type="submit" class="btn btn-primary ml-auto" id="save-changes" value="Save Changes">Save Changes</button>
-								         </div>
+								         </div> -->
 								       </div> 
 								       <?php 
 								   }
@@ -205,13 +222,13 @@ else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quiz
   $o4  = $_POST['op4'];
   $ans   = $_POST['ans'];
   $res   = $_POST['res'];
-
+  $formatted = $_POST['formatted'];
   function convertEntities($string){
     $string = trim($string);
     $string = htmlentities($string);
     $string = str_replace("&nbsp;", " ", $string);
     $string = str_replace("'", "&#39;", $string);
-    $string = str_replace("\n", "<br/>", $string);
+    
     $string = str_replace("\\", "&#92;", $string);
     return $string;
    }
@@ -221,7 +238,8 @@ else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quiz
       $o3 = convertEntities($o3);
       $o4 = convertEntities($o4);
       $res = convertEntities($res);
-      $sql = "UPDATE question_bank SET question='$que', option_1='$o1', option_2='$o2', option_3='$o3', option_4='$o4', answer='$ans', reason='$res' WHERE question_id='$_POST[quesID]'";
+	  $formatted = convertEntities($formatted);
+      $sql = "UPDATE question_bank SET question='$que', option_1='$o1', option_2='$o2', option_3='$o3', option_4='$o4', answer='$ans', reason='$res', formatted='$formatted' WHERE question_id='$_POST[quesID]'";
       mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
 	$sql = "SELECT * FROM question_bank WHERE quiz_id='$QuizID'";
@@ -245,6 +263,7 @@ else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quiz
 								 				$option4 = str_replace("<br/>", "\n", $option4);
 								 				$reason = $row['reason'] ;
 								 				$reason = str_replace("<br/>", "\n", $reason);
+												$formatted = $row['formatted'];
 						 				?>
 						 				<input class="question-id" type="number" name="questionID[]" value="<?php echo $row['question_id'];?>" required disabled="true">
 										<div style="margin:3px 0px;" class="row p-4 mb-2 border rounded border-muted set-container">
@@ -270,6 +289,7 @@ else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quiz
 													var option4 = document.getElementsByClassName('option4')[<?php echo $i-1;?>].value;
 													var answer = document.getElementsByClassName('answer')[<?php echo $i-1;?>].value;
 													var reason = document.getElementsByClassName('reason')[<?php echo $i-1;?>].value;
+													var formatted = document.getElementsByClassName('formatted')[<?php echo $i-1;?>].value;
 														var url = 'delete_update_question.php';
 															$("#all-questions").load(url,{
 																quesID : <?php echo $row['question_id'];?>,
@@ -282,7 +302,8 @@ else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quiz
 																op3 : option3,
 																op4 : option4,
 																ans : answer,
-																res : reason
+																res : reason,
+																formatted : formatted
 															});
 													});
 												});
@@ -314,6 +335,20 @@ else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quiz
 												<div class="form-group">
 													<label class="form-label">Question&nbsp;<?php echo  $i; ?></label>
 													<textarea name="question[]" class="form-control question" rows="4" placeholder="Question <?php echo  $i; ?>" required="true" disabled="true"><?php echo $question;?></textarea>
+												</div>
+												<div>
+													<?php 
+														$yes = '';
+														$no = '';
+														if($formatted)
+															$yes = 'selected';
+														else $no = 'selected';
+													?>
+													<label class="formatted-label">Formatted : </label>
+													<select name="formatted[]" class="select-prop-format formatted" disabled="true">
+														<option value="0" <?php echo $no; ?>>No</option>
+														<option value="1" <?php echo $yes; ?>>Yes</option>
+													</select>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
@@ -384,9 +419,9 @@ else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quiz
 											if($minOneQue){
 											?>
 									  <div class="card-footer text-right">
-								         <div style="display: flex;justify-content: flex-end;" class="d-flex">
+								         <!-- <div style="display: flex;justify-content: flex-end;" class="d-flex">
 								           <button  type="submit" class="btn btn-primary ml-auto" id="save-changes" value="Save Changes">Save Changes</button>
-								         </div>
+								         </div> -->
 								       </div> 
 								       <?php
 								   }

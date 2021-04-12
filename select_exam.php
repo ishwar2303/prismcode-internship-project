@@ -129,9 +129,10 @@ form{
   height: 40px;
   margin-top: 10px;
   border-radius : 5px;
-  border : 0.5px solid #bdc3c7;
+  /* border : 0.5px solid #bdc3c7; */
   font-weight: 500;
   background: #2980b9;
+  border: none;
   color: white;
 }
 #next-btn:focus{
@@ -139,6 +140,7 @@ form{
 }
 #next-btn:hover{
   background: #3498db;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.6);
 }
 footer{
   background: #4b4b4b;
@@ -240,7 +242,7 @@ footer{
 			</div>
 
       <div style="margin-top: 15px;" class="center">
-        <button id="next-btn" type="submit"  name="submit" value="Login" class="z-depth-0" >NEXT</button>
+        <button id="next-btn" type="submit"  name="submit" value="Login" class="" >NEXT</button>
       </div>
 		</form>
 </div>

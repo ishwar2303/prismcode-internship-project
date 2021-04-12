@@ -63,6 +63,13 @@ require_once('connection.php');
 													<label class="form-label">Question<?php echo  $i; ?></label>
 													<textarea name="question[]" class="form-control" rows="4" placeholder="Question <?php echo  $i; ?>" required></textarea>
 												</div>
+												<div>
+													<label class="formatted-label">Formatted : </label>
+													<select name="formatted[]" class="select-prop-format formatted">
+														<option value="0">No</option>
+														<option value="1">Yes</option>
+													</select>
+												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">

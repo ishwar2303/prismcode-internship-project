@@ -154,7 +154,7 @@ $j = 0;
 $t = 0;
 	foreach ($QUESTIONS as $QueID)
 	{
-		$sql = "SELECT question,option_1,option_2,option_3,option_4 FROM question_bank WHERE question_id='$QueID'";
+		$sql = "SELECT question,option_1,option_2,option_3,option_4,formatted FROM question_bank WHERE question_id='$QueID'";
 		$result = mysqli_query($conn,$sql);
 		$row = $result->fetch_assoc();
     ?>
@@ -247,9 +247,16 @@ $t = 0;
 	                        	</div>
 								<div class="question-sno-padding"></div>
 	                        	<div class="question">
+<?php 
+	if($row['formatted']){
+		?>
 <pre>
 <code><?php echo $row['question'];?></code>
 </pre>
+<?php
+	}
+	else echo str_replace("\n", "<br/>", $row['question']);
+?>	
 	                        		
 	                        	</div>
                         	</div>
