@@ -101,7 +101,8 @@
 		}
 		}
 	</style>
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<script src="https://kit.fontawesome.com/f9bbf9ac4e.js"></script>
+  <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
 </head>
 <body>
 	<div class="wrapper">
