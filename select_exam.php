@@ -84,6 +84,8 @@
         document.getElementsByClassName('black-cover')[0].style.display = 'none';
         document.getElementsByClassName('incorrect-key')[0].style.display = 'none';
       }
+      
+  document.cookie = "userproctored=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 </script>
 <style type="text/css">
   #select-exam{

@@ -56,7 +56,6 @@
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style type="text/css">
-
       .black-cover{
         display: flex;
         justify-content: center;
@@ -234,10 +233,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body class="grey lighten-4">
-	<nav  style="box-shadow:0px 0px 18px 0px rgba(0,0,0,0.6);" class="white">
+	<nav  style="box-shadow:0px 0px 18px 0px rgba(0,0,0,0.6);position:fixed;" class="white">
 		<div class="container" style="height:100%;display:flex;justify-content: space-between;align-items: center;">
           <a style="line-height: 0" id="home-link" href="index.php"><span><b>Home</b></span></a>
           <a style="line-height: 0" id="logout-link" href="logout.php"><i class="fa fa-sign-out"></i> <b>Logout</b></a>
 		</div>
 	</nav>
+  <div style="height:64px;"></div>
 	

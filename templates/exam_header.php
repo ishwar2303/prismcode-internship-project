@@ -54,7 +54,13 @@ jQuery(document).ready(function() {
 });
   </script>
 
-<style>
+<style>* {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
     pre{
         background: white;
         /* padding: 0; */
@@ -158,7 +164,8 @@ jQuery(document).ready(function() {
         width: 95%;
         padding: 10px 0px;
         justify-content: center;
-        height: 400px;
+        min-height: 300px;
+        max-height: 400px;
         overflow-y: scroll;
     }
     .questions-labels-status > div{
@@ -538,6 +545,101 @@ pre{
 .border-3px{
     border: 3px solid rgb(0 0 0 / 16%);
 }
+#black-cover-for-proctored{
+display: flex;
+justify-content: center;
+align-items: center;
+position: absolute;
+left : 0;
+top : 0;
+position: fixed;
+width: 100%;
+height: 100vh;
+background: rgba(75, 75, 75,0.5);
+z-index: 140;
+display:none;
+}
+#proctored-popup{
+    padding: 20px;
+    border-radius: 3px;
+    background:#cd201f;
+    color : white;
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    transform: translate(-50%, 0);
+    display: none;
+    z-index: 150;
+    position: fixed;
+    min-width: 300px;
+    /* min-height: 350px; */
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0);
+    font-family: monospace;
+}
+
+#proctored-popup > div > div:nth-child(2){
+    /* height: 200px; */
+}
+#proctored-popup img{
+    position: relative;
+    margin-top: 10px;
+    left : 0;
+    max-height: 100%;
+    width: 260px;
+    padding: 0;
+}
+#proctored-popup > div > div:nth-child(1){
+    display: flex;
+    justify-content: space-between;
+}
+
+#proctored-popup > div > div:nth-child(1) >b{
+    font-size: 25px;
+}
+#proctored-popup > div > div:nth-child(1) > span {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#proctored-popup > div > div:nth-child(1) > span > i{
+    font-size: 26px;
+}
+
+#proctored-popup > div > div:nth-child(1) > span:hover{
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5);
+
+}
+
+#proctored-popup > div > div:nth-child(4){
+    display: flex;
+    justify-content: flex-end;
+}
+
+#proctored-popup > div > div:nth-child(1) > button{
+    padding: 7px 15px;
+    border-radius: 3px;
+    border : none;
+}
+
+#proctored-popup > div > div:nth-child(1) > button:focus{
+    outline: none;
+}
+#close-proctored-popup{ 
+    margin-top: 50px;
+    border: none;
+    border-radius: 3px;
+    padding: 7px 15px;
+    font-weight: bold;
+    background: #d8d800;
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 60%);
+}
+#close-proctored-popup:hover{
+    box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 60%);
+    }
 </style>
 <script type="text/javascript">
     var toggleSwitch = 0;
@@ -562,6 +664,7 @@ pre{
                 toggleSwitch = 1;
             }
         setQuestionHeaderWidth(toggleSwitch)
+        setQuestionContainerHeight()
     }
 </script>
 	<title>Quiz</title>

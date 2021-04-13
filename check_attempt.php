@@ -135,13 +135,11 @@
                               <li><i class="fas fa-angle-right list-icon"></i>Only 1 Attempt is available.</li> 
                               <li><i class="fas fa-angle-right list-icon"></i>Internet connection broke! 
                                 <ul style="padding-left: 25px;">
-                                  <li><i class="fas fa-times sub-list-icon"></i>Don't close browser else exam will be canceled.</li>
-                                  <li><i class="fas fa-check sub-list-icon"></i>Wait for reconnectivity.</li>
+                                  <li style="color:red;"><i class="fas fa-times sub-list-icon"></i>Don't close browser else exam will be canceled.</li>
+                                  <li style="color:green;"><i class="fas fa-check sub-list-icon"></i>Wait for reconnectivity.</li>
                                 </ul>
                               </li>
-                              <li></li>
-                              <li></li>
-                              <li></li>
+                              <li style="color : blue;"><i class="fas fa-angle-right list-icon"></i>You will be proctored during the exam.</li>
                               <li></li>
                               <li></li>
                               <li></li>

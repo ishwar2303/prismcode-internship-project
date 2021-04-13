@@ -589,7 +589,7 @@ if($showEvaluation){
                     <div style="padding: 0;" class="card shadow-c border-bottom-info h-100 py-2">
                         <div class="card-body p-3 text-center">
                             <div  class="h4 m-0 timer-test"><?php echo sizeof($not_attempt); ?></div>
-                            <div class="text-cyan text-xxs font-weight-bold text-uppercase mb-1">Not Attempted</div>
+                            <div style="color:#f1c40f" class="text-xxs font-weight-bold text-uppercase mb-1">Not Attempted</div>
                         </div>
                     </div>
                 </div>

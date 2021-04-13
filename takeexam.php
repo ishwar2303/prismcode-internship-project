@@ -408,6 +408,32 @@ $t = 0;
 				<div  style="height: 60px;"></div>
 	</div>
 	<div id="for-load"></div>
+
+	<div id="proctored-popup">
+		<div>
+			<div>
+				<b><i class="fas fa-exclamation-circle"></i> WARNING</b>
+			</div>
+			<div id="proctored-msg-img">
+				<!-- <img src="images/proctored-2.png" alt=""> -->
+			</div>
+			<div id="proctored-msg">
+			You are being proctored!
+			</div>
+			<div>
+				<button id="close-proctored-popup">Got It</button>
+			</div>
+		</div>
+	</div>
+	<div id="black-cover-for-proctored">
+	</div>
+	<script>
+		document.getElementById('close-proctored-popup').addEventListener('click', () => {
+			document.getElementById('proctored-popup').style.display = 'none'
+			document.getElementById('black-cover-for-proctored').style.display = 'none'
+		})
+	</script>
+
 	<script type="text/javascript">
         count();
 	</script>
@@ -445,7 +471,17 @@ $t = 0;
 			}
 		}
 		setQuestionContainerHeight()
+		resizeWindowElements()
     </script>
+<script>
+	
+//removeCookie()
+examStarted()
+$(window).blur(() => {
+  checkCookie() // proctoring user via checking if window looses focus
+})
+</script>
+
 </body>
 </html>
 <?php 

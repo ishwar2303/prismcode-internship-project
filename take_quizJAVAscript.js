@@ -55,6 +55,11 @@ function prevQuestion()
 function switchToQuestion(index){
   let switchCont = document.getElementsByClassName('question-switch-container')[0]
   var targetWidth = 900;
+  document.getElementsByClassName('exam-status')[0].style.display = 'flex'
+  if ($(window).height() <= 500){
+    document.getElementsByClassName('exam-status')[0].style.display = 'none'
+    $('#show-question-switch').click()
+  }
   if ( $(window).width() <= targetWidth) {
     $('#show-question-switch').click()
   }
@@ -306,10 +311,94 @@ const unregisterOpenTab = () => {
 // window.addEventListener('load', registerOpenTab);
 // window.addEventListener('beforeunload', unregisterOpenTab);
   
-$(window).blur(() => {
-  //disableNewTabClick()
-  //caughtCheating()
-  //registerOpenTab()
-})
 // Wrap in an IIFE accepting jQuery as a parameter.
 
+function resizeWindowElements(){
+  
+  setQuestionHeaderWidth(0)
+  setQuestionContainerHeight()
+  document.getElementsByClassName('exam-status')[0].style.display = 'flex'
+  if ($(window).height() <= 400){
+    document.getElementsByClassName('exam-status')[0].style.display = 'none'
+  }
+  $('#show-question-switch').click()
+}
+$(window).resize(function() {
+  resizeWindowElements()
+  });
+
+
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  var expires = "expires="+d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+  let proctoredPopup = document.getElementById('proctored-popup')
+  let imgBlock = document.getElementById('proctored-msg-img')
+  let msgBlock = document.getElementById('proctored-msg')
+  var user = getCookie("userproctored");
+  if (user != "") {
+    user = parseInt(user)
+    if(user == 1){
+      msgBlock.innerHTML = 'You are being proctored!'
+      msgBlock.innerHTML += '<br/>'
+      msgBlock.innerHTML += 'Kindly do not switch from exam window.'
+      msgBlock.innerHTML += '<br/>'
+      msgBlock.innerHTML += 'Strike : ' + user
+    }
+    if(user == 2){
+      //imgBlock.innerHTML = '<img src="images/proctored-1.gif">'
+      msgBlock.innerHTML = 'Your exam will get cancel!'
+      msgBlock.innerHTML += '<br/>'
+      msgBlock.innerHTML += 'Strike : ' + user
+    }
+    if(user == 3){
+      msgBlock.innerHTML = 'Final warning <br/> Exam will get cancel!'
+      msgBlock.innerHTML += '<br/>'
+      msgBlock.innerHTML += 'Strike : ' + user
+    }
+    if(user > 3){
+      var frm =  document.getElementsByTagName("form");
+      frm[0].submit();
+    }
+    proctoredPopup.style.display = 'block'
+    document.getElementById('black-cover-for-proctored').style.display = 'block'
+    setCookie("userproctored", ++user, 365);
+  } else {
+    user = 1;
+    if (user != "" && user != null) {
+      setCookie("userproctored", user, 365);
+    }
+  }
+}
+
+function removeCookie(){
+  document.cookie = "userproctored=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+
+function examStarted(){
+  let examStarted = getCookie('examstarted')
+  if(examStarted == ''){
+    document.cookie = "examstarted=true; path=/;";
+    checkCookie()
+  }
+}
