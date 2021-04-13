@@ -29,7 +29,7 @@
 		background: white;
 		padding: 10px;
 		border-radius: 5px;
-    border: 0.5px solid #bdc3c7;
+    border: 0.5px solid #e4e4e4;
 	}
 	.reveal-key{
 		width: 300px;

@@ -30,7 +30,7 @@
 		background: white;
 		padding: 10px;
 		border-radius: 5px;
-    border: 0.5px solid #bdc3c7;
+    border: 0.5px solid #e4e4e4;
 	}
 </style>
 	<?php include 'includes/header.php'; ?>
@@ -142,8 +142,8 @@
 				<li>Inactive : Quiz remain concealed</li>
 			</ul>
 			<br>
-			<h5 style="color: green;">Remember if you want your quiz to be open to all candidates then reveal your key through PUBLIC ACCESS FEATURE so candidates can see key from description and take Quiz.</h5>
-			<h5 style="color : red;" >If you want your Quiz to be only accessible to candidates of your class, college, institute then personally send the key to them via E-mail or other social network.<br>
+			<h5 style="color: #5eba00;">Remember if you want your quiz to be open to all candidates then reveal your key through PUBLIC ACCESS FEATURE so candidates can see key from description and take Quiz.</h5>
+			<h5 style="color : #cd201f;" >If you want your Quiz to be only accessible to candidates of your class, college, institute then personally send the key to them via E-mail or other social network.<br>
 				Don't Reveal the KEY.
 			</h5>
 		</div>

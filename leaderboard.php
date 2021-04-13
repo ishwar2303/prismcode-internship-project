@@ -110,13 +110,12 @@
                     }
                     ?>    </span>
                     <div class="reload-print-container">
-                      <button  class="reload-leaderboard">
+                      <button  class="reload-leaderboard" id="reload-leaderboard-btn">
                         <i id="reload-leaderboard-icon" class="fas fa-redo-alt"></i>
                         <span style="font-size: 15px;">Reload</span>
                       </button>
                       <button  id="delete-all-attempts"><span><i class="fas fa-trash-alt"></i></span><span>Delete All Attempts</span></button>
                       <button style="background: #4b4b4b;" onclick="printLeaderboard()" class="print-result"><span><i class="fas fa-print"></i></span><span>Print</span></button>
-                      
                     </div>
                     </div>
                     <script type="text/javascript">
@@ -227,7 +226,7 @@
             $row = $result->fetch_assoc();
             ?>
               <label style="display: flex;justify-content: space-evenly;align-items: center;height: 50vh;flex-direction: column;">
-               <i style="font-size: 80px;" class="far fa-frown"></i>
+               <!-- <i style="font-size: 80px;" class="far fa-frown"></i> -->
                <label><?php echo $row['quiz_name'];?></label>
                <label style="font-size : 18px;">No student has given Quiz yet!</label>
               </label>

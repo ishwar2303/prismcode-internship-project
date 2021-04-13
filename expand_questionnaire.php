@@ -35,9 +35,9 @@ require_once('connection.php');
 		background: white;
 		padding: 10px;
 		border-radius: 5px;
-    border: 0.5px solid #bdc3c7;
-    margin-left: 5px;
-    margin-right: 5px;
+		border: 0.5px solid #e4e4e4;
+		margin-left: 5px;
+		margin-right: 5px;
 	}
 	</style>
 	<?php include 'includes/header.php'; ?>
@@ -232,14 +232,14 @@ echo "</div>";
 	 }
 	    ?>
 
-		<div class="explaining-feature">
+		<!-- <div class="explaining-feature">
 			<h4>Select a Quiz</h4>
 			<ul>
 				<li>Enter number of questions you want to Add.</li>
 				<li>Fill entries</li>
 				<li>Submit</li>
 			</ul>
-		</div>
+		</div> -->
    <?php include 'includes/scripts.php';?>
   
 </body>

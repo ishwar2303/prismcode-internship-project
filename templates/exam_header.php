@@ -3,55 +3,55 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript">
 
-$(document).ready(function(){
-  $('body').bind("cut copy paste",function(e) {
-     e.preventDefault();
-  });
-});
-jQuery(document).ready(function() {
-    function disableSelection(e) {
-        if (typeof e.onselectstart != "undefined") e.onselectstart = function() {
-            return false
-        };
-        else if (typeof e.style.MozUserSelect != "undefined") e.style.MozUserSelect = "none";
-        else e.onmousedown = function() {
-            return false
-        };
-        e.style.cursor = "default"
-    }
-    window.onload = function() {
-        hideAll();setInterval(Timer,1000);
-        Timer();
-        count();
-        disableSelection(document.body);
-    };
-
-    window.addEventListener("keydown", function(e) {
-        if (e.ctrlKey && (e.which == 65 || e.which == 66 || e.which == 67 || e.which == 70 || e.which == 73 || e.which == 80 || e.which == 83 || e.which == 85 || e.which == 86)) {
-            e.preventDefault()
-        }
+    $(document).ready(function(){
+    $('body').bind("cut copy paste",function(e) {
+        e.preventDefault();
     });
-    document.keypress = function(e) {
-        if (e.ctrlKey && (e.which == 65 || e.which == 66 || e.which == 70 || e.which == 67 || e.which == 73 || e.which == 80 || e.which == 83 || e.which == 85 || e.which == 86)) {}
-        return false
-    };
-
-    document.onkeydown = function(e) {
-        e = e || window.event;
-        if (e.keyCode == 123 || e.keyCode == 18) {
-            return false
+    });
+    jQuery(document).ready(function() {
+        function disableSelection(e) {
+            if (typeof e.onselectstart != "undefined") e.onselectstart = function() {
+                return false
+            };
+            else if (typeof e.style.MozUserSelect != "undefined") e.style.MozUserSelect = "none";
+            else e.onmousedown = function() {
+                return false
+            };
+            e.style.cursor = "default"
         }
-    };
+        window.onload = function() {
+            hideAll();setInterval(Timer,1000);
+            Timer();
+            count();
+            disableSelection(document.body);
+        };
 
-    document.oncontextmenu = function(e) {
-        var t = e || window.event;
-        var n = t.target || t.srcElement;
-        if (n.nodeName != "A") return false
-    };
-    document.ondragstart = function() {
-        return false
-    };
-});
+        window.addEventListener("keydown", function(e) {
+            if (e.ctrlKey && (e.which == 65 || e.which == 66 || e.which == 67 || e.which == 70 || e.which == 73 || e.which == 80 || e.which == 83 || e.which == 85 || e.which == 86)) {
+                e.preventDefault()
+            }
+        });
+        document.keypress = function(e) {
+            if (e.ctrlKey && (e.which == 65 || e.which == 66 || e.which == 70 || e.which == 67 || e.which == 73 || e.which == 80 || e.which == 83 || e.which == 85 || e.which == 86)) {}
+            return false
+        };
+
+        document.onkeydown = function(e) {
+            e = e || window.event;
+            if (e.keyCode == 123 || e.keyCode == 18) {
+                return false
+            }
+        };
+
+        document.oncontextmenu = function(e) {
+            var t = e || window.event;
+            var n = t.target || t.srcElement;
+            if (n.nodeName != "A") return false
+        };
+        document.ondragstart = function() {
+            return false
+        };
+    });
   </script>
 
 <style>* {
@@ -72,7 +72,7 @@ jQuery(document).ready(function() {
     border-radius: 3px;
     cursor: pointer;
     display: none;
-    padding: 0px 7px;
+    padding: 0px 10px;
     line-height: 30px;
     font-size: 12px;
     font-weight: 400;
@@ -102,7 +102,7 @@ jQuery(document).ready(function() {
     color: black;
     border-radius: 3px;
     cursor: pointer;
-    padding: 0px 7px;
+    padding: 0px 10px;
     line-height: 30px;
     margin-bottom: 5px;
     font-size: 12px;
@@ -115,7 +115,7 @@ jQuery(document).ready(function() {
     color: black;
     border-radius: 3px;
     cursor: pointer;
-    padding: 0px 5px;
+    padding: 0px 10px;
     line-height: 30px;
     margin-bottom: 5px;
     display: none;
@@ -863,7 +863,7 @@ body{
     box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 60%);
           }
           #next:hover{
-            background: #3498db;
+            background: #2e81b8;
           }
           #next:focus{
             outline: none;
@@ -995,6 +995,9 @@ form{
     background: #333333;
     border-radius: 3px;
     border-bottom: 5px solid #333333;
+}
+.timer-test{
+    display: none;
 }
     </style>
     <script type="text/javascript">

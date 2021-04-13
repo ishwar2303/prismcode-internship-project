@@ -31,7 +31,9 @@
   <link href="css/sb-admin-2.css" rel="stylesheet">
   <link href="css/dashboard.css" rel="stylesheet">
      <style>
-      
+      body{
+        font-family: monospace;
+      }
     /* questionnaire.php */
     .updated-successfully{
       position: absolute;
@@ -47,7 +49,6 @@
       display: none;
     }
     .deleted-successfully{
-
       position: absolute;
       left: 50%;
       top: 50%;
@@ -66,40 +67,76 @@
     .edit-icon{
       position: relative;
       cursor: pointer;
-      color: #2980b9;
+      background: #4077c4;
       position: absolute;
-      right: 55px;
-      top : -2px;
+      right: 41px;
+      color: white;
+      width: 35px;
+      top: 3px;
       font-size: 25px;
       z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 35px;
+      font-size: 14px;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+    
+    .edit-icon:hover{
+      box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
     }
     .edit-icon:hover > .edit-hint{
       display: block;
     }
     .update-question{
       position: relative;
-      color: #3498db;
+      background: #3498db;
       cursor: pointer;
       display: none;
       position: absolute;
-      right: 55px;
-      top : -2px;
+      right: 41px;
+      top: 3px;
       font-size: 25px;
       z-index: 1;
+      width: 35px;
+      height: 35px;
+      color: white;
+      display: none;
+      font-size: 14px;
+      justify-content: center;
+      align-items: center;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+    .update-question:hover{
+      box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
     }
     .update-question:hover > .update-hint{
       display: block;
     }
     .delete-question{
 
-      position: relative;
-      color: red;
+      background: #cd201f;
       cursor: pointer;
       position: absolute;
       right: 6px;
-      top : -2px;
+      top: 3px;
       font-size: 25px;
       z-index: 1;
+      width: 35px;
+      height: 35px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+    .delete-question:hover{
+      box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
     }
     .delete-question:hover > .delete-hint{
       display: block;
@@ -422,7 +459,7 @@
         border : none;
         box-shadow: 0px 0px 1px 0px black;
         background: #27ae60;
-        font-size: 17px; 
+        font-size: 14px; 
         cursor: pointer;
         display: flex;
         justify-content: space-evenly;
@@ -445,19 +482,23 @@
         width: 415px;
       }
       #delete-all-attempts{    
-        width: 207px;
+        width: 211px;
         height: 30px;
         border-radius: 3px;
         color : white;
         border : none;
         box-shadow: 0px 0px 1px 0px black;
         background: #e74c3c;
-        font-size: 17px; 
+        font-size: 14px; 
         cursor: pointer;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
       }
+      
+      #delete-all-attempts > i{
+        margin-right: 5px;
+      }  
       #delete-all-attempts:hover{
         background: #c0392b;
       }
@@ -520,7 +561,7 @@
           p.document.write('<head>');
           p.document.write("<style>td{text-align: center; border:0.5px solid #bdc3c7;}table{margin-top:15px;}</style>");
           p.document.write('</head>');
-          p.document.write('<body>');
+          p.document.write('<body style="font-family:monospace">');
           p.document.write("<div style='display:flex;width:100%;justify-content-space-between;font-weight:bold;font-size:25px;'>");
           p.document.write("<div>");
           p.document.write(quizName);

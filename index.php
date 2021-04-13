@@ -39,7 +39,17 @@ if(isset($_SESSION['test_started'])){
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style type="text/css">
-
+  .view-description-popup{
+    cursor: pointer;
+    background: #467fcf;
+    padding-left: 15px;
+    color: white;
+    border-radius: 3px;
+    padding: 5px 10px;
+  }
+  .view-description-popup:hover{
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
+  }
       .close-smallpopup{
         height: 30px;
         width: 80px;
@@ -201,15 +211,16 @@ if(isset($_SESSION['test_started'])){
         position: absolute;
         left: 50%;
         top : 50%;
-        height: 326px;
+        /* height: 326px; */
         width: 450px;
         border-radius: 15px;
         box-shadow: 0px 0px 1px 0px black;
-        border : 0.5px solid #bdc3c7;
+        /* border : 0.5px solid #bdc3c7; */
         transform: translate(-50%,-40%);
         background: white;
         z-index: 3;
         display: none;
+    box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 60%);
       }
       .login-option-container{
         display: flex;
@@ -219,10 +230,10 @@ if(isset($_SESSION['test_started'])){
       .login-option-container > label{
         display: flex;
         flex : 1;
-        height: 40px;
+        height: 50px;
         justify-content: center;
         align-items: center;
-        background: #3498db;
+        background: #467fcf;
         color: white;    
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
@@ -253,27 +264,29 @@ if(isset($_SESSION['test_started'])){
       }
       .input-label{
         position: absolute;
-        top : 22px;
+        top : -4px;
         left : 44px;
+        color: #467fcf;
       }
       .submit-container{
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 20px;
+        margin-top: 10px;
       }
       .submit-btn{
         width: 23%;
         height: 35px;
-        border-radius: 5px;
-        border : 2px solid #2980b9;
-        background: #2980b9;
+        border-radius: 3px;
+        border : 2px solid #467fcf;
+        background: #467fcf;
         color : white;
       }
       .submit-btn:hover{
         color: white;
-        border : 0.5px solid #3498db;
-        background: #3498db;
+        border : 0.5px solid #467fcf;
+        background: #467fcf;
+        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
       }
       .submit-btn:focus{
         outline : none;
@@ -380,8 +393,9 @@ if(isset($_SESSION['test_started'])){
         }
       .input-label{
         position: absolute;
-        top : 22px;
+        top : -4px;
         left : 28px;
+        color: #467fcf;
       }
       .form-input-style{
         width: 83%;
@@ -493,6 +507,10 @@ if(isset($_SESSION['test_started'])){
 .admin-login-label{
   display: none;
 }
+#admin-login-label, #student-login-label{
+  font-size: 18px;
+  font-weight: 600;
+}
 .student-login-label{
   display: none;
 }
@@ -598,20 +616,20 @@ a{
   outline: none;
 }
 #result-card{
-  width: 400px;
-  height: 480px;
-  position: absolute;
-  left: 50%;
-  top : 50%;
-  transform: translate(-50%,-50%);
-  border-radius: 5px;
-  padding: 20px 10px;
-  display: none;
-  z-index: 4;
-  position : fixed;
-  background: white;
-  box-shadow : 0px 0px 2px 0px black;
-  overflow-x: scroll;
+    width: 400px;
+    height: 480px;
+    position: absolute;
+    left: 50%;
+    top: 25px;
+    transform: translate(-50%,0%);
+    border-radius: 5px;
+    padding: 20px 10px;
+    display: none;
+    z-index: 4;
+    position: fixed;
+    background: white;
+    box-shadow: 0px 0px 2px 0px black;
+    overflow-x: scroll;
 }
 #result-content{
   display: flex;
@@ -697,12 +715,12 @@ a{
         function defaultSetLabel(index){
           var x = document.getElementsByClassName('input-label')[index];
           var value = document.getElementsByClassName('form-input-style')[index].value;
-          if(value == ''){
-            x.style.top = '22px';
-            //x.style.left = '50px';
-            x.style.color = '#95a5a6';
-            x.style.transition = 'ease-in 100ms';  
-          }
+          // if(value == ''){
+          //   x.style.top = '22px';
+          //   //x.style.left = '50px';
+          //   x.style.color = '#95a5a6';
+          //   x.style.transition = 'ease-in 100ms';  
+          // }
       }
 
       function onClickBlackCover(){
@@ -715,14 +733,14 @@ a{
 
           var x = document.getElementsByClassName('form-input-style');
           var i;
-          for(i=0;i<x.length;i++){
-            if(x[i].value == ''){
-              defaultSetLabel(i);
-            }
-            else{
-              changeLabelPosition(i);
-            }
-          }
+          // for(i=0;i<x.length;i++){
+          //   if(x[i].value == ''){
+          //     defaultSetLabel(i);
+          //   }
+          //   else{
+          //     changeLabelPosition(i);
+          //   }
+          // }
       }
 
       function showAdminLoginForm(){
@@ -1284,11 +1302,11 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
             <form action="">
               <div class="input-container">
                 <label class="input-label">E-mail</label>
-                <input oninput="var str = this.value; this.value=str.toLowerCase();" onkeyup="changeLabelPosition(0)" onfocusout="defaultSetLabel(0)" class="form-input-style" type="email" name="email" required>
+                <input oninput="var str = this.value; this.value=str.toLowerCase();"  class="form-input-style" type="email" name="email" required>
               </div>
               <div class="input-container">
                 <label class="input-label">Password</label>
-                <input onkeyup="changeLabelPosition(1)" onfocusout="defaultSetLabel(1)" class="form-input-style" type="password" name="pass" required>
+                <input  class="form-input-style" type="password" name="pass" required>
               </div>
               <div class="submit-container">
                 <input class="submit-btn" type="submit" name="admin-login" value="Login">
@@ -1297,20 +1315,20 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
             </form>
           </div>
           <div id="student-login-form">
-            <form action="">
+            <form action="" style="padding-top:5px">
               <div class="input-container">
                 <label class="input-label">Full Name</label>
-                <input oninput="var str = this.value; this.value=str.toUpperCase();" onkeyup="changeLabelPosition(2)" onfocusout="defaultSetLabel(2)" class="form-input-style" type="text" name="name" required>
+                <input oninput="var str = this.value; this.value=str.toUpperCase();"  class="form-input-style" type="text" name="name" required>
               </div>
               <div class="input-container">
                 <label class="input-label">Registration Number</label>
-                <input oninput="var str = this.value; this.value=str.toUpperCase();" onkeyup="changeLabelPosition(3)" onfocusout="defaultSetLabel(3)" class="form-input-style" type="text" name="regNo" required="true">
+                <input oninput="var str = this.value; this.value=str.toUpperCase();"  class="form-input-style" type="text" name="regNo" required="true">
               </div>
               <div class="input-container">
                 <label class="input-label">E-mail</label>
-                <input oninput="var str = this.value; this.value=str.toLowerCase();" onkeyup="changeLabelPosition(4)" onfocusout="defaultSetLabel(4)" class="form-input-style" type="email" name="email" required>
+                <input oninput="var str = this.value; this.value=str.toLowerCase();"  class="form-input-style" type="email" name="email" required>
               </div>
-              <div class="submit-container">
+              <div class="submit-container mb-10px">
                 <input class="submit-btn" type="submit" name='student-login' value="Login">
               </div>
               <div id="student-login-message"></div>

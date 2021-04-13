@@ -31,9 +31,8 @@
 		background: white;
 		padding: 10px;
 		border-radius: 5px;
-    border: 0.5px solid #bdc3c7;
-    margin-left: 5px;
-    margin-right: 5px;
+    border: 0.5px solid #e4e4e4;
+	margin: 13px;
 	}
 	</style>
 	<?php include 'includes/header.php'; ?>
@@ -62,7 +61,7 @@
 		document.getElementsByClassName('formatted')[index].disabled = false;
 		document.getElementsByClassName('question-id')[index].disabled = false;
 		document.getElementsByClassName('edit-icon')[index].style.display = 'none';
-		document.getElementsByClassName('update-question')[index].style.display = 'block';
+		document.getElementsByClassName('update-question')[index].style.display = 'flex';
 	}
 </script>
 	<div  class="my-3 my-md-5">
@@ -127,17 +126,15 @@ echo "</div>";
                       $row = $result->fetch_assoc();
                       $Quiz =  $row['quiz_name'];
                       $QueNum = $row['number_of_questions'];
-                    
         		$sql = "SELECT * FROM question_bank WHERE quiz_id='$_POST[exam_id]'";
         		$result = mysqli_query($conn,$sql);
-        		
         		$i=1;
               ?>
-							<div class="card">
+							<div class="card"  style="border:none;">
 								<div class="card-header">
 									<h3 class="card-title">Edit Questions (<?php echo $Quiz;?>)</h3>
 								</div>
-								<div id="all-questions" class="card-body">
+								<div id="all-questions" class="card-body" >
 									<form action="update_questionnaire.php" method="post">
 										<?php 
 								 			while($row = $result->fetch_assoc())

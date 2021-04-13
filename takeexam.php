@@ -96,7 +96,7 @@
 					<?php 
 						if($negativeMarking == 0)
 							echo 'No Negative Marking'; 
-						else echo 'Negative Marking : '.$negativeMarking;
+						else echo 'Negative Marking Per Question : -'.$negativeMarking;
 					?>
 				</span>
 				<span style="font-size:12px;"> Certification : <?php echo $passingPercentage.'%'; ?></span>
@@ -457,7 +457,7 @@ $t = 0;
 			}
 			document.getElementsByClassName('next-prev-sub-container')[0].style.width = bodyWidth + 18+ 'px'
 		}
-		setQuestionHeaderWidth(0)
+		// setQuestionHeaderWidth(0)
 
 		function setQuestionContainerHeight(){
 			let x = document.getElementsByClassName('progress-sm')[0].offsetTop
@@ -470,7 +470,7 @@ $t = 0;
 				q[i].style.minHeight = y-x-395 + 'px'
 			}
 		}
-		setQuestionContainerHeight()
+		// setQuestionContainerHeight()
 		resizeWindowElements()
     </script>
 <script>

@@ -4390,6 +4390,8 @@ input[type="button"].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 40, 100, 0.12);
   border-radius: 3px;
+  padding-bottom: 10px;
+
 }
 
 .card > hr {
@@ -18826,3 +18828,46 @@ a{
     font-weight: bold;
     font-size: 14px;
   }
+
+  
+.input-container-style{
+    position: relative;
+    margin-bottom: 15px;
+}
+.input-container-style > input{
+    border : 0.5px solid rgba(0,0,0,0.5);
+    border-radius: 3px;
+    height: 50px;
+    padding : 0px 15px;
+    width: 300px;
+    font-size : 18px;
+}
+
+.input-container-style > input:focus{
+    outline : none;
+    border-color: rgba(0,0,255,0.5);
+    box-shadow: 0px 0px 0px 3px rgba(0,0,255,0.2);
+    transition: 400ms;
+}
+
+.input-container-style > label{
+    position: absolute;
+    left : 8px;
+    top : -10px;
+    background: white;
+    padding : 0px 3px;
+    color : blue;
+    transition: 400ms;
+    font-size: 14px;
+}
+
+.flex-col{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mb-10px{
+  margin-bottom: 10px;
+}

@@ -143,6 +143,7 @@ var T = 0;
       temp =  temp - 60*min;
       sec = temp%60;
       var x = document.getElementsByClassName("timer-test");
+      x[0].style.display = 'block'
       if(min<10)
         min = "0"+min;
       if(sec<10)
@@ -315,13 +316,13 @@ const unregisterOpenTab = () => {
 
 function resizeWindowElements(){
   
-  setQuestionHeaderWidth(0)
-  setQuestionContainerHeight()
   document.getElementsByClassName('exam-status')[0].style.display = 'flex'
-  if ($(window).height() <= 400){
+  if ($(window).height() <= 600){
     document.getElementsByClassName('exam-status')[0].style.display = 'none'
   }
-  $('#show-question-switch').click()
+  setQuestionHeaderWidth(0)
+  setQuestionContainerHeight()
+  // $('#show-question-switch').click()
 }
 $(window).resize(function() {
   resizeWindowElements()

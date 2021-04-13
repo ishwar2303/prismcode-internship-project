@@ -13,8 +13,8 @@
      ?>
      <script type="text/javascript">
        document.getElementById('delete-all-attempts').style.display='none';
-       document.getElementsByClassName('print-result')[0].style.display = 'none';                       
-       timerSetToRotateIcon();
+       document.getElementsByClassName('print-result')[0].style.display = 'none';
+       document.getElementById('reload-leaderboard-btn').innerHTML = '<i id="reload-leaderboard-icon" class="fas fa-redo-alt"></i><span style="font-size: 15px;">Reload</span>'
      </script>
      <?php
      return;
@@ -33,8 +33,6 @@
                 while($row = $result->fetch_assoc())
                 {
                     ?>
-
-
                   <tr>                                                 <!-- Passed -->
                     <td>                                                 <!-- | -->
                       <span class="text-muted"><?php echo $i;?></span>                  <!-- | -->  
@@ -116,8 +114,8 @@
        document.getElementsByClassName('print-result')[0].style.display = 'block';
 
        document.getElementById('delete-all-attempts').style.display='flex';
-       document.getElementsByClassName('print-result')[0].style.display = 'flex';                          
-       timerSetToRotateIcon();
+       document.getElementsByClassName('print-result')[0].style.display = 'flex';  
+       document.getElementById('reload-leaderboard-btn').innerHTML = '<i id="reload-leaderboard-icon" class="fas fa-redo-alt"></i><span style="font-size: 15px;">Reload</span>'
      </script>
                 <?php
             }
@@ -125,8 +123,8 @@
               ?>
               <script type="text/javascript">
        document.getElementById('delete-all-attempts').style.display='none';
-       document.getElementsByClassName('print-result')[0].style.display = 'none';                          
-       timerSetToRotateIcon();
+       document.getElementsByClassName('print-result')[0].style.display = 'none';
+       document.getElementById('reload-leaderboard-btn').innerHTML = '<i id="reload-leaderboard-icon" class="fas fa-redo-alt"></i><span style="font-size: 15px;">Reload</span>'
               </script>
               <?php
             }
