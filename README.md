@@ -1,6 +1,6 @@
 # QuizWit
 
-QuizWit is a MCQ Quiz application in PHP.
+QuizWit is a Multiple Choice Questions based Quiz application in PHP.
 
 It is designed to be lightweight, easy to use and extendable.
 
@@ -16,7 +16,8 @@ It is designed to be lightweight, easy to use and extendable.
 3. Expand Quiz
 4. Delete Quiz
 5. Quiz Status
-- Status(Active, Inactive)
+--Active
+--Inactive
 6. Public Access
 - Exam Key (conceal, Reveal)
 - Evaluation  (conceal, Reveal)
