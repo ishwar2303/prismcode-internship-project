@@ -38,28 +38,30 @@
     .updated-successfully{
       position: absolute;
       left: 50%;
-      top: 50%;
-      transform: translate(-50%,-50%);
-      background: #27ae60;
+      top: 100px;
+      transform: translate(-50%,0%);
+      background: #68a030;
       color: white;
-      border-radius: 5px;
-      padding: 5px 10px; 
+      border-radius: 3px;
+      padding: 15px 20px; 
       z-index: 4;
       position: fixed;
       display: none;
+      min-width: 250px;
     }
     .deleted-successfully{
       position: absolute;
       left: 50%;
-      top: 50%;
-      transform: translate(-50%,-50%);
-      background: #e74c3c;
+      top: 100px;
+      transform: translate(-50%,0%);
+      background: #cd201f;
       color: white;
-      border-radius: 5px;
-      padding: 5px 10px; 
+      border-radius: 3px;
+      padding: 15px 20px; 
       z-index: 4;
       position: fixed;
       display: none;
+      min-width: 250px;
     }
     .set-container{
       position: relative;
@@ -205,35 +207,33 @@
     }
     .image-input-container{
       position: relative;
-      margin: 15px;
+      margin: 15px 0px;
 
     }
     .image-input-container > input{
       margin-left: 41px;
     }
     .choose-image-wrapper{
-     position: absolute;
      height: 35px;
-     width: 340px;
-     background: ; 
-     top : -3px;
-     left : -15px;
      display: flex;
+    }
+    #choose-input-field{
+      display: none;
     }
     #choose-img-btn{
       height: 100%;
-      width: 47%;
       display: flex;
-      padding-left: 5px;
+      padding: 0px 10px;
+      font-size: 13px;
       align-items: center;
-      background: white;
+      background: #6d6d6d;
+      color: white;
      border : 0.5px solid #bdc3c7;
-     border-radius: 5px;
+     border-radius: 3px;
      justify-content: center;
      cursor: pointer;
     }
     #choose-img-btn:hover{
-      box-shadow: 0px 0px 0px 2px rgba(0, 153, 255,0.3);
     }
     .profile-photo-container{
       display: flex;
@@ -254,6 +254,7 @@
     .open-close-sidebar{
       z-index: 3;
     }
+    #
      </style>
     
     
@@ -375,7 +376,7 @@
         position: fixed;
         left: 0px;
         top : 0px;
-        width: 180px;
+        width: 200px;
         z-index: 4;
         display: none;
        }
@@ -437,34 +438,48 @@
         display: none;
       }
       .print-result{
-        width: 100px;
+        /* width: 100px; */
         height: 30px;
         border-radius: 3px;
         color : white;
         border : none;
         box-shadow: 0px 0px 1px 0px black;
         background: #2980b9;
+        font-size: 12px;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+        padding: 0px 10px;
+      }
+      .print-result i{
+        margin-right: 10px;
       }
       .print-result:focus{
         outline : none;
       }
       .reload-leaderboard{
-        width: 100px;
+        /* width: 100px; */
         height: 30px;
         border-radius: 3px;
         color : white;
         border : none;
         box-shadow: 0px 0px 1px 0px black;
-        background: #27ae60;
-        font-size: 14px; 
+        background: #90908f;
+        font-size: 12px; 
         cursor: pointer;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+        margin-right: 5px;
+        padding: 0px 10px;
 
+      }
+      
+      .reload-leaderboard:focus{
+        outline: none;
+      }
+      .reload-leaderboard > i{
+        margin-right: 10px;
       }
       .reaload-leaderboard:hover{
         background: #2980b9;
@@ -473,31 +488,33 @@
         display: flex;
         margin-top: 5px;
         flex-direction: column;
-        padding: 0px 25px;
+        padding: 0px 20px;
       }
       .reload-print-container{
         display: flex;
-        justify-content: space-between;
+        /* justify-content: space-between; */
         margin-top: 5px;
         width: 415px;
       }
       #delete-all-attempts{    
-        width: 211px;
+        /* width: 211px; */
         height: 30px;
         border-radius: 3px;
         color : white;
         border : none;
         box-shadow: 0px 0px 1px 0px black;
-        background: #e74c3c;
-        font-size: 14px; 
+        background: #cd201f;
+        font-size: 12px; 
         cursor: pointer;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+        margin-right: 5px;
+        padding: 0px 10px;
       }
       
-      #delete-all-attempts > i{
-        margin-right: 5px;
+      #delete-all-attempts  i{
+        margin-right: 10px;
       }  
       #delete-all-attempts:hover{
         background: #c0392b;
@@ -631,7 +648,6 @@
       }
       function hideMessage(){
         document.getElementsByClassName('updated-successfully')[0].style.display='none';
-
         document.getElementsByClassName('deleted-successfully')[0].style.display='none';
       }
 </script>
@@ -663,7 +679,7 @@
       box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
     }
     #cancel:hover, #confirm:hover{
-      box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
+      box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 30%);
     }
     .custom-confirmation > div{
       display: flex;
@@ -787,7 +803,7 @@
 
   }
   #delete-no:hover{
-    /* background: #e74c3c; */
+    /* background: #cd201f; */
     box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
   }
 </style>
@@ -845,7 +861,7 @@
 </div>
   <div class="custom-confirmation">
     <div>
-      <div>Are You Sure!</div>
+      <div style="color: #cd201f;font-weight: bold;">Are You Sure!</div>
       <div class="custom-btn-container">
         <button id="cancel">No</button>
         <button id="confirm">Yes</button>

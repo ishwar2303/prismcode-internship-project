@@ -26,12 +26,12 @@ require_once('connection.php');
 	     $sql = "UPDATE quizes SET quiz_name='$quiz_name', difficulty_level='$level', description='$description', is_active='$state', Exam_key='$key', time_duration='$time', marks_per_question='$marks', negative_marking='$negative', passing_percentage='$passing' WHERE quiz_id='$quizID'";
 	     mysqli_query($conn,$sql) or die(mysqli_error($conn));
 	     $_SESSION['message'] = 'Quiz Updated Successfully';
-	     $_SESSION['color'] = '#27ae60';
+	     $_SESSION['color'] = '#68a030';
 	     header('Location: admin_dashboard.php');
  	}
  	else {
  		$_SESSION['message'] = 'Something Went Wrong!';
- 		$_SESSION['color'] = '#e74c3c';
+ 		$_SESSION['color'] = '#cd201f';
 	     header('Location: admin_dashboard.php');
  		
  	}

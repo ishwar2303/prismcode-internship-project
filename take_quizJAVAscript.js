@@ -206,7 +206,7 @@ var T = 0;
 
 		function count()       //rebuild
     {
-    console.log('counting')
+    // console.log('counting')
     var x = document.getElementsByClassName('question-switch-container')[0].getElementsByTagName('label');
     var y =  document.getElementsByClassName("selectgroup-input");
     var u = document.getElementsByClassName('uncheck-option');
@@ -227,7 +227,7 @@ var T = 0;
                 x[m].style.background = '#5eba00';
                 x[m].style.color = 'white';
                 u[m].style.display='block';
-                console.log(m)
+                // console.log(m)
                 // qsp[m].style.height = '70px'
                 break;
               }
@@ -261,9 +261,7 @@ var T = 0;
    
     }
     
-function caughtCheating(){
-  alert('bsdk')
-}
+
 function disableNewTabClick() {  
   var listCtrl = document.getElementsByTagName('a');  
   for (var i = 0; i < listCtrl.length; i++) {  
@@ -315,15 +313,15 @@ const unregisterOpenTab = () => {
 // Wrap in an IIFE accepting jQuery as a parameter.
 
 function resizeWindowElements(){
-  
   document.getElementsByClassName('exam-status')[0].style.display = 'flex'
   if ($(window).height() <= 600){
     document.getElementsByClassName('exam-status')[0].style.display = 'none'
   }
-  setQuestionHeaderWidth(0)
+  setQuestionHeaderWidth(toggleSwitch)
   setQuestionContainerHeight()
   // $('#show-question-switch').click()
 }
+
 $(window).resize(function() {
   resizeWindowElements()
   });

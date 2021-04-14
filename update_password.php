@@ -30,8 +30,8 @@
 		
                mysqli_query($conn,$sql);
               $_SESSION['message'] = 'Password Updated';
-              $_SESSION['color'] = '#27ae60';
-              header('location: admin_dashboard.php');
+              $_SESSION['color'] = '#68a030';
+              header('location: index.php?passwordUpdated=true');
 		}
 		else {
               $_SESSION['message'] = 'Password Not matched!';
@@ -42,7 +42,7 @@
 	else {
 
               $_SESSION['message'] = 'Something Went Wrong!';
-              $_SESSION['color'] = '#e74c3c';
+              $_SESSION['color'] = '#cd201f';
               header('location: change_password.php');
           }
 ?>

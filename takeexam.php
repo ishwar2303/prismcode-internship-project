@@ -453,7 +453,7 @@ $t = 0;
 				qs[i].style.width = bodyWidth - 3+ 'px'
 				q[i].style.width = bodyWidth - 4+ 'px'
 				a[i].style.width = bodyWidth - 4+ 'px'
-				console.log(bodyWidth+'px')
+				// console.log(bodyWidth+'px')
 			}
 			document.getElementsByClassName('next-prev-sub-container')[0].style.width = bodyWidth + 18+ 'px'
 		}
@@ -462,7 +462,7 @@ $t = 0;
 		function setQuestionContainerHeight(){
 			let x = document.getElementsByClassName('progress-sm')[0].offsetTop
 			let y = document.getElementsByTagName('body')[0].offsetHeight
-			console.log('remainig height : ' + y-x)
+			// console.log('remainig height : ' + y-x)
 			let z = document.getElementsByClassName('question-answer-container')
 			let q = document.getElementsByClassName('question')
 			for(i=0; i<z.length; i++){
@@ -480,6 +480,7 @@ examStarted()
 $(window).blur(() => {
   checkCookie() // proctoring user via checking if window looses focus
 })
+document.getElementsByClassName('main-container')[0].style.display = 'flex'
 </script>
 
 </body>

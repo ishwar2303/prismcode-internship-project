@@ -137,10 +137,20 @@
 												</div>
 												<input id="choose-input-field" type="file"  name="img">
 											</div>
-										<div class="btn btn-primary ml-auto">
-											<a style="text-decoration: none;" href="remove_profile_photo.php?image_id=<?php echo $image_id;?>&image_name=<?php echo $image_name;?>" class="text-white">Remove
-    </a>
-										</div>	
+											<?php 
+											
+
+											$sql = "SELECT * FROM profile_photo WHERE admin_email='$_SESSION[email]'";
+											$result = mysqli_query($conn,$sql);
+											
+											if($result->num_rows==1){
+											?>
+
+											<div class="btn btn-primary ml-auto">
+												<a style="text-decoration: none;" href="remove_profile_photo.php?image_id=<?php echo $image_id;?>&image_name=<?php echo $image_name;?>" class="text-white">Remove
+		</a>
+											</div>	
+											<?php } ?>
     
 										</div>
 									</div>
@@ -159,25 +169,6 @@
 	</div>		
 
 	<?php include 'includes/scripts.php'; ?>
-	<script type="text/javascript">
-		function setProfilePhoto(){
-			var x = document.getElementById('profile-photo');
-			w = x.width;
-			h = x.height;
-			if(w>h){
-				x.width = '150';
-				var r = h/w;
-				x.height = r*150;
-			}
-			else{
-
-				x.height = '150';
-				var r = w/h;
-				x.width = r*150;
-			}
-		}
-		setProfilePhoto();
-	</script>
 </body>
 
 </html>

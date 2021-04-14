@@ -67,19 +67,19 @@
 						<div class="row">
 							<div style="display: flex;justify-content: center;" class="col-sm-12 col-lg-12">
 								<div class="form-group">
-									<label style="margin-left: 0px" class="form-label">Current Password :</label>
+									<label style="margin-left: 0px" class="form-label">Current Password </label>
 									<input type="Password" name="oldpass" class="form-control change-pass" placeholder="Old Password" required>
 								</div>
 							</div>
 							<div style="display: flex;justify-content: center;" class="col-sm-12 col-lg-12">
 								<div class="form-group">
-									<label style="margin-left: 0px" class="form-label">New Password :</label>
+									<label style="margin-left: 0px" class="form-label">New Password </label>
 									<input type="Password" name="newpass" id="curr-pass" class="form-control change-pass" placeholder="New Password" required>	 
 								</div>
 							</div>
 							<div style="display: flex;justify-content: center;" class="col-sm-12 col-lg-12">
 								<div class="form-group">
-									<label style="margin-left: 0px" class="form-label">Confirm Password :</label>
+									<label style="margin-left: 0px" class="form-label">Confirm Password </label>
 									<input type="Password" name="confpass" id="conf-pass" class="form-control change-pass" placeholder="New Password" oninput="validate_password()" required>	
 									<label id="show-respond"></label> 
 								</div>

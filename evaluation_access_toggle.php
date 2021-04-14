@@ -19,7 +19,7 @@
           mysqli_query($conn,$sql);
           if($toggle == 0){
             $_SESSION['message'] = 'Evaluation Concealed';
-            $_SESSION['color'] = '#27ae60';
+            $_SESSION['color'] = '#68a030';
           }
           else{
             $_SESSION['message'] = 'Evaluation Revealed';
@@ -29,13 +29,13 @@
       }
       else{
             $_SESSION['message'] = 'Something Went Wrong!';
-            $_SESSION['color'] = '#e74c3c';
+            $_SESSION['color'] = '#cd201f';
           header('location: public_access.php');
       }
   }
   else {
             $_SESSION['message'] = 'Something Went Wrong!';
-            $_SESSION['color'] = '#e74c3c';
+            $_SESSION['color'] = '#cd201f';
           header('location: public_access.php');
   }
 ?>

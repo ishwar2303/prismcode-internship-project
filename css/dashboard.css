@@ -4391,9 +4391,8 @@ input[type="button"].btn-block {
   border: 1px solid rgba(0, 40, 100, 0.12);
   border-radius: 3px;
   padding-bottom: 10px;
-
+  padding: 10px;
 }
-
 .card > hr {
   margin-right: 0;
   margin-left: 0;
@@ -4417,6 +4416,7 @@ input[type="button"].btn-block {
 
 .card-title {
   margin-bottom: 1.5rem;
+  padding-left: 2px;
 }
 
 .card-subtitle {
@@ -4437,7 +4437,8 @@ input[type="button"].btn-block {
 }
 
 .card-header {
-  padding: 1.5rem 0.5rem;
+  /* padding: 1.5rem 0.5rem; */
+  padding: 15px;
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 40, 100, 0.12);
@@ -13115,7 +13116,7 @@ a.icon:hover {
 
 .card-header {
   background: none;
-  padding: 0.5rem 0.5rem;
+  padding: 15px;
   display: -ms-flexbox;
   display: flex;
   min-height: 3.5rem;
@@ -18769,6 +18770,7 @@ a{
   height: 85px;
 }
 .card{
+  padding: 10px;
   /* margin-bottom: 0.5rem;  */
 }
 .custom-control{
@@ -18818,7 +18820,9 @@ a{
 .select-prop-format{
   border: 0.5px solid rgba(0,0,0,0.4);
   border-radius: 3px;
-  font-size: 12px;}
+  font-size: 12px;
+  padding: 2px 3px;
+}
   .select-prop-format:focus{
     outline: none;
   }
@@ -18873,4 +18877,44 @@ a{
 }
 .mb-15px{
   margin-bottom: 15px;
+}
+.quiz-action-menu{
+  position: absolute; 
+  left : 115px; top : 2px;
+  z-index: 10;
+  position: fixed;
+}
+.p-img-c{
+
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ecf0f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  margin-top: 3px;
+}
+.gray-highlight{
+  background: #F1F1FB;
+  border-radius: 3px;
+  /* color: white; */
+  padding: 5px 10px;
+  margin-left: 2px;
+}
+  
+@media screen and (max-width:700px){
+  .card{
+    padding: 0;
+  }
+}
+.pd-0{
+  padding: 0px;
+}
+.pd-5px{
+  padding: 5px;
+}
+.mt-10px{
+  margin-top: 10px;
 }

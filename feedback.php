@@ -237,7 +237,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
           }
           else{
             $_SESSION['message'] = 'Message Required!';
-            $_SESSION['color'] = '#e74c3c';
+            $_SESSION['color'] = '#cd201f';
             ?>
             <script type="text/javascript">location.href='feedback.php';</script>
             <?php

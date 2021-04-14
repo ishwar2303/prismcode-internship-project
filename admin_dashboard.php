@@ -20,7 +20,7 @@ if(isset($_SESSION['login_time']))
      }
      else {header('location: admin_logout.php');return;}
 
-                $sql = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]'";
+                $sql = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]' ORDER BY quiz_name";
                 $result = mysqli_query($conn,$sql);
                 while($row = $result->fetch_assoc()){
 
@@ -194,7 +194,7 @@ include('includes/navbar.php');
       </div>
       <?php 
 
-            $temp = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]'";
+            $temp = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]' ORDER BY quiz_name";
             $result = mysqli_query($conn,$temp);
       if($result->num_rows>0){
 
@@ -273,7 +273,7 @@ include('includes/navbar.php');
       }
       else {
         ?>
-        <div style="width: 100%;height: 50vh;font-size: 20px; display: flex;justify-content: center;align-items: center;color: #e74c3c;flex-direction: column;">
+        <div style="width: 100%;height: 50vh;font-size: 20px; display: flex;justify-content: center;align-items: center;color: #cd201f;flex-direction: column;">
           <i style="font-size: 40px; margin-bottom : 25px;" class="fas fa-graduation-cap"></i>
           <label>No Quiz Registered!</label>
         </div>

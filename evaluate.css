@@ -110,7 +110,7 @@ header
     }
     button:hover
     {
-    	background: #e74c3c;
+    	background: #cd201f;
     }
     #main
     {
@@ -134,12 +134,12 @@ header
     #div1
     {
 
-       background: #27ae60;
+       background: #68a030;
   left : 23%;
     }
     #div2
     {
-      background:   #e74c3c;
+      background:   #cd201f;
       left : 43%;    
     }
     #div3

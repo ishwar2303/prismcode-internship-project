@@ -43,14 +43,14 @@
     else{
 
           $_SESSION['message'] = 'Empty Credentials!';
-          $_SESSION['color'] = '#e74c3c';
+          $_SESSION['color'] = '#cd201f';
           header('location: admin_profile.php');
     }
 }
     else{
 
           $_SESSION['message'] = 'Something Went Wrong!';
-          $_SESSION['color'] = '#e74c3c';
+          $_SESSION['color'] = '#cd201f';
      header('location: admin_profile.php');
  }
 ?>

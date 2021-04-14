@@ -29,13 +29,13 @@
      mysqli_query($conn,$sql);
     
      $_SESSION['message'] = 'Quiz Deleted Successfully';
-     $_SESSION['color'] = '#27ae60';
+     $_SESSION['color'] = '#68a030';
      header('location: admin_dashboard.php');
    }
    else{
 
      $_SESSION['message'] = 'Something Went Wrong!';
-     $_SESSION['color'] = '#e74c3cc';   
+     $_SESSION['color'] = '#cd201fc';   
      header('location: admin_dashboard.php');
    }
 ?>

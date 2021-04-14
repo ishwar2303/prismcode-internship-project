@@ -53,7 +53,7 @@ require_once('connection.php');
 				<div class="col-12">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title">
+							<h3 class="card-title pd-0">
 								
 					Add more questions to Questionnaire
 							</h3>
@@ -78,7 +78,7 @@ require_once('connection.php');
 										            }
 												?>
 											</select>
-											<label class="form-label">Number of Questions : </label>
+											<label class="form-label mt-10px">Number of Questions  </label>
 											<input type="number" id="questions" name="question_no" min= "1" max="20" class="form-control select-exam" placeholder="number of question" required>
 											
 										</div>
@@ -138,8 +138,8 @@ echo "</div>";
 			<div class="row row-cards row-deck">
 				<div class="col-12">
 					<div class="card">
-						<div class="card-header">
-							<h3 class="card-title">Fill All Entries (<?php echo $QuizName."  contain $temp questions."; ?>)</h3>
+						<div class="card-header pd-0">
+							<h3 class="card-title gray-highlight"><?php echo $QuizName."  contain $temp questions."; ?></h3>
 						</div>
 						<div class="card-body">
 						<form action="add_questions_to_questionnaire.php" method="post">
@@ -152,61 +152,61 @@ echo "</div>";
             for($i=1;$i<=$n;$i++)
             {
             	?>
-					<div style="margin : 0;" class="row p-4 mb-2 border rounded border-muted">
-											<div class="col-sm-12 col-lg-12">
-												<div class="form-group">
-													<label class="form-label">Question<?php echo  $i; ?></label>
-													<textarea name="question[]" class="form-control" rows="4" placeholder="Question <?php echo  $i; ?>" required></textarea>
-												</div>
-												<div>
-													<label class="formatted-label">Formatted : </label>
-													<select name="formatted[]" class="select-prop-format formatted">
-														<option value="0">No</option>
-														<option value="1">Yes</option>
-													</select>
-												</div>
-											</div>
-											<div class="col-sm-12 col-lg-6">
-												<div class="form-group">
-													<label class="form-label">Option 1</label>
-													<textarea type="text" name="option1[]" class="form-control" placeholder="Option 1"  required></textarea>
-												</div>
-											</div>
-											<div class="col-sm-12 col-lg-6">
-												<div class="form-group">
-													<label class="form-label">Option 2</label>
-													<textarea type="text" name="option2[]" class="form-control" placeholder="Option 2"  required></textarea>
-												</div>
-											</div>
-											<div class="col-sm-12 col-lg-6">
-												<div class="form-group">
-													<label class="form-label">Option 3</label>
-													<textarea type="text" name="option3[]" class="form-control" placeholder="Option 3"  required></textarea>
-												</div>
-											</div>
-											<div class="col-sm-12 col-lg-6">
-												<div class="form-group">
-													<label class="form-label">Option 4</label>
-													<textarea type="text" name="option4[]" class="form-control" placeholder="Option 4"  required></textarea>
-												</div>
-											</div>
-											<div class="col-sm-12 col-lg-12">
-												<div class="form-group">
-													<label class="form-label">Answer</label>
-													<select name="answer[]" class="form-control custom-select" required>
-														<option value='1'>Option 1</option>
-														<option value='2'>Option 2</option>
-														<option value='3'>Option 3</option>
-														<option value='4'>Option 4</option>
-													</select>
-												</div>
-											</div>
-											<div class="col-sm-12 col-lg-12">
-												<div class="form-group">
-													<label class="form-label">Explanation</label>
-													<textarea name="reason[]" class="form-control" rows="4" placeholder="Explanation" ></textarea>
-												</div>
-											</div>		
+					<div style="margin-top : 5px;" class="row p-4 mb-2 border rounded border-muted">
+						<div class="col-sm-12 col-lg-12">
+							<div class="form-group">
+								<label class="form-label">Question <?php echo  $i; ?></label>
+								<textarea name="question[]" class="form-control" rows="4" placeholder="Question <?php echo  $i; ?>" required></textarea>
+							</div>
+							<div>
+								<label class="formatted-label">Formatted : </label>
+								<select name="formatted[]" class="select-prop-format formatted">
+									<option value="0">No</option>
+									<option value="1">Yes</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-12 col-lg-6">
+							<div class="form-group">
+								<label class="form-label">Option 1</label>
+								<textarea type="text" name="option1[]" class="form-control" placeholder="Option 1"  required></textarea>
+							</div>
+						</div>
+						<div class="col-sm-12 col-lg-6">
+							<div class="form-group">
+								<label class="form-label">Option 2</label>
+								<textarea type="text" name="option2[]" class="form-control" placeholder="Option 2"  required></textarea>
+							</div>
+						</div>
+						<div class="col-sm-12 col-lg-6">
+							<div class="form-group">
+								<label class="form-label">Option 3</label>
+								<textarea type="text" name="option3[]" class="form-control" placeholder="Option 3"  required></textarea>
+							</div>
+						</div>
+						<div class="col-sm-12 col-lg-6">
+							<div class="form-group">
+								<label class="form-label">Option 4</label>
+								<textarea type="text" name="option4[]" class="form-control" placeholder="Option 4"  required></textarea>
+							</div>
+						</div>
+						<div class="col-sm-12 col-lg-12">
+							<div class="form-group">
+								<label class="form-label">Answer</label>
+								<select name="answer[]" class="form-control custom-select" required>
+									<option value='1'>Option 1</option>
+									<option value='2'>Option 2</option>
+									<option value='3'>Option 3</option>
+									<option value='4'>Option 4</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-12 col-lg-12">
+							<div class="form-group">
+								<label class="form-label">Explanation</label>
+								<textarea name="reason[]" class="form-control" rows="4" placeholder="Explanation" ></textarea>
+							</div>
+						</div>		
 										</div>
 				<?php
 

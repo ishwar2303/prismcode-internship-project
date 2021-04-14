@@ -87,124 +87,8 @@
       
   document.cookie = "userproctored=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 </script>
-<style type="text/css">
-  #select-exam{
-  width: 310px;
-  height: 40px;
-  margin-top: 10px;
-  border-radius : 5px;
-  border : 0.5px solid #bdc3c7;
-}
-#key{
-  width: 300px;
-  height: 40px;
-  margin-top: 10px;
-  border-radius : 5px;
-  border : 0.5px solid #bdc3c7;
-  padding: 0px 5px;
-}
-#key:focus{
-  outline : none;
-  box-shadow: 0px 0px 0px 4px rgba(52, 152, 219,0.3); 
-  border-color: #3498db;
-}
-#select-exam:focus{
-  outline : none;
-}
-.field-container{
-  display: flex;
-  flex-direction: column;
-}
-form{
-  padding: 25px;
-  border-radius: 5px;
-  margin : 0px 5px;
-}
-.form-container
-{
-  display: flex;
-  justify-content: center;
-  padding-top: 100px;
-}
-#next-btn{
-  width: 310px;
-  height: 40px;
-  margin-top: 10px;
-  border-radius : 5px;
-  /* border : 0.5px solid #bdc3c7; */
-  font-weight: 500;
-  background: #296389;
-  border: none;
-  color: white;
-}
-#next-btn:focus{
-  outline : none;
-}
-#next-btn:hover{
-  background: #296389;
-  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
-}
-footer{
-  background: #4b4b4b;
-  color: white;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.wrapper{
-  height: 92vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-@media screen and (max-width: 380px){
-  .form-container{
-    width: 95%;
-  }
-  #select-exam{
-    width : 280px;
-  }
-  #next-btn{
-    width: 280px;
-  }
-  #key{
-    width: 270px;
-  }
-  form{
-    padding: 25px 15px; 
-  }
-}
-#myform{
-  
-  box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
-}
-.logged-in-as{
-  color: #000;
-  margin-bottom: 15px;
-  font-weight: bold;
-}
-.highlight-email{
-  background: #5d925f;
-  padding: 5px 10px;
-  color: white;
-  border-radius: 3px;
-  font-weight: 300;
-}
-.mr-5px{
-  margin-right: 5px;
-}
-* {
-    -webkit-touch-callout:none;
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
-}
-</style>
-<script src="js/stop-copy-paste.js"></script>
+      <!-- <script src="js/stop-copy-paste.js"></script> -->
+      <link rel="stylesheet" href="css/custom/select_exam.css">
 </head>
 <?php if($num>0)
 {
@@ -281,8 +165,8 @@ else{
 
               ?>
               <div style="height: 85vh;width: 100%; display: flex;flex-direction: column;justify-content: center;align-items: center; " class="robot-img-container">
-                <label><img style="width : 150px; height: 150px;" src="images/robot_sticker.png"></label>
-                <label style=" color : #e74c3c; font-weight: bold;">Currently No Quizes are available!</label>
+                <!-- <label><img style="width : 150px; height: 150px;" src="images/robot_sticker.png"></label> -->
+                <label style="margin-left : 50px; color : #cd201f;font-size:16px;"><i class="fas fa-exclamation-circle"></i>  Currently No Quiz is available!</label>
               </div>
               <?php
 }
@@ -293,14 +177,14 @@ else{
     </div>
     <div  class="already-given-exam-popup">
       <div class="small-popup">
-        <span style="width: 100%;height: 30px;display: flex;justify-content: center;align-items: center;color : #e74c3c;"><i class="fas fa-exclamation-circle mr-5px"></i>  Already made an attempt!</span>
+        <span style="width: 100%;height: 30px;display: flex;justify-content: center;align-items: center;color : #cd201f;"><i class="fas fa-exclamation-circle mr-5px"></i>  Already made an attempt!</span>
       <span onclick="hideAlreadyGivenExamPopup()" class="close-smallpopup">Close</span>
       </div>
      
     </div>
     <div class="incorrect-key">
       <div class="small-popup">
-        <span style="width: 100%;height: 30px;display: flex;justify-content: center;align-items: center;color : #e74c3c;"><i class="fas fa-exclamation-circle mr-5px"></i>  Incorrect Key!</span>
+        <span style="width: 100%;height: 30px;display: flex;justify-content: center;align-items: center;color : #cd201f;"><i class="fas fa-exclamation-circle mr-5px"></i>  Incorrect Key!</span>
       <span onclick="hideIncorrectKeypopup()" class="close-smallpopup">Close</span>
       </div>
     </div>

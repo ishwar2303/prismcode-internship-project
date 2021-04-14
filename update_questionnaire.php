@@ -37,7 +37,7 @@
       $i = $i + 1;
     }
     $_SESSION['message'] = 'Questionnaire Updated';
-    $_SESSION['color'] = '#27ae60';
+    $_SESSION['color'] = '#68a030';
     unset($_SESSION['ques_update_set']);
     header('location: admin_dashboard.php');
 ?>

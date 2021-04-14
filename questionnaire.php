@@ -76,7 +76,7 @@
 							</h3>
 						</div>
 						<div class="card-body1">
-							<form action="questionnaire.php" method="POST">
+							<form action="questionnaire.php" method="POST" class="pd-5px">
 								<div class="row">
 									<div class="col-sm-12 col-lg-12">
 										<div class="form-group">
@@ -85,18 +85,26 @@
 												<option value disabled> -- Select--</option>
 												<?php 
         
-												$temp = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]' ORDER BY quiz_name";
+													$temp = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]' ORDER BY quiz_name";
 										                 $result = mysqli_query($conn,$temp);
 
+													$e_id = -1;
+													if(isset($_POST['exam_id'])){
+													$e_id = $_POST['exam_id'];
+													}
 										            while($row = $result->fetch_assoc())
 										            {  
+														if($e_id == $row['quiz_id']){
+															$selected = 'selected';
+														}
+														else $selected = '';
 										                  if($row['number_of_questions']>0)
 										                  {  
-										                	echo "<option value='$row[quiz_id]'>$row[quiz_name]</option>";
+										                	echo "<option value='$row[quiz_id]' $selected>$row[quiz_name]</option>";
 										                  }
-										                  else{
-										                  	echo "<option value='$row[quiz_id]' disabled>$row[quiz_name] (0 Questions)</option>";
-										                  }
+										                //   else{
+										                //   	echo "<option value='$row[quiz_id]' disabled>$row[quiz_name] (0 Questions)</option>";
+										                //   }
 										            }
 										            
 												?>
@@ -131,8 +139,8 @@ echo "</div>";
         		$i=1;
               ?>
 							<div class="card"  style="border:none;">
-								<div class="card-header">
-									<h3 class="card-title">Edit Questions (<?php echo $Quiz;?>)</h3>
+								<div class="">
+									<h3 class="card-title gray-highlight"><?php echo $Quiz;?></h3>
 								</div>
 								<div id="all-questions" class="card-body" >
 									<form action="update_questionnaire.php" method="post">
@@ -325,7 +333,7 @@ echo "</div>";
 									 	
 ?>
 	<hr>
-		<div class="explaining-feature">
+		<!-- <div class="explaining-feature">
 			<h4>Select a Quiz</h4>
 			<h5>To Update a Question</h5>
 			<ul>
@@ -340,7 +348,7 @@ echo "</div>";
 			</ul>
 			<br>
 			<h5>To add more Questions in this Quiz use EXPAND QUIZ FEATURE</h5>
-		</div>
+		</div> -->
 
 	<?php include 'includes/scripts.php'; ?>
 	</body>

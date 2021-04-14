@@ -55,12 +55,12 @@
          $last_id = $conn->insert_id;
          $_SESSION['quiz_id'] = $last_id;
          $_SESSION['message'] = 'Quiz Created Successfully';
-         $_SESSION['color'] = '#27ae60';
+         $_SESSION['color'] = '#68a030';
          header('location: question_feed.php');
     }
     else{
     $_SESSION['message'] = 'Something Went Wrong!';
-    $_SESSION['color'] = '#e74c3c';
+    $_SESSION['color'] = '#cd201f';
     header('location: createquiz.php');
     }
 ?>

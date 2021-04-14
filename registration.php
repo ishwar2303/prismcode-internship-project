@@ -25,7 +25,7 @@
             $error_msg = 'Invalid First Name';
             array_push($error_messages, $error_msg);
         }
-        if(!alphaSpaceValidation($lastname)){
+        if($lastname!= '' && !alphaSpaceValidation($lastname)){
             $error_msg = 'Invalid Last Name';
             array_push($error_messages, $error_msg);
         }
@@ -71,7 +71,7 @@
         }
 
         if($dob == ''){
-            $error_msg = 'Date required';
+            $error_msg = 'Date of Birth required';
             array_push($error_messages, $error_msg);
         }
         else{

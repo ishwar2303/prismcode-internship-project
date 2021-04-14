@@ -115,16 +115,17 @@
 
        document.getElementById('delete-all-attempts').style.display='flex';
        document.getElementsByClassName('print-result')[0].style.display = 'flex';  
-       document.getElementById('reload-leaderboard-btn').innerHTML = '<i id="reload-leaderboard-icon" class="fas fa-redo-alt"></i><span style="font-size: 15px;">Reload</span>'
+       document.getElementById('reload-leaderboard-btn').innerHTML = '<i id="reload-leaderboard-icon" class="fas fa-redo-alt"></i><span">Reload</span>'
      </script>
                 <?php
             }
             else {
               ?>
+              <div style="color: #cd201f;padding:25px;"><i class="fas fa-exclamation-circle"></i>  No attempts were found for this exam</div>
               <script type="text/javascript">
        document.getElementById('delete-all-attempts').style.display='none';
        document.getElementsByClassName('print-result')[0].style.display = 'none';
-       document.getElementById('reload-leaderboard-btn').innerHTML = '<i id="reload-leaderboard-icon" class="fas fa-redo-alt"></i><span style="font-size: 15px;">Reload</span>'
+       document.getElementById('reload-leaderboard-btn').innerHTML = '<i id="reload-leaderboard-icon" class="fas fa-redo-alt"></i><span">Reload</span>'
               </script>
               <?php
             }

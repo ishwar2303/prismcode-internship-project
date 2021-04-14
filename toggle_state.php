@@ -34,19 +34,19 @@
           }
           else{
             $_SESSION['message'] = 'Active';
-            $_SESSION['color'] = '#27ae60';
+            $_SESSION['color'] = '#68a030';
           }
           header('location: exam_status.php');
       }
       else{
             $_SESSION['message'] = 'Something Went Wrong!';
-            $_SESSION['color'] = '#e74c3c';
+            $_SESSION['color'] = '#cd201f';
           header('location: exam_status.php');
       }
   }
   else {
             $_SESSION['message'] = 'Something Went Wrong!';
-            $_SESSION['color'] = '#e74c3c';
+            $_SESSION['color'] = '#cd201f';
           header('location: exam_status.php');
   }
 ?>

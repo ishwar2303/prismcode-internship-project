@@ -89,7 +89,7 @@ $(document).ready(function(){
    <div class="col-12">
      <div class="card">
        <div class="card-header">
-         <h4 class="card-title">Create Quiz</h4>
+         <h4 class="card-title" style="margin-left:10px;">Create Quiz</h4>
        </div>
        <div class="card-body">
          <form id="create_exam_form" action ="insert_quiz_details.php" method="POST" onsubmit="return validation()">
@@ -130,7 +130,7 @@ $(document).ready(function(){
              <textarea id="description" onkeyup="$('#character_count').text(this.value.length);" maxlength="1500" class="form-control" name="description" rows="4" placeholder="Quiz Description..." required></textarea>
              <div style="top:143px;" class="help-hint">
                  Give a detailed description that explains about the Quiz. Visitors can see the description on home page.
-                 There is no need to write number of question or time alloted as it will be already mention.
+                 There is no need to write number of question or time allotted as it will be already mention.
                </div>
              </div>
            </div>
@@ -139,7 +139,7 @@ $(document).ready(function(){
                <label class="form-label">Number of Questions</label>
                <input id="questions" type="number" min= "1" max="100" name="question_num" class="form-control" placeholder="Number of Questions" value required>
                <div class="help-hint">
-                 You can add more questions to your quiz at any time using expand quiz in Quiz Action.
+                 You can add more questions to a quiz using expand quiz option in Quiz Action.
                </div>
              </div>
            </div>

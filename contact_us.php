@@ -124,7 +124,7 @@
         }
         else{
         $_SESSION['message'] = 'Subject And Message Required!';
-        $_SESSION['color'] = '#e74c3c';
+        $_SESSION['color'] = '#cd201f';
         ?>
         <script type="text/javascript">location.href='contact_us.php';</script>
         <?php 

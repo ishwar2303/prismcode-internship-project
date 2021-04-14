@@ -43,18 +43,22 @@
                       <select  name="exam_id" class="form-control custom-select select-exam">
                         <option value disabled>Select Quiz</option>
                         <?php 
-                      
-                      $temp = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]' ORDER BY quiz_name";
-                               $result = mysqli_query($conn,$temp);
+                          $temp = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]' ORDER BY quiz_name";
+                          $result = mysqli_query($conn,$temp);
 
+                          $e_id = -1;
+                          if(isset($_POST['exam_id'])){
+                            $e_id = $_POST['exam_id'];
+                          }
                           while($row = $result->fetch_assoc())
                           {
                             $sql = "SELECT * FROM question_bank WHERE quiz_id='$row[quiz_id]'";
                             $temp = mysqli_query($conn,$sql);  
                             if($temp->num_rows>0)
                               {  
-                              
-                                  echo "<option  value='$row[quiz_id]'>$row[quiz_name]</option>";
+                                if($e_id == $row['quiz_id'])
+                                  echo "<option  value='$row[quiz_id]' selected>$row[quiz_name]</option>";
+                                else echo "<option  value='$row[quiz_id]'>$row[quiz_name]</option>";
                               }
                           }
                           
@@ -112,7 +116,7 @@
                     <div class="reload-print-container">
                       <button  class="reload-leaderboard" id="reload-leaderboard-btn">
                         <i id="reload-leaderboard-icon" class="fas fa-redo-alt"></i>
-                        <span style="font-size: 15px;">Reload</span>
+                        <span>Reload</span>
                       </button>
                       <button  id="delete-all-attempts"><span><i class="fas fa-trash-alt"></i></span><span>Delete All Attempts</span></button>
                       <button style="background: #4b4b4b;" onclick="printLeaderboard()" class="print-result"><span><i class="fas fa-print"></i></span><span>Print</span></button>
@@ -121,6 +125,8 @@
                     <script type="text/javascript">
                       $(document).ready(function(){
                         $(".reload-leaderboard").eq(0).click(function(){
+                          let reIcon = document.getElementById('reload-leaderboard-icon')
+                          reIcon.className = 'fas fa-redo-alt fa-spin'
                           var url = 'delete_attempt.php';
                           $("#quiz-leaderboard-info").load(url,{
                             quizID : <?php echo $_POST['exam_id'];?>
@@ -227,8 +233,8 @@
             ?>
               <label style="display: flex;justify-content: space-evenly;align-items: center;height: 50vh;flex-direction: column;">
                <!-- <i style="font-size: 80px;" class="far fa-frown"></i> -->
-               <label><?php echo $row['quiz_name'];?></label>
-               <label style="font-size : 18px;">No student has given Quiz yet!</label>
+               <label style="color: #cd201f;font-size: 20px;font-weight: bold;"><?php echo $row['quiz_name'];?></label>
+               <label style="font-size : 18px;color: #cd201f;"><i class="fas fa-exclamation-circle"></i> No student has given Quiz yet!</label>
               </label>
             <?php
           }

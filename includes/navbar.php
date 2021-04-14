@@ -1,6 +1,5 @@
    <!-- Sidebar -->
-   <ul style="
- background: linear-gradient(45deg, #2980b9, #3498db);position: absolute;position: fixed;" class="navbar-nav sidebar sidebar-dark accordion open-close-sidebar" id="accordionSidebar">
+   <ul style="max-height:100vh;overflow-y:auto;overflow-x:hidden;background: linear-gradient(45deg, #2980b9, #3498db);position: absolute;position: fixed;" class="navbar-nav sidebar sidebar-dark accordion open-close-sidebar" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
@@ -71,12 +70,12 @@
     }
   ?>
 <?php if($quizControl){?>
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+  <a class="nav-link collapsed" style="position:relative;" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
     <i class="fas fa-tools"></i>
     <span>Quiz Action</span>
   </a>
 <?php }?>
-  <div id="collapseUtilities" style=" position: absolute; left : 115px; top : 2px;" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+  <div id="collapseUtilities" class="collapse quiz-action-menu" style="position:absolute;left: 100px;top: 200px;;position:fixed;" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
     <div style="border : 0.5px solid #cbb09b;" class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Action:</h6>
       <?php if($control){?>
@@ -190,8 +189,8 @@ if($control){
                     else $image_name = "default_image.png";
                   ?>
                 </span>
-                <span style="border-radius: 50%;overflow:hidden;background: #ecf0f1;display: flex;justify-content: center;align-items: center;width: 40px;height: 40px;">
-                  <img id="menu-circle-photo"  src="profile_photo/<?php echo $image_name; ?>" >
+                <span class="p-img-c" >
+                  <img id="menu-circle-photo"  src="profile_photo/<?php echo $image_name; ?>" style="max-width:100%;">
                 </span>
               </a>
               <!-- Dropdown - User Information -->
@@ -225,25 +224,6 @@ if($control){
     <i class="fas fa-angle-up"></i>
   </a>
 
-<script type="text/javascript">
-    function circlePhoto(){
-      var x = document.getElementById('menu-circle-photo');
-      w = x.width;
-      h = x.height;
-      if(w>h){
-        x.width = '40';
-        var r = h/w;
-        x.height = r*40;
-      }
-      else{
-
-        x.height = '40';
-        var r = w/h;
-        x.width = r*40;
-      }
-    }
-  circlePhoto();
-</script>
 
 
   

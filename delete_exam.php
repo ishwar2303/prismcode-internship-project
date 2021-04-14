@@ -39,7 +39,7 @@
 						<form action="delete_exam_query.php" method="POST" onsubmit="return confirmation()">
 							<div class="col-sm-12 col-lg-12">
 								<div class="form-group">
-									<label class="form-label">Select Quiz :</label>
+									<label class="form-label">Select Quiz </label>
 									<select name="exam_id" class="form-control custom-select select-exam">
 										<option disabled>---select---</option> 
 										<?php 

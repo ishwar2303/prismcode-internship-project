@@ -94,6 +94,7 @@
     <link href="css/materialize.css" rel="stylesheet">
      <link href="css/dashboard.css" rel="stylesheet">
      <link rel="stylesheet" href="css/sb-admin-2.css">
+     <link rel="stylesheet" href="css/custom/evaluate-exam.css">
      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <script type="text/javascript">
@@ -140,274 +141,6 @@
       </script>
     
   
-    <style type="text/css">#thank{
-          width: 80%;
-          height: 15px;
-          font-size: 35px;
-        }
-      
-        .brand{
-            background: #cbb09b !important;
-            border-radius: 15px;
-        }
-        .brand-text{
-            color:  #cbb09b !important;
-            
-        }
-        .brand-logo{
-            border-radius: 15px;
-        
-        }
-        .container
-        {
-            width : 100%;
-        }
-        .margin-print{
-          margin-top: 12px;
-        }
-        #main
-        {
-            width : 50px;
-            height :50px;
-            
-            position: absolute;
-            right : 49.8%;
-            font-size: 3rem;
-        }
-        form{
-            max-width: 460px;
-            margin: 20px auto;
-            padding: 40px;
-            border-radius: 15px;
-        }
-        img {
-            position: absolute;
-            left:3%;
-            border-radius: 15px;
-            padding: 5px;
-            width: 150px;
-
-
-        }
-        #thank{
-          width: 100%;
-          height: 15px;
-          font-size: 17px;display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-    </style>
-    <style type="text/css">
-      @media screen and (max-width: 700px){
-        #thank{
-          width: 80%;
-          height: 15px;
-          font-size: 18px;display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        #feedback-link{
-          width: 70%;
-          height: 50px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-      }
-      .question-answer{
-        display: none;
-      }
-      .up-arrow-container, .down-arrow-container{
-        width: 35px;
-        height: 35px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-        cursor: pointer;
-        color: black;
-        margin-bottom: 0;
-      }
-
-      .up-arrow-container:hover, .down-arrow-container:hover{
-        background: #ecf0f1;
-        color: black;
-      }
-      .up-arrow-container{
-        display: none;
-      }
-      .up-arrow-container > span, .down-arrow-container > span{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .feedback-btn{
-        border-radius: 3px;
-        background: #2980b9;
-        color: white;
-        width: 200px;
-        height: 40px;
-        border : none;
-        margin-top: 25px;
-      }
-      .feedback-btn:hover{
-        background: #3498db;
-    box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
-      }
-      .feedback-btn:focus{
-        outline: none;
-      }
-      .skip-btn{
-        background: #2c3e50;
-        margin-top: 15px;
-        border-radius: 3px;
-        color: white;
-        width: 200px;
-        height: 40px;
-        border : none;
-      }
-      .skip-btn:hover{
-    box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
-      background : #34495e;
-      }
-      .skip-btn:focus{
-        outline : none;
-      }
-      .print-question-paper{
-        position: absolute;
-        top : 60px;
-        right: 0px;
-        position: fixed;
-        height: 55px;
-        width: 250px;
-        border-radius: 10px;
-        background: #2980b9;
-        color: white;
-        padding: 0px 10px;
-        border : 0.5px solid #bdc3c7;
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-        display: flex;
-        font-size: 17px;
-        z-index: 3;
-      }
-      #left-arrow-container{
-        font-size: 22px;
-        display: none;
-        border-right: 1px solid white;
-        padding-right: 10px;
-        height: 100%;
-        line-height: 55px;
-        cursor: pointer;
-      }
-      #right-arrow-container{
-        font-size: 22px;
-        border-right: 1px solid white;
-        padding-right: 10px;
-        height: 100%;
-        line-height: 55px;
-        cursor: pointer;
-      }
-      #book-print-container{
-        font-size: 19px;
-        display: flex;
-        justify-content: space-evenly;
-        font-weight: bold;
-        flex : 1;
-        line-height: 55px;
-        background: #3498db;
-        cursor: pointer;
-      }
-      @media screen and (max-width: 700px){
-        .print-question-paper{
-          right: -216px;
-        }
-        #right-arrow-container{
-          display: none;
-        }
-        #left-arrow-container{
-          display: block;
-        }
-      }
-      .border-success > div:nth-child(1){
-        background: #80a25c;
-        color: white;
-      }
-      .border-danger > div:nth-child(1){
-        background: #a0403f; 
-        color: white;   
-      }
-      .border-secondary > div:nth-child(1){
-        background: #ac9740;
-        color: white;
-      }
-      .question-answer{
-        background: white;
-        color : black;
-        padding: 5px;
-      }
-
-      .certification-clear{
-        border-radius: 5px;
-        padding: 25px;
-        text-align:center; 
-        color:white;
-        background : #668f3c;
-      }
-      .certification-failed{
-        border-radius: 5px;
-        padding: 25px;
-        text-align:center; 
-        color:white;
-        background : #cd201f;
-      }
-      @media screen and (max-width : 600px){
-        .certification-clear, .certification-failed{
-          padding: 10px;
-        }
-      }
-      .unselected{
-        border : 2px solid rgb(138 138 138 / 40%);
-        border-radius: 3px;
-        padding: 5px;
-        margin-bottom: 5px;
-      }
-      .selected{
-        border : 2px solid rgb(138 138 138 / 40%);
-        border-radius: 3px;
-        padding: 5px;
-        margin-bottom: 5px;
-        background: #2980b9;
-      }
-      .correct-option{
-        border: 2px solid #608f2f;
-        border-radius: 3px;
-        padding: 5px;
-        background: #608f2f;
-        color: white;
-        margin-bottom: 5px;
-
-      }
-      .wrong-option{
-        border : 2px solid #a0403f;
-        border-radius: 3px;
-        padding: 5px;
-        background: #a0403f;
-        color : white;
-        margin-bottom: 5px;
-      }
-      .mcq-option > pre > code{
-        display: flex;
-      }
-      .bold {
-        font-weight: bold;
-      }
-      .shadow-c{
-        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
-      }
-    </style>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script type="text/javascript">
@@ -443,7 +176,7 @@
           var p = window.open('','','height=500','width=500');
           p.document.write('<html>');
           p.document.write('<head>');
-          p.document.write("<style>td{text-align: center; border:0.5px solid #bdc3c7;}table{margin-top:15px;}.mcq-option{border: 0.5px solid rgba(0,0,0,0.4);border-radius: 3px;padding: 5px;}pre{display:flex;}</style>");
+          p.document.write("<style>td{text-align: center; border:0.5px solid #bdc3c7;}table{margin-top:15px;}.mcq-option{border: 0.5px solid rgba(0,0,0,0.4);border-radius: 3px;padding: 5px;margin-top:5px;}pre{display:flex;}</style>");
           p.document.write('</head>');
           p.document.write('<body style="font-family:monospace;">');
           p.document.write("<div style='display:flex;width:100%;justify-content-space-between;font-weight:bold;font-size:25px;'>");
@@ -463,42 +196,44 @@
           var answers = document.getElementsByClassName('answers');
           var i;
           for(i=0;i<questions.length;i++){
-            p.document.write("<div style='border : 3px solid #bdc3c7; padding:10px; margin : 5px 0px; border-radius : 5px;'>");  // main container
-              p.document.write("<div style='display:flex; flex-direction:column'>") //question container
-                p.document.write("<div style='width:35px;'>"); // Q no
+            p.document.write("<div style='border : 3px solid #bdc3c7; padding:10px; margin : 5px 0px; border-radius : 5px;' class='main-container'>");  // main container
+              p.document.write("<div style='display:flex; flex-direction:column' class='question-container'>") //question container
+
+                p.document.write("<div style='width:35px;' class='serial-no'>"); // Q no
                   p.document.write((i+1)+".&nbsp;");
                 p.document.write("</div>");
-                p.document.write("<div>"); // question
-                  p.document.write('<pre>')
+                p.document.write("<div class='question'>"); // question
+                  p.document.write('<div>')
                   p.document.write(questions[i].innerHTML.replaceAll(/\n/g, '<br/>'));
                   console.log(questions[i].innerHTML)
-                  p.document.write('</pre>')
+                  p.document.write('</div>')
                 p.document.write("</div>");
                 
-                p.document.write("<div>"); // options
-                  p.document.write('<pre class="mcq-option">')
-                  p.document.write(option1[i].innerHTML.replaceAll(/\n/g, '<br/>'));
-                  p.document.write('</pre>')
-                  p.document.write('<pre class="mcq-option">')
-                  p.document.write(option2[i].innerHTML.replaceAll(/\n/g, '<br/>'));
-                  p.document.write('</pre>')
-                  p.document.write('<pre class="mcq-option">')
-                  p.document.write(option3[i].innerHTML.replaceAll(/\n/g, '<br/>'));
-                  p.document.write('</pre>')
-                  p.document.write('<pre class="mcq-option">')
-                  p.document.write(option4[i].innerHTML.replaceAll(/\n/g, '<br/>'));
-                  p.document.write('</pre>')
+                p.document.write("<div class='options'>"); // options
+                  p.document.write('<div class="mcq-option">')
+                    p.document.write(option1[i].innerHTML.replaceAll(/\n/g, '<br/>'));
+                  p.document.write('</div')
+                  p.document.write('<div class="mcq-option">')
+                    p.document.write(option2[i].innerHTML.replaceAll(/\n/g, '<br/>'));
+                  p.document.write('</div>')
+                  p.document.write('<div class="mcq-option">')
+                    p.document.write(option3[i].innerHTML.replaceAll(/\n/g, '<br/>'));
+                  p.document.write('</div>')
+                  p.document.write('<div class="mcq-option">')
+                    p.document.write(option4[i].innerHTML.replaceAll(/\n/g, '<br/>'));
+                  p.document.write('</div>')
                 p.document.write("</div>");
 
               p.document.write("</div>");
-              p.document.write("<div style='display:flex; margin-top:5px;'>");
+
+              p.document.write("<div style='display:flex; margin-top:5px;' class='answer'>");
                 p.document.write("<div>"); // Ans
                   p.document.write("Ans &nbsp;");
                 p.document.write("</div>");
-                  p.document.write("<div>"); // answer
-                    p.document.write(answers[i].innerHTML);
+                p.document.write("<div>"); // answer
+                  p.document.write(answers[i].innerHTML);
                 p.document.write("</div>");
-                p.document.write("</div>");
+              p.document.write("</div>");
             p.document.write("</div>");
           }
           p.document.write('</body>');
