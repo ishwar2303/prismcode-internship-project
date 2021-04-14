@@ -11,6 +11,8 @@ It is designed to be lightweight, easy to use and extendable.
 
 ## Admin Panel Features
 
+![alt text](./images/admin-dashboard.png)
+
 ### Creating Quiz
 - Quiz Name
 - Difficulty level
@@ -62,9 +64,10 @@ Candidate's response
 ## Exam page Features
 - Switch Questions
 - Mark as review
-- Counts Attempted and Remaining Question
+- Counts Attempted and Remaining Questions
 
 ### Basic Proctoring
 - Switching from exam window such as opening new tab or window is prohibited
 - Involving in such activity will lead to automatic submission of exam
+
 
