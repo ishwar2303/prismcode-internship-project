@@ -1,15 +1,10 @@
 <?php
 
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "certification_system";
-
-
-$servername = "quizwit.cakcwgna7dgk.ap-south-1.rds.amazonaws.com";
-$username = "ishwar";
-$password = "qwerty1234";
+$servername = "localhost";
+$username = "root";
+$password = "";
 $dbname = "certification_system";
+
 
 
 $conn = new mysqli($servername,$username,$password,$dbname);
