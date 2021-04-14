@@ -40,11 +40,9 @@ Quiz is accessible to candidates (LIVE)
 Quiz is inaccessible
 
 ### Public Access
-- Exam Key (conceal, Reveal)
-Exam key 
+- Exam key : Reveal exam key publicly or share it via social network
 
-- Evaluation  (conceal, Reveal)
-Reveal or Hide Score
+- Evaluation : Reveal score in a generalized report immediately after exam submition or conceal it for revealing only score.
 
 ### Leaderboard
 Attempts view order by score and timestamp.
