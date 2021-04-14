@@ -11,7 +11,7 @@ It is designed to be lightweight, easy to use and extendable.
 
 ## Admin Panel Features
 
-![alt text](../images/admin-dashboard.png)
+![alt text](../admin-dashboard.png)
 
 ### Creating Quiz
 - Quiz Name
