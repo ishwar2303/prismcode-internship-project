@@ -11,14 +11,44 @@ It is designed to be lightweight, easy to use and extendable.
 
 ## Admin Panel Features
 
-1. Creating Quiz
-2. Update Quiz
-3. Expand Quiz
-4. Delete Quiz
+### Creating Quiz
+- Quiz Name
+- Difficulty level
+- Description
+- Number of Questions
+- Exam Key
+- Time Duration
+- Marks per Question
+- Negative Marking
+- Passing Percentage
 - Quiz Status
--- Active
--- Inactive
-6. Public Access
+
+### Update Quiz
+Update or Delete Questions from questionnaire.
+
+### Expand Quiz
+Add more question to a questionnaire.
+
+### Delete Quiz
+Delete's Quiz and related information such as questions from question bank, attempts, feedback.
+
+### Quiz Status
+- Active
+Quiz is accessible to candidates (LIVE)
+
+- Inactive
+Quiz is inaccessible
+
+### Public Access
 - Exam Key (conceal, Reveal)
+Exam key 
+
 - Evaluation  (conceal, Reveal)
+Reveal or Hide Score
+
+### Leaderboard
+Attempts view order by score and timestamp.
+
+### Feedback
+Candidate's response 
 
