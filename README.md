@@ -59,8 +59,12 @@ Candidate's response
 - Related Instructions will appear  
 - Start Quiz
 
+## Exam page Features
+- Switch Questions
+- Mark as review
+- Counts Attempted and Remaining Question
+
 ### Basic Proctoring
 - Switching from exam window such as opening new tab or window is prohibited
-- Indulging in such activity will lead to automatic submission of exam
-
+- Involving in such activity will lead to automatic submission of exam
 
