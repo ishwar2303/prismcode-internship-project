@@ -42,11 +42,25 @@ Quiz is inaccessible
 ### Public Access
 - Exam key : Reveal exam key publicly or share it via social network
 
-- Evaluation : Reveal score in a generalized report immediately after exam submition or conceal it for revealing only score.
+- Evaluation : Reveal score in a generalized report immediately after exam submission or conceal it for revealing only score.
 
 ### Leaderboard
 Attempts view order by score and timestamp.
 
 ### Feedback
 Candidate's response 
+
+
+## Candidate
+- Candidates simply login via Name and E-mail
+- Select Exam 
+- Provide Key
+
+- Related Instructions will appear  
+- Start Quiz
+
+### Basic Proctoring
+- Switching from exam window such as opening new tab or window is prohibited
+- Indulging in such activity will lead to automatic submission of exam
+
 
