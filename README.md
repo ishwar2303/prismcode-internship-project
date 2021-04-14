@@ -11,7 +11,7 @@ It is designed to be lightweight, easy to use and extendable.
 
 ## Admin Panel Features
 
-![alt text](https://github.com/ishwar2303/QuizWit/blob/master/blob/admin-dashboard.PNG)
+![alt text](https://github.com/ishwar2303/QuizWit/blob/master/screenshots/admin-dashboard.PNG)
 
 ### Creating Quiz
 - Quiz Name
