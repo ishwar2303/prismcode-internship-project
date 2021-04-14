@@ -11,7 +11,7 @@ It is designed to be lightweight, easy to use and extendable.
 
 ## Admin Panel Features
 
-![alt text](https://github.com/ishwar2303/QuizWit/blob/master/blob/admin-dashboard.PNG)
+![alt text](https://github.com/ishwar2303/QuizWit/blob/master/screenshots/admin-dashboard.PNG)
 
 ### Creating Quiz
 - Quiz Name
@@ -70,4 +70,5 @@ Candidate's response
 - Switching from exam window such as opening new tab or window is prohibited
 - Involving in such activity will lead to automatic submission of exam
 
-
+## Quiz Page
+![alt text](https://github.com/ishwar2303/QuizWit/blob/master/screenshots/quiz-page.PNG)
