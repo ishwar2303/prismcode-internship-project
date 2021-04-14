@@ -206,26 +206,29 @@
       }
 
       #home-link{
-        border : 0.5px solid #bdc3c7;
-        background:#2980b9;
-        color: white;
+        /* border : 0.5px solid #bdc3c7; */
+        /* background:#296389; */
+        color: #296389;
         padding: 5px 15px; 
         border-radius: 3px;
-        height: 35px;
+        /* height: 35px; */
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
       #logout-link{
-        border : 0.5px solid #bdc3c7;
+        /* border : 0.5px solid #bdc3c7; */
         background:#445560;
         color: white;
-        padding: 8px 15px; 
+        padding: 10px 15px; 
         border-radius: 3px;
         height: 35px;
       }
       #logout-link > i{
         display: inline;
+      }
+      .mg-0{
+        margin : 0;
       }
     </style>
 <script src="https://kit.fontawesome.com/f9bbf9ac4e.js"></script>
@@ -233,9 +236,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body class="grey lighten-4">
-	<nav  style="box-shadow:0px 0px 18px 0px rgba(0,0,0,0.6);position:fixed;" class="white">
+	<nav  style="box-shadow:0px 0px 18px 0px rgba(0,0,0,0.6);position:fixed;" class="white" style="display:flex;">
 		<div class="container" style="height:100%;display:flex;justify-content: space-between;align-items: center;">
-          <a style="line-height: 0" id="home-link" href="index.php"><span><b>Home</b></span></a>
+    
+          <a style="line-height: 0" id="home-link" href="index.php"><span><h4 class="mg-0">QuizWit</h4></span></a>
           <a style="line-height: 0" id="logout-link" href="logout.php"><i class="fa fa-sign-out"></i> <b>Logout</b></a>
 		</div>
 	</nav>

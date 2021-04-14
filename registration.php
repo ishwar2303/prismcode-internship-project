@@ -1,85 +1,150 @@
 <?php
 	require_once('connection.php');
-    
+    require_once('middleware.php');
+    session_start();
     if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['contact']) && isset($_POST['gender']) && isset($_POST['state']) && isset($_POST['dob']) && isset($_POST['address']) && isset($_POST['institution']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password']))
     {
-     
-    if(!empty($_POST['firstname']) && !empty($_POST['contact']) && !empty($_POST['email']) && !empty($_POST['dob']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password']))  
-    	
-      {
+        $firstname = cleanInput($_POST['firstname']);
+        $lastname = cleanInput($_POST['lastname']);
+        $contact = cleanInput($_POST['contact']);
+        $gender = cleanInput($_POST['gender']);
+        $state = cleanInput($_POST['state']);
+        $dob = cleanInput($_POST['dob']);
+        $address = cleanInput($_POST['address']);
+        $institution = cleanInput($_POST['institution']);
+        $email = cleanInput($_POST['email']);
+        $password = cleanInput($_POST['password']);
+        $confpassword = cleanInput($_POST['confirm_password']);
+        $control = 1;
+        $error_messages = array();
+        if($firstname == ''){
+            $error_msg = 'First Name required';
+            array_push($error_messages, $error_msg);
+        }
+        else if(!alphaSpaceValidation($firstname)){
+            $error_msg = 'Invalid First Name';
+            array_push($error_messages, $error_msg);
+        }
+        if(!alphaSpaceValidation($lastname)){
+            $error_msg = 'Invalid Last Name';
+            array_push($error_messages, $error_msg);
+        }
+        if($gender == ''){
+            $error_msg = 'Gender requried';
+            array_push($error_messages, $error_msg);
+        }
+        else if($gender != 'male' && $gender!= 'female' && $gender != 'others'){
+            $error_msg = 'Invalid gender';
+            array_push($error_messages, $error_msg);
+        }
+        if($contact == ''){
+            $error_msg = 'Contact requried';
+            array_push($error_messages, $error_msg);
+        }
+        else if(strlen($contact) < 6 || strlen($contact) > 10){
+            $error_msg = 'Invalid Contact';
+            array_push($error_messages, $error_msg);
+        }
+        else if(!ctype_digit($contact)){
+            $error_msg = 'Invalid Contact';
+            array_push($error_messages, $error_msg);
+        }
+        if($state == ''){
+            $error_msg = 'State required';
+            array_push($error_messages, $error_msg);
+        }
+        if($email == ''){
+            $error_msg = 'E-mail required';
+            array_push($error_messages, $error_msg);
+        }
+        else if(!emailValidation($email)){
+            $error_msg = 'Invalid E-mail';
+            array_push($error_messages, $error_msg);
+        }
+        else{
+            $sql="SELECT * FROM registered_admin WHERE admin_email='$email'";
+            $result = mysqli_query($conn,$sql);
+            if($result->num_rows == 1){
+                $error_msg = 'E-mail already registered';
+                array_push($error_messages, $error_msg);
+            }
+        }
 
-            $firstname = mysqli_real_escape_string($conn,$_POST['firstname']);
-            $lastname = mysqli_real_escape_string($conn,$_POST['lastname']);
-            $contact = mysqli_real_escape_string($conn,$_POST['contact']);
-            $gender = mysqli_real_escape_string($conn,$_POST['gender']);
-            $state = mysqli_real_escape_string($conn,$_POST['state']);
-            $dob = mysqli_real_escape_string($conn,$_POST['dob']);
-            $address = mysqli_real_escape_string($conn,$_POST['address']);
-            $institution = mysqli_real_escape_string($conn,$_POST['institution']);
-            $email = mysqli_real_escape_string($conn,$_POST['email']);
-            $password = mysqli_real_escape_string($conn,$_POST['password']);
-            $confpassword = mysqli_real_escape_string($conn,$_POST['confirm_password']);
-            
-            $firstname = strip_tags($firstname);
-            $lastname = strip_tags($lastname);
-            $contact = strip_tags($contact);
-            $gender = strip_tags($gender);
-            $state = strip_tags($state);
-            $dob = strip_tags($dob);
-            $address = strip_tags($address);
-            $institution = strip_tags($institution);
-            $email = strip_tags($email);
-            $password = strip_tags($password);
-            $confpassword = strip_tags($confpassword);
-            if(!empty($firstname) && !empty($contact) && !empty($gender) && !empty($state) && !empty($dob) && !empty($address) && !empty($email) && !empty($password)) {
-                if($password == $confpassword){
-                    $sql="SELECT * FROM registered_admin WHERE admin_email='$email'";
-                    $result = mysqli_query($conn,$sql);
-                        if($result->num_rows == 0){
-                    		$sql = "INSERT INTO `registered_admin` (`admin_id`, `first_name`, `last_name`, `admin_contact`, `admin_gender`, `state`, `date_of_birth`, `admin_address`, `institution_name`, `admin_email`, `admin_password`) VALUES (NULL, '$firstname', '$lastname', '$contact', '$gender', '$state', '$dob', '$address', '$institution', '$email', '$password')";
-                    		mysqli_query($conn,$sql);
-                            $_SESSION['name'] = $firstname." ".$lastname;
-                            $_SESSION['email'] = $email;
-                            $_SESSION['login_time'] = time();
-                            ?>
-                                <span style="color : green;">Registration Successful</span>
-                                <span style="color : green;">E-mail : <?php echo $email;?></span>
-                                <span style="color : green;" >Password : <?php echo $password?></span>
-                                <span style='top-margin : 20px;width: 90px;height: 35px;border-radius: 5px;' id="submit-form-btn" style="cursor: pointer;" onclick="location.href='index.php';">Login</span>
-                            <script type="text/javascript">showPopupContainer();</script>
-                            <?php 
-                        }
-                        else {
-                            ?>
-                            <span style='color:red;'>E-mail Already registered!</span>
-                            <script type="text/javascript">showPopupContainer();</script>
-                            <?php
-                        }
-                }
-                else {
+        if($dob == ''){
+            $error_msg = 'Date required';
+            array_push($error_messages, $error_msg);
+        }
+        else{
+            $dob_obj = new DateTime($dob);
+            $dob_epoch = $dob_obj->format('U');
+            $current_time = time();
+            if($dob_epoch > $current_time){
+                $error_msg = 'Invalid DOB';
+                array_push($error_messages, $error_msg);
+            }
+            else if($dob_epoch > $current_time - 375840000){
+                $error_msg = 'Age limit 12 years';
+                array_push($error_messages, $error_msg);
+            }
+            else if($dob_epoch < $current_time - 2522880000){
+                $error_msg = 'Max age limit 80 years';
+                array_push($error_messages, $error_msg);
+            }
+        }
+
+        if($password == ''){
+            $error_msg = 'Password required';
+            array_push($error_messages, $error_msg);
+        }
+        else if(strlen($password) < 6){
+            $error_msg = 'Minimum password length should be 6 characters';
+            array_push($error_messages, $error_msg);
+        }
+
+        if($password != $confpassword){
+            $error_msg = 'Password not matched';
+            array_push($error_messages, $error_msg);
+        }
+
+
+        if(sizeof($error_messages) == 0){
+            $sql = "INSERT INTO `registered_admin` (`admin_id`, `first_name`, `last_name`, `admin_contact`, `admin_gender`, `state`, `date_of_birth`, `admin_address`, `institution_name`, `admin_email`, `admin_password`) VALUES (NULL, '$firstname', '$lastname', '$contact', '$gender', '$state', '$dob', '$address', '$institution', '$email', '$password')";
+            mysqli_query($conn,$sql);
+            $_SESSION['name'] = $firstname." ".$lastname;
+            $_SESSION['email'] = $email;
+            $_SESSION['login_time'] = time();
+            $_SESSION['admin_id'] = $conn->insert_id;
+            ?>
+            <div class="success-msg">
+                <span>Registration Successfull</span>
+                <span>Wait 5 seconds...</span>
+                <span>We are redirecting you to dashboard</span>
+            </div>
+            <span></span>
+            <script>
+                setTimeout(() => {
+                    location.href=  'admin_dashboard.php'
+                }, 5000)
+            </script>
+            <script type="text/javascript">showPopupContainer();</script>
+            <?php 
+        }
+        else{
+            foreach($error_messages as $msg){
                 ?>
-                <span style='color:red;'>Password Not matched!</span>
+                <div class="error-msg">
+                    <i class="fas fa-exclamation-circle"></i> 
+                    <?php echo $msg; ?>
+                </div>
                 <script type="text/javascript">showPopupContainer();</script>
                 <?php
-                }
-         }       
-         else {
-            ?>
-            <span style='color:red;'>Required fields should not be empty!</span>
-            <script type="text/javascript">showPopupContainer();</script>
-            <?php
             }
-    }
-      else {
-        ?>
-        <span style='color:red;'>Fill required fields!</span>
-        <script type="text/javascript">showPopupContainer();</script>
-        <?php
         }
     }
     else {
         ?>
         <span style='color:red;'>Intervention with index!</span>
-        <script type="text/javascript">showPopupContainer();</script><?php
+        <script type="text/javascript">showPopupContainer();</script>
+        <?php
     }
 ?>

@@ -6,20 +6,32 @@
     
    session_destroy();
    session_start();
+   require_once('middleware.php');
 if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['regNo']))
 {
-      $name = $_POST['name'];
-      $email = $_POST['email'];
-      $regNo = $_POST['regNo'];
+      $name = cleanInput($_POST['name']);
+      $email = cleanInput($_POST['email']);
+      $regNo = cleanInput($_POST['regNo']);
 
-      $name = mysqli_real_escape_string($conn,$name);
-      $email = mysqli_real_escape_string($conn,$email);
-      $regNo = mysqli_real_escape_string($conn,$regNo);
-      $name = strip_tags($name);
-      $email = strip_tags($email);
-      $regNo = strip_tags($regNo);
-   if(!empty($name) && !empty($email))
+   if($name == ''){
+
+         echo '<i class="fas fa-exclamation-circle"></i> Name required';
+         return;
+   }
+   else if(!alphaSpaceValidation($name)){
+      echo '<i class="fas fa-exclamation-circle"></i> Invalid Name';
+      return;
+   }
+   if($regNo != '' && !alphaNumericSpaceValidation($regNo)){
+      echo '<i class="fas fa-exclamation-circle"></i> Invalid Registration/Roll No';
+      return;
+   }
+   if($email != '')
    {     
+         if(!emailValidation($email)){
+               echo '<i class="fas fa-exclamation-circle"></i> Invalid E-mail';
+               return;
+         }
          $_SESSION['name'] = $name;
          $_SESSION['email'] = $email;
          $_SESSION['regNo'] = $regNo;
@@ -28,13 +40,13 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['regNo']))
          <script type="text/javascript">location.href='select_exam.php';</script>
          <?php
    }
-      else 
-      {
-        echo 'Something went Wrong!';
-      }
+   else{
+         echo '<i class="fas fa-exclamation-circle"></i> E-mail required';
+         return;
+   }
 }
 
-else echo 'Something went Wrong!';
+else echo '<i class="fas fa-exclamation-circle"></i> Something went Wrong';
    
    
 

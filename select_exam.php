@@ -133,7 +133,7 @@ form{
   border-radius : 5px;
   /* border : 0.5px solid #bdc3c7; */
   font-weight: 500;
-  background: #2980b9;
+  background: #296389;
   border: none;
   color: white;
 }
@@ -141,8 +141,8 @@ form{
   outline : none;
 }
 #next-btn:hover{
-  background: #3498db;
-  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.6);
+  background: #296389;
+  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
 }
 footer{
   background: #4b4b4b;
@@ -193,7 +193,18 @@ footer{
   border-radius: 3px;
   font-weight: 300;
 }
+.mr-5px{
+  margin-right: 5px;
+}
+* {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
 </style>
+<script src="js/stop-copy-paste.js"></script>
 </head>
 <?php if($num>0)
 {
@@ -282,14 +293,14 @@ else{
     </div>
     <div  class="already-given-exam-popup">
       <div class="small-popup">
-        <span style="width: 100%;height: 30px;display: flex;justify-content: center;align-items: center;color : #e74c3c;">Already given Exam!</span>
+        <span style="width: 100%;height: 30px;display: flex;justify-content: center;align-items: center;color : #e74c3c;"><i class="fas fa-exclamation-circle mr-5px"></i>  Already made an attempt!</span>
       <span onclick="hideAlreadyGivenExamPopup()" class="close-smallpopup">Close</span>
       </div>
      
     </div>
     <div class="incorrect-key">
       <div class="small-popup">
-        <span style="width: 100%;height: 30px;display: flex;justify-content: center;align-items: center;color : #e74c3c;">Incorrect Key!</span>
+        <span style="width: 100%;height: 30px;display: flex;justify-content: center;align-items: center;color : #e74c3c;"><i class="fas fa-exclamation-circle mr-5px"></i>  Incorrect Key!</span>
       <span onclick="hideIncorrectKeypopup()" class="close-smallpopup">Close</span>
       </div>
     </div>

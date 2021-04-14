@@ -45,7 +45,7 @@ if(isset($_SESSION['test_started'])){
     padding-left: 15px;
     color: white;
     border-radius: 3px;
-    padding: 5px 10px;
+    padding: 5px 15px;
   }
   .view-description-popup:hover{
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
@@ -157,7 +157,7 @@ if(isset($_SESSION['test_started'])){
         display: flex;
         justify-content: space-between;
         padding: 3px 10px;    
-        border: 0.5px solid #bdc3c7;
+        /* border: 0.5px solid #bdc3c7; */
         margin: 3px 10px;
         border-radius: 3px;
         background: #3498db;
@@ -165,7 +165,7 @@ if(isset($_SESSION['test_started'])){
       #exam-key{
 
         padding: 3px 10px; 
-        border: 0.5px solid #bdc3c7;
+        /* border: 0.5px solid #bdc3c7; */
         margin: 3px 10px;
         border-radius: 3px;
         background: #3498db;
@@ -173,7 +173,7 @@ if(isset($_SESSION['test_started'])){
       #quiz-description{
         overflow-y: scroll;
         padding: 3px 10px; 
-        border: 0.5px solid #bdc3c7;
+        /* border: 0.5px solid #bdc3c7; */
         margin: 3px 10px;
         border-radius: 3px;
         background: #3498db;
@@ -239,45 +239,54 @@ if(isset($_SESSION['test_started'])){
         border-top-right-radius: 15px;
       }
       .input-container{
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        height: 70px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
       }
       .form-input-style{
-        border : none;
-        border-bottom: 2px solid #bdc3c7;
-        width: 80%;
-        height: 35px;
-        z-index: 4;
-        background: transparent;
-        transition :  ease-in 1000ms;
-      }
+      border: none;
+      border: 0.5px solid #bdc3c7;
+      width: 100%;
+      height: 50px;
+      z-index: 4;
+      background: transparent;
+      transition: ease-in 1000ms;
+      border-radius: 3px;
+    padding: 0px 10px;
+    }
+
       .form-input-style:focus{
-        border : none;
-        border-bottom : 2px solid #3498db;
+        box-shadow: 0px 0px 0px 4px rgba(0,0,255,0.1);
+        border-color: rgba(0,0,255);
         outline: none;
         background: white;
+        transition: 300ms;
       }
       .input-label{
         position: absolute;
-        top : -4px;
-        left : 44px;
+        top: -5px;
+        left: 10px;
         color: #467fcf;
+        background: white;
+        z-index: 10;
+        padding: 0px 10px;
       }
       .submit-container{
         display: flex;
         justify-content: center;
         align-items: center;
         margin-top: 10px;
+    width: 100%;
       }
       .submit-btn{
-        width: 23%;
-        height: 35px;
-        border-radius: 3px;
+        /* width: 23%; */
+        height: 40px;
+        border-radius: 3px; 
+    padding: 0px 20px;
         border : 2px solid #467fcf;
         background: #467fcf;
         color : white;
@@ -292,17 +301,21 @@ if(isset($_SESSION['test_started'])){
         outline : none;
       }
       #admin-login-form{
-        margin-top: 25px;
+        margin-top: 5px;
       }
       #student-login-form{
         display: none;
       }
-      #admin-login-message{
+      #admin-login-message, #student-login-message{
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
-        color : #e74c3c;
-        height: 40px;
+        color : #cd201f;
+        width: 80%;
+        margin-bottom: 10px;
+      }
+      #admin-login-message > i, #student-login-message > i{
+        margin-right: 5px;
       }
       .index-header-option{
         color: white;
@@ -388,17 +401,31 @@ if(isset($_SESSION['test_started'])){
           display: none;
         }
         .login-form-popup{
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    /* height: 326px; */
+    border-radius: 15px;
+    box-shadow: 0px 0px 1px 0px black;
+    /* border: 0.5px solid #bdc3c7; */
+    transform: translate(-50%,0);
+    background: white;
+    z-index: 3;
+    display: none;
+    box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 60%);
           width: 354px;
           position: fixed;
         }
       .input-label{
         position: absolute;
-        top : -4px;
-        left : 28px;
+        top: -5px;
+        left: 10px;
         color: #467fcf;
+        background: white;
+        z-index: 10;
+        padding: 0px 10px;
       }
       .form-input-style{
-        width: 83%;
       }
       .description-popup{
         width: 354px;
@@ -704,24 +731,6 @@ a{
         document.getElementsByClassName('no-attempts-found')[0].style.display = 'none';
         document.getElementsByClassName('result-not-open')[0].style.display = 'none';
       }
-      function changeLabelPosition(index){
-        var x = document.getElementsByClassName('input-label')[index];
-        x.style.top = '-5px';
-        //x.style.left = '45px';
-        x.style.color = '#2980b9';
-          x.style.transition = 'ease-in 100ms';
-      }
-
-        function defaultSetLabel(index){
-          var x = document.getElementsByClassName('input-label')[index];
-          var value = document.getElementsByClassName('form-input-style')[index].value;
-          // if(value == ''){
-          //   x.style.top = '22px';
-          //   //x.style.left = '50px';
-          //   x.style.color = '#95a5a6';
-          //   x.style.transition = 'ease-in 100ms';  
-          // }
-      }
 
       function onClickBlackCover(){
         document.getElementsByClassName('black-cover')[0].style.display = 'none';
@@ -799,7 +808,7 @@ a{
           var r = document.getElementsByClassName('form-input-style')[3].value;
           var e = document.getElementsByClassName('form-input-style')[4].value;
           url = 'login.php';
-          $('#admin-login-message').load(url,{
+          $('#student-login-message').load(url,{
             name : n,
             regNo : r,
             email : e
@@ -1130,7 +1139,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
 		                             <tr>
 		                                 <td><?php echo $row['quiz_name'];?></td>
 		                                 <td style="color:#3498db;">
-                                        <span class="view-description-popup" style="cursor:pointer;padding-left: 15px;"><i style="margin-right : 3px;" class="fas fa-eye"></i>View</span>
+                                        <span class="view-description-popup" style="cursor:pointer;padding-left: 15px;">View</span>
                                         <script type="text/javascript">
                                           $(document).ready(function(){
                                             $(".view-description-popup").eq(<?php echo $i;?>).click(function(){
@@ -1299,39 +1308,39 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
             </label>
           </div>
           <div id="admin-login-form">
-            <form action="">
+            <form action="" class="flex-col">
+              <div id="admin-login-message"></div>
               <div class="input-container">
                 <label class="input-label">E-mail</label>
-                <input oninput="var str = this.value; this.value=str.toLowerCase();"  class="form-input-style" type="email" name="email" required>
+                <input oninput="var str = this.value; this.value=str.toLowerCase();"  class="form-input-style" type="text" name="email">
               </div>
               <div class="input-container">
                 <label class="input-label">Password</label>
-                <input  class="form-input-style" type="password" name="pass" required>
+                <input  class="form-input-style" type="password" name="pass">
               </div>
-              <div class="submit-container">
+              <div class="submit-container mb-15px">
                 <input class="submit-btn" type="submit" name="admin-login" value="Login">
               </div>
-              <div id="admin-login-message"></div>
             </form>
           </div>
           <div id="student-login-form">
-            <form action="" style="padding-top:5px">
+            <form action="" style="padding-top:5px" class="flex-col">
+              <div id="student-login-message"></div>
               <div class="input-container">
                 <label class="input-label">Full Name</label>
-                <input oninput="var str = this.value; this.value=str.toUpperCase();"  class="form-input-style" type="text" name="name" required>
+                <input oninput="var str = this.value; this.value=str.toUpperCase();"  class="form-input-style" type="text" name="name" >
               </div>
               <div class="input-container">
                 <label class="input-label">Registration Number</label>
-                <input oninput="var str = this.value; this.value=str.toUpperCase();"  class="form-input-style" type="text" name="regNo" required="true">
+                <input oninput="var str = this.value; this.value=str.toUpperCase();"  class="form-input-style" type="text" name="regNo" >
               </div>
               <div class="input-container">
                 <label class="input-label">E-mail</label>
-                <input oninput="var str = this.value; this.value=str.toLowerCase();"  class="form-input-style" type="email" name="email" required>
+                <input oninput="var str = this.value; this.value=str.toLowerCase();"  class="form-input-style" type="text" name="email" >
               </div>
-              <div class="submit-container mb-10px">
+              <div class="submit-container mb-15px">
                 <input class="submit-btn" type="submit" name='student-login' value="Login">
               </div>
-              <div id="student-login-message"></div>
             </form>
           </div>
         </div>
