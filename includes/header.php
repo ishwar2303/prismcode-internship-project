@@ -254,11 +254,10 @@
     .open-close-sidebar{
       z-index: 3;
     }
-    #
+    
      </style>
     
-    
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
         $('#choose-img-btn').click(function(){
@@ -355,6 +354,7 @@
   font-size: 16px;
   z-index: 5;
 } 
+</style>
 </style>
      <style type="text/css">
       
@@ -910,5 +910,21 @@ document.getElementById('textbox').addEventListener('keydown', function(e) {
     this.selectionStart =
       this.selectionEnd = start + 1;
   }
+});
+</script>
+<script>
+  var ajaxLoading = false;
+$(document).ready(function() {
+    $('#ajaxRequestor').click(function(e) {
+        e.preventDefault();
+        if(!ajaxLoading) {
+            ajaxLoading = true;
+            $('#ajaxContentPlaceholder').load('/path/to/content.html', 
+                function() { 
+                    ajaxLoading = false;
+                }
+            );
+        }
+    });
 });
 </script>

@@ -105,7 +105,7 @@ include('includes/navbar.php');
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div style="padding: 0px 10px;" class="col mr-2">
-              <div class="text-xxs font-weight-bold text-primary text-uppercase mb-1">Active Quizes </div>
+              <div class="text-xxs font-weight-bold text-primary text-uppercase mb-1">Active</div>
               <div class="h6 mb-0 font-weight-bold text-gray-800">
 
                <h4 id="active-EXAM"></h4> <!-- print total no. of question -->
@@ -201,14 +201,16 @@ include('includes/navbar.php');
       ?>
 
       <div class="table-responsive">
-        <table class="table table-card table-vcenter text-nowrap">
+        <table class="table table-card table-vcenter te
+        xt-nowrap">
           <thead>
             <tr>
-              <th class="w-1">S No.</th>
+              <th class="w-1">SNo.</th>
               <th>Quiz Name</th>  
               <th style="text-align: center;">Questions</th>
-              <th>Quiz Status</th> 
+              <th>Status</th> 
               <th>Created</th>
+              <th>Shuffle</th>
               <th style="text-align: center;">Edit</th>
               <th style="text-align: center;">Delete</th>
              
@@ -236,11 +238,37 @@ include('includes/navbar.php');
                 ?>
               </td>
               <td><?php echo $row['time_stamp'];?></td>
+              <td>
+                <?php 
+                  $checked = '';
+                  if($row['shuffle'])
+                    $checked = 'checked';
+                ?>
+                  <label class="custom-toggle-btn toggle-shuffle-question">
+                      <input id="toggle-shuffle-checkbox<?php echo $row['quiz_id']; ?>" type="checkbox" name="gender" <?php echo $checked; ?>>
+                      <span>
+                          <i class="fas fa-check"></i>
+                      </span>
+                  </label>
+                  <script>
+                    $(document).ready(function(){
+                      $('.toggle-shuffle-question').eq(<?php echo $i-1; ?>).unbind('click');
+                      $('.toggle-shuffle-question').eq(<?php echo $i-1;?>).click(function(evt){
+                            evt.stopPropagation();
+                            evt.preventDefault()
+                            var url = 'toggle-shuffle.php';
+                            $("#shuffle-quiz-questions").load(url,{
+                              shuffle : true,
+                              quizID : <?php echo $row['quiz_id'];?>,
+                            });
+                      });
+                    });
+                  </script>
+              </td>
               <td style="text-align: center;"><i style="color: #2980b9; cursor: pointer;" class="fas fa-pencil-alt quiz-edit-icon"></i></td>
               <script type="text/javascript">
                 $(document).ready(function(){
                   $('.quiz-edit-icon').eq(<?php echo $i-1;?>).click(function(){
-                      
                         var url = 'edit_quiz_details.php';
                         $("#quiz-details-content").load(url,{
                           updateQuizDetails : true,
@@ -307,6 +335,17 @@ include('includes/scripts.php');
   
   </div>
 </div>
+<div id="shuffle-quiz-questions"></div>
+<script>
+    function shuffleMessage(){
+        let el = document.getElementById('shuffle-quiz-questions')
+        el.style.display = 'block'
+    }
+    function hideShuffleMessage(){
+        let el = document.getElementById('shuffle-quiz-questions')
+        el.style.display = 'none'
+    }
+</script>
 <div onclick="onClickBlackCoverOfQuizUpdate()" class="black-cover-quiz-details"></div>
 </body>
 

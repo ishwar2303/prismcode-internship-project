@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2021 at 02:49 AM
+-- Generation Time: Apr 15, 2021 at 01:24 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -49,9 +49,7 @@ CREATE TABLE `attempts` (
 
 INSERT INTO `attempts` (`attempt_id`, `quiz_id`, `fullname`, `registration_no`, `email`, `score`, `total_marks`, `correct`, `wrong`, `not_attempted`, `pass_percentage`, `no_of_questions`, `time_stamp`) VALUES
 (4, 135, 'ISHWAR BAISLA', 'RA1811003030232', 'pankajgautam@gmail.com', 0, 14, 2, 4, 1, 70, 7, '2021-04-14 15:11:50'),
-(7, 141, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 14, 20, 7, 0, 3, 50, 10, '2021-04-14 19:39:34'),
-(8, 150, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 2, 100, 1, 0, 49, 60, 50, '2021-04-15 00:14:18'),
-(9, 150, 'PANKAJ GAUTAM', 'RA1811003030188', 'pankaj.gautam4012@gmail.com', -13, 120, 9, 31, 20, 60, 60, '2021-04-15 00:41:59');
+(7, 141, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 14, 20, 7, 0, 3, 50, 10, '2021-04-14 19:39:34');
 
 -- --------------------------------------------------------
 
@@ -277,6 +275,7 @@ CREATE TABLE `quizes` (
   `Exam_key` varchar(30) NOT NULL,
   `key_access` tinyint(4) NOT NULL,
   `show_evaluation` tinyint(4) NOT NULL,
+  `shuffle` tinyint(4) NOT NULL,
   `time_duration` int(11) NOT NULL,
   `marks_per_question` int(11) NOT NULL,
   `negative_marking` double NOT NULL,
@@ -289,17 +288,17 @@ CREATE TABLE `quizes` (
 -- Dumping data for table `quizes`
 --
 
-INSERT INTO `quizes` (`quiz_id`, `quiz_name`, `difficulty_level`, `description`, `number_of_questions`, `is_active`, `active_timing`, `inactive_timing`, `Exam_key`, `key_access`, `show_evaluation`, `time_duration`, `marks_per_question`, `negative_marking`, `passing_percentage`, `admin_email_id`, `time_stamp`) VALUES
-(67, 'History ', 'Beginner', 'General knowledge', 0, 0, 0, 0, 'yr25op', 0, 0, 900, 1, 0.5, 60, 24, '2020-12-14 23:36:04'),
-(103, 'C++ Programming', 'Intermediate', 'This Online C Programming Test is specially designed for you by industry experts.', 10, 0, 0, 0, '9911', 1, 0, 1800, 1, 0, 60, 24, '2020-12-14 23:36:05'),
-(118, 'Operating System', 'Intermediate', 'An operating system, or \"OS,\" is software that communicates with the hardware and allows other programs to run. ... Every desktop computer, tablet, and smartphone includes an operating system that provides basic functionality for the device. Common desktop operating systems include Windows, OS X, and Linux\r<br/>', 5, 0, 0, 0, 'ishwar1999', 1, 0, 900, 2, 0, 60, 24, '2020-12-15 14:57:16'),
-(126, 'Design and Analysis of Algorithms', 'Intermediate', 'Exam Key : daa@1999\r\n<br/>\r\n<br/>Design and Analysis of Algorithm is very important for designing algorithm to solve different types of problems in the branch of computer science and information technology.', 10, 0, 0, 0, 'daa@1999', 1, 0, 2700, 0, 0, 0, 24, '2020-12-15 14:54:36'),
-(134, 'CODE - C', 'Intermediate', 'C and C++ Programming based Questions.\r<br/>Types\r<br/>-> Output based\r<br/>-> Error search\r<br/>-> Theory\r<br/>- >Architecture\r<br/>-> OOPS\r<br/>', 5, 0, 1611859500, 1611861300, '23031999', 1, 0, 900, 1, 0.5, 60, 24, '2020-12-15 14:54:23'),
-(135, 'DODNetHTML', 'Advance', 'Question are based on Data Base, Operating System, Data Structure, Networking, HTML. ', 7, 1, 0, 0, 'in@100', 1, 1, 1800, 2, 1, 70, 24, '2020-12-14 23:36:27'),
-(140, 'Quantitative Aptitude', 'Beginner', 'Arithmetic Ability test helps measure one\'s numerical ability, problem solving and mathematical skills. ... Every aspirant giving Quantitative Aptitude Aptitude test tries to solve maximum number of problems with maximum accuracy and speed.', 30, 0, 0, 0, 'QA2021', 1, 0, 3600, 1, 0, 60, 24, '2021-04-12 02:35:41'),
-(141, 'C Programming Basic', 'Beginner', 'Practice Test', 10, 1, 0, 0, 'CP2021', 1, 1, 900, 2, 1, 50, 24, '2021-04-12 14:33:29'),
-(142, 'Comprehension', 'Intermediate', 'Comprehension', 5, 0, 0, 0, 'CT2021', 1, 0, 1800, 2, 1, 60, 24, '2021-04-12 20:57:59'),
-(150, 'General Aptitude 1.0', 'Intermediate', 'Quantitative Aptitude\r<br/>Logical Reasoning\r<br/>Verbal ability', 60, 1, 0, 0, 'QA2021', 1, 1, 7200, 2, 1, 60, 41, '2021-04-15 04:33:11');
+INSERT INTO `quizes` (`quiz_id`, `quiz_name`, `difficulty_level`, `description`, `number_of_questions`, `is_active`, `active_timing`, `inactive_timing`, `Exam_key`, `key_access`, `show_evaluation`, `shuffle`, `time_duration`, `marks_per_question`, `negative_marking`, `passing_percentage`, `admin_email_id`, `time_stamp`) VALUES
+(67, 'History ', 'Beginner', 'General knowledge', 0, 0, 0, 0, 'yr25op', 0, 0, 0, 900, 1, 0.5, 60, 24, '2020-12-14 23:36:04'),
+(103, 'C++ Programming', 'Intermediate', 'This Online C Programming Test is specially designed for you by industry experts.', 10, 0, 0, 0, '9911', 1, 0, 0, 1800, 1, 0, 60, 24, '2020-12-14 23:36:05'),
+(118, 'Operating System', 'Intermediate', 'An operating system, or \"OS,\" is software that communicates with the hardware and allows other programs to run. ... Every desktop computer, tablet, and smartphone includes an operating system that provides basic functionality for the device. Common desktop operating systems include Windows, OS X, and Linux\r<br/>', 5, 0, 0, 0, 'ishwar1999', 1, 0, 0, 900, 2, 0, 60, 24, '2020-12-15 14:57:16'),
+(126, 'Design and Analysis of Algorithms', 'Intermediate', 'Exam Key : daa@1999\r\n<br/>\r\n<br/>Design and Analysis of Algorithm is very important for designing algorithm to solve different types of problems in the branch of computer science and information technology.', 10, 0, 0, 0, 'daa@1999', 1, 0, 0, 2700, 0, 0, 0, 24, '2020-12-15 14:54:36'),
+(134, 'CODE - C', 'Intermediate', 'C and C++ Programming based Questions.\r<br/>Types\r<br/>-> Output based\r<br/>-> Error search\r<br/>-> Theory\r<br/>- >Architecture\r<br/>-> OOPS\r<br/>', 5, 0, 1611859500, 1611861300, '23031999', 1, 0, 0, 900, 1, 0.5, 60, 24, '2020-12-15 14:54:23'),
+(135, 'DODNetHTML', 'Advance', 'Question are based on Data Base, Operating System, Data Structure, Networking, HTML. ', 7, 1, 0, 0, 'in@100', 1, 1, 0, 1800, 2, 1, 70, 24, '2020-12-14 23:36:27'),
+(140, 'Quantitative Aptitude', 'Beginner', 'Arithmetic Ability test helps measure one\'s numerical ability, problem solving and mathematical skills. ... Every aspirant giving Quantitative Aptitude Aptitude test tries to solve maximum number of problems with maximum accuracy and speed.', 30, 0, 0, 0, 'QA2021', 1, 0, 0, 3600, 1, 0, 60, 24, '2021-04-12 02:35:41'),
+(141, 'C Programming Basic', 'Beginner', 'Practice Test', 10, 1, 0, 0, 'CP2021', 1, 1, 0, 900, 2, 1, 50, 24, '2021-04-12 14:33:29'),
+(142, 'Comprehension', 'Intermediate', 'Comprehension', 5, 0, 0, 0, 'CT2021', 1, 0, 0, 1800, 2, 1, 60, 24, '2021-04-12 20:57:59'),
+(150, 'General Aptitude 1.0', 'Intermediate', 'Quantitative Aptitude\r<br/>Logical Reasoning\r<br/>Verbal ability', 60, 1, 0, 0, 'GA2021', 1, 1, 0, 7200, 2, 1, 60, 41, '2021-04-15 04:33:11');
 
 -- --------------------------------------------------------
 
@@ -386,7 +385,7 @@ ALTER TABLE `registered_admin`
 -- AUTO_INCREMENT for table `attempts`
 --
 ALTER TABLE `attempts`
-  MODIFY `attempt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `attempt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -410,13 +409,13 @@ ALTER TABLE `profile_photo`
 -- AUTO_INCREMENT for table `question_bank`
 --
 ALTER TABLE `question_bank`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=447;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=449;
 
 --
 -- AUTO_INCREMENT for table `quizes`
 --
 ALTER TABLE `quizes`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
 -- AUTO_INCREMENT for table `registered_admin`

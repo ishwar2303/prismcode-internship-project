@@ -33,7 +33,23 @@ if(isset($_POST['quizID'])){
                   }
                   ?>
                   <div id="questions-time"><span>Questions : <?php echo $row['number_of_questions'];?></span><span>Duration : <?php echo $time_duration;?></span></div>
-                  <div style="height: <?php echo $height;?>" id="quiz-description"><?php echo $row['description'];?></div>
+                  <div class="desc-block">
+                    <span>Marks per Question : <?php echo $row['marks_per_question']; ?></span>
+                    <?php $negative_marking = $row['negative_marking']; ?>
+                  </div>
+                  <div class="desc-block">
+                    <span>
+                    <?php 
+                          if($negative_marking == 0)
+                            echo 'No Negative Marking'; 
+                          else echo 'Negative Marking Per Question : -'.$negative_marking;
+                          ?>
+                    </span>
+                  </div>
+                  <div class="desc-block">
+                    <span>Certification on <?php echo $row['passing_percentage']."%"; ?></span>
+                  </div>
+                  <div style="max-height: <?php echo $height;?>" id="quiz-description"><?php echo $row['description'];?></div>
                   <script type="text/javascript">openDescriptionPopup();</script>
                   <?php
           }

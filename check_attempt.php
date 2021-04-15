@@ -19,7 +19,7 @@
     if(isset($_POST['setTest'])){
       $_SESSION['test_is_set'] = true;
       ?>
-        <script type="text/javascript">onClickBlackCover();</script>
+      <script type="text/javascript">onClickBlackCover();</script>
       <script type="text/javascript">location.href='takeexam.php';</script>
       <?php
     }
@@ -54,6 +54,7 @@
             			$KEY = $row['Exam_key'];
             			$time_duration = $row['time_duration'];
                   $numberOfQuestions = $row['number_of_questions'];
+                  $shuffle = $row['shuffle'];
             		 if($KEY != $exam_key){
                   ?>
                     <script type="text/javascript">showIncorrectKeypopup();</script>
@@ -94,23 +95,29 @@
                             array_push($questions, $rowQue['question_id']);
                             array_push($answers, $rowQue['answer']);
                           }
-                          $count = 0;
-                          $itr = 0;
-                          $num = sizeof($questions);
-                          $key = mt_rand(1,$num-1);
-                          while(sizeof($_SESSION['QUESTIONS']) < $num)
-                          {
-                            if($count == $key){
-                              array_push($_SESSION['QUESTIONS'], $questions[$itr]);
-                              array_push($_SESSION['CORRANSWERS'], $answers[$itr]);
+                          if($shuffle){
                               $count = 0;
-                              $questions[$itr] = -1;
-                            }
+                              $itr = 0;
+                              $num = sizeof($questions);
+                              $key = mt_rand(1,$num-1);
+                              while(sizeof($_SESSION['QUESTIONS']) < $num)
+                              {
+                                if($count == $key){
+                                  array_push($_SESSION['QUESTIONS'], $questions[$itr]);
+                                  array_push($_SESSION['CORRANSWERS'], $answers[$itr]);
+                                  $count = 0;
+                                  $questions[$itr] = -1;
+                                }
 
-                            $itr++;
-                            $itr = $itr%$num;
-                            if($questions[$itr] != -1)
-                              $count++;
+                                $itr++;
+                                $itr = $itr%$num;
+                                if($questions[$itr] != -1)
+                                  $count++;
+                              }
+                          }
+                          else{
+                            $_SESSION['QUESTIONS'] = $questions;
+                            $_SESSION['CORRANSWERS'] = $answers;
                           }
                           ?>
                             <label style="display: flex;justify-content: flex-end;padding-right: 20px;font-weight: 600;"><?php echo $row['difficulty_level'];?></label>

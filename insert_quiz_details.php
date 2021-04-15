@@ -50,7 +50,7 @@
      $_SESSION['quiz_name'] = $quiz_name;
      //print_r($_POST);
      if(!empty($quiz_name) && !empty($level) && !empty($description) && !empty($question_num) && !empty($key) && !empty($marks) && !empty($passing)){
-     $sql = "INSERT INTO `quizes` (`quiz_id`, `quiz_name`, `difficulty_level`, `description`, `number_of_questions`, `is_active`, `Exam_key`, `key_access`, `time_duration`, `marks_per_question`, `negative_marking`, `passing_percentage`, `admin_email_id`, `time_stamp`) VALUES (NULL, '$quiz_name', '$level', '$description', '$question_num', '$state', '$key', '0', '$time', '$marks', '$negative', '$passing', '$_SESSION[admin_id]', current_timestamp())";
+     $sql = "INSERT INTO `quizes` (`quiz_id`, `quiz_name`, `difficulty_level`, `description`, `number_of_questions`, `is_active`, `Exam_key`, `key_access`, `shuffle`, `time_duration`, `marks_per_question`, `negative_marking`, `passing_percentage`, `admin_email_id`, `time_stamp`) VALUES (NULL, '$quiz_name', '$level', '$description', '$question_num', '$state', '$key', '0', '0', '$time', '$marks', '$negative', '$passing', '$_SESSION[admin_id]', current_timestamp())";
          mysqli_query($conn,$sql) or die(mysqli_error($conn));
          $last_id = $conn->insert_id;
          $_SESSION['quiz_id'] = $last_id;
