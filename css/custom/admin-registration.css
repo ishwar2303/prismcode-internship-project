@@ -1,5 +1,4 @@
 
-      <style type="text/css">
       .select-container-style{
         margin-bottom: 15px;
       }
@@ -113,28 +112,6 @@ form{
   align-items: center;
 }
 
-      @media screen and (max-width: 650px){
-        form{
-          padding: 20px 0px;
-          width: 100%;
-        }
-        input{
-          width: 280px;
-        }
-        /* select{
-          width: 290px;
-        } */
-        #submit-form-btn{
-          width: 290px;
-        }
-        header{
-          /* padding: 10px 0px; */
-        }
-        footer{
-
-          padding: 20px 0px;
-        }
-      }
       
 .input-container-style{
     position: relative;
@@ -258,7 +235,7 @@ header a span label{
     font-size: 30px;
   cursor: pointer;}
   .header-padding{
-    /* height: 60px; */
+    height: 60px;
   }
   .ml-25px{
     margin-left: 25px;
@@ -268,4 +245,29 @@ header a span label{
       height: 75px;
     }
   }
-      </style>
+  
+  @media screen and (max-width: 650px){
+    form{
+      padding: 20px 0px;
+      width: 100%;
+    }
+    .input-container-style > input {
+      width: 280px;
+    }
+    select{
+      width: 315px;
+    }
+    #submit-form-btn{
+      width: 290px;
+    }
+    header{
+      /* padding: 10px 0px; */
+    }
+    .w-330px{
+      width: 315px;
+    }
+    footer{
+
+      padding: 20px 0px;
+    }
+  }

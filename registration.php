@@ -117,16 +117,16 @@
             ?>
             <div class="success-msg">
                 <span>Registration Successfull</span>
-                <span>Wait 5 seconds...</span>
                 <span>We are redirecting you to dashboard</span>
+                <div class="progress-bar-container border">
+                    <div id="progress-bar"></div>
+                </div>
             </div>
             <span></span>
-            <script>
-                setTimeout(() => {
-                    location.href=  'admin_dashboard.php'
-                }, 5000)
+            <script type="text/javascript">
+                showPopupContainer();
+                interval = setInterval(progressBar, 50);
             </script>
-            <script type="text/javascript">showPopupContainer();</script>
             <?php 
         }
         else{

@@ -247,7 +247,7 @@
 <?php 
 if($showEvaluation){
 ?>
-  <label class="print-question-paper">
+  <!-- <label class="print-question-paper">
     <span id="right-arrow-container">
       <i class="fas fa-chevron-right"></i>
     </span>
@@ -263,7 +263,7 @@ if($showEvaluation){
       </span>
       <span>Question Paper</span>
     </span>
-  </label>
+  </label> -->
     <div style="margin-top: 5px;margin-right: 7px;display: flex;justify-content: center;" class="my-3 my-md-5">
         <div style="padding : 10px 5px; margin : 0;" class="container">
             <?php 

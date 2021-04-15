@@ -60,7 +60,7 @@ require_once('connection.php');
 					<div style="margin-left: 0.25rem;margin-right: 0.25rem;" class="row p-4 mb-2 border rounded border-muted">
 											<div class="col-sm-12 col-lg-12">
 												<div class="form-group">
-													<label class="form-label">Question<?php echo  $i; ?></label>
+													<label class="form-label">Question <?php echo  $i; ?></label>
 													<textarea name="question[]" class="form-control" rows="4" placeholder="Question <?php echo  $i; ?>" required></textarea>
 												</div>
 												<div>

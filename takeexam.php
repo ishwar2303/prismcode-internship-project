@@ -264,10 +264,13 @@ $t = 0;
 												<label class="selectgroup-item options">
 													<input class="selectgroup-input" type="radio" name="ans[<?php echo $j;?>]" value="1" onclick="updateStatus(<?php echo $i;?>)">
 													<span style="border-radius: 5px; border:3px solid rgba(0,0,0,0.2)" class="selectgroup-button text-left border-3px">
-<span class="option-serial">A</span>
-<pre>
-<code><?php echo $row['option_1'];?></code>
-</pre>
+													<span class="option-serial">A</span>
+<!-- <pre>
+<code></code>
+</pre> -->
+<span>
+<?php echo str_replace("\n", "<br/>", $row['option_1']); ?>
+</span>
 													</span>
 												</label>
 												<?php 
@@ -293,9 +296,12 @@ $t = 0;
 													<input class="selectgroup-input " type="radio" name="ans[<?php echo $j;?>]" value="2" onclick="updateStatus(<?php echo $i;?>)">
 													<span style="border-radius: 5px; border:3px solid rgba(0,0,0,0.2)" class="selectgroup-button text-left border-3px">
 													<span class="option-serial">B</span>
-<pre>
-<code><?php echo $row['option_2'];?></code>
-</pre>
+<!-- <pre>
+<code></code>
+</pre> -->
+<span>
+<?php echo str_replace("\n", "<br/>", $row['option_2']); ?>
+</span>
 													</span>
 												</label>
 												<?php 
@@ -322,9 +328,12 @@ $t = 0;
 													<input class="selectgroup-input" type="radio" name="ans[<?php echo $j;?>]" value="3" onclick="updateStatus(<?php echo $i;?>)">
 													<span style="border-radius: 5px; border:3px solid rgba(0,0,0,0.2)" class="selectgroup-button text-left border-3px">
 													<span class="option-serial">C</span>
-<pre>
-<code><?php echo $row['option_3'];?></code>
-</pre>
+<!-- <pre>
+<code></code>
+</pre> -->
+<span>
+<?php echo str_replace("\n", "<br/>", $row['option_3']); ?>
+</span>
 													</span>
 												</label>
 												<?php 
@@ -350,9 +359,11 @@ $t = 0;
 													<input class="selectgroup-input" type="radio" name="ans[<?php echo $j;?>]" value="4" onclick="updateStatus(<?php echo $i;?>)">
 													<span style="border-radius: 5px; border:3px solid rgba(0,0,0,0.2)" class="selectgroup-button text-left border-3px">
 													<span class="option-serial">D</span>
-<pre>
-<code><?php echo $row['option_4'];?></code>
-</pre>	
+<!-- <pre>
+<code></code>
+</pre>	 -->
+<span><?php echo str_replace("\n", "<br/>", $row['option_4']); ?></span>
+
 													</span>
 												</label>
 												<?php 
@@ -480,7 +491,7 @@ examStarted()
 $(window).blur(() => {
   checkCookie() // proctoring user via checking if window looses focus
 })
-document.getElementsByClassName('main-container')[0].style.display = 'flex'
+//document.getElementsByClassName('main-container')[0].style.display = 'flex'
 </script>
 
 </body>

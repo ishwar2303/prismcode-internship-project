@@ -35,6 +35,22 @@
       .error-msg > i{
         margin-right: 5px;
       }
+    .progress-bar-container {
+        width: 100%;
+        margin-top: 5px;
+        border-radius: 3px;
+    }
+
+    #progress-bar {
+        background: rgb(90, 129, 52);
+        height: 25px;
+        width: 0%;
+        display: flex;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3px;
+}
     </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script type="text/javascript">
@@ -85,6 +101,23 @@
         document.getElementsByClassName('black-cover')[0].style.display = 'block';
         document.getElementsByClassName('popup-container')[0].style.display = 'block';
       }
+      </script>
+      
+      <script>
+          let percentage = 0;
+          let interval
+
+          function progressBar() {
+              let pgBar = document.getElementById('progress-bar')
+              percentage++;
+              pgBar.style.width = percentage + '%'
+              pgBar.innerHTML = percentage + '%'
+              if (percentage >= 100) {
+                  clearInterval(interval)
+                  location.href=  'admin_dashboard.php'
+              }
+          }
+
       </script>
       <link rel="stylesheet" href="css/custom/admin-registration.css">
       <script src="https://kit.fontawesome.com/f9bbf9ac4e.js"></script>
