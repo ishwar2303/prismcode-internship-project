@@ -1,10 +1,9 @@
 <?php 
 	require_once('connection.php');
+	require_once('middleware.php');
 	if(isset($_POST['QuizID']) && isset($_POST['EmailReg'])){
-		$quizID = $_POST['QuizID'];
-		$emailReg = $_POST['EmailReg'];
-		$emailReg = mysqli_real_escape_string($conn,$emailReg);
-		$emailReg = strip_tags($emailReg);
+		$quizID = cleanInput($_POST['QuizID']);
+		$emailReg = cleanInput($_POST['EmailReg']);
 		$sql = "SELECT * FROM attempts WHERE (email='$emailReg' AND quiz_id='$quizID') or (registration_no='$emailReg' AND quiz_id='$quizID')";
 		$result = mysqli_query($conn,$sql);
 		$rowCandidate = $result->fetch_assoc();
@@ -12,6 +11,7 @@
 			$sql = "SELECT * FROM quizes WHERE quiz_id='$quizID'";
 			$result = mysqli_query($conn,$sql);
 			$row = $result->fetch_assoc();
+
 
 			if($row['show_evaluation']==1){
 				?>

@@ -219,7 +219,6 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
             $comment = $_POST['comment'];
             $comment = mysqli_real_escape_string($conn,$comment);
             $comment = strip_tags($comment);
-            $comment = str_replace("\n", "<br/>", $comment);
             $sql = "SELECT * FROM attempts WHERE quiz_id='$_SESSION[exam_id]' AND email='$_SESSION[email]'";
             $result = mysqli_query($conn,$sql);
             $row = $result->fetch_assoc();

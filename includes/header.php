@@ -32,7 +32,7 @@
   <link href="css/dashboard.css" rel="stylesheet">
      <style>
       body{
-        font-family: monospace;
+        font-family: -webkit-pictograph;
       }
     /* questionnaire.php */
     .updated-successfully{

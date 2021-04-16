@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2021 at 02:28 PM
+-- Generation Time: Apr 16, 2021 at 04:35 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -288,7 +288,37 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 (475, 155, 'Two persons P, and Q start running simultaneously in the same direction from the point X and Y respectively. If the distance between X and Y is 10 km. P reaches another point Z which is in the same line and returns immediately after travelling for 10 km more from the point Z, he meets Q at point R which is in between point X and Point Z. If the rate of speed of P, and Q is 10 km and 5 km per hour then find the distance between X and Z. (it is given that XZ &gt; YZ', '50 km', '45 km', '35 km', '40 km', 1, '', 0),
 (476, 155, 'Some number of solid metallic right circular cones radius of which is equal to the side of the square which area is 9 cm2 and height is 100% more than the inradius of that square are melted to form a solid sphere of radius 6 cm. find the number of right circular cones is required.', '64', '36', '27', '32', 4, '', 0),
 (477, 155, 'Ram borrowed Rs. x from Shyam at the rate of 13% simple interest and Rs. 2x from Mohan at the rate of 26 % simple interest he then added Rs. 82500 with the total amount he borrowed from Shyam and Mohan together and lend it to Sohan at the rate of 10% simple interest. The total profit, he received at the end of one year in this process was Rs. 1725. Find the value of x?', '18642.85', '19642.85', '16625.52', '17462.85', 1, '', 0),
-(478, 155, 'Two trains A, and B of same length start from Chennai for Bangalore at 10:00 pm. After travelling for 50% of the total distance train A meets with an accident and starta travelling at the rate of 2/3rd of its original speed. In this way, both the traina reach Bangalore at 08:00 am. Find the ratio of their original speed?', '3 : 2', '5 : 3', '5 : 2', '5 : 4', 4, '', 0);
+(478, 155, 'Two trains A, and B of same length start from Chennai for Bangalore at 10:00 pm. After travelling for 50% of the total distance train A meets with an accident and starta travelling at the rate of 2/3rd of its original speed. In this way, both the traina reach Bangalore at 08:00 am. Find the ratio of their original speed?', '3 : 2', '5 : 3', '5 : 2', '5 : 4', 4, '', 0),
+(479, 156, 'There are five persons- H, M, W, Q and V with different weights. H is heavier thanonly one person. Only one person is weighted in between Q and W. W is lighter than V. M is neither theheaviest person nor the second heaviest person.\r\n\r\nHow many persons are heavier than V?', '2', '1', '3', '4', 2, '', 0),
+(480, 156, 'There are five persons- H, M, W, Q and V with different weights. H is heavier thanonly one person. Only one person is weighted in between Q and W. W is lighter than V. M is neither theheaviest person nor the second heaviest person.\r\n\r\nIf the weight of H is 50kg, then what is the weight of M?', '60 Kg', '65 Kg', '45 Kg', '55 Kg', 3, '', 0),
+(481, 156, 'There are five persons- H, M, W, Q and V with different weights. H is heavier thanonly one person. Only one person is weighted in between Q and W. W is lighter than V. M is neither theheaviest person nor the second heaviest person.\r\n\r\nAs many persons are lighter than Q is the same as heavier than ___?', 'M', 'H', 'W', 'V', 1, '', 0),
+(482, 156, 'If 2 is added to all the digits of the number 53276434 then what is the sum of 3rd digit from left end and 5th digit from right end.', '12', '10', '13', '11', 3, '', 0),
+(483, 156, 'How many such pairs of digits are there in the number 725318649 each of which has as many digit between them in the number as in numerical series.', '2', '4', '3', '5', 4, '', 0),
+(484, 156, 'Eight persons- A to H are living in the eight-storey building. The lowermost floor is numbered as one and the topmost floor is numbered as eight. All the information is not necessarily in the same order.\r\n\r\nF lives on an even number floor two persons above G. Number of person lives above F is the same as below B. H lives immediately above the one who lives two persons above A. H is neither living adjacent floor of G nor E. E lives below D and is not living on the lowermost floor.\r\n\r\nHow many floors are between H and A?', 'As many as between F and B.', 'Three', 'As many as between D and A.', 'Four', 1, '', 0),
+(485, 156, 'Eight persons- A to H are living in the eight-storey building. The lowermost floor is numbered as one and the topmost floor is numbered as eight. All the information is not necessarily in the same order.\r\n\r\nF lives on an even number floor two persons above G. Number of person lives above F is the same as below B. H lives immediately above the one who lives two persons above A. H is neither living adjacent floor of G nor E. E lives below D and is not living on the lowermost floor.\r\n\r\nWhich of the following statement is/are true?\r\nI). Four floors between H and B.\r\nII). E lives two floors above C.\r\nIII). F lives immediately above A.', 'Only I and III', 'Only III', 'Only I and II', 'Only II', 1, '', 0),
+(486, 156, 'Eight persons- A to H are living in the eight-storey building. The lowermost floor is numbered as one and the topmost floor is numbered as eight. All the information is not necessarily in the same order.\r\n\r\nF lives on an even number floor two persons above G. Number of person lives above F is the same as below B. H lives immediately above the one who lives two persons above A. H is neither living adjacent floor of G nor E. E lives below D and is not living on the lowermost floor.\r\n\r\nAs many people live above D is same as that of below___?', 'G', 'A', 'F', 'E', 4, '', 0),
+(487, 156, 'Eight persons- A to H are living in the eight-storey building. The lowermost floor is numbered as one and the topmost floor is numbered as eight. All the information is not necessarily in the same order.\r\n\r\nF lives on an even number floor two persons above G. Number of person lives above F is the same as below B. H lives immediately above the one who lives two persons above A. H is neither living adjacent floor of G nor E. E lives below D and is not living on the lowermost floor.\r\n\r\nWho among the following lives three floors above B?', 'The one who lives on the sixth floor', 'The one who lives immediately above D', 'The one who lives two floors below H.', 'Both a and c', 1, '', 0),
+(488, 156, 'Eight persons- A to H are living in the eight-storey building. The lowermost floor is numbered as one and the topmost floor is numbered as eight. All the information is not necessarily in the same order.\r\n\r\nF lives on an even number floor two persons above G. Number of person lives above F is the same as below B. H lives immediately above the one who lives two persons above A. H is neither living adjacent floor of G nor E. E lives below D and is not living on the lowermost floor.\r\n\r\nWhat is the position of G from the top of the building?', 'Seventh', 'Fourth', 'Sixth', 'Fifth', 4, '', 0),
+(489, 156, 'Point P is 2m north of Point Q. Point Z is 9m west of Point Q. Point L is 15m east of Point M which is 20m south of Point Z. Point R is 3m south of Point L. Point T is west of point R and South of Point P.\r\n\r\nHow far and what is the direction of Q with respect to T?', '21m towards the south', '20m towards the south', '23m towards the north', '22m towards the north', 3, '', 0),
+(490, 156, 'Point P is 2m north of Point Q. Point Z is 9m west of Point Q. Point L is 15m east of Point M which is 20m south of Point Z. Point R is 3m south of Point L. Point T is west of point R and South of Point P.\r\n\r\nWhat is the shortest distance between Point L and Point Z?', '21 m', '25 m', '20 m', '23 m', 2, '', 0),
+(491, 156, 'Point P is 2m north of Point Q. Point Z is 9m west of Point Q. Point L is 15m east of Point M which is 20m south of Point Z. Point R is 3m south of Point L. Point T is west of point R and South of Point P.\r\n\r\nWhat is the shortest distance between T and R?', '6 m', '15 m', '7 m', '9 m', 1, '', 0),
+(492, 156, 'Six persons viz. L, M, N, O, P and Q are standing on a triangular line such that all of them are facing towards the center, but not necessarily in the same order. Two persons stand on each side of the line.\r\n\r\nL stands two persons away from Q. M stands to the immediate left of Q but not on the same side. N stands second to the left of M and second to the right of O. P doesn&rsquo;t stand adjacent to O.\r\n\r\nWho among the following person stand to the immediate right of N?', 'M', 'P', 'L', 'O', 2, 'See Images for reference Visit links\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744970359.png\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744972651.png\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744975164.png', 0),
+(493, 156, 'Six persons viz. L, M, N, O, P and Q are standing on a triangular line such that all of them are facing towards the center, but not necessarily in the same order. Two persons stand on each side of the line.\r\n\r\nL stands two persons away from Q. M stands to the immediate left of Q but not on the same side. N stands second to the left of M and second to the right of O. P doesn&rsquo;t stand adjacent to O.\r\n\r\nWhat is the position of O with respect to L?', 'Third to the right', 'Second to the right', 'Second to the left', 'Immediate left', 4, 'See Images for reference Visit links\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744970359.png\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744972651.png\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744975164.png', 0),
+(494, 156, 'Six persons viz. L, M, N, O, P and Q are standing on a triangular line such that all of them are facing towards the center, but not necessarily in the same order. Two persons stand on each side of the line.\r\n\r\nL stands two persons away from Q. M stands to the immediate left of Q but not on the same side. N stands second to the left of M and second to the right of O. P doesn&rsquo;t stand adjacent to O.\r\n\r\nHow many persons stand between Q and P when counted from the right of P?', '1', '2', '3', 'None', 1, 'See Images for reference Visit links\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744970359.png\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744972651.png\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744975164.png', 0),
+(495, 156, 'Six persons viz. L, M, N, O, P and Q are standing on a triangular line such that all of them are facing towards the center, but not necessarily in the same order. Two persons stand on each side of the line.\r\n\r\nL stands two persons away from Q. M stands to the immediate left of Q but not on the same side. N stands second to the left of M and second to the right of O. P doesn&rsquo;t stand adjacent to O.\r\n\r\nWho among the following person stands fourth to the left of O?', 'N', 'L', 'M', 'Q', 1, 'See Images for reference Visit links\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744970359.png\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744972651.png\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744975164.png', 0),
+(496, 156, 'Six persons viz. L, M, N, O, P and Q are standing on a triangular line such that all of them are facing towards the center, but not necessarily in the same order. Two persons stand on each side of the line.\r\n\r\nL stands two persons away from Q. M stands to the immediate left of Q but not on the same side. N stands second to the left of M and second to the right of O. P doesn&rsquo;t stand adjacent to O.\r\n\r\nFill the following series.\r\nLP ML NO __', 'NQ', 'LP', 'LO', 'PL', 3, 'See Images for reference Visit links\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744970359.png\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744972651.png\r\n\r\nhttps://guidelyassets.s3.ap-south-1.amazonaws.com/editor/practiceMockQuestions/161744975164.png', 0),
+(497, 156, '5, 12, 23, 50, 141, ?', '415', '430', '439', '488', 4, '5&hellip;&hellip;&hellip;.12&hellip;&hellip;&hellip;23&hellip;&hellip;&hellip;..50&hellip;&hellip;&hellip;.141&hellip;&hellip;&hellip;&hellip;488\r\n&hellip;.+7&hellip;&hellip;.+11&hellip;&hellip;&hellip;.+27&hellip;&hellip;&hellip;.+91&hellip;&hellip;&hellip;+347\r\n&hellip;&hellip;&hellip;+4&hellip;&hellip;..+16&hellip;&hellip;&hellip;.+64&hellip;&hellip;&hellip;+256', 0),
+(498, 156, '7, 13, 25, 45, 75, ?', '117', '153', '209', '123', 1, '', 0),
+(499, 156, '4, 11, 19, 41, ?, 161', '62', '81', '79', '90', 3, '4 &times; 2 + 3 = 11\r\n11 &times; 2 &ndash; 3 = 19\r\n19 &times; 2 + 3 = 41\r\n41 &times; 2 &ndash; 3 = 79\r\n79 &times; 2 + 3 = 161', 0),
+(500, 156, '4, 8, 21, 59, ?, 314', '146', '134', '125', '191', 1, '4&hellip;&hellip;&hellip;.8&hellip;&hellip;&hellip;21&hellip;&hellip;&hellip;..59&hellip;&hellip;&hellip;.146&hellip;&hellip;&hellip;&hellip;314\r\n&hellip;.+4&hellip;&hellip;.+13&hellip;&hellip;.+38&hellip;&hellip;&hellip;+87&hellip;&hellip;&hellip;+168\r\n&hellip;&hellip;&hellip;+3^2&hellip;&hellip;.+5^2&hellip;&hellip;..+7^2&hellip;&hellip;&hellip;+9^2', 0),
+(501, 156, '11, 6, 5, 9, 16, ?', '66.5', '78.5', '89.5', '42.5', 4, '11 &times;0.5 + 0.5 = 6\r\n6 &times;1 &ndash; 1 = 5\r\n5 &times;1.5 + 1.5 = 9\r\n9 &times;1 &ndash; 1 = 16\r\n16 &times;2.5 + 2.5 = 42.5', 0),
+(502, 156, '5, 8, 28, 162, ?, 12870', '1738', '2318', '1288', '2224', 3, '&times;2 &ndash; 2, &times;4 &ndash; 4, &times;6 &ndash; 6, &times;8 &ndash; 8, &times;10 &ndash; 10', 0),
+(503, 156, '3, 5, 10, 20, 37, ?', '68', '77', '78', '63', 4, '+ (1^2+1), + (2^2+1), + (3^2+1), + (4^2+1), + (5^2+1)', 0),
+(504, 156, '21, 35, 56, 91, 154, ?', '273', '289', '231', '240', 1, '21 &times; 2 &ndash; 7 = 35\r\n35 &times; 2 &ndash; 14 = 56\r\n56 &times; 2 &ndash; 21 = 91\r\n91 &times; 2 &ndash; 28 = 154\r\n154 &times; 2 &ndash; 35 = 273', 0),
+(505, 156, '5, 7, 11, 37, 143, ?', '733', '721', '764', '507', 2, '5 &times; 1 + 2 = 7\r\n7 &times; 2 &ndash; 3 = 11\r\n11 &times; 3 + 4 = 37\r\n37 &times; 4 &ndash; 5 = 143\r\n143 &times; 5 + 6 = 721', 0),
+(506, 156, '5, 7, 25, 131, ?, 8335', '865', '914', '1025', '925', 4, '5 &times; 1 + 2 = 7\r\n7 &times; 3 + 4 = 25\r\n25 &times; 5 + 6 = 131\r\n131 &times; 7 + 8 = 925\r\n925 &times; 9 + 10 = 8335', 0),
+(507, 156, '767     495     359     291     257     ?', '120', '240', '57', '68', 2, 'Series Pattern 	Given Series	 \r\n767	767	 \r\n767 &ndash; 272 = 495	495	 \r\n495 &ndash; 136 = 359	359	 \r\n359 &ndash; 68  = 291	291	 \r\n291 &ndash; 34 = 257	257	 \r\n257 &ndash; 17 = 240	240', 0),
+(508, 156, '17.5     31     58     98.5     152.5     ?', '169.5', '180.5', '220', '205', 3, 'Series Pattern 	Given Series	 \r\n17.5	17.5	 \r\n17.5 + 1 &times; 13.5 = 31	31	 \r\n31 + 2 &times; 13.5 = 58	58	 \r\n58 + 3 &times; 13.5 = 98.5	98.5	 \r\n98.5 + 4 &times; 13.5 = 152.5	152.5	 \r\n152.5 + 5 &times; 13.5 = 220	220', 0);
 
 -- --------------------------------------------------------
 
@@ -332,7 +362,8 @@ INSERT INTO `quizes` (`quiz_id`, `quiz_name`, `difficulty_level`, `description`,
 (141, 'C Programming Basic', 'Beginner', 'Practice Test', 10, 0, 0, 0, 'CP2021', 1, 0, 1, 900, 2, 1, 50, 24, '2021-04-12 14:33:29'),
 (142, 'Comprehension', 'Intermediate', 'Comprehension', 5, 0, 0, 0, 'CT2021', 0, 0, 1, 1800, 2, 1, 60, 24, '2021-04-12 20:57:59'),
 (150, 'General Aptitude 1.0', 'Intermediate', 'Quantitative Aptitude : 20 Questions\r<br/>Logical Reasoning : 20 Questions\r<br/>Verbal ability : 20 Questions', 60, 1, 0, 0, 'GA2021', 1, 1, 0, 7200, 2, 1, 60, 41, '2021-04-15 04:33:11'),
-(155, 'Quantitative Aptitude SBI PO', 'Intermediate', 'Quantitative Aptitude', 30, 1, 0, 0, 'QASBIPO2021', 0, 1, 0, 2700, 4, 1, 60, 41, '2021-04-16 17:18:36');
+(155, 'Quantitative Aptitude SBI PO', 'Intermediate', 'Quantitative Aptitude\r<br/>SBI PO', 30, 1, 0, 0, 'QASBIPO2021', 0, 1, 1, 3600, 4, 1, 60, 41, '2021-04-16 17:18:36'),
+(156, 'Logical Reasoning 1.0', 'Intermediate', 'Logical Reasoning Questions To Prepare For SBI PO Exams', 30, 1, 0, 0, 'LR2021', 0, 0, 0, 1800, 1, 0, 60, 41, '2021-04-16 19:25:22');
 
 -- --------------------------------------------------------
 
@@ -420,13 +451,13 @@ ALTER TABLE `registered_admin`
 -- AUTO_INCREMENT for table `attempts`
 --
 ALTER TABLE `attempts`
-  MODIFY `attempt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `attempt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -444,13 +475,13 @@ ALTER TABLE `profile_photo`
 -- AUTO_INCREMENT for table `question_bank`
 --
 ALTER TABLE `question_bank`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=479;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=509;
 
 --
 -- AUTO_INCREMENT for table `quizes`
 --
 ALTER TABLE `quizes`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 
 --
 -- AUTO_INCREMENT for table `registered_admin`

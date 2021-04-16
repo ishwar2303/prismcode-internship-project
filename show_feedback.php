@@ -7,6 +7,7 @@
 <?php
    session_start();
     require_once('connection.php');
+    require_once('middleware.php');
     if(isset($_SESSION['login_time']))
      {
       $current_time = time();
@@ -51,8 +52,14 @@
                             $temp = mysqli_query($conn,$sql);  
                             if($temp->num_rows>0)
                               {  
-                              
-                                  echo "<option  value='$row[quiz_id]'>$row[quiz_name]</option>";
+                                  $exam_id = -1;
+                                  if(isset($_POST['exam_id'])){
+                                    $exam_id = cleanInput($_POST['exam_id']);
+                                  }
+                                  $selected = '';
+                                  if($exam_id == $row['quiz_id'])
+                                    $selected = 'selected';
+                                  echo "<option  value='$row[quiz_id]' $selected>$row[quiz_name]</option>";
                               }
                           }
                           
@@ -67,6 +74,16 @@
               </form>
             </div>
             <div class="table-responsive">
+        <?php 
+        $message = '';
+        if(isset($_POST['exam_id']))
+        {
+          $sql = "SELECT * FROM feedback JOIN attempts on feedback.attempt_id=attempts.attempt_id WHERE quiz_id='$_POST[exam_id]'";
+          $result1 = mysqli_query($conn,$sql);
+          if($result1->num_rows == 0)
+            $message = '<span class="danger pd-15"><i class="fas fa-exclamation-circle"></i> No feedback</span>';
+          else{
+          ?>
               <table class="table card-table table-vcenter text-nowrap">
                 <thead>
                   <span style="margin-left: 25px;margin-top : 20px;font-weight: bold;">
@@ -92,12 +109,7 @@
                   </tr>
                 </thead>
                 <tbody>
-        <?php 
-        if(isset($_POST['exam_id']))
-        {
-         $sql = "SELECT * FROM feedback JOIN attempts on feedback.attempt_id=attempts.attempt_id WHERE quiz_id='$_POST[exam_id]'";
-            $result1 = mysqli_query($conn,$sql);
-       
+          <?php
             $i = 1;
             while($row = $result1->fetch_assoc())
             {
@@ -111,7 +123,7 @@
                     <td><?php echo $row['fullname'];?></td>
                     <td><?php echo $row['email'];?></td>
                     <td><?php echo $row['registration_no'];?></td>
-                    <td><?php echo $row['comment']; ?></td>
+                    <td><pre><?php echo $row['comment']; ?></pre></td>
                                                                      
                   </tr> 
 
@@ -123,7 +135,9 @@
                                                                   <!-- user -->
                 </tbody>
               </table>
+              <?php } ?>
             </div>
+              <?php echo $message; ?>
           </div>
         </div>       
       </div>

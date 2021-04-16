@@ -19,7 +19,7 @@
                 $toggle = $row['shuffle'];
                 $toggle = !$toggle;
                 if ($toggle) {
-                    $message = 'Questions will be shuffled';
+                    $message = 'Questions will appear in randomize fashion';
                 } else {
                     $message = 'Questions will appear in same sequence to all candidates';
                 }

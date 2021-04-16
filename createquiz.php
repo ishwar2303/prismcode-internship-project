@@ -97,7 +97,7 @@ $(document).ready(function(){
              <div class="col-sm-12 col-lg-12">
                <div class="form-group">
                  <label class="form-label">Quiz Name</label>
-                 <input id="quiz_name"   type="text" name="test" maxlength="35" class="form-control" placeholder="Quiz Name" value required="">
+                 <input id="quiz_name"   type="text" name="test" maxlength="50" class="form-control" placeholder="Quiz Name" value required="">
                </div>
              </div>
              <div class="col-sm-12 col-lg-12">

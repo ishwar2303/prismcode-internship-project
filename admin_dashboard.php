@@ -238,7 +238,15 @@ include('includes/navbar.php');
                    else echo "<span class='status-icon bg-unsuccess'></span>Inactive";
                 ?>
               </td>
-              <td><?php echo $row['time_stamp'];?></td>
+              <td>
+                <?php
+                    $timestamp = $row['time_stamp'];
+                    $date_obj = new DateTime($timestamp);
+                    echo $date_obj->format('d-m-Y');
+                    echo '<br/>';
+                    echo $date_obj->format('h:i:sa');
+                ?>
+              </td>
               <td>
                 <?php 
                   $checked = '';

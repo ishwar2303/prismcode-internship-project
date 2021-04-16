@@ -378,11 +378,20 @@ if($showEvaluation){
                     ?>
                        
                         <div  class="border-<?php echo $add;?>" style="margin-bottom: 6px;border-radius : 3px; box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);">
-                            <div style="border-radius : 3px; padding : 3px 10px;display: flex; justify-content: space-between; align-items: center; " id="headingOne">
-                                <h5 onclick="hide_show()" class="mb-0">
+                            <div style="border-radius : 3px; padding : 8px 10px;display: flex; justify-content: space-between; align-items: center; " id="headingOne">
+                                <h6 onclick="hide_show()" class="mb-0">
                                     
-                                    Question <?php echo $num;?>
-                                   
+                                    Q <?php echo $num;?>&nbsp;
+                                   <?php 
+                                      $question = $row['question'];
+                                      $len = strlen($question);
+                                      $end_index = 50;
+                                      if($len < 50)
+                                        $end_index = $len - 4;
+                                      $show_question_part = substr($question, 0, $end_index);
+                                      
+                                   ?>
+                                   <span style="font-size:14px"><?php echo $show_question_part.' . . .'; ?></span>
                                 </h5> 
                                 <label class="down-arrow-container" onclick="showQuestionAnswer(<?php echo $num-1;?>)">
                                   <span><i class="fas fa-chevron-down down-arrow"></i></span>
