@@ -139,7 +139,7 @@ echo "</div>";
 				<div class="col-12">
 					<div class="card">
 						<div class="card-header pd-0">
-							<h3 class="card-title gray-highlight"><?php echo $QuizName."  contain $temp questions."; ?></h3>
+							<h3 class="card-title"><?php echo $QuizName."  contain $temp questions."; ?></h3>
 						</div>
 						<div class="card-body">
 						<form action="add_questions_to_questionnaire.php" method="post">
@@ -152,7 +152,7 @@ echo "</div>";
             for($i=1;$i<=$n;$i++)
             {
             	?>
-					<div style="margin-top : 5px;" class="row p-4 mb-2 border rounded border-muted">
+					<div style="margin-top : 5px;" class="row p-4 mb-2 border rounded border-muted border-none">
 						<div class="col-sm-12 col-lg-12">
 							<div class="form-group">
 								<label class="form-label">Question <?php echo  $i; ?></label>

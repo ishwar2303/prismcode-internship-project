@@ -245,6 +245,10 @@
      width: 160px;
      height: 160px;
     }
+    .profile-photo-container > img{
+    max-width: 100%;
+    max-height: 100%;
+  }
     #no-file-choosen{
       background: white;
       height: 35px;
@@ -749,6 +753,22 @@
     width: 100%;
     height: 100%;
   }
+  @media screen and (max-width:600px){
+    #confirm-quiz-delete-popup{
+    /* height: 300px; */
+    width: 250px;
+    padding: 20px;
+    border-radius: 5px;
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    transform: translate(-50%, 0%);
+    background: white;
+    z-index: 10;
+    border: 0.5px solid #95a5a6;
+    display: none;
+    position: fixed;}
+  }
   #delete-me{
     /* margin-top: 20px; */
     /* margin-bottom: 15px; */
@@ -785,7 +805,7 @@
   }
   #delete-yes{
     border-radius: 3px;
-    background: #659b2d;
+    background: #cd201f;
     color: white;
     border: none;
     padding: 3px 13px;
@@ -804,7 +824,7 @@
   }
   #delete-no:hover{
     /* background: #cd201f; */
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.6);
   }
 </style>
 <script type="text/javascript">
@@ -854,7 +874,7 @@
   <input oninput="checkUserConfirmation()" id="delete-me" type="text" name="checkDeleteConfirmation" required>
   <div class="delete-yes-no-btn-container">
         <button onclick="hideConfirmationPOPUP()" id="delete-no">Cancel</button>
-        <button onclick="deleteThisQuiz()" id="delete-yes">Confirm</button>
+        <button onclick="deleteThisQuiz()" id="delete-yes">Delete</button>
   </div>
   <h5 style="color: blue;margin-top: 15px;">Note : No Backup</h5>
   </div>

@@ -192,6 +192,7 @@ include('includes/navbar.php');
       <div class="card-header">
         <h3 class="card-title">Quizes</h3>
       </div>
+			<?php require 'includes/flash-message.php'; ?>
       <?php 
 
             $temp = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]' ORDER BY quiz_name";
@@ -244,7 +245,7 @@ include('includes/navbar.php');
                   if($row['shuffle'])
                     $checked = 'checked';
                 ?>
-                  <label class="custom-toggle-btn toggle-shuffle-question">
+                  <label class="custom-toggle-btn toggle-shuffle-question mb-0">
                       <input id="toggle-shuffle-checkbox<?php echo $row['quiz_id']; ?>" type="checkbox" name="gender" <?php echo $checked; ?>>
                       <span>
                           <i class="fas fa-check"></i>
@@ -265,7 +266,11 @@ include('includes/navbar.php');
                     });
                   </script>
               </td>
-              <td style="text-align: center;"><i style="color: #2980b9; cursor: pointer;" class="fas fa-pencil-alt quiz-edit-icon"></i></td>
+              <td >
+                <span class="quiz-edit-icon edit-quiz center">
+                <i  class="fas fa-pencil-alt "></i>
+                </span>
+              </td>
               <script type="text/javascript">
                 $(document).ready(function(){
                   $('.quiz-edit-icon').eq(<?php echo $i-1;?>).click(function(){
@@ -277,16 +282,17 @@ include('includes/navbar.php');
                   });
                 });
               </script>
-              <td style="text-align: center;" class="text-center">
+              <td class="">
                 <!--
                 <a id="delete-exam-link" onclick="return confirmation()" class="icon" href="delete_exam_query.php?exam_id=<?php echo $row['quiz_id']?>">
                 -->
                   <?php 
                     $QID = "'".$row['quiz_id']."'";
                   ?>
-                  <i style="cursor: pointer;" onclick="confirmQuizDeletion(<?php echo $QID; ?>)" class="fas fa-trash-alt text-danger">
-                    
-                  </i>
+                  <span class="delete-quiz center" onclick="confirmQuizDeletion(<?php echo $QID; ?>)">
+                    <i style="cursor: pointer;"  class="fas fa-trash-alt"></i>
+                  </span>
+                  
                 <!-- </a> -->
               </td>
             </tr>
@@ -302,8 +308,9 @@ include('includes/navbar.php');
       else {
         ?>
         <div style="width: 100%;height: 50vh;font-size: 20px; display: flex;justify-content: center;align-items: center;color: #cd201f;flex-direction: column;">
-          <i style="font-size: 40px; margin-bottom : 25px;" class="fas fa-graduation-cap"></i>
-          <label>No Quiz Registered!</label>
+          
+          <label><i class="fas fa-exclamation-circle"></i> No Quizzes</label>
+          <button class="create-quiz-btn" onclick="location.href='createquiz.php'">Create Quiz</button>
         </div>
         <?php
       }

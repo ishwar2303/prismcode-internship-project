@@ -185,8 +185,8 @@ var T = 0;
       var x = document.getElementsByClassName('review-checkbox');
       x[queNumber-1].checked = false;
       var x = document.getElementsByClassName('question-switch-container')[0].getElementsByTagName('label');
-      x[queNumber-1].style.background = '#5eba00';
-      x[queNumber-1].style.color = 'white';
+      x[queNumber-1].style.background = '';
+      x[queNumber-1].style.color = '';
       count();
     }
     function updateStatus(queNumber){

@@ -22,6 +22,7 @@
     font-size: 12px;
     font-weight: 400;
     margin-top: 5px;
+    margin-left: 5px;
     }
     .marking{
 
@@ -41,7 +42,6 @@
     }
     .mark-as-review{
     margin-top: 5px;
-    margin-right: 5px;
     height: 30px;
     background: linear-gradient(90deg, #d5ab29, #e99923);
     color: black;
@@ -54,7 +54,6 @@
     font-weight: 400;
     }
     .remove-from-review{
-    margin-right: 5px;
     height: 30px;
     background: linear-gradient(90deg, #d5ab29, #e99923);
     color: black;
@@ -901,3 +900,6 @@ form{
 /* .main-container{
     display: none;
 } */
+.question-operations > span:last-child{
+    margin-right: 0;
+}

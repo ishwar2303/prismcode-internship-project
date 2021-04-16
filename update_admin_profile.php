@@ -33,8 +33,10 @@
                  $imgname = $_FILES['img']['name']; 
                  $tempimgname = $_FILES['img']['tmp_name'];
                  move_uploaded_file($tempimgname,"profile_photo/$imgname");
+
                  $sql = "INSERT INTO `profile_photo`(`image_id`, `image_name`, `admin_email`) VALUES (NULL, '$imgname', '$_SESSION[email]')";
                  mysqli_query($conn,$sql);
+                 $_SESSION['success_msg'] = 'Profile photo updated successfully';
           }
           $_SESSION['message'] = 'Profile Updated Successfully';
           $_SESSION['color'] = '#f39c12';

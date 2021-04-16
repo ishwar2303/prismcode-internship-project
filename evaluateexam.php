@@ -396,9 +396,16 @@ if($showEvaluation){
                             <div class="question-answer" id="collapse1<?php echo $num;?>"  aria-labelledby="headingOne" data-parent="#accordionExample" style>
                                 <div class="card-body text-justify">
                                     <p>
+<?php 
+	if($row['formatted']){
+		?>
 <pre>
-<code  class="questions"><?php echo $row['question'];?></code>
+<code><?php echo $row['question'];?></code>
 </pre>
+<?php
+	}
+	else echo str_replace("\n", "<br/>", $row['question']);
+?>	
                                     </p>
                                     <p>
                                         <span style="border-radius: 3px; padding : 5px 10px;" class="text-white bg-primary">Options</span>

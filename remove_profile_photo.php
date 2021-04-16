@@ -10,6 +10,7 @@
         mysqli_query($conn,$sql);
         $target = "profile_photo/".$image_name;
         unlink($target);
+        $_SESSION['success_msg'] = 'Profile photo removed';
         $_SESSION['message'] = 'Profile photo removed';
         $_SESSION['color'] = '#68a030';
         header('location: admin_profile.php');

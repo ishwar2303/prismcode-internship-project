@@ -140,7 +140,7 @@ echo "</div>";
               ?>
 							<div class="card"  style="border:none;">
 								<div class="">
-									<h3 class="card-title gray-highlight"><?php echo $Quiz;?></h3>
+									<h3 class="card-title pl-1"><?php echo $Quiz;?></h3>
 								</div>
 								<div id="all-questions" class="card-body" >
 									<form action="update_questionnaire.php" method="post">

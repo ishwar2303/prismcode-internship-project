@@ -91,6 +91,7 @@
 					<div class="card-header">
 						<h2 class="card-title">Public Access</h2>
 					</div>
+					<?php require 'includes/flash-message.php'; ?>
 					<div class="table-responsive">
 						<table class="table card-table table-vcenter text-nowrap">
 							<thead>

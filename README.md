@@ -62,8 +62,7 @@ Candidate's response
 - Start Quiz
 
 ## Exam page Features
-- Shuffle Questions
-- Jump directly to a Question
+- Switch Questions
 - Mark as review
 - Counts Attempted and Remaining Questions
 

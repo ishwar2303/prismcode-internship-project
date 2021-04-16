@@ -47,6 +47,7 @@
 						<div class="card-header">
 							<h3 class="card-title">Profile Details</h3>
 						</div>
+						<?php require 'includes/flash-message.php'; ?>
 						<div class="card-body">
 							<form action="update_admin_profile.php" method="post" enctype="multipart/form-data">
 								<div style="margin : 0" class="row p-4 mb-2 border rounded border-muted">

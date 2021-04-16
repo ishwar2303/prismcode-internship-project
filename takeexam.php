@@ -166,7 +166,7 @@ $t = 0;
 	                        		<div>
 	                        			<label class="question-no"><?php echo "Q $i";?></label>
 	                        		</div>
-	                        		<div>	
+	                        		<div class="question-operations">	
  	                        			<span class="mark-as-review">Mark As Review</span>
  	                        			<span class="remove-from-review">Remove From Review</span>
 	                        			<span class="uncheck-option">Clear Response</span>
@@ -176,7 +176,7 @@ $t = 0;
 									?>
 									<script type="text/javascript">
 										document.getElementsByClassName('uncheck-option')[<?php echo $i-1;?>].style.display='none';
-										document.getElementsByClassName('mark-as-review')[<?php echo $i-1;?>].style.display='none';
+										document.getElementsByClassName('mark-as-review')[<?php echo $i-1;?>].style.display='block';
 									</script>
 	                        		<?php 
 	                        		}
@@ -237,7 +237,7 @@ $t = 0;
                 								x.style.background = 'transparent';
                 								x.style.color = '#95a5a6';
                 								document.getElementsByClassName('uncheck-option')[<?php echo $i-1;?>].style.display='none';
-                								document.getElementsByClassName('mark-as-review')[<?php echo $i-1;?>].style.display='none';
+                								document.getElementsByClassName('mark-as-review')[<?php echo $i-1;?>].style.display='block';
 
                 								document.getElementsByClassName('remove-from-review')[<?php echo $i-1;?>].style.display='none';
                 								count();

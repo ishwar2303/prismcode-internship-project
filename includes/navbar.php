@@ -1,4 +1,5 @@
-   <!-- Sidebar -->
+<div class="black-cover-for-quiz-action"></div>
+<!-- Sidebar -->
    <ul style="max-height:100vh;overflow-y:auto;overflow-x:hidden;background: linear-gradient(45deg, #2980b9, #3498db);position: absolute;position: fixed;" class="navbar-nav sidebar sidebar-dark accordion open-close-sidebar" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
@@ -70,13 +71,13 @@
     }
   ?>
 <?php if($quizControl){?>
-  <a class="nav-link collapsed" style="position:relative;" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+  <a id="quiz-action-toggle" class="nav-link" href="#">
     <i class="fas fa-tools"></i>
     <span>Quiz Action</span>
   </a>
 <?php }?>
-  <div id="collapseUtilities" class="collapse quiz-action-menu" style="position:absolute;left: 100px;top: 200px;;position:fixed;" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-    <div style="border : 0.5px solid #cbb09b;" class="bg-white py-2 collapse-inner rounded">
+  <div class="quiz-action-menu" >
+    <div style="border : 0.5px solid #cbb09b;">
       <h6 class="collapse-header">Action:</h6>
       <?php if($control){?>
       <a class="collapse-item" href="exam_status.php">Quiz Status</a>
@@ -227,3 +228,24 @@ if($control){
 
 
   
+  
+<script>
+  let quizActionToggle = 1;
+  function quizActionToggleUtility(){
+    if(quizActionToggle){
+      document.getElementsByClassName('quiz-action-menu')[0].style.display = 'block'
+      document.getElementsByClassName('black-cover-for-quiz-action')[0].style.display = 'block'
+    }
+    else{
+      document.getElementsByClassName('quiz-action-menu')[0].style.display = 'none'
+      document.getElementsByClassName('black-cover-for-quiz-action')[0].style.display = 'none'
+    }
+    quizActionToggle = !quizActionToggle
+  }
+  document.getElementById('quiz-action-toggle').addEventListener('click', () => {
+    quizActionToggleUtility()
+  })
+  document.getElementsByClassName('black-cover-for-quiz-action')[0].addEventListener('click', () => {
+    quizActionToggleUtility()
+  })
+</script>
