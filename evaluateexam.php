@@ -387,7 +387,7 @@ if($showEvaluation){
                                       $len = strlen($question);
                                       $end_index = 50;
                                       if($len < 50)
-                                        $end_index = $len - 4;
+                                        $end_index = $len;
                                       $show_question_part = substr($question, 0, $end_index);
                                       
                                    ?>

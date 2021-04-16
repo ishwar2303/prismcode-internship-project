@@ -19060,6 +19060,8 @@ a{
   align-items: center;
   width: 35px;
   height: 35px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 .edit-quiz{
   cursor: pointer;
@@ -19072,6 +19074,8 @@ a{
   align-items: center;
   width: 35px;
   height: 35px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .mb-0{
   margin-bottom: 0;
@@ -19219,4 +19223,9 @@ a{
 .danger{color: #cd201f;}
 .pd-15{
   padding: 15px;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

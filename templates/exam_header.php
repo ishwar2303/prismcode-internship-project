@@ -56,7 +56,7 @@
             });
         });
     </script>
-    <!-- <script type="text/javascript" src="js/stop-copy-paste.js"></script> -->
+    <script type="text/javascript" src="js/stop-copy-paste.js"></script>
     <script type="text/javascript" src="take_quizJAVAscript.js"></script>
 
 </head>

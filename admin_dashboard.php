@@ -212,8 +212,7 @@ include('includes/navbar.php');
               <th>Status</th> 
               <th>Created</th>
               <th>Shuffle</th>
-              <th style="text-align: center;">Edit</th>
-              <th style="text-align: center;">Delete</th>
+              <th style="text-align: center;">Edit/Delete</th>
              
             </tr>
           </thead>
@@ -275,9 +274,19 @@ include('includes/navbar.php');
                   </script>
               </td>
               <td >
-                <span class="quiz-edit-icon edit-quiz center">
-                <i  class="fas fa-pencil-alt "></i>
-                </span>
+                  <div class="flex-center">
+                    <span class="quiz-edit-icon edit-quiz">
+                    <i  class="fas fa-pencil-alt "></i>
+                    </span>
+
+                    <?php 
+                      $QID = "'".$row['quiz_id']."'";
+                    ?>
+                    <span class="delete-quiz" onclick="confirmQuizDeletion(<?php echo $QID; ?>)">
+                      <i style="cursor: pointer;"  class="fas fa-trash-alt"></i>
+                    </span>
+                  </div>
+
               </td>
               <script type="text/javascript">
                 $(document).ready(function(){
@@ -290,19 +299,6 @@ include('includes/navbar.php');
                   });
                 });
               </script>
-              <td class="">
-                <!--
-                <a id="delete-exam-link" onclick="return confirmation()" class="icon" href="delete_exam_query.php?exam_id=<?php echo $row['quiz_id']?>">
-                -->
-                  <?php 
-                    $QID = "'".$row['quiz_id']."'";
-                  ?>
-                  <span class="delete-quiz center" onclick="confirmQuizDeletion(<?php echo $QID; ?>)">
-                    <i style="cursor: pointer;"  class="fas fa-trash-alt"></i>
-                  </span>
-                  
-                <!-- </a> -->
-              </td>
             </tr>
           </tbody>
           <?php

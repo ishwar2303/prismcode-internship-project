@@ -48,6 +48,10 @@
       position: fixed;
       display: none;
       min-width: 250px;
+      text-align: center;
+    }
+    .updated-successfully i{
+      margin-left: 10px;
     }
     .deleted-successfully{
       position: absolute;
@@ -63,6 +67,9 @@
       display: none;
       min-width: 250px;
     }
+    .deleted-successfully i{
+      margin-left: 10px;
+    }
     .set-container{
       position: relative;
     }
@@ -71,16 +78,16 @@
       cursor: pointer;
       background: #4077c4;
       position: absolute;
-      right: 41px;
+      right: 36px;
       color: white;
-      width: 35px;
-      top: 3px;
+      width: 30px;
+      top: 5px;
       font-size: 25px;
       z-index: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 35px;
+      height: 30px;
       font-size: 14px;
       border-top-left-radius: 3px;
       border-bottom-left-radius: 3px;
@@ -98,12 +105,12 @@
       cursor: pointer;
       display: none;
       position: absolute;
-      right: 41px;
-      top: 3px;
+      right: 36px;
+      top: 5px;
       font-size: 25px;
       z-index: 1;
-      width: 35px;
-      height: 35px;
+      width: 30px;
+      height: 30px;
       color: white;
       display: none;
       font-size: 14px;
@@ -124,11 +131,11 @@
       cursor: pointer;
       position: absolute;
       right: 6px;
-      top: 3px;
+      top: 5px;
       font-size: 25px;
       z-index: 1;
-      width: 35px;
-      height: 35px;
+      width: 30px;
+      height: 30px;
       color: white;
       display: flex;
       justify-content: center;
