@@ -30,12 +30,12 @@
           $sql = "UPDATE quizes SET is_active='$toggle' WHERE quiz_id='$quizID'";
           mysqli_query($conn,$sql);
           if($toggle == 0){
-            $_SESSION['success_msg'] = 'Quiz : '.$quiz_name.'<br/> Status changed to Inactive';
+            $_SESSION['success_msg'] = 'Quiz : '.$quiz_name.'<br/> Status : Inactive';
             $_SESSION['message'] = 'Inactive';
             $_SESSION['color'] = '#f39c12';
           }
           else{
-            $_SESSION['success_msg'] = 'Quiz : '.$quiz_name.'<br/> Status changed to Active';
+            $_SESSION['success_msg'] = 'Quiz : '.$quiz_name.'<br/> Status : Active';
             $_SESSION['message'] = 'Active';
             $_SESSION['color'] = '#68a030';
           }

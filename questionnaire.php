@@ -8,6 +8,7 @@
 
   session_start();
   require_once('connection.php');
+  require_once('middleware.php');
   if(isset($_SESSION['login_time']))
      {
       $current_time = time();
@@ -71,9 +72,7 @@
 				<div class="col-12">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title">
-					Update Questionnaire
-							</h3>
+							<h3 class="card-title">Update Questionnaire</h3>
 						</div>
 						<div class="card-body1">
 							<form action="questionnaire.php" method="POST" class="pd-5px">
@@ -81,7 +80,7 @@
 									<div class="col-sm-12 col-lg-12">
 										<div class="form-group">
 											<label style="margin-left: 10px;" class="form-label">Quizes</label>
-											<select style="margin-left: 10px;" class="form-control custom-select select-exam" name="exam_id">
+											<select style="margin-left: 10px;" class="form-control custom-select select-exam ht-50" name="exam_id">
 												<option value disabled> -- Select--</option>
 												<?php 
         
@@ -89,8 +88,8 @@
 										                 $result = mysqli_query($conn,$temp);
 
 													$e_id = -1;
-													if(isset($_POST['exam_id'])){
-													$e_id = $_POST['exam_id'];
+													if(isset($_REQUEST['exam_id'])){
+													$e_id = $_REQUEST['exam_id'];
 													}
 										            while($row = $result->fetch_assoc())
 										            {  
@@ -109,13 +108,13 @@
 										            
 												?>
 											</select>
-											<button name="submit" class="check-score btn btn-primary ml-auto" value="Check" type="submit">Show</button>
+											<button name="submit" class="check-score btn btn-primary ml-auto ht-50 plr-20" value="Check" type="submit">Show</button>
 										</div>
 									</div>
 								</div>
 							</form>
 <?php
-        	if(!isset($_POST['exam_id']))
+        	if(!isset($_REQUEST['exam_id']))
         	{
 					echo "</div>";
 				echo "</div>";
@@ -126,17 +125,19 @@ echo "</div>";
 }
 ?>
 							<?php
-        	if(isset($_POST['exam_id']))
+        	if(isset($_REQUEST['exam_id']))
         	{
-        
-                      $sql = "SELECT quiz_name,number_of_questions FROM quizes WHERE quiz_id='$_POST[exam_id]'";
-                      $result = mysqli_query($conn,$sql);
-                      $row = $result->fetch_assoc();
-                      $Quiz =  $row['quiz_name'];
-                      $QueNum = $row['number_of_questions'];
-        		$sql = "SELECT * FROM question_bank WHERE quiz_id='$_POST[exam_id]'";
-        		$result = mysqli_query($conn,$sql);
-        		$i=1;
+						$exam_id = cleanInput($_REQUEST['exam_id']);
+						$sql = "SELECT quiz_name,number_of_questions,admin_email_id FROM quizes WHERE quiz_id='$exam_id' AND admin_email_id='$_SESSION[admin_id]'";
+						$result = mysqli_query($conn,$sql);
+						if($result->num_rows != 1)
+							return;
+						$row = $result->fetch_assoc();
+						$Quiz =  $row['quiz_name'];
+						$QueNum = $row['number_of_questions'];
+						$sql = "SELECT * FROM question_bank WHERE quiz_id='$exam_id'";
+						$result = mysqli_query($conn,$sql);
+						$i=1;
               ?>
 							<div class="card"  style="border:none;">
 								<div class="">
@@ -178,6 +179,7 @@ echo "</div>";
 											<script type="text/javascript">
 												$(document).ready(function(){
 													$(".update-question").eq(<?php echo $i-1;?>).click(function(){
+													$('.updating-msg').show()
 													var question = document.getElementsByClassName('question')[<?php echo $i-1;?>].value;
 													var option1 = document.getElementsByClassName('option1')[<?php echo $i-1;?>].value;
 													var option2 = document.getElementsByClassName('option2')[<?php echo $i-1;?>].value;
@@ -190,7 +192,7 @@ echo "</div>";
 															$("#all-questions").load(url,{
 																quesID : <?php echo $row['question_id'];?>,
 																update : true,
-																quizID : <?php echo $_POST['exam_id'];?>,
+																quizID : <?php echo $_REQUEST['exam_id'];?>,
 																quesNum : <?php echo $QueNum;?>,
 																que : question,
 																op1 : option1,
@@ -216,12 +218,12 @@ echo "</div>";
 														});
 														
 														$("#confirm").click(function(){
-															
+															$('.deleting-msg').show()
 															hideCustomConfirmation();
 															$("#all-questions").load(url,{
 																quesID : <?php echo $row['question_id'];?>,
 																delete : true,
-																quizID : <?php echo $_POST['exam_id'];?>,
+																quizID : <?php echo $_REQUEST['exam_id'];?>,
 																quesNum : <?php echo $QueNum;?>
 															});
 														});
@@ -275,7 +277,7 @@ echo "</div>";
 											<div class="col-sm-12 col-lg-12">
 												<div class="form-group">
 													<label class="form-label">Answer</label>
-													<select name="answer[]" class="form-control custom-select answer" required="true" disabled="true">
+													<select name="answer[]" class="form-control custom-select answer ht-50" required="true" disabled="true">
 														<?php
 														$ans = $row['answer'];
 														if($ans==1)
@@ -306,7 +308,7 @@ echo "</div>";
 										}
 									       $_SESSION['ques_num'] = $i-1;
 									       $_SESSION['ques_update_set'] = true;
-									       $_SESSION['quiz_id'] = $_POST['exam_id'];
+									       $_SESSION['quiz_id'] = $_REQUEST['exam_id'];
 										?>
                                          
 										

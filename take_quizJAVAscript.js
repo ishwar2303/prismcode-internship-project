@@ -401,3 +401,38 @@ function examStarted(){
     checkCookie()
   }
 }
+
+let questionID
+function showReportQuestionPopup(queID){
+  document.getElementById('question-problem').value = ''
+  questionID = queID
+  let x = document.getElementById('question-report-popup')
+  let y = document.getElementById('black-cover-for-report')
+  x.style.display = 'block'
+  y.style.display = 'block'
+}
+
+function closeReportQuestion(){
+  let x = document.getElementById('question-report-popup')
+  let y = document.getElementById('black-cover-for-report')
+  x.style.display = 'none'
+  y.style.display = 'none'
+}
+
+function reportQuestion(){
+  let response = document.getElementsByClassName('question-report-response')[0]
+  response.innerHTML = ''
+  let problem = document.getElementById('question-problem').value
+  let url = 'report-question.php'
+  if(problem != ''){
+    $('.question-report-response').load(url,{
+      questionID,
+      problem
+    })
+  }
+  else{
+    response.innerHTML = '<div class="error-msg"><i class="fas fa-exclamation-circle"></i> Mention your issue</div>'
+  }
+  response.style.display = 'block'
+  setTimeout(() => {response.style.display = 'none'}, 3000)
+}

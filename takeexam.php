@@ -154,7 +154,7 @@ $j = 0;
 $t = 0;
 	foreach ($QUESTIONS as $QueID)
 	{
-		$sql = "SELECT question,option_1,option_2,option_3,option_4,formatted FROM question_bank WHERE question_id='$QueID'";
+		$sql = "SELECT question_id,question,option_1,option_2,option_3,option_4,formatted FROM question_bank WHERE question_id='$QueID'";
 		$result = mysqli_query($conn,$sql);
 		$row = $result->fetch_assoc();
     ?>
@@ -167,9 +167,10 @@ $t = 0;
 	                        			<label class="question-no"><?php echo "Q $i";?></label>
 	                        		</div>
 	                        		<div class="question-operations">	
- 	                        			<span class="mark-as-review">Mark As Review</span>
- 	                        			<span class="remove-from-review">Remove From Review</span>
+ 	                        			<span class="mark-as-review">Mark as review</span>
+ 	                        			<span class="remove-from-review">Remove from review</span>
 	                        			<span class="uncheck-option">Clear Response</span>
+										<span class="report-question" onclick="showReportQuestionPopup(<?php echo $row['question_id'] ?>)"><i class="fas fa-exclamation-circle"></i> Report</span>
 	                        		</div>
 									<?php 
 									if($_SESSION['ANSWER'][$i] == 0){
@@ -438,6 +439,19 @@ $t = 0;
 	</div>
 	<div id="black-cover-for-proctored">
 	</div>
+
+	<div id="question-report-popup">
+		<div>
+			<label for="" class="form-label">Report Issue</label>
+			<textarea id="question-problem" class="form-control" placeholder="Write your problem here..."></textarea>
+			<div class="space-between">
+				<button id="close-report-popup" onclick="closeReportQuestion()">Close</button>
+				<button id="report-problem" onclick="reportQuestion()">Report</button>
+			</div>
+		</div>
+	</div>
+	<div id="black-cover-for-report"></div>
+	<div class="question-report-response"></div>
 	<script>
 		document.getElementById('close-proctored-popup').addEventListener('click', () => {
 			document.getElementById('proctored-popup').style.display = 'none'

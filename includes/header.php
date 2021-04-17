@@ -35,6 +35,25 @@
         font-family: -webkit-pictograph;
       }
     /* questionnaire.php */
+    
+    .updating-msg,.deleting-msg{
+      position: absolute;
+      left: 50%;
+      top: 100px;
+      transform: translate(-50%,0%);
+      background: #467fcf;
+      color: white;
+      border-radius: 3px;
+      padding: 15px 20px; 
+      z-index: 4;
+      position: fixed;
+      display: none;
+      min-width: 250px;
+      text-align: center;
+    }
+    .updating-msg i, .deleting-msg i{
+      margin-left: 10px;
+    }
     .updated-successfully{
       position: absolute;
       left: 50%;
@@ -53,7 +72,7 @@
     .updated-successfully i{
       margin-left: 10px;
     }
-    .deleted-successfully{
+    .deleted-successfully, .error-in-updating{
       position: absolute;
       left: 50%;
       top: 100px;
@@ -65,11 +84,21 @@
       z-index: 4;
       position: fixed;
       display: none;
+      text-align: center;
       min-width: 250px;
     }
     .deleted-successfully i{
       margin-left: 10px;
     }
+    .error-in-updating i{
+      margin-right: 10px;
+    }
+    #close-error-in-updating{
+    border: none;
+    border-radius: 3px;
+    padding: 5px 15px;
+    margin-left: 10px;
+  }
     .set-container{
       position: relative;
     }
@@ -184,9 +213,87 @@
       color : white;
       display: none;
       position: absolute;
-      left : -20px;
+    right: 0px;
       top : 40px;
       font-size: 12px;
+    }
+
+    .block-theme-edit-icon{
+      background: #3498db;
+      cursor: pointer;
+      display: flex;
+      position: absolute;
+      right: 36px;
+      top: 5px;
+      font-size: 25px;
+      z-index: 1;
+      width: 30px;
+      height: 30px;
+      color: white;
+      font-size: 14px;
+      justify-content: center;
+      align-items: center;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+    .block-theme-delete-icon{
+
+      background: #cd201f;
+      cursor: pointer;
+      position: absolute;
+      right: 6px;
+      top: 5px;
+      font-size: 25px;
+      z-index: 1;
+      width: 30px;
+      height: 30px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+
+
+    .block-theme-delete-icon:hover, .block-theme-edit-icon:hover{
+      box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.6);
+      color: white;
+      text-decoration: none;
+    }
+    .block-theme-edit-hint{
+      padding: 3px 7px;
+      background: black;
+      opacity: 0.8;
+      border-radius: 3px;
+      color : white;
+      display: none;
+      position: absolute;
+    right: 0px;
+      top : 40px;
+      font-size: 12px;
+      text-align: center;
+    }
+    .block-theme-delete-hint{
+      padding: 3px 7px;
+      background: black;
+      opacity: 0.8;
+      border-radius: 3px;
+      color : white;
+      display: none;
+      position: absolute;
+    right: 0px;
+      top : 40px;
+      font-size: 12px;
+      text-align: center;
+    }
+    
+    .block-theme-delete-icon:hover > .block-theme-delete-hint{
+      display: block;
+    }
+     .block-theme-edit-icon:hover > .block-theme-edit-hint{
+      display: block;
     }
     .question-id{
       display: none;
@@ -306,9 +413,9 @@
           left : 50%;
           transform: translate(-50%,-50%);
           border : 0.5px solid #bdc3c7;
-          border-radius: 15px;
-          height: 450px;
-          width: 500px;
+          border-radius: 3px;
+          height: 70vh;
+          width: 75%;
           background: white;
     box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 60%);
           position: fixed;
@@ -347,7 +454,7 @@
       }
       #quiz-details-content{
         overflow-y: scroll;
-        height: 400px;
+        height: 100%;
         padding: 0px 15px;
       }
 .success-pop-up
@@ -420,9 +527,9 @@
           left : 50%;
           transform: translate(-50%,-50%);
           border : 0.5px solid #bdc3c7;
-          border-radius: 15px;
-          height: 450px;
-          width: 358px;
+          border-radius: 3px;
+          height: 70vh;
+          width: 98%;
           background: white;
           box-shadow: 0px 0px 3px 0px black;
           position: fixed;
@@ -779,11 +886,11 @@
   #delete-me{
     /* margin-top: 20px; */
     /* margin-bottom: 15px; */
-    height: 40px;
+    height: 45px;
     width: 100%;
     border-radius: 3px;
-    border : 0.5px solid #95a5a6;
-    padding: 0px 5px;
+    border: 0.5px solid #95a5a6;
+    padding: 0px 15px;
     color: green;
   }
   #delete-me:focus{
@@ -831,7 +938,7 @@
   }
   #delete-no:hover{
     /* background: #cd201f; */
-    box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.6);
   }
 </style>
 <script type="text/javascript">
@@ -897,6 +1004,8 @@
   </div>
     <div class="updated-successfully">Updated Successfully <i class="fas fa-check"></i></div>
     <div class="deleted-successfully">Deleted Successfully <i class="fas fa-check"></i></div>
+    <div class="updating-msg">Updating <i class="fas fa-sync-alt fa-spin"></i></div>
+    <div class="deleting-msg">Deleting <i class="fas fa-sync-alt fa-spin"></i></div>
     <div onclick='onClickBlackCover()' class="black-cover">
     </div>
           <button onclick="hideSideBar()" style="z-index: 3;" id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -955,3 +1064,5 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<!-- <script type="text/javascript" src="js/stop-copy-paste.js"></script> -->

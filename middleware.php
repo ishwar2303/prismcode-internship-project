@@ -51,4 +51,20 @@ function passwordValidation($password_to_validate){
     $reg_exp = "/^(?=.*[0-9])"."(?=.*[a-z])(?=.*[A-Z])"."(?=.*[@#$%^&+=])"."(?=\\S+$).{8,20}$/"; // regular expression for password
     return preg_match($reg_exp, $password_to_validate);
 }
+
+
+  
+function convertEntities($string)
+{
+    $string = trim($string);
+    $string = htmlentities($string);
+    $string = addslashes($string); 
+  //   $string = str_replace("&nbsp;", " ", $string);
+  //   $string = str_replace("'", "&#39;", $string);
+
+  //   $string = str_replace("\\", "&#92;", $string);
+    return $string;
+}
+
+
 ?>

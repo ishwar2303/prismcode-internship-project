@@ -40,7 +40,7 @@
 							<div class="col-sm-12 col-lg-12">
 								<div class="form-group">
 									<label class="form-label">Select Quiz </label>
-									<select name="exam_id" class="form-control custom-select select-exam">
+									<select name="exam_id" class="form-control custom-select select-exam ht-50">
 										<option disabled>---select---</option> 
 										<?php 
         
@@ -55,7 +55,7 @@
 								            
 										?>
 									</select>
-									<button name="submit" id="delete check-button" class="check-score btn btn-primary ml-auto" value="delete" type="submit">Delete</button>
+									<button name="submit" id="delete check-button" class="check-score btn btn-primary ml-auto ht-50 plr-20" value="delete" type="submit">Delete</button>
 								</div>
 							</div>
 						</form>

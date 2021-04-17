@@ -64,7 +64,7 @@ require_once('connection.php');
 									<div style="padding: 3px 20px;" class="col-sm-12 col-lg-12">
 										<div class="form-group">
 											<label class="form-label">Quizzes</label>
-											<select class="form-control custom-select select-exam" name="exam_id">
+											<select class="form-control custom-select select-exam ht-50" name="exam_id">
 												<option value disabled>--Select--</option>
 												<?php 
         
@@ -79,10 +79,10 @@ require_once('connection.php');
 												?>
 											</select>
 											<label class="form-label mt-10px">Number of Questions  </label>
-											<input type="number" id="questions" name="question_no" min= "1" max="20" class="form-control select-exam" placeholder="number of question" required>
+											<input type="number" id="questions" name="question_no" min= "1" max="20" class="form-control ht-50 select-exam" placeholder="number of question" required>
 											
 										</div>
-										<button name="submit" class="d-flex btn btn-primary ml-auto" value="Check" type="submit">Submit</button>
+										<button name="submit" class="d-flex btn btn-primary ml-auto ht-50 pd-10-20" value="Check" type="submit">Submit</button>
 									</div>
 								</div>
 							</form>
@@ -193,7 +193,7 @@ echo "</div>";
 						<div class="col-sm-12 col-lg-12">
 							<div class="form-group">
 								<label class="form-label">Answer</label>
-								<select name="answer[]" class="form-control custom-select" required>
+								<select name="answer[]" class="form-control ht-50 custom-select" required>
 									<option value='1'>Option 1</option>
 									<option value='2'>Option 2</option>
 									<option value='3'>Option 3</option>

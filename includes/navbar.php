@@ -128,7 +128,15 @@ if($control){
 <?php 
 }
 ?>
+<?php if($quizControl){ ?>
+<li class="nav-item">
+  <a class="nav-link" href="view-reported-queries.php">
+    <i class="far fa-comments"></i>
+    <span>Reported Queries</span></a>
+</li>
+<?php } ?>
 <!--   Nav Item - About us -->
+
 
 <li class="nav-item">
   <a class="nav-link" href="contact_us.php">

@@ -15,9 +15,6 @@
       background-color: #cbb09b;
     }
     .gradient {background: linear-gradient(45deg, #2980b9, #3498db);
-                                   
-                                  
-    );
 }
   </style>
 

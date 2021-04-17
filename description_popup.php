@@ -7,7 +7,8 @@ if(isset($_POST['quizID'])){
   if($result->num_rows>0){
 	$row = $result->fetch_assoc();
 
-
+                            if($row['time_duration'] == -1)
+                            $time_duration = 'No Time Limit';
                             if($row['time_duration']==900)
                             $time_duration = "15 Minutes";
                             if($row['time_duration']==1800)
@@ -49,7 +50,7 @@ if(isset($_POST['quizID'])){
                   <div class="desc-block">
                     <span>Certification on <?php echo $row['passing_percentage']."%"; ?></span>
                   </div>
-                  <div style="max-height: <?php echo $height;?>" id="quiz-description"><?php echo $row['description'];?></div>
+                  <div style="max-height: <?php echo $height;?>" id="quiz-description"><?php echo str_replace("\n", "</br>", $row['description']);?></div>
                   <script type="text/javascript">openDescriptionPopup();</script>
                   <?php
           }

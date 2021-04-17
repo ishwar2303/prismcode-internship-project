@@ -124,7 +124,7 @@
                             <label style="font-weight: 600;font-size: 17px;padding-left: -10px;"><?php echo $row['quiz_name'];?></label>
                             <ul id="" style="list-style: circle;">
                               <li><i class="fas fa-angle-right list-icon"></i>Quiz contain <?php echo $numberOfQuestions;?> Questions.</li>
-                              <li><i class="fas fa-angle-right list-icon"></i>Time duration for Quiz is <?php echo $time_duration;?>.</li>
+                              <li><i class="fas fa-angle-right list-icon"></i><?php echo $time_duration!=-1  ? 'Time duration for Quiz is '.$time_duration : 'No Time Limit';?>.</li>
                               <li><i class="fas fa-angle-right list-icon"></i>Each Question constitute <?php echo $marks;?> marks.</li>
                               <li><i class="fas fa-angle-right list-icon"></i>
                                 <?php 

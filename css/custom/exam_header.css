@@ -6,14 +6,105 @@
     -ms-user-select:none;
     user-select:none;
 }
+    .flex-end{
+        display: flex;
+        justify-content: flex-end;
+    }
+    .space-between{
+        display: flex;
+        justify-content: space-between;
+    }
     pre{
         background: transparent;
         /* padding: 0; */
     }
+    .question-report-response{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -30%);
+        z-index: 250;
+        position: fixed;
+        display: none;
+    }
+    .question-report-response div{
+        border-radius: 3px;
+        display: flex;
+        justify-content: ;
+        align-items: center;
+    }
+    .question-report-response div i{
+        margin-right: 10px;
+    }
+    #report-problem{
+        border: none;
+        padding: 10px 25px;
+        border-radius: 3px;
+        background: #5050c6;
+        color: white;
+        margin-top: 20px;
+    }
+    #close-report-popup{
+        border: none;
+        padding: 10px 25px;
+        border-radius: 3px;
+        background: #d1d1d1;
+        margin-top: 20px;
+    }
+    #question-report-popup{
+        position: absolute;
+        top: 85px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 200;
+        position: fixed;
+        width: 70%;
+        height: 63vh;
+        display: none;
+        border-radius: 3px;
+        background: white;
+        box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 60%);
+    }
+    #question-report-popup > div{
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+    }
+    #question-report-popup > div > label{
+        font-size: 17px;
+    }
+    #question-report-popup textarea{
+        width: 100%;
+        padding: 20px;
+        height: 45vh;
+    }
+    .report-question{
+        height: 30px;
+        background: linear-gradient(
+    90deg
+    , #5975d1, #3a63b0);
+        color: white;
+        border-radius: 3px;
+        cursor: pointer;
+        /* display: none; */
+        padding: 0px 10px;
+        line-height: 30px;
+        font-size: 12px;
+        font-weight: 400;
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+    .report-question:hover{
+        background: linear-gradient(
+    90deg
+    , #3a63b0, #5975d1);
+    }
     .uncheck-option{
     height: 30px;
-    background: linear-gradient(90deg, #d5ab29, #e99923);
-    color: black;
+    background: linear-gradient(
+90deg
+, #959490, #686561);
+    color: white;
     border-radius: 3px;
     cursor: pointer;
     display: none;
@@ -24,11 +115,17 @@
     margin-top: 5px;
     margin-left: 5px;
     }
+    
+    /* .uncheck-option:hover{
+        background: linear-gradient(
+    90deg
+    , #686561, #959490);
+    } */
     .marking{
 
     height: 30px;
     background: linear-gradient(90deg, #d5ab29, #e99923);
-    color: black;
+    color: white;
     border-radius: 3px;
     cursor: pointer;
     padding: 0px 30px;
@@ -37,14 +134,16 @@
     font-weight: 400;
     margin-top: 5px;
     }
-    .marking:hover, .mark-as-review:hover, .remove-from-review:hover,.uncheck-option:hover{
+    /* .marking:hover, .mark-as-review:hover, .remove-from-review:hover,.uncheck-option:hover{
     background: linear-gradient(90deg, #e99923, #d5ab29);
-    }
+    } */
     .mark-as-review{
     margin-top: 5px;
     height: 30px;
-    background: linear-gradient(90deg, #d5ab29, #e99923);
-    color: black;
+    background: linear-gradient(
+90deg
+, #32892c, #2d8716);
+    color: white;
     border-radius: 3px;
     cursor: pointer;
     padding: 0px 10px;
@@ -53,10 +152,19 @@
     font-size: 12px;
     font-weight: 400;
     }
+    
+    /* .mark-as-review:hover{
+        background: linear-gradient(
+    90deg
+    , #2d8716, #32892c);
+        color: white;
+    } */
     .remove-from-review{
     height: 30px;
-    background: linear-gradient(90deg, #d5ab29, #e99923);
-    color: black;
+    background: linear-gradient(
+90deg
+, #dd3535, #932020);
+    color: white;
     border-radius: 3px;
     cursor: pointer;
     padding: 0px 10px;
@@ -67,6 +175,10 @@
     font-weight: 400;
     margin-top: 5px;
     }
+    /* .remove-from-review:hover{
+        background: linear-gradient(
+    90deg
+    , #932020, #dd3535);} */
     .border-buttom-red{
         border-bottom: 0.25rem #FC1A1A;
     }
@@ -489,6 +601,21 @@ pre{
 .border-3px{
     border: 3px solid rgb(0 0 0 / 16%);
 }
+
+#black-cover-for-report{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left : 0;
+    top : 0;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: rgba(75, 75, 75,0.5);
+    z-index: 199;
+    display:none;
+}
 #black-cover-for-proctored{
 display: flex;
 justify-content: center;
@@ -726,7 +853,7 @@ body{
         width: 100%;
         height: 100vh;
         background: rgba(75, 75, 75,0.5);
-        z-index: 4;
+        z-index: 100;
         display: none;
           }
 

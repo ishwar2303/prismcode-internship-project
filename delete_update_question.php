@@ -1,6 +1,8 @@
 <?php 
-require_once('connection.php');
+
 session_start();
+require_once('connection.php');
+require_once('middleware.php');
 
 if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID']) && isset($_POST['quesNum'])){
 	
@@ -57,6 +59,7 @@ if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID'])
 											<script type="text/javascript">
 												$(document).ready(function(){
 													$(".update-question").eq(<?php echo $i-1;?>).click(function(){
+													$('.updating-msg').show()
 													var question = document.getElementsByClassName('question')[<?php echo $i-1;?>].value;
 													var option1 = document.getElementsByClassName('option1')[<?php echo $i-1;?>].value;
 													var option2 = document.getElementsByClassName('option2')[<?php echo $i-1;?>].value;
@@ -94,7 +97,7 @@ if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID'])
 														});
 
 														$("#confirm").click(function(){
-
+														$('.deleting-msg').show()
 															hideCustomConfirmation();
 															$("#all-questions").load(url,{
 																quesID : <?php echo $row['question_id'];?>,
@@ -205,6 +208,7 @@ if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID'])
 								        	
         document.getElementsByClassName('deleted-successfully')[0].style.display='block';
         setTimeout(hideMessage,1500);
+		$('.deleting-msg').hide()
 								        </script> 
 									</form>
 	<?php 
@@ -213,35 +217,59 @@ if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID'])
 }
 else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quizID']) && isset($_POST['quesNum'])){
 
-  $QuizID = $_POST['quizID'];
-  $QueNum = $_POST['quesNum'];
-  $que = $_POST['que'];
-  $o1  = $_POST['op1'];
-  $o2  = $_POST['op2'];
-  $o3  = $_POST['op3'];
-  $o4  = $_POST['op4'];
-  $ans   = $_POST['ans'];
-  $res   = $_POST['res'];
-  $formatted = $_POST['formatted'];
-  function convertEntities($string){
-    $string = trim($string);
-    $string = htmlentities($string);
-    $string = str_replace("&nbsp;", " ", $string);
-    $string = str_replace("'", "&#39;", $string);
-    
-    $string = str_replace("\\", "&#92;", $string);
-    return $string;
-   }
-      $que = convertEntities($que);
-      $o1 = convertEntities($o1);
-      $o2 = convertEntities($o2);
-      $o3 = convertEntities($o3);
-      $o4 = convertEntities($o4);
-      $res = convertEntities($res);
-	  $formatted = convertEntities($formatted);
-      $sql = "UPDATE question_bank SET question='$que', option_1='$o1', option_2='$o2', option_3='$o3', option_4='$o4', answer='$ans', reason='$res', formatted='$formatted' WHERE question_id='$_POST[quesID]'";
-      mysqli_query($conn,$sql) or die(mysqli_error($conn));
-
+	$QuizID = cleanInput($_POST['quizID']);
+	$QueNum = cleanInput($_POST['quesNum']);
+	$que = $_POST['que'];
+	$o1  = $_POST['op1'];
+	$o2  = $_POST['op2'];
+	$o3  = $_POST['op3'];
+	$o4  = $_POST['op4'];
+	$ans   = $_POST['ans'];
+	$res   = $_POST['res'];
+	$form = $_POST['formatted'];
+	$que = convertEntities($que);
+	$o1 = convertEntities($o1);
+	$o2 = convertEntities($o2);
+	$o3 = convertEntities($o3);
+	$o4 = convertEntities($o4);
+	$res = convertEntities($res);
+	$form = convertEntities($form);
+	
+	$break = '<br/>';
+	$control = 1;
+	$i=0;
+	if($que == ''){
+		$err = 'Empty question entry not allowed';
+		$control = 0;
+	}
+	else if($o1=='' || $o2=='' || $o3=='' || $o4 == ''){
+		$err = 'Options can not be empty';
+		$control = 0;
+	}
+	else if($ans!=1 && $ans!=2 && $ans!=3 && $ans!=4){
+		$err = 'Invalid answer value';
+		$control = 0;
+	}
+	else if($form!=0 && $form!=1){
+	  $err = 'Invalid formatted option';
+	  $control = 0;
+	}
+	if($control){
+		$sql = "UPDATE question_bank SET question='$que', option_1='$o1', option_2='$o2', option_3='$o3', option_4='$o4', answer='$ans', reason='$res', formatted='$form' WHERE question_id='$_POST[quesID]'";
+		mysqli_query($conn,$sql) or die(mysqli_error($conn));
+	}
+	else{
+		?>
+		<div class="error-in-updating"><i class="fas fa-exclamation-circle"></i> <?php echo $err; ?> <button id="close-error-in-updating">Ok</button></div>
+		<script>
+			updateError = document.getElementsByClassName('error-in-updating')[0];
+			updateError.style.display = 'block'
+			document.getElementById('close-error-in-updating').addEventListener('click', () => {
+			updateError.style.display = 'none'
+			})
+		</script>
+		<?php
+	}
 	$sql = "SELECT * FROM question_bank WHERE quiz_id='$QuizID'";
 	$result = mysqli_query($conn,$sql);
 	$i = 1;
@@ -282,6 +310,7 @@ else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quiz
 											<script type="text/javascript">
 												$(document).ready(function(){
 													$(".update-question").eq(<?php echo $i-1;?>).click(function(){
+													$('.updating-msg').show()
 													var question = document.getElementsByClassName('question')[<?php echo $i-1;?>].value;
 													var option1 = document.getElementsByClassName('option1')[<?php echo $i-1;?>].value;
 													var option2 = document.getElementsByClassName('option2')[<?php echo $i-1;?>].value;
@@ -319,7 +348,7 @@ else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quiz
 														});
 
 														$("#confirm").click(function(){
-
+														$('.deleting-msg').show()
 															hideCustomConfirmation();
 															$("#all-questions").load(url,{
 																quesID : <?php echo $row['question_id'];?>,
@@ -431,7 +460,7 @@ else if(isset($_POST['quesID']) && isset($_POST['update']) && isset($_POST['quiz
 									<script type="text/javascript">	
         document.getElementsByClassName('updated-successfully')[0].style.display='block';
         setTimeout(hideMessage,1500);
-										
+		$('.updating-msg').hide()
 									</script>
       <?php 
 }

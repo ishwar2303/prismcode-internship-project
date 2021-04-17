@@ -11,7 +11,7 @@ if(isset($_POST['updateQuizDetails']) && isset($_POST['quizID'])){
              <div class="col-sm-12 col-lg-12">
                <div class="form-group">
                  <label class="form-label">Quiz Name</label>
-                 <input id="quiz_name"   type="text" name="test" maxlength="30" class="form-control" placeholder="Quiz Name" value="<?php echo $row['quiz_name'];?>" required="">
+                 <input id="quiz_name"   type="text" name="test" maxlength="30" class="form-control ht-50" placeholder="Quiz Name" value="<?php echo $row['quiz_name'];?>" required="">
                </div>
              </div>
              <div class="col-sm-12 col-lg-12">
@@ -22,7 +22,7 @@ if(isset($_POST['updateQuizDetails']) && isset($_POST['quizID'])){
                 		$radio1 = "";
                 		$radio2 = "";
                 		$radio3 = "";
-                		if($row['difficulty_level'] =="Beginner")
+                		if($row['difficulty_level'] == "Beginner")
                 			$radio1 = "checked='true'";
                 		if($row['difficulty_level'] == "Intermediate")
                 			$radio2 = "checked='true'";
@@ -30,15 +30,15 @@ if(isset($_POST['updateQuizDetails']) && isset($_POST['quizID'])){
                 			$radio3 = "checked='true'";
                 	?>
                    <label class="selectgroup-item">
-                     <input type="radio" name="level" value="Beginner" class="selectgroup-input" <?php echo $radio1." ";?>required="">
+                     <input type="radio" name="level" value="1" class="selectgroup-input" <?php echo $radio1." ";?>required="">
                      <span class="selectgroup-button level">Beginner</span>
                    </label>
                    <label class="selectgroup-item">
-                     <input type="radio" name="level" value="Intermediate" class="selectgroup-input" <?php echo $radio2." ";?>required="">
+                     <input type="radio" name="level" value="2" class="selectgroup-input" <?php echo $radio2." ";?>required="">
                      <span class="selectgroup-button level">Intermediate</span>
                    </label>
                    <label class="selectgroup-item">
-                     <input type="radio" name="level" value="Advance" class="selectgroup-input" <?php echo $radio3." ";?>required="">
+                     <input type="radio" name="level" value="3" class="selectgroup-input" <?php echo $radio3." ";?>required="">
                      <span class="selectgroup-button level">Advance</span>
                    </label>
 
@@ -63,13 +63,13 @@ if(isset($_POST['updateQuizDetails']) && isset($_POST['quizID'])){
            <div class="col-sm-12 col-lg-12">
              <div class="form-group">
                <label class="form-label">Number of Questions</label>
-               <input id="questions" type="number" disabled="true" name="question_num" class="form-control" placeholder="Number of Questions" value="<?php echo $row['number_of_questions'];?>" required>
+               <input id="questions" type="number" disabled="true" name="question_num" class="form-control ht-50" placeholder="Number of Questions" value="<?php echo $row['number_of_questions'];?>" required>
              </div>
            </div>
            <div class="col-sm-12 col-lg-12">
              <div class="form-group">
                <label class="form-label">Exam Key</label>
-               <input id="exam" type="text" maxlength="15" name="exam_key" class="form-control" placeholder="Exam Key" value="<?php echo $row['Exam_key'];?>" required>
+               <input id="exam" type="text" maxlength="15" name="exam_key" class="form-control ht-50" placeholder="Exam Key" value="<?php echo $row['Exam_key'];?>" required>
              </div>
            </div>
            <div class="col-sm-12 col-lg-12">
@@ -95,6 +95,10 @@ if(isset($_POST['updateQuizDetails']) && isset($_POST['quizID'])){
                   $t6 = "checked='true'";
                 ?>
                  <div class="selectgroup w-100">
+                 <label class="selectgroup-item m-0">
+                   <input type="radio" name="time" value="-1" class="selectgroup-input" <?php echo $row['time_duration'] == '-1' ? 'checked' : '';?>>
+                   <span class="selectgroup-button">No Time Limit</span>
+                </label>
                  <label class="selectgroup-item">
                   <input type="radio" name="time" value="900" class="selectgroup-input" <?php echo $t1." ";?> required="">
                   <span class="selectgroup-button timing">15 min</span>

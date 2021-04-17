@@ -54,62 +54,62 @@
 									<div class="col-sm-12 col-lg-6">
 										<div class="form-group">
 											<label class="form-label">First Name</label>
-											<input class="form-control select-exam" type="text" name="firstname" value="<?php echo $row['first_name'];?>" disabled>
+											<input class="form-control ht-50 select-exam" type="text" name="firstname" value="<?php echo $row['first_name'];?>" disabled>
 										</div>
 									</div>
 									
 									<div class="col-sm-12 col-lg-6">
 										<div class="form-group">
 											<label class="form-label">Last Name</label>
-											<input class="form-control select-exam" type="text" name="lastname" value="<?php echo $row['last_name'];?>" disabled>
+											<input class="form-control ht-50 select-exam" type="text" name="lastname" value="<?php echo $row['last_name'];?>" disabled>
 										</div>
 									</div>
 									<div class="col-sm-12 col-lg-6">
 										<div class="form-group">
 											<label class="form-label">Gender</label>
-											<input class="form-control select-exam" type="text" name="gender" value="<?php echo $row['admin_gender'];?>" disabled>
+											<input class="form-control ht-50 select-exam" type="text" name="gender" value="<?php echo $row['admin_gender'];?>" disabled>
 										</div>
 									</div>
 									<div class="col-sm-12 col-lg-6">
 										<div class="form-group">
 											<label class="form-label">State</label>
-											<input class="form-control select-exam" type="text" name="state" value="<?php echo $row['state'];?>" disabled>
+											<input class="form-control ht-50 select-exam" type="text" name="state" value="<?php echo $row['state'];?>" disabled>
 										</div>
 									</div>
 									<div class="col-sm-12 col-lg-6">
 										<div class="form-group">
 											<label class="form-label">Date of Birth</label>
-											<input class="form-control select-exam" type="text" name="dob" value="<?php echo $row['date_of_birth'];?>" disabled>
+											<input class="form-control ht-50 select-exam" type="text" name="dob" value="<?php echo $row['date_of_birth'];?>" disabled>
 										</div>
 									</div>
 									<div class="col-sm-12 col-lg-6">
 										<div class="form-group">
 											<label class="form-label">Contact</label>
-											<input class="form-control select-exam" type="text" name="contact" value="<?php echo $row['admin_contact'];?>" required>
+											<input class="form-control ht-50 select-exam" type="text" name="contact" value="<?php echo $row['admin_contact'];?>" required>
 										</div>
 									</div>
 									<div class="col-sm-12 col-lg-6">
 										<div class="form-group">
 											<label class="form-label">Address</label>
-											<input class="form-control select-exam" type="text" name="address" value="<?php echo $row['admin_address'];?>" required>
+											<input class="form-control ht-50 select-exam" type="text" name="address" value="<?php echo $row['admin_address'];?>" required>
 										</div>
 									</div>
 									<div class="col-sm-12 col-lg-6">
 										<div class="form-group">
 											<label class="form-label">E-mail</label>
-											<input class="form-control select-exam" type="text" name="email" value="<?php echo $row['admin_email'];?>" disabled>
+											<input class="form-control ht-50 select-exam" type="text" name="email" value="<?php echo $row['admin_email'];?>" disabled>
 										</div>
 									</div>
 									<div class="col-sm-12 col-lg-6">
 										<div class="form-group">
 											<label class="form-label">Institution</label>
-											<input class="form-control select-exam" type="text" name="institution" value="<?php echo $row['institution_name'];?>" >
+											<input class="form-control ht-50 select-exam" type="text" name="institution" value="<?php echo $row['institution_name'];?>" >
 										</div>
 									</div>
 									<div class="col-sm-12 col-lg-6">
 										<div class="form-group">
 											<label class="form-label">Password</label>
-											<input class="form-control select-exam" type="text" name="password" value="<?php echo $row['admin_password'];?>" disabled>
+											<input class="form-control ht-50 select-exam" type="text" name="password" value="<?php echo $row['admin_password'];?>" disabled>
 										</div>
 									</div>
 									<div class="col-sm-12 col-lg-6">

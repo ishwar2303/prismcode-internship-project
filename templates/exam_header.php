@@ -50,17 +50,19 @@
     {
       showCustomAlertPopup();
     }
-        $(document).ready(function(){
-            $("#yes-btn").click(function(){
-                document.getElementById('myform').submit();
-            });
+
+    $(document).ready(function(){
+        $("#yes-btn").click(function(){
+            document.getElementById('myform').submit();
         });
+    });
+    
     </script>
     <script type="text/javascript" src="js/stop-copy-paste.js"></script>
     <script type="text/javascript" src="take_quizJAVAscript.js"></script>
 
 </head>
-<body onload="hideAll();setInterval(Timer,1000);Timer();">
+<body onload="hideAll();<?php echo $time_duration!=-1 ? 'setInterval(Timer,1000);Timer();' : '';?>">
 
     <div class="marking-popup">
       <div class="small-popup">
@@ -99,23 +101,30 @@
                 <div style="color : white;font-size: 28px;" class="date-day">QuizWit | <span class="mini-text"><?php echo $_SESSION['name'];?></span><?php /*echo "Date : ".date('d-m-yy')."<br />"."Day &nbsp;: ".date("l");*/?></div>
 
                 <div class="timer-container">
+                    <?php if($time_duration != -1){ ?>
                     <span>Time Remaining</span>
-                    <!-- <i class="fas fa-clock"></i> -->
-                                   <div  style="align-self: center;" class="h2 m-0 timer-test">
-                                        <?php 
-                                        $_SESSION['page_refresh_time'] = time();
-                                        if(!isset($_SESSION['test_start_time']))
-                                        {
-                                            echo $time_duration;
-                                            $_SESSION['test_start_time'] = time();
-                                            $_SESSION['test_start_time'] = (int)$_SESSION['test_start_time'] + (int)$time_duration;
-                                        }
-                                        else{
-                                            $newTime = (int)$_SESSION['test_start_time']-(int)$_SESSION['page_refresh_time'];
-                                            echo $newTime;
-                                        }
-                                        ?>
-                                    </div>
+                    <div  style="align-self: center;" class="h2 m-0 timer-test">
+                        <?php 
+                        $_SESSION['page_refresh_time'] = time();
+                        if(!isset($_SESSION['test_start_time']))
+                        {
+                            echo $time_duration;
+                            $_SESSION['test_start_time'] = time();
+                            $_SESSION['test_start_time'] = (int)$_SESSION['test_start_time'] + (int)$time_duration;
+                        }
+                        else{
+                            $newTime = (int)$_SESSION['test_start_time']-(int)$_SESSION['page_refresh_time'];
+                            echo $newTime;
+                        }
+                        ?>
+                    </div>
+                    <?php } 
+                        else{
+                            ?>
+                            <span>No Time Limit</span>
+                            <?php
+                        }
+                    ?>
                 </div>
                 <button style="margin-left: 0;background:#cd201f;color:white;" class="btn btn-outline-danger ml-auto end-quiz" onclick="autoSubmit()">
                     End Quiz

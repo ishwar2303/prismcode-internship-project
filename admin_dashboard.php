@@ -84,6 +84,15 @@ include('includes/navbar.php');
            $p++;
 
          }   
+        $sql = "SELECT report_id FROM reported_questions WHERE amend='0'";
+        $report_result = $conn->query($sql);
+        $report_count = $report_result->num_rows;
+        if($report_count > 0){
+          if($report_count == 1)
+            $msg = '1 Question was reported';
+          else $msg = $report_count.' Questions were reported';
+          $_SESSION['note_msg'] = $msg;
+        }
 ?>
 
 
@@ -189,14 +198,14 @@ include('includes/navbar.php');
 <div class="row row-card row-deck">
   <div class="col-12">
     <div class="card">
+			<?php require 'includes/flash-message.php'; ?>
       <div class="card-header">
         <h3 class="card-title">Quizes</h3>
       </div>
-			<?php require 'includes/flash-message.php'; ?>
       <?php 
 
-            $temp = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]' ORDER BY quiz_name";
-            $result = mysqli_query($conn,$temp);
+      $temp = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]' ORDER BY quiz_name";
+      $result = mysqli_query($conn,$temp);
       if($result->num_rows>0){
 
       ?>
@@ -208,6 +217,7 @@ include('includes/navbar.php');
             <tr>
               <th class="w-1">SNo.</th>
               <th>Quiz Name</th>  
+              <th>Key</th>
               <th style="text-align: center;">Questions</th>
               <th>Status</th> 
               <th>Created</th>
@@ -229,6 +239,7 @@ include('includes/navbar.php');
                 <span class="text-muted"><?php echo $i; ?></span>
               </td>
               <td><?php echo $row['quiz_name']; ?></td>
+              <td><span class="key-block"><?php echo $row['Exam_key']; ?></span></td>
               <td style="text-align: center;"><?php echo $row['number_of_questions'];?></td>
               <td>
                 <?php 
