@@ -17,7 +17,7 @@
       $formatted = $_POST['formatted'];
       $num      = $_SESSION['question_num'];
       $quiz_id  = $_SESSION['quiz_id'];
-      
+      $errors = array();
       $error_control = 0;
       $questions_inserted = 0;
         for($i=0;$i<$num;$i++)
