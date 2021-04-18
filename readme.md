@@ -71,4 +71,4 @@ Candidate's response
 - Involving in such activity will lead to automatic submission of exam
 
 ## Quiz Page
-![alt text](https://github.com/ishwar2303/QuizWit/blob/master/screenshots/quiz-page.PNG)
+![alt text](https://github.com/ishwar2303/QuizWit/blob/master/screenshots/take-quiz.PNG)

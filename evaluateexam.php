@@ -417,7 +417,7 @@ if($showEvaluation){
 ?>	
                                     </p>
                                     <p>
-                                        <span style="border-radius: 3px; padding : 5px 10px;" class="text-white bg-primary">Options</span>
+                                        <span style="border-radius: 3px; padding : 5px 10px; background:#9e9e9e;" class="text-white">Options</span>
                                     </p>
                                     <?php
                                         $option_1 = 'unselected';

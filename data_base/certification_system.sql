@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2021 at 04:35 PM
+-- Generation Time: Apr 19, 2021 at 12:45 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -48,8 +48,6 @@ CREATE TABLE `attempts` (
 --
 
 INSERT INTO `attempts` (`attempt_id`, `quiz_id`, `fullname`, `registration_no`, `email`, `score`, `total_marks`, `correct`, `wrong`, `not_attempted`, `pass_percentage`, `no_of_questions`, `time_stamp`) VALUES
-(4, 135, 'ISHWAR BAISLA', 'RA1811003030232', 'pankajgautam@gmail.com', 0, 14, 2, 4, 1, 70, 7, '2021-04-14 15:11:50'),
-(7, 141, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 14, 20, 7, 0, 3, 50, 10, '2021-04-14 19:39:34'),
 (11, 150, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 82, 120, 45, 8, 7, 60, 60, '2021-04-15 19:00:11'),
 (12, 150, 'PANKAJ GAUTAM', 'RA1811003030188', 'pankaj.gautam4012@gmail.com', 44, 120, 25, 6, 29, 60, 60, '2021-04-15 18:16:58'),
 (13, 150, 'RHYTHM SHARMA', 'RA1811003030214', 'srhythm2020@gmail.com', 76, 120, 41, 6, 13, 60, 60, '2021-04-15 20:25:20');
@@ -65,6 +63,13 @@ CREATE TABLE `feedback` (
   `comment` varchar(150) NOT NULL,
   `attempt_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feedback_id`, `comment`, `attempt_id`) VALUES
+(9, 'Very difficult exam\r\nLogical number series questions were too much difficult\r\nPlease adjust difficulty level accordingly for preparation', 25);
 
 -- --------------------------------------------------------
 
@@ -91,6 +96,13 @@ CREATE TABLE `profile_photo` (
   `image_name` text NOT NULL,
   `admin_email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `profile_photo`
+--
+
+INSERT INTO `profile_photo` (`image_id`, `image_name`, `admin_email`) VALUES
+(48, 'WhatsApp Image 2021-04-15 at 10.52.41 AM.jpeg', 'pankaj.gautam4012@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -149,10 +161,8 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 (244, 135, 'Abbreviate ACID.', 'Atomicity, Consistency, Isolation, Durability', 'Atomicity, Concurrency, Isolation, Duplicity', 'Aggregation, Consistency, Isolation, Durability', 'Atomicity, Consistency, Identity, Durability', 3, 'No explanation is available for this question!', 0),
 (245, 135, 'What data structure is used to construct a Prev LSN in a database log?', 'Queue', 'Link List', 'Graph', 'Tree', 2, 'No explanation is available for this question!', 0),
 (246, 135, 'What stores the metadata about the structure of the database, in particular the schema of the database?', 'Indices', 'Database log', 'Data files', 'Data Dictionary', 4, 'No explanation is available for this question!', 0),
-(247, 135, 'Which of the following language is used to define the integrity constraints?', 'DCL', 'DML', 'DDL', 'All of the above', 3, 'No explanation is available for this question!', 0),
 (248, 135, 'How many primary key can a table in database have?', 'Only one', 'At least one', 'More than one', 'Any number of', 1, 'No explanation is available for this question!', 0),
 (249, 135, 'What does a query processor do in semantic checking?', 'Checks whether all the relations mentioned under the FROM clause in the SQL statement are from the database the user is referenced.', 'Checks all the attribute values and also checks whether they exist in a particular relation that is specified in the query. It checks all the attribute values that are mentioned in the SELECT and WHERE clauses of the SQL statement.', 'Verifies whether the types of attributes are compatible with the values used for the attributes.', 'All of these.', 4, 'No explanation is available for this question!', 0),
-(250, 135, 'Which is the correct algorithmic sequence for the conversion of an expression from Infix to Prefix?<br/><br/>A. Change of every &#39;(&#39; (opening bracket) by &#39;)&#39; (closing bracket) and vice-versa.<br/>B. Reversal of an infix expression.<br/>C. Conversion of the modified expression into postfix form.<br/>D. Reversal of postfix expression.', 'A, B, C, D', 'C, A, D, B', 'B, A, C, D', 'D, B, A, C', 3, 'No explanation is available for this question!', 0),
 (334, 140, 'Difference between circumference and diameter of a circle is 60 cm. <br/>What will be volume of cylinder, whose height is 14 cm more than that of radius of circle and radius of cylinder is 10 cm ?', '8400', '8500', '8800', '9800', 3, 'ATQ, 2&pi;r-2r=60<br/>2r=28<br/>r=14<br/>height of cylinder =14+14=28 cm<br/>radius=10 cm<br/>volume of cylinder=&pi;r^2h=22/7*10^2*28=8800 cm^3', 0),
 (335, 140, 'A bag contains 5 oranges, 4 apples and 6 mangoes. \n4 fruits are drawn randomly, then find probability of getting all fruits are of mangoes.', '2/91', '1/91', '13/95', '5/96', 2, 'required no. of outcome=6C4\ntotal no. of outcome=15C4\nprobability=(6C4)/15C4\n=6*5*4*3/15*14*13*12= 1/91', 0),
 (336, 140, 'A man brought two articles for rs.1200. He sold one article at a profit of 20% and another article at a loss of 20%. <br/>If the selling price of both the articles is equal, then find the cost price of article which is sold at a loss of 20%.', '720', '800', '600', '550', 1, 'total CP of two article=1200<br/>CP of one article=x<br/>CP of another article=1200-x<br/>x*120/100=(1200-x)80/100<br/>6x/5=4800-4x/5<br/>x=480<br/>CP of article which is sold at a loss of 20%=1200-480=720', 0),
@@ -167,7 +177,7 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 (345, 140, '5 , 11 , 21 , 44 , ? , 175 , 347', '81', '75', '55', '86', 4, '5*2+1=11<br/>11*2-1=21<br/>21*2+2=44<br/>44*2-2=86<br/>86*2+3=175<br/>175*2-3=347', 0),
 (346, 140, 'What will come in place of the &ldquo;x&rdquo; in the following questions:<br/>25% of 400 + 30% of 270 + 48% of 100 = x', '229', '225', '249', '236', 1, '(25/100)*400+(30/100)*270+(48/100)*100 = x<br/>100+81+48=229', 0),
 (347, 140, 'x% of 400 &divide; 75 + (2/5) of 315 = 30% of 625', '1355.15', '1200.25', '1168.25', '1153.12', 4, '(4x/75)+(2/5)*315=(30/100 )*625\n(4x/75)+126=187.5\n(4x/75)=187.5-126\n(4x/75)=61.5\nx=1153.125', 0),
-(348, 140, 'P1 and P2 are the two pockets were made by mixing chilli powder and turmeric powder in the ratio 3:5 and 5:9 respectively.<br/>If 60 grams of P1 and x grams of P2 are mixed to getpocket P3, then fid out the value of x , if the ratio of chilli and turmeric in the new pocket P3 is 35:61?', '70', '56', '98', '84', 4, 'In x gram of P2<br/>chilli = 5x/14<br/>turmeric= 9x/14<br/>in 60 gm in P1<br/>chilli=60 * 3/8= 45/2<br/>turmeric=60 85/8=75/2<br/>and =&gt;(45/2 +5x/14) / (75/2+9x/14) = 35/61<br/>=&gt;x= 84g', 0),
+(348, 140, 'P1 and P2 are the two pockets were made by mixing chilli powder and turmeric powder in the ratio 3:5 and 5:9 respectively.\nIf 60 grams of P1 and x grams of P2 are mixed to getpocket P3, then fid out the value of x , if the ratio of chilli and turmeric in the new pocket P3 is 35:61?', '70', '56', '98', '84', 4, 'In x gram of P2\nchilli = 5x/14\nturmeric= 9x/14\nin 60 gm in P1\nchilli=60 * 3/8= 45/2\nturmeric=60 85/8=75/2\nand =&gt;(45/2 +5x/14) / (75/2+9x/14) = 35/61\n=&gt;x= 84g', 0),
 (349, 140, 'Rakesh bought a loan Rs.3,00,000 in a newyear scheme which gives r% per annum at Compound interest and this scheme doubles the loan in 72/r years which is double of the rate of interest given by the scheme.<br/>Find the total amount paid by Rakesh at the end of 48 years?', '12lac', '34lac', '45lac', '48lac', 4, 'given 72/r= 2r<br/>=&gt; r=6%<br/>So the loan amount double in 12 years.<br/>=&gt;6,00, 000= 3,00,000 ( 1+ r/100 ) ^12<br/>=&gt;1+ r/ 100 ) ^ 12= 2<br/>So required loan amount to pay = 3,00,000 ( 1+ r/100 ) ^ 48 = 3,00,000 *2^ 4 = Rs. 48,00,000', 0),
 (350, 140, 'karthik and kathir&rsquo;s current age is 7: 5 and 3 years back their ages were 16:11. <br/>So what is the age of kathir after 5 years?', '15', '25', '30', '40', 3, 'let their ages be 5x and 7x .<br/>so 7x-3/5x-3 = 16/11<br/>=&gt; x= 5<br/>Hence the age of kathir = 5* 5+ 5= 30 years', 0),
 (351, 140, 'Person 1 started a business y investing Rs. A after 4 months person 2 also joined with the investment of Rs. x+ 10,000. <br/>But the end of the year their profit are same. <br/>Then what is the amount invested by', '20000', '14000', '30000', '45000', 3, 'p1 P2<br/>investment x x+10,000<br/>time 12 8<br/>12x 8x+ 80,000<br/>12x= 8x + 80,000<br/>=&gt;x=20,000<br/>hence person 2 investment = 30,000', 0),
@@ -199,8 +209,8 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 (377, 142, 'In the 16th century, an age of great marine and terrestrial exploration, Ferdinand Magellan led the first expedition to sail around the world. As a young Portuguese noble, he served the king of Portugal, but he became involved in the quagmire of political intrigue at court and lost the king&rsquo;s favor. After he was dismissed from service by the king of Portugal, he offered to serve the future Emperor Charles V of Spain.\r\n\r\nA papal decree of 1493 had assigned all land in the New World west of 50 degrees W longitude to Spain and all the land east of that line to Portugal. Magellan offered to prove that the East Indies fell under Spanish authority. On September 20, 1519, Magellan set sail from Spain with five ships. More than a year later, one of these ships was exploring the topography of South America in search of a water route across the continent. This ship sank, but the remaining four ships searched along the southern peninsula of South America. Finally they found the passage they sought near 50 degrees S latitude. Magellan named this passage the Strait of All Saints, but today it is known as the Strait of Magellan.\r\n\r\nOne ship deserted while in this passage and returned to Spain, so fewer sailors were privileged to gaze at that first panorama of the Pacific Ocean. Those who remained crossed the meridian now known as the International Date Line in the early spring of 1521 after 98 days on the Pacific Ocean. During those long days at sea, many of Magellan&rsquo;s men died of starvation and disease.\r\n\r\nLater, Magellan became involved in an insular conflict in the Philippines and was killed in a tribal battle. Only one ship and 17 sailors under the command of the Basque navigator Elcano survived to complete the westward journey to Spain and thus prove once and for all that the world is round, with no precipice at the edge.\r\n\r\nOne of Magellan&rsquo;s ships explored the _________ of South America for a passage across the continent.', 'coastline', 'mountain range', 'physical features', 'islands', 3, '', 0),
 (378, 142, 'In the 16th century, an age of great marine and terrestrial exploration, Ferdinand Magellan led the first expedition to sail around the world. As a young Portuguese noble, he served the king of Portugal, but he became involved in the quagmire of political intrigue at court and lost the king&rsquo;s favor. After he was dismissed from service by the king of Portugal, he offered to serve the future Emperor Charles V of Spain.\r\n\r\nA papal decree of 1493 had assigned all land in the New World west of 50 degrees W longitude to Spain and all the land east of that line to Portugal. Magellan offered to prove that the East Indies fell under Spanish authority. On September 20, 1519, Magellan set sail from Spain with five ships. More than a year later, one of these ships was exploring the topography of South America in search of a water route across the continent. This ship sank, but the remaining four ships searched along the southern peninsula of South America. Finally they found the passage they sought near 50 degrees S latitude. Magellan named this passage the Strait of All Saints, but today it is known as the Strait of Magellan.\r\n\r\nOne ship deserted while in this passage and returned to Spain, so fewer sailors were privileged to gaze at that first panorama of the Pacific Ocean. Those who remained crossed the meridian now known as the International Date Line in the early spring of 1521 after 98 days on the Pacific Ocean. During those long days at sea, many of Magellan&rsquo;s men died of starvation and disease.\r\n\r\nLater, Magellan became involved in an insular conflict in the Philippines and was killed in a tribal battle. Only one ship and 17 sailors under the command of the Basque navigator Elcano survived to complete the westward journey to Spain and thus prove once and for all that the world is round, with no precipice at the edge.\r\n\r\nFour of the ships sought a passage along a southern ______.', 'coast', 'inland', 'body of land with water on three sides', 'border', 3, '', 0),
 (387, 150, 'Anil and Ruhi started a business by investing Rs 2000 and Rs 2800 respectively. After 8 months, Anil added Rs 600 and Ruhi added Rs 400. At the same time Teena joined them with Rs 4200. Find the share of Teena if they get a profit of Rs 34,300 after a year.', 'Rs 7490', 'Rs 7350', 'Rs 8250', 'Rs 8530', 2, 'Share of Anil : Share of Ruhi : Share of Teena is\n2000&times;8 + 2600&times;4 : 2800&times;8 + 3200&times;4 : 4200&times;4\n33 : 44 : 21\nso share of Teena = 21/(33+44+21) &times; 34300 = Rs 7350', 0),
-(388, 150, 'A sum of Rs 7000 is deposited in two schemes. One part is deposited in Scheme A which offers 8% rate of interest. Remaining part is invested in Scheme B which offers 10% rate of interest compounded annually. If interest obtained in scheme A after 4 years is Rs 226 more than the interest obtained in scheme B after 2 years, find the part deposited in scheme B.', 'Rs 3200', 'Rs 4500', 'Rs 3800', 'Rs 3500', 3, '(7000-x)*8*4/100 = x [ (1 + 10/100)2 &ndash; 1] + 226\r\n70*8*4 &ndash; 32x/100 = 21x/100 + 226\r\n2240 &ndash; 226 = 53x/100\r\n2014 = 53x/100\r\nSo, x = Rs 3800', 0),
-(389, 150, 'A work which is completed by 20 men in 8 days can be completed by 25 women 12 days. 16 men and 10 women start doing the work. After 3 days, they leave. If the remaining work is to be completed in 6 days by x number of men, find x.', '16', '18', '12', '10', 1, '20 men in 8 days so 16 men in 20 &times; 8/16 = 10 days and\r\n25 women in 12 days so 10 women in 25 &times; 12/10 = 30 days\r\nSo in 3 days, they complete (1/10 + 1/30) &times; 3 = 2/5\r\nSo remaining work = 1 &ndash; 2/5 = 3/5\r\n20 m 1 work in 8 days and x men 3/5 work in 6 days\r\nSo 20 &times; 8 &times; 3/5 = x &times; 6 &times; 1\r\nSo, x = 16 men', 0),
+(388, 150, 'A sum of Rs 7000 is deposited in two schemes. One part is deposited in Scheme A which offers 8% rate of interest. Remaining part is invested in Scheme B which offers 10% rate of interest compounded annually. If interest obtained in scheme A after 4 years is Rs 226 more than the interest obtained in scheme B after 2 years, find the part deposited in scheme B.', 'Rs 3200', 'Rs 4500', 'Rs 3800', 'Rs 3500', 3, '(7000-x)*8*4/100 = x [ (1 + 10/100)2 &ndash; 1] + 226\n70*8*4 &ndash; 32x/100 = 21x/100 + 226\n2240 &ndash; 226 = 53x/100\n2014 = 53x/100\nSo, x = Rs 3800', 0),
+(389, 150, 'A work which is completed by 20 men in 8 days can be completed by 25 women 12 days. 16 men and 10 women start doing the work. After 3 days, they leave. If the remaining work is to be completed in 6 days by x number of men, find x.', '16', '18', '12', '10', 1, '20 men in 8 days so 16 men in 20 &times; 8/16 = 10 days and\n25 women in 12 days so 10 women in 25 &times; 12/10 = 30 days\nSo in 3 days, they complete (1/10 + 1/30) &times; 3 = 2/5\nSo remaining work = 1 &ndash; 2/5 = 3/5\n20 m 1 work in 8 days and x men 3/5 work in 6 days\nSo 20 &times; 8 &times; 3/5 = x &times; 6 &times; 1\nSo, x = 16 men', 0),
 (390, 150, 'There are 140 tickets (numbered 1 to 140) in a bowl. Find the probability of choosing a ticket which bears multiple of either 3 or 7.', '3/5', '2/9', '1/8', '3/7', 4, 'Number of multiples of 3 in 140 = 140/3 = 46\r\nNumber of multiples of 7 in 140 = 140/7 = 20\r\nNumber of multiples of 3&times;7= 21 in 140 = 140/21 = 6\r\nSo required probability = (46+20 &ndash; 6)/140 = 60/140 = 3/7', 0),
 (391, 150, 'A 48 litres solution contains liquids water and milk in the ratio 3 : 5. How much amount of milk is to be added so that amount of milk is 70% of the new solution?', '26 l', '20 l', '12 l', '18 l', 3, 'Water present in solution = 3/8 * 48 = 18 l\r\nMilk present in solution = 5/8 * 48 = 30 l\r\nLet x litres of milk to be added\r\nMilk is to be 70% of new solution, so water is to be 30% of new solution. So\r\n30/100 of new solution = Water present in new solution\r\n30/100 * (48+x) = 18\r\nSo, x = 12 litres\r\nOR\r\n70/100 of new solution = Milk present in new solution\r\n70/100 * (48+x) = 30+x\r\nSo, x = 12 litres', 0),
 (392, 150, 'In a class, average age of 30 students is 18 years. If the age of 2 more students is taken into consideration, then the average of all students gets increase by 1. Find the average of the ages of those 2 students.', '50', '68', '54', '34', 4, '30 students &ndash; 18\r\n32 students &ndash; 19\r\nSo total age of those 2 students = 30&times;1 + 19&times;2 = 68\r\nSo average = 68/2 = 34', 0),
@@ -231,10 +241,10 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 (417, 150, 'An Informal Gathering occurs when a group of people get together in a casual, relaxed manner. Which situation below is the best example of an Informal Gathering?', 'A debating club meets on the first Sunday morning of every month.', 'After finding out about his salary raise, Jay and a few colleagues go out for a quick dinner after work', 'Meena sends out 10 invitations for a bachelorette party she is giving for her elder sister.', 'Whenever she eats at a Chinese restaurant, Roop seems to run into Dibya.', 2, '', 0),
 (418, 150, 'A Tiebreaker is an additional contest carried out to establish a winner among tied contestants. Choose one situation from the options below that best represents a Tiebreaker.', 'At halftime, the score is tied at 2-2 in a football match.', 'Serena and Maria have each secured 1 set in the game.', 'The umpire tosses a coin to decide which team will have bat first.', 'RCB and KKR each finished at 140 all out.', 4, '', 0),
 (419, 150, 'The Sharks and the Bears each finished with 34 points, and they are now battling it out in a five-minute overtime.', 'When he is offered a better paying position, Jacob leaves the restaurant he manages to manage a new restaurant on the other side of town.', 'Catherine is spending her junior year of college studying abroad in France.', 'Malcolm is readjusting to civilian life after two years of overseas military service.', 'After several miserable months, Sharon decides that she can no longer share an apartment with her roommate Hilary.', 3, '', 0),
-(420, 150, 'Reentry occurs when a person leaves his or her social system for a period of time and then returns. Which situation below best describes Reentry?', 'When he is offered a better paying position, Javed leaves the hotel he manages to manage another one in a neighboring city.', 'Charan is spending her final year of college studying abroad in China.', 'Manan is readjusting to civilian life after 2 years of overseas merchant navy service.', 'After 5 miserable months, Sneha decides that she can no longer share her room with roommate Hital.', 4, '', 0);
-INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `option_2`, `option_3`, `option_4`, `answer`, `reason`, `formatted`) VALUES
+(420, 150, 'Reentry occurs when a person leaves his or her social system for a period of time and then returns. Which situation below best describes Reentry?', 'When he is offered a better paying position, Javed leaves the hotel he manages to manage another one in a neighboring city.', 'Charan is spending her final year of college studying abroad in China.', 'Manan is readjusting to civilian life after 2 years of overseas merchant navy service.', 'After 5 miserable months, Sneha decides that she can no longer share her room with roommate Hital.', 4, '', 0),
 (421, 150, 'Posthumous Award occurs when an award is given to someone, after their death. Choose one situation below as the best example of Posthumous Award.', 'Late yesteryear actress Sridevi was awarded with a Lifetime Achievement Award posthumously in Filmfare 2019.', 'Chitra never thought she&rsquo;d live to receive a third booker prize for her novel.', 'Emanuel has been honored with a prestigious literary award for his writing career and his daughter accepted the award on behalf of her deceased father.', 'Meenal&rsquo;s publisher canceled her book contract after she failed to deliver the manuscript on time.', 1, '', 0),
-(422, 150, 'The &lsquo;A&rsquo; state government has chalked out a plan for the underdeveloped &lsquo;B&rsquo; district where 66% of the funds will be placed in the hands of a committee of local representatives.\r\nCourses of action:\r\nI. The &lsquo;A&rsquo; state government should decide guidelines and norms for the functioning of the committee.\r\nII. Other state government may follow similar plan if directed by the Central government.', 'If only I follows', 'If only II follows', 'If either I or II follows', 'If neither I nor II follows', 1, '', 0),
+(422, 150, 'The &lsquo;A&rsquo; state government has chalked out a plan for the underdeveloped &lsquo;B&rsquo; district where 66% of the funds will be placed in the hands of a committee of local representatives.\r\nCourses of action:\r\nI. The &lsquo;A&rsquo; state government should decide guidelines and norms for the functioning of the committee.\r\nII. Other state government may follow similar plan if directed by the Central government.', 'If only I follows', 'If only II follows', 'If either I or II follows', 'If neither I nor II follows', 1, '', 0);
+INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `option_2`, `option_3`, `option_4`, `answer`, `reason`, `formatted`) VALUES
 (423, 150, 'The car dealer found that there was a tremendous response for the new XYZ&rsquo;s car booking with long queues of people complaining about the duration of business hours and arrangements. Courses of action:\r\nI. People should make their arrangement of lunch and snacks while going for car XYZ&rsquo;s booking and be ready to spend several hours.\r\nII. Arrangement should be made for more booking desks and increase business hours to serve more people in less time.', 'If only I follows', 'If only II follows', 'If either I or II follows', 'If neither I nor II follows', 2, '', 0),
 (424, 150, 'The &lsquo;M&rsquo; state government has decided hence forth to award the road construction contracts through open tenders only. Courses of action:\r\nI. The &lsquo;M&rsquo; state will not be able to get the work done swiftly as it will have to go through tender and other procedures.\r\nII. Hence forth the quality of roads constructed may be far better.', 'If only I follows', 'If only II follows', 'If either I or II follows', 'If neither I nor II follows', 4, '', 0),
 (425, 150, 'Alert villagers nabbed a group of bandits armed with murderous weapons. Courses of action:\r\nI. The villagers should be provided sophisticated weapons.\r\nII. The villagers should be rewarded for their courage and unity.', 'If only I follows', 'If only II follows', 'If either I or II follows', 'If neither I nor II follows', 2, '', 0),
@@ -247,7 +257,7 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 (432, 150, 'If in a certain language, NOIDA is coded as OPJEB, how is DELHI coded in that language?', 'CDKGH', 'EFMIJ', 'FGNJK', 'IHLED', 2, 'Each letter in the word NOIDA is moved one step forward to form the code OPJEB. So, in DELHI, D will be coded as E, E as F, L as M, H as I, I as J. Thus, the code becomes EFMIJ.', 0),
 (433, 150, 'Assertion (A): James Watt invented the steam engine.\r\n\r\nReason (R): It was invented to pump out the water from the flooded mines.', 'Both A and R are true and R is the correct explanation of A.', 'Both A and R are true, but R is not the correct explanation of A.', 'A is true, but R is false.', 'A is false, but R is true.', 1, 'The need of self-working engine to pump out the water from the flooded mines led James Watt to invent the steam engine.', 0),
 (434, 150, 'Essential Part\nBook', 'Education', 'Pictures', 'Pages', 'Knowledge', 3, 'A book cannot exist without pages.', 0),
-(435, 150, 'It is called Restitution when you compensate someone for damaging his or her property in some way. Which of the following situations is the best example of Restitution?', 'It is called Restitution when you compensate someone for damaging his or her property in some way. Which of the following situations is the best example of Restitution?', 'Tom borrows his friend&#39;s car and returns the car with an empty petrol tank. He apologizes and tells his friend that he will fill the tank tomorrow.', 'Peter asks Tom to stay in his apartment when he is out of the town. One day Tom arrives to stay and finds that pipe has burst and the apartment is filled with water. He calls the plumber to repair the pipe and pays for the repair.', 'A pothole in the parking of Peter&#39;s company caused his flat tyre. He informs his boss and expects that the company should pay for the repair.', 2, 'Tom damaged his friend&#39;s camera when the camera was in his possession, and he agreed to pay for the repair.', 0),
+(435, 150, 'It is called Restitution when you compensate someone for damaging his or her property in some way. Which of the following situations is the best example of Restitution?', 'Tom borrows his friend\'s camera. Tom fails to zipper the case, and the camera falls on the ground, and the lens shatters. When Tom returns the camera, he tells his friend that he will pay for the damage', 'Tom borrows his friend\'s car and returns the car with an empty petrol tank. He apologizes and tells his friend that he will fill the tank tomorrow.', 'Peter asks Tom to stay in his apartment when he is out of the town. One day Tom arrives to stay and finds that pipe has burst and the apartment is filled with water. He calls the plumber to repair the pipe and pays for the repair.', 'A pothole in the parking of Peter\'s company caused his flat tyre. He informs his boss and expects that the company should pay for the repair.', 1, 'Tom damaged his friend\'s camera when the camera was in his possession, and he agreed to pay for the repair.', 0),
 (436, 150, 'Statements:\n\nI) All heroes are villains.\nII) All villains are zeros.\nIII) Some heroes are jokers.\n\nConclusion:\n\ni) Some Jokers are heroes\nii) Some villains are jokers\niii) Some zeros are villains', 'Only I, II follow', 'All I, II, III follows', 'Only I, III follow', 'Only I, II follow', 2, 'Visit link to see solution\nhttps://static.javatpoint.com/reasoning/images/syllogism-q1.png', 0),
 (437, 150, 'Choose the word which best expresses the meaning of the given word.\r\nBRIEF', 'Limited', 'Small', 'Little', 'Short', 4, '', 0),
 (438, 150, '3, 6, 11, 18, 27, ?, 51', '35', '38', '40', '42', 2, '', 0),
@@ -258,7 +268,7 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 (443, 150, 'Pointing to the photograph, Ram said: &ldquo;She is the only daughter of my father&rsquo;s mother&rdquo;. How is Ram related to the person in the photograph?', 'aunt', 'son', 'nephew', 'grandson', 3, 'The person in the photograph should be Ram&rsquo;s aunt. Thus, Ram is her nephew.', 0),
 (444, 150, 'If 1st January 1897 fell on a Friday, on what day of a week 1st January of 1901 would have fallen on?', 'Sunday', 'Thursday', 'Wednesday', 'Tuesday', 4, '1st January of consecutive non -leap years will fall on consecutive days since 365 leaves a remainder of 1 on division by 7.\r\n\r\n1900 is not a leap year. 1900 is divisible by 100 but not by 400. Therefore, all the years from 1897 till 1901 are non-leap years.\r\n\r\nTherefore, the day on which 1st January falls will move by 1 for every year. Therefore, in 1897, 1st January would have fallen on Saturday. In 1898, 1st January would have fallen on Sunday. Similarly, in 1901, 1st January would have fallen on Tuesday. Therefore, option D is the right answer.', 0),
 (445, 150, 'If 121 @ 34 = 87 and 28 ! 13 = 41 then what is the value of\r\n353 ! 89 @ 167?', '275', '263', '317', '244', 1, '121 @ 34 = 87 and 28 ! 13 = 41\r\n121 &ndash; 34 = 87 and 28 + 13 = 41\r\nSo, 353 ! 89 @ 167 = 353 + 89 &ndash; 167 = 275', 0),
-(446, 150, 'A machine codes EAT as 100 and CAT as 60. Which of the following words will be coded as 40320?', 'BAIN', 'PAINT', 'HIGH', 'RAISE', 2, 'The numerical position of E is 5, A is 1 and T is 20 &ndash; 5*1*20 = 100.\r\nThe numerical position of C is 3, A is 1 and T is 20 &ndash; 3*1*20 = 60.\r\n\r\nBAIN = 2*1*9*14 = 252.\r\nPAINT = 16*1*9*14*20 = 40320.\r\nHIGH = 8*9*7*8 = 4032.\r\nRAISE = 18*1*9*19*5 = 15390.', 0),
+(446, 150, 'A machine codes EAT as 100 and CAT as 60. Which of the following words will be coded as 40320?', 'BAIN', 'PAINT', 'HIGH', 'RAISE', 2, 'The numerical position of E is 5, A is 1 and T is 20 &ndash; 5*1*20 = 100.\nThe numerical position of C is 3, A is 1 and T is 20 &ndash; 3*1*20 = 60.\n\nBAIN = 2*1*9*14 = 252.\nPAINT = 16*1*9*14*20 = 40320.\nHIGH = 8*9*7*8 = 4032.\nRAISE = 18*1*9*19*5 = 15390.', 0),
 (449, 155, 'In Champions league, Rohit scored an average of 120 runs per match in the first 3 match and an average of 140 runs per match in the last four match. What is Rohit&rsquo;s average runs for the first match and the last two match if his average runs per match for all the five match is 122 and total number of matches are 5?', '100', '200', '150', '50', 1, 'Correct Option: A\r\nRohit&rsquo;s average score in the first 3 exams = 120\r\n\r\nLet the scores in the 5 exams be denoted by M1, M2, M3, M4, and M5\r\n\r\nM1 + M2 + M3 = 120 &times; 3 = 360     .......(i)\r\n\r\nAverage of last 4 match = 140\r\n\r\n&rArr;  	M2 + M3 + M4 + M5	 = 140\r\n4\r\n&rArr; M2 + M3 + M4 + M5 = 560        ......(ii)\r\n\r\nAverage of all the exams\r\n&rArr;  	M1 + M2 + M3 + M4 + M5	 = 122\r\n5\r\n&there4;   M1 + M2 + M3 + M4 + M5 = 122 &times; 5 = 610                    .......(iii)\r\n\r\nFrom solving above equation, we get M1 + M4 + M5 = 300\r\n \r\nRequired average runs = 	300	 = 100\r\n3', 0),
 (450, 155, 'Ramesh kejriwal lent a sum of Rs.100 at simple interest of 6% p.a. for the first month, 12% p.a. for the second month, 24% p.a. for the third month and so on. What is the total amount of interest earned at the end of one year?', 'Rs. 5265', 'Rs. 5205', 'Rs. 2047.5', 'Rs. 4205.5', 3, 'Correct Option: C\r\nPrincipal= Rs.100\r\n\r\nRate of interest for first month = 6%\r\n\r\nInterest = Rs. 6/12\r\n\r\nInterest for second month = Rs. 12/12\r\n\r\nThe interest earned for the successive months is in the form of geometric progression.\r\n\r\nRs. 6/12, Rs. 12/12, Rs. 24/12 &hellip;&hellip;&hellip;&hellip;\r\n\r\na = Rs.6/12, r = (12/12)/ (6/12) = 2, where a is the first term and r is the common ratio of the series.\r\n\r\nSum of series = 	a (rn &ndash; 1)\r\nr &ndash; 1\r\n 	6	(212 &ndash; 1)	 	 	 \r\n=  	12	 = 	6	(4096 &ndash; 1)\r\n2 &ndash; 1	12\r\n=  	6	 &times; 4095 = Rs.2047.5\r\n12', 0),
 (451, 155, 'Virat can do a piece of work in 24 days and Sachin can do the same work in 36 days. If Virat works for three days and got Rs. 3600, and the remaining work will completed by Sachin, then how much rupee Sachin earned', 'Rs. 45220', 'Rs. 3600', 'Rs. 16520', 'Rs. 25200', 4, 'Assume total work = LCM (24, 36) = 72\r\n\r\nIf the entire work is 72 units, Virat can complete 3 unit per day, and Sachin can complete 2 unit per days \r\n\r\nIn 3 days, Virat completes 9 units and got Rs.3600 i.e. Rs.400 per unit.\r\n\r\nRemaining work = (72 &ndash; 9)unit = 63 unit\r\n\r\n&there4;   Sachin earning = Rs.63 &times; 400 = Rs.25200', 0),
@@ -311,14 +321,19 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 (498, 156, '7, 13, 25, 45, 75, ?', '117', '153', '209', '123', 1, '', 0),
 (499, 156, '4, 11, 19, 41, ?, 161', '62', '81', '79', '90', 3, '4 &times; 2 + 3 = 11\r\n11 &times; 2 &ndash; 3 = 19\r\n19 &times; 2 + 3 = 41\r\n41 &times; 2 &ndash; 3 = 79\r\n79 &times; 2 + 3 = 161', 0),
 (500, 156, '4, 8, 21, 59, ?, 314', '146', '134', '125', '191', 1, '4&hellip;&hellip;&hellip;.8&hellip;&hellip;&hellip;21&hellip;&hellip;&hellip;..59&hellip;&hellip;&hellip;.146&hellip;&hellip;&hellip;&hellip;314\r\n&hellip;.+4&hellip;&hellip;.+13&hellip;&hellip;.+38&hellip;&hellip;&hellip;+87&hellip;&hellip;&hellip;+168\r\n&hellip;&hellip;&hellip;+3^2&hellip;&hellip;.+5^2&hellip;&hellip;..+7^2&hellip;&hellip;&hellip;+9^2', 0),
-(501, 156, '11, 6, 5, 9, 16, ?', '66.5', '78.5', '89.5', '42.5', 4, '11 &times;0.5 + 0.5 = 6\r\n6 &times;1 &ndash; 1 = 5\r\n5 &times;1.5 + 1.5 = 9\r\n9 &times;1 &ndash; 1 = 16\r\n16 &times;2.5 + 2.5 = 42.5', 0),
+(501, 156, '11, 6, 5, 9, 16, ?', '66.5', '78.5', '89.5', '42.5', 4, '11 &times;0.5 + 0.5 = 6\n6 &times;1 &ndash; 1 = 5\n5 &times;1.5 + 1.5 = 9\n9 &times;2 &ndash; 2 = 16\n16 &times;2.5 + 2.5 = 42.5', 0),
 (502, 156, '5, 8, 28, 162, ?, 12870', '1738', '2318', '1288', '2224', 3, '&times;2 &ndash; 2, &times;4 &ndash; 4, &times;6 &ndash; 6, &times;8 &ndash; 8, &times;10 &ndash; 10', 0),
 (503, 156, '3, 5, 10, 20, 37, ?', '68', '77', '78', '63', 4, '+ (1^2+1), + (2^2+1), + (3^2+1), + (4^2+1), + (5^2+1)', 0),
 (504, 156, '21, 35, 56, 91, 154, ?', '273', '289', '231', '240', 1, '21 &times; 2 &ndash; 7 = 35\r\n35 &times; 2 &ndash; 14 = 56\r\n56 &times; 2 &ndash; 21 = 91\r\n91 &times; 2 &ndash; 28 = 154\r\n154 &times; 2 &ndash; 35 = 273', 0),
 (505, 156, '5, 7, 11, 37, 143, ?', '733', '721', '764', '507', 2, '5 &times; 1 + 2 = 7\r\n7 &times; 2 &ndash; 3 = 11\r\n11 &times; 3 + 4 = 37\r\n37 &times; 4 &ndash; 5 = 143\r\n143 &times; 5 + 6 = 721', 0),
 (506, 156, '5, 7, 25, 131, ?, 8335', '865', '914', '1025', '925', 4, '5 &times; 1 + 2 = 7\r\n7 &times; 3 + 4 = 25\r\n25 &times; 5 + 6 = 131\r\n131 &times; 7 + 8 = 925\r\n925 &times; 9 + 10 = 8335', 0),
 (507, 156, '767     495     359     291     257     ?', '120', '240', '57', '68', 2, 'Series Pattern 	Given Series	 \r\n767	767	 \r\n767 &ndash; 272 = 495	495	 \r\n495 &ndash; 136 = 359	359	 \r\n359 &ndash; 68  = 291	291	 \r\n291 &ndash; 34 = 257	257	 \r\n257 &ndash; 17 = 240	240', 0),
-(508, 156, '17.5     31     58     98.5     152.5     ?', '169.5', '180.5', '220', '205', 3, 'Series Pattern 	Given Series	 \r\n17.5	17.5	 \r\n17.5 + 1 &times; 13.5 = 31	31	 \r\n31 + 2 &times; 13.5 = 58	58	 \r\n58 + 3 &times; 13.5 = 98.5	98.5	 \r\n98.5 + 4 &times; 13.5 = 152.5	152.5	 \r\n152.5 + 5 &times; 13.5 = 220	220', 0);
+(508, 156, '17.5     31     58     98.5     152.5     ?', '169.5', '180.5', '220', '205', 3, 'Series Pattern 	Given Series	 \n17.5	17.5	 \n17.5 + 1 &times; 13.5 = 31	31	 \n31 + 2 &times; 13.5 = 58	58	 \n58 + 3 &times; 13.5 = 98.5	98.5	 \n98.5 + 4 &times; 13.5 = 152.5	152.5	 \n152.5 + 5 &times; 13.5 = 220	220', 0),
+(533, 167, 'class base\r\n{\r\npublic:\r\n       base()\r\n       {          \r\n           cout&lt;&lt;&quot;BCon&quot;;\r\n       }\r\n       ~base()\r\n       {\r\n	   cout&lt;&lt;&quot;BDest &quot;;\r\n       }\r\n};\r\nclass derived: public base\r\n{\r\npublic:\r\n       derived()\r\n       {     cout&lt;&lt;&quot;DCon &quot;;\r\n       }\r\n       ~derived()\r\n       {     cout&lt;&lt;&quot;DDest &quot;;\r\n       }\r\n};\r\n\r\nint main()\r\n{\r\n       derived object;\r\n       return 0; \r\n}', 'Dcon DDest', 'Dcon DDest BCon BDest', 'BCon DCon DDest BDest', 'BCon DCon BDes DDest', 3, '', 1),
+(534, 167, '//What is the value of a in below program?\r\n\r\nint main()\r\n{\r\n int a, b=20;\r\n a = 90/b;\r\n return 0;\r\n}', '4.5', '4.0', '4', 'Compilation Error', 3, '', 1),
+(535, 167, 'Which operator has highest precedence in * / % ?', '*', '/', '%', 'all have same precedence', 4, '', 0),
+(536, 167, 'Are both of the preprocessor directives solving same purpose?\r\n\r\n#include &lt;iostream.h&gt;\r\n\r\n#include &quot;iostream.h&quot;', 'Yes', 'No', 'Depends on compiler', 'None of these', 1, '', 1),
+(537, 167, 'Which part of memory is used for the allocation of local variables declared inside', 'Heap', 'Stack', 'Address Space', 'Depends on Compiler', 2, '', 0);
 
 -- --------------------------------------------------------
 
@@ -356,14 +371,15 @@ INSERT INTO `quizes` (`quiz_id`, `quiz_name`, `difficulty_level`, `description`,
 (103, 'C++ Programming', 'Intermediate', 'This Online C Programming Test is specially designed for you by industry experts.', 10, 0, 0, 0, '9911', 0, 0, 0, 1800, 1, 0, 60, 24, '2020-12-14 23:36:05'),
 (118, 'Operating System', 'Intermediate', 'An operating system, or \"OS,\" is software that communicates with the hardware and allows other programs to run. ... Every desktop computer, tablet, and smartphone includes an operating system that provides basic functionality for the device. Common desktop operating systems include Windows, OS X, and Linux\r<br/>', 5, 0, 0, 0, 'ishwar1999', 0, 0, 0, 900, 2, 0, 60, 24, '2020-12-15 14:57:16'),
 (126, 'Design and Analysis of Algorithms', 'Intermediate', 'Exam Key : daa@1999\r\n<br/>\r\n<br/>Design and Analysis of Algorithm is very important for designing algorithm to solve different types of problems in the branch of computer science and information technology.', 10, 0, 0, 0, 'daa@1999', 1, 0, 0, 2700, 0, 0, 0, 24, '2020-12-15 14:54:36'),
-(134, 'CODE - C', 'Intermediate', 'C and C++ Programming based Questions.\r<br/>Types\r<br/>-> Output based\r<br/>-> Error search\r<br/>-> Theory\r<br/>- >Architecture\r<br/>-> OOPS\r<br/>', 5, 0, 1611859500, 1611861300, '23031999', 0, 0, 0, 900, 1, 0.5, 60, 24, '2020-12-15 14:54:23'),
-(135, 'DODNetHTML', 'Advance', 'Question are based on Data Base, Operating System, Data Structure, Networking, HTML. ', 7, 0, 0, 0, 'in@100', 1, 0, 1, 1800, 2, 1, 70, 24, '2020-12-14 23:36:27'),
+(134, 'CODE - C', 'Intermediate', 'C and C++ Programming based Questions.\r\nTypes\r\n-> Output based\r\n-> Error search\r\n-> Theory\r\n- >Architecture\r\n-> OOPS', 5, 1, 1611859500, 1611861300, '23031999', 0, 1, 0, -1, 1, 0.5, 60, 24, '2020-12-15 14:54:23'),
+(135, 'DODNetHTML', 'Advance', 'Question are based on Data Base, Operating System, Data Structure, Networking, HTML. ', 5, 0, 0, 0, 'in@100', 1, 0, 1, 1800, 2, 1, 70, 24, '2020-12-14 23:36:27'),
 (140, 'Quantitative Aptitude', 'Beginner', 'Arithmetic Ability test helps measure one\'s numerical ability, problem solving and mathematical skills. ... Every aspirant giving Quantitative Aptitude Aptitude test tries to solve maximum number of problems with maximum accuracy and speed.', 30, 0, 0, 0, 'QA2021', 1, 0, 1, 3600, 1, 0, 60, 24, '2021-04-12 02:35:41'),
-(141, 'C Programming Basic', 'Beginner', 'Practice Test', 10, 0, 0, 0, 'CP2021', 1, 0, 1, 900, 2, 1, 50, 24, '2021-04-12 14:33:29'),
-(142, 'Comprehension', 'Intermediate', 'Comprehension', 5, 0, 0, 0, 'CT2021', 0, 0, 1, 1800, 2, 1, 60, 24, '2021-04-12 20:57:59'),
-(150, 'General Aptitude 1.0', 'Intermediate', 'Quantitative Aptitude : 20 Questions\r<br/>Logical Reasoning : 20 Questions\r<br/>Verbal ability : 20 Questions', 60, 1, 0, 0, 'GA2021', 1, 1, 0, 7200, 2, 1, 60, 41, '2021-04-15 04:33:11'),
-(155, 'Quantitative Aptitude SBI PO', 'Intermediate', 'Quantitative Aptitude\r<br/>SBI PO', 30, 1, 0, 0, 'QASBIPO2021', 0, 1, 1, 3600, 4, 1, 60, 41, '2021-04-16 17:18:36'),
-(156, 'Logical Reasoning 1.0', 'Intermediate', 'Logical Reasoning Questions To Prepare For SBI PO Exams', 30, 1, 0, 0, 'LR2021', 0, 0, 0, 1800, 1, 0, 60, 41, '2021-04-16 19:25:22');
+(141, 'C Programming Basic', 'Beginner', 'Practice Test', 10, 1, 0, 0, 'CP2021', 1, 1, 1, 900, 2, 1, 50, 24, '2021-04-12 14:33:29'),
+(142, 'Comprehension', 'Intermediate', 'Comprehension', 5, 1, 0, 0, 'CT2021', 0, 0, 0, 1800, 2, 1, 60, 24, '2021-04-12 20:57:59'),
+(150, 'General Aptitude 1.0', 'Intermediate', 'Quantitative Aptitude : 20 Questions\r\nLogical Reasoning : 20 Questions\r\nVerbal ability : 20 Questions', 60, 1, 0, 0, 'GA2021', 1, 1, 0, 7200, 2, 1, 60, 41, '2021-04-15 04:33:11'),
+(155, 'Quantitative Aptitude SBI PO', 'Intermediate', 'Quantitative Aptitude\r<br/>SBI PO', 30, 1, 0, 0, 'QASBIPO2021', 1, 1, 1, 3600, 4, 1, 60, 41, '2021-04-16 17:18:36'),
+(156, 'Logical Reasoning 1.0', 'Intermediate', 'Logical Reasoning Questions To Prepare For SBI PO Exams', 30, 1, 0, 0, 'LR2021', 1, 1, 0, 3600, 1, 0, 60, 41, '2021-04-16 19:25:22'),
+(167, 'C++ Programming 2.0', 'Intermediate', 'Predict Output', 5, 1, 0, 0, 'CP2021', 0, 0, 1, -1, 2, 1, 60, 24, '2021-04-17 15:08:53');
 
 -- --------------------------------------------------------
 
@@ -391,8 +407,23 @@ CREATE TABLE `registered_admin` (
 
 INSERT INTO `registered_admin` (`admin_id`, `first_name`, `last_name`, `admin_contact`, `admin_gender`, `state`, `date_of_birth`, `admin_address`, `institution_name`, `admin_email`, `admin_password`) VALUES
 (24, 'Ishwar', 'Baisla', 9821671707, 'male', 'Delhi', '1999-03-23', 'wazirabad village gali no 6', 'SRM UNIVERSITY', 'ishwar2303@gmail.com', '23031999'),
-(41, 'PANKAJ', 'GAUTAM', 9821671707, 'male', 'Uttar Pradesh', '1999-02-18', 'Tundla', 'SRM-IST', 'pankaj.gautam4012@gmail.com', '12345678'),
+(41, 'ISHWAR', 'BAISLA', 9821671707, 'male', 'Delhi', '1999-03-23', 'wazirabad village gali no 6', 'SRM-IST', 'ishwar1999@gmail.com', '23031999'),
 (43, 'RHYTHM', 'SHARMA', 870853702, 'male', 'Haryana', '2000-11-24', 'Kurukshetra', 'SRM-IST', 'srhythm2020@gmail.com', '12345678');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reported_questions`
+--
+
+CREATE TABLE `reported_questions` (
+  `report_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `problem` varchar(3000) NOT NULL,
+  `amend` tinyint(4) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -444,6 +475,12 @@ ALTER TABLE `registered_admin`
   ADD UNIQUE KEY `admin_email` (`admin_email`);
 
 --
+-- Indexes for table `reported_questions`
+--
+ALTER TABLE `reported_questions`
+  ADD PRIMARY KEY (`report_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -451,13 +488,13 @@ ALTER TABLE `registered_admin`
 -- AUTO_INCREMENT for table `attempts`
 --
 ALTER TABLE `attempts`
-  MODIFY `attempt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `attempt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -469,25 +506,31 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `profile_photo`
 --
 ALTER TABLE `profile_photo`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `question_bank`
 --
 ALTER TABLE `question_bank`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=509;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=542;
 
 --
 -- AUTO_INCREMENT for table `quizes`
 --
 ALTER TABLE `quizes`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 
 --
 -- AUTO_INCREMENT for table `registered_admin`
 --
 ALTER TABLE `registered_admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
+--
+-- AUTO_INCREMENT for table `reported_questions`
+--
+ALTER TABLE `reported_questions`
+  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables
