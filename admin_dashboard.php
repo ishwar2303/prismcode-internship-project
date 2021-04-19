@@ -195,7 +195,7 @@ include('includes/navbar.php');
   </div>
 
   <!-- Content Row -->
-<div class="row row-card row-deck">
+<div class="row row-card row-deck mb-5">
   <div class="col-12">
     <div class="card">
 			<?php require 'includes/flash-message.php'; ?>

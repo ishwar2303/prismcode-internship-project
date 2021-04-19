@@ -65,10 +65,19 @@ Candidate's response
 - Switch Questions
 - Mark as review
 - Counts Attempted and Remaining Questions
+- Report Questions
+- Page reloading is permitted exam status will persist till session existence
 
 ### Basic Proctoring
 - Switching from exam window such as opening new tab or window is prohibited
 - Involving in such activity will lead to automatic submission of exam
 
+## Instructions
+![alt text](https://github.com/ishwar2303/QuizWit/blob/master/screenshots/quiz-instruction.PNG)
+
 ## Quiz Page
 ![alt text](https://github.com/ishwar2303/QuizWit/blob/master/screenshots/take-quiz.PNG)
+
+## Report a Question
+![alt text](https://github.com/ishwar2303/QuizWit/blob/master/screenshots/report-questions.PNG)
+

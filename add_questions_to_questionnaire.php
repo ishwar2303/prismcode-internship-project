@@ -37,25 +37,25 @@
               $err = 'Q '.($i+1).' discarded, Empty question entry not allowed';
               $control = 0;
               $error_control = 1;
-              array_push($errors, $err);
+              array_push($errors, $err.$break);
           }
           else if($o1=='' || $o2=='' || $o3=='' || $o4 == ''){
               $err = 'Q '.($i+1).' discarded, Options can not be empty';
               $control = 0;
               $error_control = 1;
-              array_push($errors, $break.$err);
+              array_push($errors, $err.$break);
           }
           else if($ans!=1 && $ans!=2 && $ans!=3 && $ans!=4){
               $err = 'Q '.($i+1).' discarded, Invalid answer value';
               $control = 0;
               $error_control = 1;
-              array_push($errors, $break.$err);
+              array_push($errors, $err.$break);
           }
           else if($form!=0 && $form!=1){
             $err = 'Q '.($i+1).' discarded, Invalid formatted option';
             $control = 0;
             $error_control = 1;
-            array_push($errors, $break.$err);
+            array_push($errors, $err.$break);
           }
 
           if($control){
