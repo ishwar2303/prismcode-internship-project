@@ -29,7 +29,7 @@ if(isset($_POST['quizID'])){
                   if($row['key_access']){
                     $height = "200px";
                   ?>
-                  <div id="exam-key">Exam Key : <?php echo $row['Exam_key'];?></div>
+                  <div id="exam-key" class="desc-block">Exam Key : <?php echo $row['Exam_key'];?></div>
                   <?php 
                   }
                   ?>
@@ -37,8 +37,6 @@ if(isset($_POST['quizID'])){
                   <div class="desc-block">
                     <span>Marks per Question : <?php echo $row['marks_per_question']; ?></span>
                     <?php $negative_marking = $row['negative_marking']; ?>
-                  </div>
-                  <div class="desc-block">
                     <span>
                     <?php 
                           if($negative_marking == 0)
@@ -50,7 +48,7 @@ if(isset($_POST['quizID'])){
                   <div class="desc-block">
                     <span>Certification on <?php echo $row['passing_percentage']."%"; ?></span>
                   </div>
-                  <div style="max-height: <?php echo $height;?>" id="quiz-description"><?php echo str_replace("\n", "</br>", $row['description']);?></div>
+                  <div style="max-height: <?php echo $height;?>" id="quiz-description"><h5>Description</h5><div><?php echo str_replace("\n", "</br>", $row['description']);?></div></div>
                   <script type="text/javascript">openDescriptionPopup();</script>
                   <?php
           }

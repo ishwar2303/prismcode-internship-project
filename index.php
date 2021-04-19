@@ -234,12 +234,12 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
     <!-- main -->
     <div class="main-content" id="home">
         <!-- header -->
-        <header style="margin:0;padding:0;z-index: 0;">
+        <header style="" class="home-header">
             <div style="margin:0;" class="container-fluid">
                 <!-- nav -->
                 <div class="quiz-just-do-it-container">
                     <div id="logo">
-                        <h1><a href="index.php">QuizWit</sup></a></h1>
+                        <h1><a  class="p-0" href="index.php">QuizWit</sup></a></h1>
                     </div>
                     <div class="laptop-menu">
                       <div class="laptop-menu-content-container">
@@ -307,21 +307,21 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                             ?>
                           </div>
                           <div class="bottom-laptop-menu">
-                            <a href="">
-                              <i class="fas fa-eye"></i>
-                              <span>Take a Look</span>
+                            <a href="#" class="quizzes-btn">
+                            <i class="fas fa-diagnoses"></i>
+                              <span>Quizzes</span>
                               <span class="right-end">
                                 <i class="fas fa-caret-right"></i>
                               </span>
                             </a>
-                            <a href="">
+                            <a href="#" class="contact-us-btn">
                               <i class="fas fa-id-card-alt"></i>
                               <span>Contact Us</span>
                               <span class="right-end">
                                 <i class="fas fa-caret-right"></i>
                               </span>
                             </a>
-                            <a href="">
+                            <a href="#" class="about-us">
                               <i class="far fa-address-card"></i>
                               <span>About Us</span>
                               <span class="right-end">
@@ -395,21 +395,21 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                       <?php 
                       }
                       ?>
-                      <a href="">
-                        <i class="fas fa-eye"></i>
-                        <span>Take a Look</span>
+                      <a href="#" class="quizzes-btn">
+                      <i class="fas fa-diagnoses"></i>
+                        <span>Quizzes</span>
                         <span class="right-end">
                           <i class="fas fa-caret-right"></i>
                         </span>
                       </a>
-                      <a href="">
+                      <a href="#" class="contact-us-btn">
                         <i class="fas fa-id-card-alt"></i>
                         <span>Contact Us</span>
                         <span class="right-end">
                           <i class="fas fa-caret-right"></i>
                         </span>
                       </a>
-                      <a href="">
+                      <a href="#" class="about-us">
                         <i class="far fa-address-card"></i>
                         <span>About Us</span>
                         <span class="right-end">
@@ -421,8 +421,34 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                 <!-- //nav -->
             </div>
         </header>
+        <div class="home-header-padding"></div>
         <!-- //header -->
 
+        <script>
+          $(".about-us").click(function() {
+              $('html,body').animate({
+                  scrollTop: $(".our-team-container").offset().top -125},
+                  'fast');
+          })
+          $(".contact-us-btn").click(function() {
+              $('html,body').animate({
+                  scrollTop: $(".contact-us").offset().top - 125},
+                  'fast');
+          })
+          $(".quizzes-btn").click(function() {
+              $('html,body').animate({
+                  scrollTop: $(".quizzes").offset().top -125},
+                  'fast');
+          })
+
+          $(window).on("scroll", function() {
+              if($(window).scrollTop() > 50) {
+                  $(".home-header").addClass("active-header");
+              } else {
+                $(".home-header").removeClass("active-header");
+              }
+          });
+        </script>
         <!-- banner -->
         <div class="banner-content-w3pvt">
             <div class="banner-w3layouts-info text-center">
@@ -443,9 +469,23 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
             </div>
         </div>
     </div>
+    <div class="main-banner">
+        <div class="main-banner-content">
+                <h3 id="index-slogan">Why QuizWit ?</h3>
+                <div>
+                  <span style="font-weight: 350;color: #30306c;">
+                      Online Quizzes are a popular form of entertainment with learning. 
+                      <br/>
+                      We provide you one of the most flexible and impeccable platform that enhance your experience in online learning.
+                      <br/>
+                      All salient features are integrated and can be used effortlessly.
+                  </span>
+                </div>
+        </div>
+    </div>
     <!-- //entry -->
     <!-- banner-bottom -->
-    <section class="banner-bottom py-5" id="about">
+    <section class="banner-bottom py-5 quizzes" id="about">
         <div style="position: relative;" class="container py-md-4">
             <div class="row banner-grids">
               
@@ -457,7 +497,8 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                 if($result->num_rows>0){
                        ?>
 <!--                        <img style="width: 90px;height: 80px;" src="images/happy.jpg">
- -->          <div style="display: flex; width: 340px; justify-content: space-evenly;color:#4e73df;"><i style="font-size:25px;" class="fas fa-comment-alt"></i><span>See description for more details.</span></div>
+ -->          
+              <h3 style="padding-left:23px;padding-bottom:15px">Currently Active Quizzes</h3>
               <div class="description-popup">
                 <div id="description-popup-content">
 
@@ -467,7 +508,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                 <thead>
                   <tr>
                        <th style="font-weight:bold;">Quiz Name</th>
-                       <th style="font-weight:bold;">Description</th>
+                       <th style="font-weight:bold;">Info</th>
                    </tr>
 
                 </thead>
@@ -484,7 +525,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
 		                             <tr>
 		                                 <td><?php echo $row['quiz_name'];?></td>
 		                                 <td style="color:#3498db;">
-                                        <span class="view-description-popup" style="cursor:pointer;padding-left: 15px;">View</span>
+                                        <span class="view-description-popup" style="cursor:pointer;padding-left: 15px;">View Details</span>
                                         <script type="text/javascript">
                                           $(document).ready(function(){
                                             $(".view-description-popup").eq(<?php echo $i;?>).click(function(){
@@ -524,6 +565,73 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
         </div>
     </section>
 
+    <!-- Team -->
+
+    <div class="our-team-container">
+      <div class="our-team-content br-t-5px">
+              <h3>Developers</h3>
+              <span>
+                  We’re diverse. That’s why we work well as a team.
+                  <br/>
+                  We provides complete professional services including web design, development, deployment and support.
+              </span>
+      </div>
+      <div class="our-team-images-container">
+          <div>
+              <div class="team-image-container">
+                  <img src="profile_photo/default_image.png" alt="">
+                  <div class="cover-team-image">
+                      <div class="cover-team-image-content">
+                          <label class="cover-team-name-job-title">
+                              <span>Ishwar Baisla</span>
+                              <span>Software Engineer</span>
+                          </label>
+                          <label class="cover-team-social-links">
+                              <a href="" target="_blank"> <!-- Give link here -->
+                              <i class="fa fa-facebook-f"></i>
+                              </a>
+                              <a href="" target="_blank"> <!-- Give link here -->
+                                  <i class="fa fa-twitter"></i>
+                              </a>
+                              <a href="" target="_blank"> <!-- Give link here -->
+                                  <i class="fa fa-instagram"></i>
+                              </a>
+                              <a href="https://www.linkedin.com/in/ishwar-baisla-8168151aa/" target="_blank"> <!-- Give link here -->
+                                  <i class="fa fa-linkedin-square"></i>
+                              </a>
+                          </label>
+                      </div>
+                  </div>
+              </div>
+              <div class="team-image-container">
+                  <img src="profile_photo/default_image.png" alt="">
+                  <div class="cover-team-image">
+                      <div class="cover-team-image-content">
+                          <label class="cover-team-name-job-title">
+                              <span>Tapas Baranwal</span>
+                              <span>Software Engineer</span>
+                          </label>
+                          <label class="cover-team-social-links">
+                              <a href="" target="_blank"> <!-- Give link here -->
+                              <i class="fa fa-facebook-f"></i>
+                              </a>
+                              <a href="" target="_blank"> <!-- Give link here -->
+                                  <i class="fa fa-twitter"></i>
+                              </a>
+                              <a href="" target="_blank"> <!-- Give link here -->
+                                  <i class="fa fa-instagram"></i>
+                              </a>
+                              <a href="" target="_blank"> <!-- Give link here -->
+                                  <i class="fa fa-linkedin-square"></i>
+                              </a>
+                          </label>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- Team block ends -->
     <?php 
       $sql = "SELECT * FROM quizes WHERE show_evaluation='1' ORDER BY quiz_name";
 
@@ -582,7 +690,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
     </script>
  
     <!-- footer -->
-    <footer class="footer-content text-center py-5">
+    <footer class="footer-content text-center py-5 contact-us">
         <div class="container py-md-3">
             <!-- logo -->
             <h2 class="logo2 text-center">

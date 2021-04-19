@@ -5,12 +5,12 @@ require_once('connection.php');
 require_once('middleware.php');
 
 if(isset($_POST['quesID']) && isset($_POST['delete']) && isset($_POST['quizID']) && isset($_POST['quesNum'])){
-	
+	$question_id = cleanInput($_POST['quesID']);
 	$sql = "DELETE FROM question_bank WHERE question_id='$_POST[quesID]'"; // delete question
 	mysqli_query($conn,$sql);
-	$QueNum = $_POST['quesNum'];
+	$QueNum = cleanInput($_POST['quesNum']);
 	$QueNum--;
-	$QuizID = $_POST['quizID'];
+	$QuizID = cleanInput($_POST['quizID']);
 	$sql = "UPDATE quizes set number_of_questions='$QueNum' WHERE quiz_id='$QuizID'"; // update number of questions in quizes
 	mysqli_query($conn,$sql);
 	$sql = "SELECT * FROM question_bank WHERE quiz_id='$QuizID'";
