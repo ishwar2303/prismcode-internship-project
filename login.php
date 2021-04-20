@@ -1,12 +1,19 @@
 <?php
-   
-   session_start();
-   require_once('connection.php');   
 
-    
-   session_destroy();
-   session_start();
-   require_once('middleware.php');
+session_start();
+require_once('connection.php');   
+
+
+if(isset($_SESSION['name']))
+unset($_SESSION['name']);
+if(isset($_SESSION['email']))
+unset($_SESSION['email']);
+if(isset($_SESSION['student_login_time']))
+unset($_SESSION['student_login_time']);
+if(isset($_SESSION['regNo']))
+unset($_SESSION['regNo']);
+
+require_once('middleware.php');
 if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['regNo']))
 {
       $name = cleanInput($_POST['name']);

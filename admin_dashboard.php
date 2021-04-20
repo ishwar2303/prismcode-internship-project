@@ -84,7 +84,7 @@ include('includes/navbar.php');
            $p++;
 
          }   
-        $sql = "SELECT report_id FROM reported_questions WHERE amend='0'";
+        $sql = "SELECT report_id FROM `reported_questions` JOIN `question_bank` on reported_questions.question_id=question_bank.question_id JOIN `quizes` on question_bank.quiz_id=quizes.quiz_id WHERE quizes.admin_email_id='$_SESSION[admin_id]' AND amend='0'";
         $report_result = $conn->query($sql);
         $report_count = $report_result->num_rows;
         if($report_count > 0){

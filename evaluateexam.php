@@ -245,6 +245,25 @@
 </head>
 <body class="grey lighten-4">
 <?php 
+      if((int)$ans>=$passingPercentage){
+        $quiz_name = $quizName;
+        if(!isset($_SESSION['certification_cleared'])){
+          $sql = "INSERT INTO `certifications` (`certificate_id`, `quiz_name`, `date`, `candidate_name`, `score`, `email`) VALUES (NULL, '$quiz_name', current_timestamp(), '$_SESSION[name]', '$ans', '$_SESSION[email]')";
+          $conn->query($sql);
+          $certificate_id = $conn->insert_id;
+          $_SESSION['certificate_id'] = $certificate_id;
+        }
+        $_SESSION['certification_cleared'] = true;
+        if(isset($_SESSION['certificate_id']) && $showEvaluation){
+        ?>
+        <div class="certificate-btn-container">
+          <a class="certificate-btn" href="certificate.php?cid=<?php echo base64_encode($_SESSION['certificate_id']); ?>" target="_blank">View Certificate</a>
+        </div>
+        <?php
+        }
+      }
+    ?>
+<?php 
 if($showEvaluation){
 ?>
   <!-- <label class="print-question-paper">
@@ -254,7 +273,7 @@ if($showEvaluation){
     <span id="left-arrow-container">
       <i class="fas fa-chevron-left"></i>
     </span>
-    <?php 
+    <?php
     $quizName = "'".$quizName."'";
     ?>
     <span onclick="printQuestionPaper(<?php echo $quizName;?>)" id="book-print-container">  
@@ -274,11 +293,15 @@ if($showEvaluation){
             ?>
             <div class="page-header <?php echo $class; ?> shadow-c">
                 <h4 class="page-tilte">
-                    <?php  if((int)$ans>=$passingPercentage)
-        echo "&nbsp;&nbsp;<i class='fas fa-check'></i>&nbsp;&nbsp;"."Congratulation, You have clear the certification.";
-      else echo "&nbsp;&nbsp;<i class='fas fa-exclamation-circle'></i>&nbsp;&nbsp;"."Thank you for attempting the exam. Unfortunately, you need more practice before you clear the certification."; ?>
+                    <?php  
+                      if((int)$ans>=$passingPercentage){
+                        echo "&nbsp;&nbsp;<i class='fas fa-check'></i>&nbsp;&nbsp;"."Congratulation, You have clear the certification.";
+                      }
+                      else echo "&nbsp;&nbsp;<i class='fas fa-exclamation-circle'></i>&nbsp;&nbsp;"."Thank you for attempting the exam. Unfortunately, you need more practice before you clear the certification."; 
+                    ?>
                 </h4>
             </div>
+            
             <div class="row row-cards row-deck">
                 <div  class="col-xl-3 col-md-6 mb-4 height115">
                     <div style="padding: 0;"class="card border-bottom-primary h-100 py-2 shadow-c">

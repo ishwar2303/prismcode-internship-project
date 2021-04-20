@@ -2,11 +2,16 @@
    
    session_start();
    require_once('connection.php');   //connection establish
-
-   session_destroy();
-    
-   session_start();
    require_once('middleware.php');
+
+   if(isset($_SESSION['name']))
+      unset($_SESSION['name']);
+   if(isset($_SESSION['email']))
+      unset($_SESSION['email']);
+   if(isset($_SESSION['login_time']))
+      unset($_SESSION['login_time']);
+   if(isset($_SESSION['admin_id']))
+      unset($_SESSION['admin_id']);
 
 if(isset($_POST['pass']) && isset($_POST['email']))
 {

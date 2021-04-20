@@ -124,7 +124,7 @@
 </head>
 <body>
   <header>
-          <a style="line-height: 0" id="home-link" href="index.php" class="ml-25px"><span><label class="mg-0">QuizWit</label></span></a>
+          <a style="line-height: 0" id="home-link" href="index.php" class="ml-25px"><span><label class="mg-0" style="font-weight:100">QuizWit</label></span></a>
   </header>
   <div class="header-padding"></div>
   <div class="wrapper">

@@ -66,6 +66,13 @@
 			array_push($_SESSION['REVIEW'],0);
 		}
 	}
+
+	if(isset($_SESSION['certification_cleared'])){
+		unset($_SESSION['certification_cleared']);
+	}
+	if(isset($_SESSION['certification_id'])){
+		unset($_SESSION['certification_id']);
+	}
 ?>
 	<?php include 'templates/exam_header.php'; ?>
 	<div class="top-padding"></div>

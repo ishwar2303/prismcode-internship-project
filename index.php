@@ -631,6 +631,119 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
           </div>
       </div>
     </div>
+
+    <div class="flex-center f-c-c">
+      <div class="left">
+        <div class="view-certificate-container">
+              <div class="fetch-heading f-w-bold">Fetch My Certificates</div>
+              <div class="input-layout-container">
+                <label class="input-label f-w-bold" style="color:#974497;">Provide your E-mail</label>
+                <input type="text" class="input-layout " id="email-for-certificates">
+              </div>
+              <div id="certification-error" class="label-error"></div>
+              <div id="certification-success" class="label-success"></div>
+              <div>
+                <button class="fetch-certificate-btn" id="fetch-my-certificates">Fetch all Certificates</button>
+              </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="certificate-response p-5">
+            <div id="why-certificate">
+              <h2>Why Certificates ?</h2>
+              <div>
+                The importance of certifications starts right from the academic journey in the initial stages.
+                <br/>
+                You get certificates as proof of qualifying a xyz exam. Furthermore, certificates help you find jobs with employers you want to work for or showcasing your abilities.
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="certificate-response p-5">
+          <h3 id="certificate-response-heading">Your Certificates</h3>
+          <div id="certificate-fetch-response"></div>
+    </div>
+    <script>
+
+          function showResponse(res){
+              let errBlock = document.getElementById('certification-error')
+              let sucBlock = document.getElementById('certification-success')
+              let heading = document.getElementById('certificate-response-heading')
+              heading.style.display = 'none'
+              let btn = document.getElementById('fetch-my-certificates')
+              let errorIcon = '<i class="fas fa-exclamation-circle mr-1"></i>'
+              btn.innerHTML = '<i class="fas fa-sync fa spin mr-1"></i> Preparing'
+              res = JSON.parse(res)
+              console.log(res)
+              if(res.success){
+                  let resBlock = document.getElementById('certificate-fetch-response')
+                  resBlock.innerHTML = ''
+                  heading.style.display = 'block'
+                  data = res.data
+                  totalCertificates = data.length
+                  data.forEach((certificate) => {
+                    main = document.createElement('div')
+                    main.className = 'space-between pd-1'
+                    // name = document.createElement('div')
+                    // name.className = 'certificate-quiz-name'
+                    // name.innerHTML = certificate.quiz_name
+                    link = document.createElement('a')
+                    link.href= 'certificate.php?cid='+ btoa(certificate.certificate_id)
+                    link.target = '_blank'
+                    link.innerHTML = certificate.quiz_name
+                    link.className = 'certificated-fetched-btn'
+                    // main.appendChild(name)
+                    main.appendChild(link)
+                    resBlock.appendChild(main)
+                    console.log(resBlock)
+                  })
+                  if(totalCertificates == 1)
+                    msg = '1 certificate'
+                  else msg = totalCertificates + ' certificates'
+                  sucBlock.innerHTML = '<i class="fas fa-check mr-1"></i> ' + msg
+
+              }
+              else{
+                errBlock.innerHTML = errorIcon+' '+res.error
+              }
+                btn.innerHTML = 'Fetch all certificates'
+                btn.disabled = false
+            }
+            $('#fetch-my-certificates').click(() => {
+              let btn = document.getElementById('fetch-my-certificates')
+              btn.innerHTML = '<i class="fas fa-sync fa-spin mr-1"></i> Fetching'
+              btn.disabled = true
+              let heading = document.getElementById('certificate-response-heading')
+              heading.style.display = 'none'
+              document.getElementById('certificate-fetch-response').innerHTML = ''
+              let errBlock = document.getElementById('certification-error')
+              errBlock.innerHTML = ''
+              let sucBlock = document.getElementById('certification-success')
+              sucBlock.innerHTML = ''
+              let email = $('#email-for-certificates').val()
+              let reqData = {
+                email,
+                certificate : true
+              }
+              let url = 'fetch-certificates.php'
+              setTimeout(() => {
+                $.ajax({
+                  url,
+                  dataType : 'html',
+                  type : 'POST',
+                  success : (msg) => {
+
+                  },
+                  complete : (res) => {
+                    showResponse(res.responseText)
+                  },
+                  data : reqData
+
+                })
+              }, 1000)
+            })
+    </script>
     <!-- Team block ends -->
     <?php 
       $sql = "SELECT * FROM quizes WHERE show_evaluation='1' ORDER BY quiz_name";
@@ -640,7 +753,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
       if($num>0){
     ?>
     <div class="result-container">
-	  <h5>Select Your Exam</h5>
+	  <h5 class="f-w-bold">Select Your Exam</h5>
       <div class="select-exam-for-result">
         <select id="test" name='test_selected'>
           <option value disabled>Select Quiz</option>
@@ -688,7 +801,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
         });
       });
     </script>
- 
+  
     <!-- footer -->
     <footer class="footer-content text-center py-5 contact-us">
         <div class="container py-md-3">

@@ -53,7 +53,7 @@
          }
      }
 
-     $sql = "SELECT reported_questions.report_id, reported_questions.question_id, reported_questions.amend, reported_questions.problem, reported_questions.email, reported_questions.timestamp, question_bank.question, question_bank.formatted, quizes.quiz_name, quizes.quiz_id FROM `reported_questions` JOIN `question_bank` on reported_questions.question_id=question_bank.question_id JOIN `quizes` on question_bank.quiz_id=quizes.quiz_id;";
+     $sql = "SELECT reported_questions.report_id, reported_questions.question_id, reported_questions.amend, reported_questions.problem, reported_questions.email, reported_questions.timestamp, question_bank.question, question_bank.formatted, quizes.quiz_name, quizes.quiz_id, quizes.admin_email_id FROM `reported_questions` JOIN `question_bank` on reported_questions.question_id=question_bank.question_id JOIN `quizes` on question_bank.quiz_id=quizes.quiz_id WHERE quizes.admin_email_id='$_SESSION[admin_id]'";
      $report_result = $conn->query($sql);
 
 ?>
