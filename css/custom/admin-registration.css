@@ -204,6 +204,15 @@ form{
 
 .select-option-container>label>:hover {}
 
+/* .input-label{
+  position: absolute;
+  top: -3px;
+  left: 10px;
+  color: #467fcf;
+  background: white;
+  z-index: 10;
+  padding: 0px 10px;
+} */
 .select-option-container>label>span:hover {
     background: rgba(32, 32, 32, 0.1);
 }

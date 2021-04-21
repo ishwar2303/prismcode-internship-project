@@ -21,16 +21,13 @@
       }
      }
      else header('location: logout.php');
-
-
     $sql = "SELECT * FROM quizes WHERE is_active='1' ORDER BY quiz_name";
-
     $result = mysqli_query($conn,$sql);
     $num = $result->num_rows;
  
 ?>
 
-	<?php include 'templates/headerlogin.php'; ?>
+<?php include 'templates/headerlogin.php'; ?>
 <script type="text/javascript">
    $(document).ready(function(){
               $(document).on('submit','#myform',function(){

@@ -507,15 +507,17 @@ $t = 0;
     </script>
 <script>
 	
-//removeCookie()
+removeCookie()
 examStarted()
 $(window).blur(() => {
   checkCookie() // proctoring user via checking if window looses focus
 })
-//document.getElementsByClassName('main-container')[0].style.display = 'flex'
+document.getElementsByClassName('main-container')[0].style.display = 'flex'
 </script>
 
+
 </body>
+
 </html>
 <?php 
 if(!isset($_SESSION['test_started'])){
@@ -524,3 +526,4 @@ if(!isset($_SESSION['test_started'])){
        $_SESSION['test_started'] = true;
 }
 ?>
+

@@ -218,7 +218,7 @@
                     <input  type="password" name="password" id="pass">
                 </div>
                 <div class="input-container-style">    
-                    <label class="input-label">Cofirm Passowrd</label>
+                    <label class="input-label">Confirm Password</label>
                     <input type="password" name="confirm_password" id="confpass">
                 </div>
                 <div class="input-container-style">    

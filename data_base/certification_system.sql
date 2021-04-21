@@ -2,9 +2,9 @@
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 20, 2021 at 10:31 PM
--- Server version: 10.4.18-MariaDB
+-- Host: quizwit.cakcwgna7dgk.ap-south-1.rds.amazonaws.com
+-- Generation Time: Apr 21, 2021 at 10:26 PM
+-- Server version: 8.0.20
 -- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,19 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `attempts` (
-  `attempt_id` int(11) NOT NULL,
-  `quiz_id` int(11) NOT NULL,
+  `attempt_id` int NOT NULL,
+  `quiz_id` int NOT NULL,
   `fullname` char(30) NOT NULL,
   `registration_no` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
   `score` double NOT NULL,
-  `total_marks` int(11) NOT NULL,
-  `correct` int(11) NOT NULL,
-  `wrong` int(11) NOT NULL,
-  `not_attempted` int(11) NOT NULL,
-  `pass_percentage` int(11) NOT NULL,
-  `no_of_questions` int(11) NOT NULL,
-  `time_stamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `total_marks` int NOT NULL,
+  `correct` int NOT NULL,
+  `wrong` int NOT NULL,
+  `not_attempted` int NOT NULL,
+  `pass_percentage` int NOT NULL,
+  `no_of_questions` int NOT NULL,
+  `time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -51,9 +51,13 @@ INSERT INTO `attempts` (`attempt_id`, `quiz_id`, `fullname`, `registration_no`, 
 (11, 150, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 82, 120, 45, 8, 7, 60, 60, '2021-04-15 19:00:11'),
 (12, 150, 'PANKAJ GAUTAM', 'RA1811003030188', 'pankaj.gautam4012@gmail.com', 44, 120, 25, 6, 29, 60, 60, '2021-04-15 18:16:58'),
 (13, 150, 'RHYTHM SHARMA', 'RA1811003030214', 'srhythm2020@gmail.com', 76, 120, 41, 6, 13, 60, 60, '2021-04-15 20:25:20'),
-(29, 150, 'TAPAS BARANWAL', 'RA1811003030216', 'tapasbaranwal@gmail.com', 10, 120, 6, 2, 52, 60, 60, '2021-04-20 08:35:15'),
 (33, 134, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 5, 5, 5, 0, 0, 50, 5, '2021-04-20 17:46:54'),
-(34, 141, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 17, 20, 9, 1, 0, 50, 10, '2021-04-20 19:25:35');
+(34, 141, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 17, 20, 9, 1, 0, 50, 10, '2021-04-20 19:25:35'),
+(37, 155, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 88, 120, 23, 4, 3, 60, 30, '2021-04-21 10:01:52'),
+(38, 169, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 10, 15, 10, 4, 1, 60, 15, '2021-04-21 12:26:40'),
+(41, 170, 'JATIN KUMAR', '224', 'jatink2220@gmail.com', 5, 5, 5, 0, 0, 70, 5, '2021-04-21 13:54:32'),
+(42, 170, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 5, 5, 5, 0, 0, 70, 5, '2021-04-21 13:56:16'),
+(44, 172, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 6, 10, 6, 4, 0, 60, 10, '2021-04-21 17:32:00');
 
 -- --------------------------------------------------------
 
@@ -62,9 +66,9 @@ INSERT INTO `attempts` (`attempt_id`, `quiz_id`, `fullname`, `registration_no`, 
 --
 
 CREATE TABLE `certifications` (
-  `certificate_id` int(11) NOT NULL,
+  `certificate_id` int NOT NULL,
   `quiz_name` varchar(50) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `candidate_name` varchar(50) NOT NULL,
   `score` varchar(10) NOT NULL,
   `email` varchar(50) NOT NULL
@@ -76,7 +80,12 @@ CREATE TABLE `certifications` (
 
 INSERT INTO `certifications` (`certificate_id`, `quiz_name`, `date`, `candidate_name`, `score`, `email`) VALUES
 (7, 'CODE - C', '2021-04-20 17:46:54', 'ISHWAR BAISLA', '100', 'ishwar2303@gmail.com'),
-(8, 'C Programming Basic', '2021-04-20 19:27:38', 'ISHWAR BAISLA', '85', 'ishwar2303@gmail.com');
+(8, 'C Programming Basic', '2021-04-20 19:27:38', 'ISHWAR BAISLA', '85', 'ishwar2303@gmail.com'),
+(32, 'Quantitative Aptitude SBI PO', '2021-04-21 10:01:52', 'ISHWAR BAISLA', '73.33', 'ishwar2303@gmail.com'),
+(33, 'Verbal Ability Statements and Conclusion', '2021-04-21 12:26:40', 'ISHWAR BAISLA', '66.66', 'ishwar2303@gmail.com'),
+(34, 'Python', '2021-04-21 13:54:32', 'JATIN KUMAR', '100', 'jatink2220@gmail.com'),
+(35, 'Python', '2021-04-21 13:56:16', 'ISHWAR BAISLA', '100', 'ishwar2303@gmail.com'),
+(36, 'Verbal Ability Spotting Errors 2.0', '2021-04-21 17:32:00', 'ISHWAR BAISLA', '60', 'ishwar2303@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -85,9 +94,9 @@ INSERT INTO `certifications` (`certificate_id`, `quiz_name`, `date`, `candidate_
 --
 
 CREATE TABLE `feedback` (
-  `feedback_id` int(11) NOT NULL,
-  `comment` varchar(150) NOT NULL,
-  `attempt_id` int(11) NOT NULL
+  `feedback_id` int NOT NULL,
+  `comment` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `attempt_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -95,7 +104,9 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`feedback_id`, `comment`, `attempt_id`) VALUES
-(9, 'Very difficult exam\r\nLogical number series questions were too much difficult\r\nPlease adjust difficulty level accordingly for preparation', 25);
+(9, 'Very difficult exam\r\nLogical number series questions were too much difficult\r\nPlease adjust difficulty level accordingly for preparation', 25),
+(10, 'hello', 41),
+(12, 'Quiz was stimulating and helped me to figure out my weak points.\r\nEvaluation with reason is really of great help keep uploading these quizzes.', 44);
 
 -- --------------------------------------------------------
 
@@ -104,11 +115,11 @@ INSERT INTO `feedback` (`feedback_id`, `comment`, `attempt_id`) VALUES
 --
 
 CREATE TABLE `message` (
-  `message_id` int(11) NOT NULL,
+  `message_id` int NOT NULL,
   `subject` varchar(50) NOT NULL,
   `message` varchar(200) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -118,7 +129,7 @@ CREATE TABLE `message` (
 --
 
 CREATE TABLE `profile_photo` (
-  `image_id` int(11) NOT NULL,
+  `image_id` int NOT NULL,
   `image_name` text NOT NULL,
   `admin_email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -128,7 +139,8 @@ CREATE TABLE `profile_photo` (
 --
 
 INSERT INTO `profile_photo` (`image_id`, `image_name`, `admin_email`) VALUES
-(48, 'WhatsApp Image 2021-04-15 at 10.52.41 AM.jpeg', 'pankaj.gautam4012@gmail.com');
+(48, 'WhatsApp Image 2021-04-15 at 10.52.41 AM.jpeg', 'pankaj.gautam4012@gmail.com'),
+(49, 'IMG_6266-1 .jpg', 'jatink220@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -137,16 +149,16 @@ INSERT INTO `profile_photo` (`image_id`, `image_name`, `admin_email`) VALUES
 --
 
 CREATE TABLE `question_bank` (
-  `question_id` int(11) NOT NULL,
-  `quiz_id` int(11) NOT NULL,
+  `question_id` int NOT NULL,
+  `quiz_id` int NOT NULL,
   `question` varchar(6000) NOT NULL,
   `option_1` varchar(1000) NOT NULL,
   `option_2` varchar(1000) NOT NULL,
   `option_3` varchar(1000) NOT NULL,
   `option_4` varchar(1000) NOT NULL,
-  `answer` int(11) NOT NULL,
+  `answer` int NOT NULL,
   `reason` varchar(4000) DEFAULT NULL,
-  `formatted` tinyint(4) NOT NULL
+  `formatted` tinyint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -223,9 +235,9 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 (388, 150, 'A sum of Rs 7000 is deposited in two schemes. One part is deposited in Scheme A which offers 8% rate of interest. Remaining part is invested in Scheme B which offers 10% rate of interest compounded annually. If interest obtained in scheme A after 4 years is Rs 226 more than the interest obtained in scheme B after 2 years, find the part deposited in scheme B.', 'Rs 3200', 'Rs 4500', 'Rs 3800', 'Rs 3500', 3, '(7000-x)*8*4/100 = x [ (1 + 10/100)2 &ndash; 1] + 226\n70*8*4 &ndash; 32x/100 = 21x/100 + 226\n2240 &ndash; 226 = 53x/100\n2014 = 53x/100\nSo, x = Rs 3800', 0),
 (389, 150, 'A work which is completed by 20 men in 8 days can be completed by 25 women 12 days. 16 men and 10 women start doing the work. After 3 days, they leave. If the remaining work is to be completed in 6 days by x number of men, find x.', '16', '18', '12', '10', 1, '20 men in 8 days so 16 men in 20 &times; 8/16 = 10 days and\n25 women in 12 days so 10 women in 25 &times; 12/10 = 30 days\nSo in 3 days, they complete (1/10 + 1/30) &times; 3 = 2/5\nSo remaining work = 1 &ndash; 2/5 = 3/5\n20 m 1 work in 8 days and x men 3/5 work in 6 days\nSo 20 &times; 8 &times; 3/5 = x &times; 6 &times; 1\nSo, x = 16 men', 0),
 (390, 150, 'There are 140 tickets (numbered 1 to 140) in a bowl. Find the probability of choosing a ticket which bears multiple of either 3 or 7.', '3/5', '2/9', '1/8', '3/7', 4, 'Number of multiples of 3 in 140 = 140/3 = 46\r\nNumber of multiples of 7 in 140 = 140/7 = 20\r\nNumber of multiples of 3&times;7= 21 in 140 = 140/21 = 6\r\nSo required probability = (46+20 &ndash; 6)/140 = 60/140 = 3/7', 0),
-(391, 150, 'A 48 litres solution contains liquids water and milk in the ratio 3 : 5. How much amount of milk is to be added so that amount of milk is 70% of the new solution?', '26 l', '20 l', '12 l', '18 l', 3, 'Water present in solution = 3/8 * 48 = 18 l\r\nMilk present in solution = 5/8 * 48 = 30 l\r\nLet x litres of milk to be added\r\nMilk is to be 70% of new solution, so water is to be 30% of new solution. So\r\n30/100 of new solution = Water present in new solution\r\n30/100 * (48+x) = 18\r\nSo, x = 12 litres\r\nOR\r\n70/100 of new solution = Milk present in new solution\r\n70/100 * (48+x) = 30+x\r\nSo, x = 12 litres', 0),
-(392, 150, 'In a class, average age of 30 students is 18 years. If the age of 2 more students is taken into consideration, then the average of all students gets increase by 1. Find the average of the ages of those 2 students.', '50', '68', '54', '34', 4, '30 students &ndash; 18\r\n32 students &ndash; 19\r\nSo total age of those 2 students = 30&times;1 + 19&times;2 = 68\r\nSo average = 68/2 = 34', 0),
-(393, 150, 'The ratio of A&rsquo;s age 3 years ago and B&rsquo;s age 5 years hence is 3 : 4. The average of the ages of A and C is 20 years. Also C&rsquo;s age after 10 years will be 2 more than twice the age present age of B. Find the age of C.', '18', '15', '22', '28', 3, '(A &ndash; 3)/(B + 5) = 3/4\r\n(A + C)/2 = 20 and\r\nC + 10 = 2B + 2', 0),
+(391, 150, 'A 48 litres solution contains liquids water and milk in the ratio 3 : 5. How much amount of milk is to be added so that amount of milk is 70% of the new solution?', '26 l', '20 l', '12 l', '18 l', 3, 'Water present in solution = 3/8 * 48 = 18 l\nMilk present in solution = 5/8 * 48 = 30 l\nLet x litres of milk to be added\nMilk is to be 70% of new solution, so water is to be 30% of new solution. So\n30/100 of new solution = Water present in new solution\n30/100 * (48+x) = 18\nSo, x = 12 litres\nOR\n70/100 of new solution = Milk present in new solution\n70/100 * (48+x) = 30+x\nSo, x = 12 litres', 0),
+(392, 150, 'In a class, average age of 30 students is 18 years. If the age of 2 more students is taken into consideration, then the average of all students gets increase by 1. Find the average of the ages of those 2 students.', '50', '68', '54', '34', 4, '30 students &ndash; 18\n32 students &ndash; 19\nSo total age of those 2 students = 30&times;1 + 19&times;2 = 68\nSo average = 68/2 = 34', 0),
+(393, 150, 'The ratio of A&rsquo;s age 3 years ago and B&rsquo;s age 5 years hence is 3 : 4. The average of the ages of A and C is 20 years. Also C&rsquo;s age after 10 years will be 2 more than twice the age present age of B. Find the age of C.', '18', '15', '22', '28', 3, '(A &ndash; 3)/(B + 5) = 3/4\n(A + C)/2 = 20 and\nC + 10 = 2B + 2', 0),
 (394, 150, 'The circumference of a circle having radius equal to 35 cm is equal to the perimeter of a rectangle. If the area of rectangle is 2400 cm2, find the length of rectangle.', '75 cm', '45 cm', '40 cm', '80 cm', 4, '2 &times; 22/7 &times; 35 = 2 (l + b)\r\nso (l + b) = 110\r\nalso given, lb = 2400\r\nSo (l + 2400/l) = 110\r\nSo l2 &ndash; 110 l + 2400 = 0\r\nSo, l = 80 or 30. 30 not present in options.', 0),
 (395, 150, 'The market price of an item is 20% more than its cost price. If after selling the item, the profit percent obtained is 10%, find the discount given.', 'Rs 6', 'Rs 10', 'Rs 19', 'Rs 14', 2, 'Use MP = (100+p%)/(100-d%) * CP\r\nSo\r\n120/100 * CP = (100+10)/(100-d%) * CP\r\nSolve, d% is 25/3%\r\nLet CP = Rs 100, so MP = Rs 120, and SP = Rs 110\r\nSo when discount % = (120-110)/120 * 100 = 25/3%, discount = Rs 10', 0),
 (396, 150, 'A, B and C divide Rs 3900 among them in the ratio 4 : 4 : 5 respectively. Now if each of them got Rs 300 more, what will be the respective new ratio of dividing the total money among them?', '5 : 8 : 7', '5 : 5 : 6', '6 : 7 : 8', '6 : 5 : 7', 2, 'A got = [4/(4+4+5)] * 3900 = 1200, B got = [4/(4+4+5)] * 3900 = 1200, C got = [5/(4+4+5)] * 3900 = 1500\r\nWhen 300 is added to their shares, A gets=1200+300 = 1500, B = 1500, C =1800\r\nSo new ratio is 1500 : 1500 : 1800', 0),
@@ -285,7 +297,7 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 (452, 155, 'Shanghai Maglev and Harmony CRH 380A are two fastest train in world. Train Harmony CRH 380A whose length is three-fifth of that of train Shanghai Maglev crosses it travelling in opposite direction in a time which is 3/7 th of the time taken by Shanghai Maglev to cross it when travelling in same direction. Calculate the ratio of the speeds of Shanghai Maglev and Harmony CRH 380A.', '2 : 7', '5 : 2', '3 : 2', '4 : 3', 2, 'Let L1, and L2 be the lengths of the trains Shanghai Maglev and Harmony CRH 380A respectively\r\n\r\nDistance covered in each case = L1 + L2.\r\n\r\nLet the speed of the train Shanghai Maglev = S1\r\n\r\nSpeed of the train Harmony CRH 380A = S2\r\n\r\nL1+L2	 = 	3	(	L1 + L2	)	 &rArr; 	S1 + S2	 = 	7\r\nS1+S2	7	S1 - S2	S2 - S1	3\r\n&there4;   	S1	 = 	5	    (by componendo and dividendo)\r\nS2	2\r\n&there4;   The ratio of the speeds of the two trains 5 : 2', 0),
 (453, 155, 'An internet service provider company Century link marks up the cost price of a plan by 60% and offers a discount of 20%. He asks the customer to pay a service tax of 15% on the selling price. The customer refuses to pay the tax due to which the shopkeeper himself pays the service tax. Find his profit percentage', '8.8%', '22.5%', '5.6%', '10.5%', 1, 'Let the cost price of the plan be P\r\n\r\nMarked price = 1.6 P\r\n\r\nSelling price = 0.8 (1.6P) = 1.28 P\r\n\r\nService tax = 0.15(1.28P) = 0.192P\r\n\r\nProfit % = 	(1.28P &ndash; 0.192P) &ndash; P	 &times; 100% = 8.8%\r\nP', 0);
 INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `option_2`, `option_3`, `option_4`, `answer`, `reason`, `formatted`) VALUES
-(454, 155, 'The average weight of 20 students in a class increased by 5.75 kg when one of the students left the class but when a new student joined the class then the average weight decreased by 2.75 kg. What is the difference between the age of the new student who joined the class and the student who left the class?', '51.5 kg', '51.25 kg', '51.75 kg', '51 kg', 1, 'Let the average weight of 20 students = x kg\r\n\r\nThe total weight = 20x kg\r\n\r\nLet the weight of the students who left the class = y kg\r\n\r\nThen, according to the question, 20x &ndash; y = (x + 5.75) &times; 19\r\n\r\nx = 109.25 + y ......(i)\r\n\r\nAgain, when one of the new student joined the class then let the weight of the new student who joined the class = z kg\r\n\r\n20x + z = (x &ndash; 2.75) &times; 21\r\n\r\nz = x &ndash; 57.75 ..... (ii)\r\n\r\nPut the value of x from the equation (i) in the equation (ii)\r\n\r\nz = 109.25 + y &ndash; 57.75\r\n\r\nThe required difference = z &ndash; y = 51.5 kg', 0),
+(454, 155, 'The average weight of 20 students in a class increased by 5.75 kg when one of the students left the class but when a new student joined the class then the average weight decreased by 2.75 kg. What is the difference between the weight of the new student who joined the class and the student who left the class?', '51.5 kg', '51.25 kg', '51.75 kg', '51 kg', 1, 'Let the average weight of 20 students = x kg\n\nThe total weight = 20x kg\n\nLet the weight of the students who left the class = y kg\n\nThen, according to the question, 20x &ndash; y = (x + 5.75) &times; 19\n\nx = 109.25 + y ......(i)\n\nAgain, when one of the new student joined the class then let the weight of the new student who joined the class = z kg\n\n20x + z = (x &ndash; 2.75) &times; 21\n\nz = x &ndash; 57.75 ..... (ii)\n\nPut the value of x from the equation (i) in the equation (ii)\n\nz = 109.25 + y &ndash; 57.75\n\nThe required difference = z &ndash; y = 51.5 kg', 0),
 (455, 155, '(175/3)% of the raindrops could have been collected, when 3 cm of rain has fallen on a part of land of area 2 km2, in a tank having a 200 m &times; 10 m base, then water collected in the tank is 70% of its capacity. Find the capacity of the tank?', '70000 m3', '120000 m3', '100000 m3', '95000 m3', 3, 'The volume of rain water in the land which could have been collected and the volume of water in the tank should be equal .\r\nLet, level of water in the tank is h meter.\r\n\r\nAccording to the question,\r\n\r\n3	 &times; 2000 &times; 2000 &times; 	175	 = 200 &times; 10 &times; h\r\n100	300\r\nh = 35 m\r\n\r\nVolume of water in the tank = 200m &times; 10m &times; 35m = 70000 m3\r\n\r\nSince, water in the tank is 70% of its capacity.\r\n \r\nSo, capacity of tank = 	70000	 &times; 100 = 100000 m3', 0),
 (456, 155, 'Mohit after travelling 60 km meets his school teacher who suggests him to go slower. He then proceeds at 4/5 of his initial speed and arrives his destination 25 minutes late. Had the meeting occured 25 km further Mohit would have reached his destination 13 minutes late. Find the final speed of Mohit ?', '30 km/hr', '35 km/hr', '25 km/hr', '22.5 km/hr', 3, 'Let initial speed of Mohit is 5 x km/hr\r\n\r\nSo, final speed of Mohit is 4 x km/hr\r\n\r\nATQ ,\r\n\r\n25/4x	 &ndash; 	25/5x	 = 	25 &ndash; 13/60\r\nx = 25/4\r\nSo final speed = 	4 &times; 25/4	 = 25 km/hr', 0),
 (457, 155, 'Four friends decided to contribute money and build a Temple. Ram contributes 83 1/3 % less than Neha and Vidhi while Shyam contributes 33 1/3 % less than Ram and 11 1/9 % more than Neha. If the annual income of Vidhi is Rs. 23,76,000 and she contributes 9/10 of her monthly income then find the contribution of Shyam.', 'Rs. 220000', 'Rs. 22000', 'Rs. 320000', 'Rs. 32000', 2, 'Contribution ratio of Ram and (Neha + Vidhi) = 1 : 6\r\n\r\nContribution ratio of Ram and Shyam = 3 : 2\r\n\r\nContribution ratio of Neha and Shyam = 9 : 10\r\n\r\nCombining last two ratios ,\r\n\r\nRam : Shyam : Neha = 15 : 10 : 9\r\n\r\nAgain Ram and (Neha + Vidhi) = 15 : 90\r\n\r\nSo, Ram : Shyam : Neha : Vidhi = 15 : 10 : 9 :81\r\n\r\nNow, anuual income of Vidhi = Rs. 2376000\r\n\r\nMonthly income of Vidhi = Rs. 	2376000/12\r\nSo, contribution of Vidhi\r\n= Rs. 	2376000	&times; 9 /12*10	 = Rs. 178200\r\nContribution of Shyam = 	178200 &times; 10/81	 = Rs. 22000', 0),
@@ -344,7 +356,52 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 (534, 167, '//What is the value of a in below program?\r\n\r\nint main()\r\n{\r\n int a, b=20;\r\n a = 90/b;\r\n return 0;\r\n}', '4.5', '4.0', '4', 'Compilation Error', 3, '', 1),
 (535, 167, 'Which operator has highest precedence in * / % ?', '*', '/', '%', 'all have same precedence', 4, '', 0),
 (536, 167, 'Are both of the preprocessor directives solving same purpose?\r\n\r\n#include &lt;iostream.h&gt;\r\n\r\n#include &quot;iostream.h&quot;', 'Yes', 'No', 'Depends on compiler', 'None of these', 1, '', 1),
-(537, 167, 'Which part of memory is used for the allocation of local variables declared inside', 'Heap', 'Stack', 'Address Space', 'Depends on Compiler', 2, '', 0);
+(537, 167, 'Which part of memory is used for the allocation of local variables declared inside', 'Heap', 'Stack', 'Address Space', 'Depends on Compiler', 2, '', 0),
+(545, 169, 'Statement:\r\nDuring 1997-98 the total loss incurred by the 1 1 1 public sector units was to the tune of Rs. 6809 crores which has converted into paid capitals by the government of its\r\ntotal investment of Rs. 5129 crores.\r\n\r\nConclusions:\r\nI. The government is left with only one option, that is, to privatise these units.\r\nII. The government did not take care in the matter of investments in these public sector units.', 'If only conclusion I follows', 'If only conclusion II follows', 'If either I or II follows', 'If neither I nor II follows', 4, '', 0),
+(546, 169, 'Statements:\r\nIn a one day cricket match, the total runs made by a team were 200. Out of these 160 runs were made by spinners\r\n\r\nConclusions:\r\n80% of the team consists of spinners\r\nThe opening batsmen were spinners', 'Only conclusion I follows', 'Only conclusion II follows', 'Either I or II follows', 'Neither I nor II follows', 4, '', 0),
+(547, 169, 'Statement:\r\nParents are prepared to pay any price for an elite education to their children.\r\n\r\nConclusions:\r\nI. All parents these days are very well off\r\nII. Parents have an obsessive passion for perfect development of their children through good schooling', 'if only Conclusion I follows', 'if only Conclusion II follows', 'if either I or II follows', 'if neither I nor II follows', 2, 'It may be conclusion from the statement that since parents want a perfect development of their children through good schooling therefore they are prepared to pay any price for a good education but the statement does not give sense of the parents being very well off. Hence, only Conclusion II follows.', 0),
+(548, 169, 'Statement :\nGood voice is a natural gift but one has to keep practising to improve and excel well in the field of music.\n\nConclusions :\nI. Natural gifts need nurturing and care.\nII. Even though your voice is not good, one can keep practising.', 'Only conclusion I follows', 'Only conclusion II follows', 'Either I or II follows', 'Neither I nor II follows', 1, 'I conclusion follows to statement, but second is not stated in statement so it do not follow.', 0),
+(549, 169, 'Statement: \r\nVegetable prices are soaring in the market\r\n\r\nConclusions: \r\nI. Vegetables are becoming a rare commodity\r\nII. People cannot eat vegetables', 'if only conclusion I follows', 'if only conclusion II follows', 'if either I nor II follows', 'if neither I nor II follows', 4, 'The availability of vegetables is not mentioned in the given statement. So, I does not follow. Also, II is not directly related to the statement and so it also does not follow.', 0),
+(550, 169, 'Statement:\r\nThe world is neither good nor evil, each man manufactures a world for himself\r\n\r\nConclusions :\r\nI. Some people find this world quite good\r\nII. Some people find this world quite bad', 'Only conclusion I follows', 'Only conclusion II follows', 'Neither I nor II follows', 'Both I and II follow', 4, '', 0),
+(551, 169, 'Statements:\r\n1. Knowledge is not a skill. It is learning and experience.\r\n2. The illiterate are not those who cannot read and write but those who cannot learn.\r\n\r\nConclusions:\r\nI. Those who cannot read and write are literate.\r\nII. Knowledge and skill are two different things.\r\n\r\nFind which of the given conclusions logically follows from the given statement', 'Only conclusion I follows.', 'Only Conclusion II follows.', 'Both I and II follow.', 'Neither I nor II follow.', 2, 'I. Those who cannot read and write are literate.\r\nIn statement it is given that, those who cannot learn are illiterate, but it is not mentioned as those who cannot read and write are literate or illiterate. So this conclusion\r\ndoes not follow.\r\nII. Knowledge and skill are two different things. It is given that &lsquo;Knowledge is not a skill&rsquo;. Thus knowledge and skill are two different things. Thus this conclusion follows. Therefore, only conclusion II follows.', 0),
+(552, 169, 'Statement:\r\nSelf-discipline is the key for order in the society.\r\n\r\nConclusions:\r\nI. Disturbances in the society are due to people without self-discipline.\r\nII. There is nobody with self-discipline in the society.', 'Both conclusions I and II follow', 'Neither conclusion I nor II follows', 'Only conclusion I follows', 'Only Conclusion II follows', 3, 'Conclusion I:\r\nDisturbances in the society are due to people without self-discipline.\r\nWe see that the question sentence states that discipline is key to ORDER in the society so people without discipline must be the source of the disturbance. Hence, it follows.\r\nConclusion II:\r\nThere is nobody with self-discipline in the society.\r\nThere is no given statement in the argument about all the people in the society that points or establishes this fact. Thus this conclusion does not follow.\r\nHence, only I follows.', 0),
+(553, 169, 'Statements: The old order changed yielding place to new\r\n\r\nConclusions :\r\nI. Change is the law of nature\r\nII. Discard old ideas because they are old', 'Only conclusion I follows', 'Only conclusion II follows', 'Either I or II follows', 'Neither I nor II follows', 1, '', 0),
+(554, 169, 'Statements:\r\nThe government has spoiled many top ranking financial institutions by appointing bureaucrats as Directors of these institutions.\r\n\r\nConclusions:\r\nThe government should appoint Directors of the financial institutes taking into consideration the expertise of the person in the area of finance.\r\nThe Director of the financial institutions should have expertise commensurate with the financial work carried out by the institute.', 'Only conclusion I follows', 'Only conclusion II follows', 'Either I or II follows', 'Both I and II follow', 4, 'According to the statement, Government has spoiled financial institutions by appointing bureaucrats as Directors. This means that only those persons should be appointed as Directors who are experts in finance and are acquainted with the financial work of the institute. So, both I and II follow.', 0),
+(555, 169, 'Statement:\r\nI know nothing except the fact of my ignorance.\r\n\r\nConclusions:\r\nI. Writer\'s knowledge is very poor.\r\nII. The world of knowledge is too-vast to be explored by a single person.', 'conclusion I follows.', 'conclusion II follows.', 'I or II follows.', 'I nor II follows.', 2, 'The statement is a symbolic one and only II correctly explains it.', 0),
+(556, 169, 'Statement : Any young who makes dowry as a condition for marriage discredits himself and dishonours womanhood.\r\n\r\nConclusion :\r\nI. Those who take dowry in marriage should be condemned by the society.\r\nII. Those who do not take dowry in marriage respect womanhood.', 'Only conclusion I follows.', 'Only conclusion II follows.', 'Neither I or II follows.', 'Both I and II follows.', 4, '', 0),
+(557, 169, 'Statements: National Aluminium Company has moved India from a position of shortage to self-sufficiency in the metal.\r\nConclusions:\r\nPreviously, India had to import aluminium.\r\nWith this speed, it can soon become a foreign exchange earner.', 'Either I or II follows', 'Only conclusion II follows', 'Both I and II follow', 'Neither I nor II follows', 3, '', 0),
+(558, 169, 'Statements:\nSome fruits are trees. Some fruits are flowers. All the flowers are poets.\n\nConclusions:\nI. Some flowers are trees\nII. Some poets are fruits', 'Only I and II follows', 'Only II follows', 'Only I and III follows', 'Only II and IV follows', 2, 'visit link to see diagram\n\nhttps://www.freshersnow.com/wp-content/uploads/2018/04/Statements-And-Conclusions-IMAGE-1-300x148.png', 0),
+(559, 169, 'Statements:\r\nThe Government-run company had asked its employees to declare their income and assets but it has been strongly resisted by employees union and no employee is going to\r\ndeclare his income\r\nConclusions:\r\n1. The employees of this company do not seem to have any additional undisclosed income besides their salary\r\n2. The employees union wants all senior officers to declare their income first', 'Only conclusion I follows', 'Only conclusion II follows', 'Either I or II follows', 'Neither I nor II follows', 4, 'Nothing about the details of the employees\' income or the cause of their refusal to declare their income and assets, can be deduced from the given statement. So, neither I\r\nnor II follows.', 0),
+(560, 170, 'How to print in python?', 'print it', 'print', 'raw_print', 'my print', 2, 'No Explanation Required', 0),
+(561, 170, 'how to take input?', 'input', 'myinput', 'isinput', 'yourinput', 1, 'No explanation needed', 0),
+(562, 170, 'how to round off?', 'round', 'roundoff', 'offround', 'ringaround', 1, 'nothing', 0),
+(563, 170, 'how to find max in a list', 'maximum', 'max', 'min', 'maxmin', 2, 'nothing', 0),
+(564, 170, 'how to map?', 'map', 'mapping', 'mapper', 'maps', 1, 'nothing', 0),
+(565, 171, 'Doctors can\'t treat (1) this complicated disease (2) unless full medical equipment (3) are not given to them (4).', '1', '2', '3', '4', 4, 'Unless is a conditional word. Remove the word \'not\' in part 4 of the sentence to correct this sentence.', 0),
+(566, 171, 'Several famous politicians (1) involved in the scandal (2) are required to appear (3) to the investigation committee. (4)', '1', '2', '3', '4', 4, 'The word \'to\' in the 4th part of the sentence needs to be replaced with \'before\', e.g., before the investigation committee.', 0),
+(567, 171, 'After spending a few months in Mumbai (1) he found that there (2) was nothing pessimistic (3) in people (4).', '1', '2', '3', '4', 4, 'The word \'in\' in the 4th part of the sentence needs to be replaced with \'about\', e.g., about people.', 0),
+(568, 171, 'Most of the land of the state (1) is a fertile plain (2) between which (3) the sacred river Ganges flows (4).', '1', '2', '3', '4', 3, 'The word \'between\' in the 3rd part of the sentence needs to be replaced with \'through\', e.g., through which the sacred river the Ganges flows.', 0),
+(569, 171, 'Children generally (1) fight above (2) petty issues. (3) No error. (4)', '1', '2', '3', '4', 2, 'The word \'above\' in the 2nd part of the sentence should be replaced with \'over\', e.g., fight over petty issues.', 0),
+(570, 171, 'A mother who always (1) connives on the (2) mistakes of her kids (3) is their worst enemy. (4)', '1', '2', '3', '4', 2, 'The word \'on\' in the 2nd part of the sentence needs to be replaced with \'at\', e.g., connives at the mistakes of her kids.', 0),
+(571, 171, 'A team of doctors has been (1) trying to develop (2) a vaccine (3) for last five years. (4)', '1', '2', '3', '4', 4, 'The word \'for\' in the 4th part of the sentence needs to be replaced with \'since\', e.g., since last five years.', 0),
+(572, 171, 'Although the stress (1) was behind (2) her capacity (3) yet she didn\'t complain. (4)', '1', '2', '3', '4', 2, 'The word \'behind\' in the 2nd part of the sentence needs to be replaced with \'beyond\', e.g., was beyond her capacity.', 0),
+(573, 171, 'The dog freed himself (1) from the leopard\'s hold (2) and ran on (3) the road (4)', '1', '2', '3', '4', 3, 'Replace \'on\' in the 3rd part of the sentence with \'across\', e.g., across the road.', 0),
+(574, 171, 'After showing the pass (1) we entered into (2) the auditorium (3) next to the restaurant. (4)', '1', '2', '3', '4', 2, 'Remove \'into\' in the 2nd part of the sentence, e.g., we entered the auditorium.', 0),
+(575, 171, 'The committee will put on (1) a notice in this (2) regard for (3) your consideration. (4)', '1', '2', '3', '4', 1, 'Replace \'on\' in the first part of the sentence with \'up\', e.g., the committee will put up a notice.', 0),
+(576, 171, 'Tom knows very well (1) what is expected from him (2) but he is unable (3) to perform. (4)', '1', '2', '3', '4', 2, 'Replace \'from\' in the second part of the sentence with \'of\', e.g., what is expected of him.', 0),
+(577, 171, 'Peter was taken with (1) surprise when he saw (2) the famous (3) Red Fort. (4)', '1', '2', '3', '4', 1, 'Replace \'with\' in the first part of the sentence with \'by\', e.g., Peter was taken by surprise.', 0),
+(578, 171, 'His dog (1) Tommy was (2) was blind within (3) one eye. (4)', '1', '2', '3', '4', 3, 'Replace \'within\' in the third part of the sentence with \'in\', e.g., was blind in one eye.', 0),
+(579, 171, 'Peter and Andrea walked (1) besides each other (2) in complete (3) silence. (4)', '1', '2', '3', '4', 2, 'Beside means nearby, whereas besides means in addition to. So, replace \'besides\' in the second part of the sentence with \'beside\', e.g., beside each other.', 0),
+(580, 172, 'The prisoners (1) were caught just before (2) they were about to (3) escape the jail. (4)', '1', '2', '3', '4', 4, 'An article should not be used before school, college, hospital, jail, court, market when these places are visited or used for their primary purpose. So, remove \'the\' in the fourth part of the sentence, e.g., they were about to escape the jail.', 0),
+(581, 172, 'The man (1) is mortal (2) and eventually has to (3) leave everything here. (4)', '1', '2', '3', '4', 1, 'An article is not used before words like Man, Woman, Science, Art, Nature, Life, Death, etc. So, remove \'The\' in the first part of the sentence, e.g., Man is mortal.', 0),
+(582, 172, 'John can speak (1) the English (2) French and (3) Spanish fluently (4)', '1', '2', '3', '4', 2, 'The article \'the\' is not used before names of languages, subject (physics, geography), games (football, cricket), etc. So, remove \'the\' in the second part of the sentence, e.g., John can speak English.', 0),
+(583, 172, 'Although Peter is not (1) a honest man (2) yet he is (3) not a criminal. (4)', '1', '2', '3', '4', 2, 'Honest is starting with a consonant but gives the sound of a vowel so \'an\' should be used. So, remove \'a\' in the second part of the sentence, e.g., an honest man.', 0),
+(584, 172, 'Tom\'s habit of (1) coming late to the office (2) put his colleagues (3) to lot of trouble. (4)', '1', '2', '3', '4', 4, '&quot;A&quot; is used with certain idiomatic phrases and expressions. So, in the fourth part of the sentence, use \'a\' before \'lot\', e.g., to a lot of trouble.', 0),
+(585, 172, 'Ram prefers (1) self-employment (2) to job (3) in any company. (4)', '1', '2', '3', '4', 3, 'The word \'job\' is a singular countable noun, so use \'a\' before \'job\', e.g., Ram prefers self-employment to a job.', 0),
+(586, 172, 'Not only (1) the students (2) but also the teachers (3) was playing football. (4)', '1', '2', '3', '4', 4, 'When two subjects are joined by \'not only\' and \'but also\' the verb must agree with the second subject. So, replace \'was\' in the fourth part of the sentence with \'were\'.', 0),
+(587, 172, 'Peter (1) as well as (2) his friends (3) were laughing. (4)', '1', '2', '3', '4', 4, 'When two nouns are joined with \'as well as\', the verb must agree with the first subject. So, in this sentence, the first subject is \'teacher\', so \'were\' must be replaced with \'was\'.', 0),
+(588, 172, 'The president (1) and the prime minister (2) was (3) present in the function. (4)', '1', '2', '3', '4', 3, 'When an article is used with both the nouns in a sentence then the reference will be to two persons or objects, so the verb in the third part of this sentence must be plural, so replace \'was\' with \'were\'.', 0),
+(589, 172, 'Mr. Sharma (1) my friend and teacher (2) are known for (3) his good behavior. (4)', '1', '2', '3', '4', 3, 'If two singular nouns refer to the same person or object and joined by \'and\', a singular verb must be used for them. So, replace \'are\' in the third part of this sentence with \'is\', e.g., is known for his good behavior.', 0);
 
 -- --------------------------------------------------------
 
@@ -353,23 +410,23 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 --
 
 CREATE TABLE `quizes` (
-  `quiz_id` int(11) NOT NULL,
+  `quiz_id` int NOT NULL,
   `quiz_name` varchar(50) NOT NULL,
   `difficulty_level` char(30) NOT NULL,
   `description` varchar(1000) NOT NULL,
-  `number_of_questions` int(11) NOT NULL,
-  `is_active` int(11) NOT NULL,
-  `active_timing` bigint(20) NOT NULL,
-  `inactive_timing` bigint(20) NOT NULL,
+  `number_of_questions` int NOT NULL,
+  `is_active` int NOT NULL,
+  `active_timing` bigint NOT NULL,
+  `inactive_timing` bigint NOT NULL,
   `Exam_key` varchar(30) NOT NULL,
-  `key_access` tinyint(4) NOT NULL,
-  `show_evaluation` tinyint(4) NOT NULL,
-  `shuffle` tinyint(4) NOT NULL,
-  `time_duration` int(11) NOT NULL,
-  `marks_per_question` int(11) NOT NULL,
+  `key_access` tinyint NOT NULL,
+  `show_evaluation` tinyint NOT NULL,
+  `shuffle` tinyint NOT NULL,
+  `time_duration` int NOT NULL,
+  `marks_per_question` int NOT NULL,
   `negative_marking` double NOT NULL,
-  `passing_percentage` int(11) NOT NULL,
-  `admin_email_id` int(11) NOT NULL,
+  `passing_percentage` int NOT NULL,
+  `admin_email_id` int NOT NULL,
   `time_stamp` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -380,13 +437,17 @@ CREATE TABLE `quizes` (
 INSERT INTO `quizes` (`quiz_id`, `quiz_name`, `difficulty_level`, `description`, `number_of_questions`, `is_active`, `active_timing`, `inactive_timing`, `Exam_key`, `key_access`, `show_evaluation`, `shuffle`, `time_duration`, `marks_per_question`, `negative_marking`, `passing_percentage`, `admin_email_id`, `time_stamp`) VALUES
 (103, 'C++ Programming', 'Intermediate', 'This Online C Programming Test is specially designed for you by industry experts.', 10, 0, 0, 0, '9911', 0, 0, 1, 1800, 1, 0, 60, 24, '2020-12-14 23:36:05'),
 (126, 'Design and Analysis of Algorithms', 'Intermediate', 'Exam Key : daa@1999\r\n<br/>\r\n<br/>Design and Analysis of Algorithm is very important for designing algorithm to solve different types of problems in the branch of computer science and information technology.', 10, 0, 0, 0, 'daa@1999', 0, 0, 0, 2700, 0, 0, 0, 24, '2020-12-15 14:54:36'),
-(134, 'CODE - C', 'Intermediate', 'C and C++ Programming based Questions.\r\nTypes\r\n-> Output based\r\n-> Error search\r\n-> Theory\r\n- >Architecture\r\n-> OOPS', 5, 1, 1611859500, 1611861300, '23031999', 1, 1, 1, -1, 1, 0.5, 50, 24, '2020-12-15 14:54:23'),
+(134, 'CODE - C', 'Intermediate', 'C and C++ Programming based Questions.\r\nTypes\r\n-> Output based\r\n-> Error search\r\n-> Theory\r\n- >Architecture\r\n-> OOPS', 5, 0, 1611859500, 1611861300, '23031999', 1, 0, 1, -1, 1, 0.5, 50, 24, '2020-12-15 14:54:23'),
 (140, 'Quantitative Aptitude', 'Beginner', 'Arithmetic Ability test helps measure one\'s numerical ability, problem solving and mathematical skills. ... Every aspirant giving Quantitative Aptitude Aptitude test tries to solve maximum number of problems with maximum accuracy and speed.', 30, 0, 0, 0, 'QA2021', 0, 0, 1, 3600, 1, 0, 60, 24, '2021-04-12 02:35:41'),
-(141, 'C Programming Basic', 'Beginner', 'Practice Test', 10, 1, 0, 0, 'CP2021', 1, 0, 1, 900, 2, 1, 50, 24, '2021-04-12 14:33:29'),
-(150, 'General Aptitude 1.0', 'Intermediate', 'Quantitative Aptitude : 20 Questions\r\nLogical Reasoning : 20 Questions\r\nVerbal ability : 20 Questions', 60, 1, 0, 0, 'GA2021', 1, 1, 0, 7200, 2, 1, 60, 41, '2021-04-15 04:33:11'),
-(155, 'Quantitative Aptitude SBI PO', 'Intermediate', 'Quantitative Aptitude\r<br/>SBI PO', 30, 1, 0, 0, 'QASBIPO2021', 0, 1, 1, 3600, 4, 1, 60, 41, '2021-04-16 17:18:36'),
-(156, 'Logical Reasoning 1.0', 'Intermediate', 'Logical Reasoning Questions To Prepare For SBI PO Exams', 30, 1, 0, 0, 'LR2021', 1, 1, 0, 3600, 1, 0, 60, 41, '2021-04-16 19:25:22'),
-(167, 'C++ Programming 2.0', 'Intermediate', 'Predict Output', 5, 0, 0, 0, 'CP2021', 0, 0, 0, -1, 2, 1, 60, 24, '2021-04-17 15:08:53');
+(141, 'C Programming Basic', 'Beginner', 'Practice Test', 10, 0, 0, 0, 'CP2021', 1, 0, 1, 900, 2, 1, 50, 24, '2021-04-12 14:33:29'),
+(150, 'General Aptitude 1.0', 'Intermediate', 'Quantitative Aptitude : 20 Questions\r\nLogical Reasoning : 20 Questions\r\nVerbal ability : 20 Questions', 60, 0, 0, 0, 'GA2021', 1, 0, 0, 7200, 2, 1, 60, 41, '2021-04-15 04:33:11'),
+(155, 'Quantitative Aptitude SBI PO', 'Intermediate', 'Quantitative Aptitude\r\nSBI PO', 30, 1, 0, 0, 'QASBIPO2021', 1, 1, 1, 3600, 4, 1, 60, 41, '2021-04-16 17:18:36'),
+(156, 'Logical Reasoning 1.0', 'Intermediate', 'Logical Reasoning Questions To Prepare For SBI PO Exams', 30, 0, 0, 0, 'LR2021', 1, 0, 0, 3600, 1, 0, 60, 41, '2021-04-16 19:25:22'),
+(167, 'C++ Programming 2.0', 'Intermediate', 'Predict Output', 5, 0, 0, 0, 'CP2021', 0, 0, 0, -1, 2, 1, 60, 24, '2021-04-17 15:08:53'),
+(169, 'Verbal Ability Statements and Conclusion', 'Intermediate', 'The given Statements and Conclusions Quiz Questions will make you efficient in the topic. By taking this Quiz, it will improve your Communication skills in the statements formation also it overcomes the difficulties in different competitive level of exams.', 15, 1, 0, 0, 'VA2021', 1, 1, 1, 1800, 1, 0, 60, 41, '2021-04-21 17:22:28'),
+(170, 'Python', 'Beginner', 'Nothing', 5, 0, 0, 0, 'mypython', 0, 0, 1, 900, 1, 1, 70, 44, '2021-04-21 13:42:02'),
+(171, 'Verbal Ability Spotting Errors 1.0', 'Intermediate', 'You need to spot sentences and error which are grammatically incorrect. This error can be anything. From noun to pronoun to singular/plural to word usage they can be anything.', 15, 1, 0, 0, 'VA2021', 1, 1, 1, 1800, 1, 0, 60, 41, '2021-04-21 15:54:52'),
+(172, 'Verbal Ability Spotting Errors 2.0', 'Intermediate', 'You need to spot sentences and error which are grammatically incorrect. This error can be anything. From noun to pronoun to singular/plural to word usage they can be anything.', 10, 1, 0, 0, 'VA2021', 1, 1, 1, 900, 1, 0, 60, 41, '2021-04-21 17:07:07');
 
 -- --------------------------------------------------------
 
@@ -395,10 +456,10 @@ INSERT INTO `quizes` (`quiz_id`, `quiz_name`, `difficulty_level`, `description`,
 --
 
 CREATE TABLE `registered_admin` (
-  `admin_id` int(11) NOT NULL,
+  `admin_id` int NOT NULL,
   `first_name` char(50) NOT NULL,
   `last_name` char(30) NOT NULL,
-  `admin_contact` bigint(20) NOT NULL,
+  `admin_contact` bigint NOT NULL,
   `admin_gender` char(10) NOT NULL,
   `state` char(50) NOT NULL,
   `date_of_birth` date NOT NULL,
@@ -415,7 +476,8 @@ CREATE TABLE `registered_admin` (
 INSERT INTO `registered_admin` (`admin_id`, `first_name`, `last_name`, `admin_contact`, `admin_gender`, `state`, `date_of_birth`, `admin_address`, `institution_name`, `admin_email`, `admin_password`) VALUES
 (24, 'Ishwar', 'Baisla', 9821671707, 'male', 'Delhi', '1999-03-23', 'wazirabad village gali no 6', 'SRM UNIVERSITY', 'ishwar2303@gmail.com', '23031999'),
 (41, 'ISHWAR', 'BAISLA', 9821671707, 'male', 'Delhi', '1999-03-23', 'wazirabad village gali no 6', 'SRM-IST', 'ishwar1999@gmail.com', '23031999'),
-(43, 'RHYTHM', 'SHARMA', 870853702, 'male', 'Haryana', '2000-11-24', 'Kurukshetra', 'SRM-IST', 'srhythm2020@gmail.com', '12345678');
+(43, 'RHYTHM', 'SHARMA', 870853702, 'male', 'Haryana', '2000-11-24', 'Kurukshetra', 'SRM-IST', 'srhythm2020@gmail.com', '12345678'),
+(44, 'JATIN', 'KUMAR', 8430940000, 'male', 'Uttar Pradesh', '2000-03-27', 'Meerut', 'SRM', 'jatink220@gmail.com', 'helloworld');
 
 -- --------------------------------------------------------
 
@@ -424,13 +486,21 @@ INSERT INTO `registered_admin` (`admin_id`, `first_name`, `last_name`, `admin_co
 --
 
 CREATE TABLE `reported_questions` (
-  `report_id` int(11) NOT NULL,
-  `question_id` int(11) NOT NULL,
+  `report_id` int NOT NULL,
+  `question_id` int NOT NULL,
   `email` varchar(50) NOT NULL,
   `problem` varchar(3000) NOT NULL,
-  `amend` tinyint(4) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `amend` tinyint NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `reported_questions`
+--
+
+INSERT INTO `reported_questions` (`report_id`, `question_id`, `email`, `problem`, `amend`, `timestamp`) VALUES
+(29, 561, 'jatink2220@gmail.com', 'question is right', 1, '2021-04-21 14:04:29'),
+(30, 561, 'ishwar2303@gmail.com', 'Please elucidate question in detail', 0, '2021-04-21 13:56:12');
 
 --
 -- Indexes for dumped tables
@@ -501,71 +571,55 @@ ALTER TABLE `reported_questions`
 -- AUTO_INCREMENT for table `attempts`
 --
 ALTER TABLE `attempts`
-  MODIFY `attempt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `attempt_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `certifications`
 --
 ALTER TABLE `certifications`
-  MODIFY `certificate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `certificate_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `feedback_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `message_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `profile_photo`
 --
 ALTER TABLE `profile_photo`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `image_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `question_bank`
 --
 ALTER TABLE `question_bank`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=545;
+  MODIFY `question_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=590;
 
 --
 -- AUTO_INCREMENT for table `quizes`
 --
 ALTER TABLE `quizes`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
+  MODIFY `quiz_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 
 --
 -- AUTO_INCREMENT for table `registered_admin`
 --
 ALTER TABLE `registered_admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `admin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `reported_questions`
 --
 ALTER TABLE `reported_questions`
-  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`attempt_id`) REFERENCES `attempts` (`attempt_id`);
-
---
--- Constraints for table `quizes`
---
-ALTER TABLE `quizes`
-  ADD CONSTRAINT `quizes_ibfk_1` FOREIGN KEY (`admin_email_id`) REFERENCES `registered_admin` (`admin_id`);
+  MODIFY `report_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

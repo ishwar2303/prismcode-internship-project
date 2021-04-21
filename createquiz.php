@@ -264,7 +264,7 @@ $(document).ready(function(){
              <div class="col-sm-12 col-lg-12">
                <div class="form-group m-0">
                  <label class="form-label">Quiz Name</label>
-                 <input id="quiz_name"   type="text" name="test" maxlength="50" class="form-control ht-50" placeholder="Quiz Name" value="<?php echo $quiz_name; ?>">
+                 <input id="quiz_name"   type="text" name="test" maxlength="100" class="form-control ht-50" placeholder="Quiz Name" value="<?php echo $quiz_name; ?>">
                  <div class="form-error"><?php echo $quiz_name_error; ?></div>
                </div>
              </div>

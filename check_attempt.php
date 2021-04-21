@@ -3,7 +3,7 @@
  	session_start();
  	require_once('connection.php');
   if(isset($_SESSION['exam_end'])){
-    header('Location: feedback.php');
+    echo 'Exam Ends';
     return;
   }
     if(isset($_SESSION['student_login_time']))
@@ -13,9 +13,13 @@
         if($current_time - $student_login_time   > 30000) 
         {
          header('location: logout.php');
+         exit;
         }
      }
-     else header('location: logout.php');
+     else {
+       header('location: logout.php');
+        exit;
+      }
     if(isset($_POST['setTest'])){
       $_SESSION['test_is_set'] = true;
       ?>
@@ -29,6 +33,7 @@
       unset($_SESSION['quiz_name']);
       unset($_SESSION['time_duration']);
       unset($_SESSION['QUESTIONS']);
+      unset($_SESSION['CORRANSWERS']);
       ?>
         <script type="text/javascript">onClickBlackCover();</script>
       <?php
@@ -147,7 +152,7 @@
                                 </ul>
                               </li>
                               <li style="color : blue;"><i class="fas fa-angle-right list-icon"></i>You will be proctored during the exam.</li>
-                              <li></li>
+                              <li style="color : blue;"><i class="fas fa-angle-right list-icon"></i>Switching from window is strictly prohibited</li>
                               <li></li>
                               <li></li>
                               <li></li>

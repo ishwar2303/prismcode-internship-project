@@ -11,7 +11,7 @@ if(isset($_POST['updateQuizDetails']) && isset($_POST['quizID'])){
              <div class="col-sm-12 col-lg-12">
                <div class="form-group">
                  <label class="form-label">Quiz Name</label>
-                 <input id="quiz_name"   type="text" name="test" maxlength="30" class="form-control ht-50" placeholder="Quiz Name" value="<?php echo $row['quiz_name'];?>" required="">
+                 <input id="quiz_name"   type="text" name="test" maxlength="100" class="form-control ht-50" placeholder="Quiz Name" value="<?php echo $row['quiz_name'];?>" required="">
                </div>
              </div>
              <div class="col-sm-12 col-lg-12">

@@ -228,6 +228,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
         		mysqli_query($conn,$sql) or die(mysqli_error($conn));
        			$_SESSION['message'] = 'Feedback Sent Successfully';
             $_SESSION['color'] = '#4b4b4b';
+            unset($_SESSION['exam_end']);
            ?>
            <script>
                    location.href='index.php';

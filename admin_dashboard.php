@@ -217,6 +217,8 @@ include('includes/navbar.php');
             <tr>
               <th class="w-1">SNo.</th>
               <th>Quiz Name</th>  
+              <th>Attempts</th>
+              <th>Highest</th>
               <th>Key</th>
               <th style="text-align: center;">Questions</th>
               <th>Status</th> 
@@ -228,17 +230,23 @@ include('includes/navbar.php');
           </thead>
           <tbody>
             <?php
-            
             $i = 1;
             while($row = $result->fetch_assoc())
             {  
+               $sql = "SELECT attempt_id FROM `attempts` WHERE quiz_id='$row[quiz_id]'";
+               $attempt_res = $conn->query($sql);
                
+               $sql = "SELECT MAX(score), fullname, total_marks FROM attempts WHERE quiz_id = '$row[quiz_id]'";
+               $max_res = $conn->query($sql);
+               $max_score = $max_res->fetch_assoc();
             ?>
-            <tr>
+            <tr class="<?php echo $row['is_active']==1 ? 'active-row' : ''; ?>">
               <td>
                 <span class="text-muted"><?php echo $i; ?></span>
               </td>
               <td><?php echo $row['quiz_name']; ?></td>
+              <td><?php echo $attempt_res->num_rows; ?></td>
+              <td><?php echo $max_score['MAX(score)']!='' ? $max_score['MAX(score)'].'/'.$max_score['total_marks'].' <br/> '.'<span style="font-size:11px;">'.$max_score['fullname'].'</span>' : '-'; ?></td>
               <td><span class="key-block"><?php echo $row['Exam_key']; ?></span></td>
               <td style="text-align: center;"><?php echo $row['number_of_questions'];?></td>
               <td>

@@ -37,7 +37,7 @@ if(isset($_POST['quizID'])){
                   <div class="desc-block">
                     <span>Marks per Question : <?php echo $row['marks_per_question']; ?></span>
                     <?php $negative_marking = $row['negative_marking']; ?>
-                    <span>
+                    <span style="margin-left:125px;">
                     <?php 
                           if($negative_marking == 0)
                             echo 'No Negative Marking'; 
