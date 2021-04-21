@@ -473,7 +473,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
         <div class="main-banner-content">
                 <h3 id="index-slogan">Why QuizWit ?</h3>
                 <div>
-                  <span style="font-weight: 350;color: #30306c;">
+                  <span style="font-weight: 350;color: #3a39a0;">
                       Online Quizzes are a popular form of entertainment with learning. 
                       <br/>
                       We provide you one of the most flexible and impeccable platform that enhance your experience in online learning.
@@ -637,7 +637,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
         <div class="view-certificate-container">
               <div class="fetch-heading f-w-bold">Fetch My Certificates</div>
               <div class="input-layout-container">
-                <label class="input-label f-w-bold" style="color:#974497;">Provide your E-mail</label>
+                <label class="input-label f-w-bold" style="color:#3a39a0;">Provide your E-mail</label>
                 <input type="text" class="input-layout " id="email-for-certificates">
               </div>
               <div id="certification-error" class="label-error"></div>

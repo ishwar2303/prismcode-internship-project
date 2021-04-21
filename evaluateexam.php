@@ -257,7 +257,7 @@
         if(isset($_SESSION['certificate_id']) && $showEvaluation){
         ?>
         <div class="certificate-btn-container">
-          <a class="certificate-btn" href="certificate.php?cid=<?php echo base64_encode($_SESSION['certificate_id']); ?>" target="_blank">View Certificate</a>
+          <a class="certificate-btn" href="certificate.php?cid=<?php echo base64_encode($_SESSION['certificate_id']); ?>" target="_blank">QuizWit <b style="font-size: 22px;"><?php echo $quiz_name; ?></b> View Certificate <i class="fas fa-arrow-right"></i></a>
         </div>
         <?php
         }
@@ -295,7 +295,7 @@ if($showEvaluation){
                 <h4 class="page-tilte">
                     <?php  
                       if((int)$ans>=$passingPercentage){
-                        echo "&nbsp;&nbsp;<i class='fas fa-check'></i>&nbsp;&nbsp;"."Congratulation, You have clear the certification.";
+                        echo "&nbsp;&nbsp;<i class='fas fa-check'></i>&nbsp;&nbsp;"."Congratulations, You have clear the certification.";
                       }
                       else echo "&nbsp;&nbsp;<i class='fas fa-exclamation-circle'></i>&nbsp;&nbsp;"."Thank you for attempting the exam. Unfortunately, you need more practice before you clear the certification."; 
                     ?>

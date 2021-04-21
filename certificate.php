@@ -10,6 +10,7 @@
             $row = $result->fetch_assoc();
             $quiz_name = $row['quiz_name'];
             $candidate_name = $row['candidate_name'];
+            $email = $row['email'];
             $score = $row['score'];
             $date = $row['date'];
             $date = new DateTime($date);
@@ -63,9 +64,24 @@
                 <div style="text-transform:capitalize;color:#a43db7;"><?php echo $candidate_name; ?></div>
             </div>
             <div class="message">
-                <div>has shown excellent performance in <b><?php echo $quiz_name; ?> </b> test by scoring <?php echo $score; ?>%</div>
+                <?php 
+                    if($score <= 70)
+                        $compliment = 'great';
+                    if($score > 70 && $score <= 80)
+                        $compliment = 'excellent';
+                    if($score > 80 && $score <=90)
+                        $compliment = 'outstanding';
+                    if($score >90 && $score <=100)
+                        $compliment = 'magnificent';
+                ?>
+                <div>has shown <?php echo $compliment; ?> performance in <b><?php echo $quiz_name; ?> </b> test by scoring <?php echo $score; ?>%</div>
             </div>
-
+            <div class="p-5 space-between">
+                <div style="font-size:16px;">
+                    <span class="f-w-bold">E-mail : </span>
+                    <span><?php echo $email; ?></span>
+                </div>
+            </div>
 
             <!-- border design -->
             <div class="white-bar-1">

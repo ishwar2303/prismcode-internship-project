@@ -175,3 +175,14 @@
     left: 50px;
     bottom: 50px;
 }
+.f-w-bold{
+    font-weight: bold;
+}
+.space-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.p-5{
+    padding: 50px;
+}
