@@ -95,7 +95,7 @@ INSERT INTO `certifications` (`certificate_id`, `quiz_name`, `date`, `candidate_
 
 CREATE TABLE `feedback` (
   `feedback_id` int NOT NULL,
-  `comment` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `comment` varchar(1000) CHARACTER SET utf8mb4  NOT NULL,
   `attempt_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
