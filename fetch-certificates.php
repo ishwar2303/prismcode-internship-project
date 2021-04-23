@@ -29,7 +29,7 @@
             $res_obj->send_response();
             return;
         }
-        $sql = "SELECT * FROM certifications WHERE email='$email'";
+        $sql = "SELECT * FROM certifications WHERE email='$email' ORDER BY quiz_name";
         $result = $conn->query($sql);
         if($result->num_rows > 0){
             $certificates = array();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: quizwit.cakcwgna7dgk.ap-south-1.rds.amazonaws.com
--- Generation Time: Apr 21, 2021 at 10:26 PM
+-- Generation Time: Apr 23, 2021 at 07:58 PM
 -- Server version: 8.0.20
 -- PHP Version: 8.0.3
 
@@ -41,7 +41,7 @@ CREATE TABLE `attempts` (
   `pass_percentage` int NOT NULL,
   `no_of_questions` int NOT NULL,
   `time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Dumping data for table `attempts`
@@ -57,7 +57,11 @@ INSERT INTO `attempts` (`attempt_id`, `quiz_id`, `fullname`, `registration_no`, 
 (38, 169, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 10, 15, 10, 4, 1, 60, 15, '2021-04-21 12:26:40'),
 (41, 170, 'JATIN KUMAR', '224', 'jatink2220@gmail.com', 5, 5, 5, 0, 0, 70, 5, '2021-04-21 13:54:32'),
 (42, 170, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 5, 5, 5, 0, 0, 70, 5, '2021-04-21 13:56:16'),
-(44, 172, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 6, 10, 6, 4, 0, 60, 10, '2021-04-21 17:32:00');
+(44, 172, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 6, 10, 6, 4, 0, 60, 10, '2021-04-21 17:32:00'),
+(46, 173, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 5, 5, 5, 0, 0, 70, 5, '2021-04-22 11:57:48'),
+(48, 174, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 10, 10, 10, 0, 0, 60, 10, '2021-04-23 08:39:05'),
+(49, 175, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 7, 28, 7, 7, 0, 50, 14, '2021-04-23 11:46:12'),
+(50, 176, 'ISHWAR BAISLA', 'RA1811003030232', 'ishwar2303@gmail.com', 24, 24, 6, 0, 0, 60, 6, '2021-04-23 15:39:41');
 
 -- --------------------------------------------------------
 
@@ -72,7 +76,7 @@ CREATE TABLE `certifications` (
   `candidate_name` varchar(50) NOT NULL,
   `score` varchar(10) NOT NULL,
   `email` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Dumping data for table `certifications`
@@ -85,7 +89,10 @@ INSERT INTO `certifications` (`certificate_id`, `quiz_name`, `date`, `candidate_
 (33, 'Verbal Ability Statements and Conclusion', '2021-04-21 12:26:40', 'ISHWAR BAISLA', '66.66', 'ishwar2303@gmail.com'),
 (34, 'Python', '2021-04-21 13:54:32', 'JATIN KUMAR', '100', 'jatink2220@gmail.com'),
 (35, 'Python', '2021-04-21 13:56:16', 'ISHWAR BAISLA', '100', 'ishwar2303@gmail.com'),
-(36, 'Verbal Ability Spotting Errors 2.0', '2021-04-21 17:32:00', 'ISHWAR BAISLA', '60', 'ishwar2303@gmail.com');
+(36, 'Verbal Ability Spotting Errors 2.0', '2021-04-21 17:32:00', 'ISHWAR BAISLA', '60', 'ishwar2303@gmail.com'),
+(37, 'Quantitative Aptitude 2.0', '2021-04-22 11:57:48', 'ISHWAR BAISLA', '100', 'ishwar2303@gmail.com'),
+(38, 'C Programming Predict Output', '2021-04-23 08:39:05', 'ISHWAR BAISLA', '100', 'ishwar2303@gmail.com'),
+(39, 'Sitting Arrangement', '2021-04-23 15:39:41', 'ISHWAR BAISLA', '100', 'ishwar2303@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -95,9 +102,9 @@ INSERT INTO `certifications` (`certificate_id`, `quiz_name`, `date`, `candidate_
 
 CREATE TABLE `feedback` (
   `feedback_id` int NOT NULL,
-  `comment` varchar(1000) CHARACTER SET utf8mb4  NOT NULL,
+  `comment` varchar(1000) NOT NULL,
   `attempt_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Dumping data for table `feedback`
@@ -120,7 +127,7 @@ CREATE TABLE `message` (
   `message` varchar(200) NOT NULL,
   `email` varchar(30) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 -- --------------------------------------------------------
 
@@ -132,7 +139,7 @@ CREATE TABLE `profile_photo` (
   `image_id` int NOT NULL,
   `image_name` text NOT NULL,
   `admin_email` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Dumping data for table `profile_photo`
@@ -159,7 +166,7 @@ CREATE TABLE `question_bank` (
   `answer` int NOT NULL,
   `reason` varchar(4000) DEFAULT NULL,
   `formatted` tinyint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Dumping data for table `question_bank`
@@ -202,7 +209,7 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 (342, 140, 'In a vessel milk and water are in the ratio of 5:3. <br/>If 48 liter of mixture is taken out from the vessel and 30 liter of water is added, then new ratio of milk and water becomes 4:3. <br/>Find the initial quantity of mixture in vessel.', '368', '280', '365', '440', 1, 'let the milk and water be 5x and 3x<br/>(5x-30)/3x-18+30=4/3<br/>15x-90=12x-48<br/>3x=138<br/>x=46<br/>total quantity of mixture=8x=8*46=368', 0),
 (343, 140, 'The income of A and B is in the ratio of 3:2 and their expenditure in the ratio of 4:3. <br/>If each of them save rs.4000, then find income of A ?', '9000', '8400', '9500', '6500', 2, 'let the income of A and B be 3x and 2x respectively<br/>3x-4000/2x-4000=7/3<br/>9x-12000=14x-2800<br/>5x=14000<br/>x=2800<br/>income of A=2800*3=8400', 0),
 (344, 140, 'Find the missing term in place of question mark (?) in the following number series:<br/>8, 31, 67, 118, 187, ? , 401', '341', '305', '279', '275', 3, '8(+23) , 31(+36) , 67(+51) , 118(+69) , 187(+92) , 279 (+122) , 401', 0),
-(345, 140, '5 , 11 , 21 , 44 , ? , 175 , 347', '81', '75', '55', '86', 4, '5*2+1=11<br/>11*2-1=21<br/>21*2+2=44<br/>44*2-2=86<br/>86*2+3=175<br/>175*2-3=347', 0),
+(345, 140, '5 , 11 , 21 , 44 , ? , 175 , 347', '81', '75', '55', '86', 4, '5*2+1=11\n11*2-1=21\n21*2+2=44\n44*2-2=86\n86*2+3=175\n175*2-3=347', 0),
 (346, 140, 'What will come in place of the &ldquo;x&rdquo; in the following questions:<br/>25% of 400 + 30% of 270 + 48% of 100 = x', '229', '225', '249', '236', 1, '(25/100)*400+(30/100)*270+(48/100)*100 = x<br/>100+81+48=229', 0),
 (347, 140, 'x% of 400 &divide; 75 + (2/5) of 315 = 30% of 625', '1355.15', '1200.25', '1168.25', '1153.12', 4, '(4x/75)+(2/5)*315=(30/100 )*625\n(4x/75)+126=187.5\n(4x/75)=187.5-126\n(4x/75)=61.5\nx=1153.125', 0),
 (348, 140, 'P1 and P2 are the two pockets were made by mixing chilli powder and turmeric powder in the ratio 3:5 and 5:9 respectively.\nIf 60 grams of P1 and x grams of P2 are mixed to getpocket P3, then fid out the value of x , if the ratio of chilli and turmeric in the new pocket P3 is 35:61?', '70', '56', '98', '84', 4, 'In x gram of P2\nchilli = 5x/14\nturmeric= 9x/14\nin 60 gm in P1\nchilli=60 * 3/8= 45/2\nturmeric=60 85/8=75/2\nand =&gt;(45/2 +5x/14) / (75/2+9x/14) = 35/61\n=&gt;x= 84g', 0),
@@ -401,7 +408,49 @@ INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `
 (586, 172, 'Not only (1) the students (2) but also the teachers (3) was playing football. (4)', '1', '2', '3', '4', 4, 'When two subjects are joined by \'not only\' and \'but also\' the verb must agree with the second subject. So, replace \'was\' in the fourth part of the sentence with \'were\'.', 0),
 (587, 172, 'Peter (1) as well as (2) his friends (3) were laughing. (4)', '1', '2', '3', '4', 4, 'When two nouns are joined with \'as well as\', the verb must agree with the first subject. So, in this sentence, the first subject is \'teacher\', so \'were\' must be replaced with \'was\'.', 0),
 (588, 172, 'The president (1) and the prime minister (2) was (3) present in the function. (4)', '1', '2', '3', '4', 3, 'When an article is used with both the nouns in a sentence then the reference will be to two persons or objects, so the verb in the third part of this sentence must be plural, so replace \'was\' with \'were\'.', 0),
-(589, 172, 'Mr. Sharma (1) my friend and teacher (2) are known for (3) his good behavior. (4)', '1', '2', '3', '4', 3, 'If two singular nouns refer to the same person or object and joined by \'and\', a singular verb must be used for them. So, replace \'are\' in the third part of this sentence with \'is\', e.g., is known for his good behavior.', 0);
+(589, 172, 'Mr. Sharma (1) my friend and teacher (2) are known for (3) his good behavior. (4)', '1', '2', '3', '4', 3, 'If two singular nouns refer to the same person or object and joined by \'and\', a singular verb must be used for them. So, replace \'are\' in the third part of this sentence with \'is\', e.g., is known for his good behavior.', 0),
+(597, 141, 'What is the 16-bit compiler allowable range for integer constants?', '-3.4e38 to 3.4e38', '-32767 to 32768', '-32668 to 32667', '-32768 to 32767', 4, 'In a 16-bit C compiler, we have 2 bytes to store the value.', 0),
+(598, 141, 'main()  \n{\n    printf(&quot;javatpoint&quot;);  \n    main();\n}', 'Wrong statement', 'It will keep on printing javatpoint', 'It will Print javatpoint once', 'None of the these', 2, 'In this program, the main function will call itself again and again. Therefore, it will continue to print javatpoint.', 1),
+(599, 141, 'main()  \n{  \n  int i = 2;  \n  {  \n    int i = 4, j = 5;  \n     printf(&quot;%d %d&quot;, i, j);  \n  }    \n  printf(&quot;%d %d&quot;, i, j);  \n}', '4525', '2525', '4545', 'None of these', 1, 'In this program, it will first print the inner value of the function and then print the outer value of the function.', 1),
+(600, 141, 'What is a lint?', 'C compiler', 'Interactive debugger', 'Analyzing tool', 'C interpreter', 3, 'Lint is an analyzing tool that analyzes the source code by suspicious constructions, stylistic errors, bugs, and flag programming errors. Lint is a compiler-like tool in which it parses the source files of C programming. It checks the syntactic accuracy of these files.', 0),
+(601, 141, 'Why is a macro used in place of a function?', 'It reduces execution time.', 'It reduces code size.', 'It increases execution time.', 'It increases code size.', 4, 'Macro is used in place of a function because it reduces code size, and very efficient.', 0),
+(603, 173, 'In a kilometre race, A can give B a start of 100 m or 15 seconds. How long does A take to complete the race?', '150 seconds', '165 seconds', '135 seconds', '180 seconds', 3, 'In a 1000 metre race A gives B a start of 100 m or 15 seconds.\r\nThis essentially means that B takes 15 seconds to run 100 m.\r\nTherefore, B will take 150 seconds to run the stretch of 1000 metres. (1000 m = 10 times 100 m and therefore the time taken will also be 10 times; 15 seconds = 150 seconds).\r\nAs A gives B a start of 15 seconds, A obviously takes 15 seconds less than B to complete the race.\r\nHence, A will take 135 seconds to run the 1000 m.', 0),
+(604, 173, 'Two pipes A and B can fill a tank in 15 minutes and 20 minutes respectively. Both the pipes are opened together but after 4 minutes, pipe A is turned off. What is the total time required to fill the tank?', '10 minutes 20 seconds', '11 minutes 45 seconds', '12 minutes 30 seconds', '14 minutes 40 seconds', 4, 'LCM (15,20) = 60. Let capacity of tank be 60 litres.\r\nA==&gt; 15min==&gt;4ltres/min\r\nB==&gt; 20min==&gt;3litres/min\r\nA+B==&gt; 7litres/min.\r\nGiven that both pipes were open for 4 mins. So it will fill (7*4)= 28 litres at the end of 4 mins. So remaining 60-28=32 litres should be filled by B alone at the rate of 3 litres/min.\r\nTherefore B will take 32/3=102/3 more mins to fill the tank. Total time taken =4+10 2/3= 4 (4/3) mins.=14 min 40 sec', 0),
+(605, 173, 'In a 500 m race, the ratio of the speeds of two contestants A and B is 3 : 4. A has a start of 140 m. Then, A wins by:', '60 m', '40 m', '20 m', '10 m', 3, 'Given that ratio of speed of A to B is 3:4 in a 500m race. Also A has an head start of 140m. i.e, A has to cover only 360m to win the race where as B has to cover 500m .\r\nDistance covered by A and B will also be in ratio of 3:4. (Distance varies directly with Speed ).\r\nAlso given that A wins the race, by covering 360m. \r\nTherefore  3 parts =360.\r\n                  1 part =120.\r\n                  4 parts = 480.\r\nTherefore B covers 480m at the end of the race (of 500m), being 20m behind A. Therefore A wins against B by 20m.', 0),
+(606, 173, 'In what ratio must a grocer mix two varieties of pulses costing Rs. 15 and Rs. 20 per kg respectively so as to get a mixture worth Rs. 16.50 kg?', '3:7', '5:7', '7:3', '7:5', 3, '1st variety is Rs. 15 2nd variety is Rs.20 Mixture price is Rs.16.50 The ratio is 7:3', 0),
+(607, 173, 'If A = x% of y and B = y% of x, then which of the following is true?', 'A is smaller than B', 'A is greater than B', 'Relationship between A and B cannot be determined', 'A is equal to B', 4, 'We know that x% of y = (x/100)*y = xy/100\r\nSimilarly, y% of  x = (y/100)* =  xy/100. Since, both are equal, A = B.', 0),
+(608, 174, 'Predict the output of the following code segment:\r\n// Add stdio.h and stdbool.h header files in below code\r\n\r\nint main()\r\n{\r\n\r\n    bool arr[10] = { true, false };\r\n    printf( &ldquo;%ld\\n&rdquo;,sizeof(bool) );\r\n    return 0;\r\n\r\n}', '2', '1', '4', '10', 2, '', 1),
+(609, 174, 'Predict the output of the following code segment:\r\n// Add stdio.h header file in below code\r\n\r\nvoid function(int **p)\r\n{\r\n    printf(&ldquo;%d&rdquo;, **p);\r\n}\r\nint main()\r\n{\r\n    int array[2][1] = {10, 20, 30, 40, 50, 60, 70, 80};\r\n    int *pointer;\r\n    pointer = &amp;array[2][2];\r\n    function(&amp;pointer);\r\n    return 0;\r\n}', '60', 'The memory address of 60', 'Garbage value', 'Compilation error', 4, '', 1),
+(610, 174, 'Predict the output of the following code segment:\r\n\r\n#include &lt;stdio.h&gt;\r\nint main ()\r\n{\r\n    char line [] = &ldquo;Welcome to DataFlair tutorials on C Programming&rdquo;;\r\n    char string1[10], string2[10], string3[10];\r\n    sscanf (line,&rdquo;%*s %*s %s %*s %*s %s %s&rdquo;,string1, string2, string3);\r\n    printf (&ldquo;%s %s %s \\n&rdquo;, string1, string2, string3);\r\n    return 0;\r\n}', 'Welcome to Dataflair', 'Compilation error', 'DataFlair C programming', 'Welcome DataFlair to programming', 3, '', 1),
+(611, 174, 'What is the range of double data type for a 16-bit compiler?', '-1.7e-328 to +1.7e-328', '-1.7e-348 to +1.7e-348', '-1.7e-308 to +1.7e-308', '-1.7e-328 to +1.7e-328', 3, '', 0),
+(612, 174, 'Predict the output of the following code segment:\r\n#include &lt;stdio.h&gt;\r\nint main()\r\n{\r\n    unsigned int a = -1;\r\n    int b = ~0;\r\n    int result;\r\n    if (b == a)\r\n        printf(&ldquo;equal&rdquo;);\r\n    else\r\n        printf(&ldquo;unequal&rdquo;);\r\n    return 0;\r\n}', 'Equal', 'Unequal', 'Program stops abruptly', 'Compilation Error', 1, '', 1),
+(613, 174, 'Predict the output of the following code segment:\r\n#include &lt;stdio.h&gt;\r\n\r\nint main()\r\n{\r\n    int array[10] = {3, 0, 8, 1, 12, 8, 9, 2, 13, 10};\r\n    int x, y, z;\r\n    x = ++array[2];\r\n    y = array[2]++;\r\n    z = array[x++];\r\n    printf(&ldquo;%d %d %d&rdquo;, x, y, z);\r\n    return 0;\r\n}', '10 9 10', '9 10 9', '9 9 10', 'None of the above', 1, '', 1),
+(614, 174, 'Predict the output of the following code segment:\r\n#include &lt;stdio.h&gt;\r\n\r\nint main()\r\n{\r\n    int x = 6;\r\n    int y = 4;\r\n    int z;\r\n    if(!x &gt;= 5)\r\n    y = 3;\r\n    z = 2;\r\n    printf(&ldquo;%d %d&rdquo;, z, y);\r\n    return 0;\r\n}', '4 2', '2 4', '2 3', '3 2', 2, '', 1),
+(616, 174, 'Predict the output of the following code segment:\n#include &lt;stdio.h&gt;\n\nint main()\n{\n    int a,b,c;\n    a = b = c = 10;\n    c = a++ || ++b &amp;&amp; ++c;\n    printf(&ldquo;%d %d %d&rdquo;,c, a, b);\n    return 0;\n}', '1 11 10', '10 11 1', '10 11 10', '1 1 10', 1, '', 1);
+INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `option_2`, `option_3`, `option_4`, `answer`, `reason`, `formatted`) VALUES
+(617, 174, 'Predict the output of the following code segment:\r\n#include &lt;stdio.h&gt;\r\n#define PRODUCT(x) (x*x*x*x)\r\n\r\nint main()\r\n{\r\n    int x = 2;\r\n    int result = PRODUCT(x++);\r\n    printf(&ldquo;%d %d&rdquo;, x, result);\r\n    return 0;\r\n}', '2 16', '3 81', '6 120', '6 1296', 3, '', 1),
+(618, 174, 'Predict the output of the following segment of code:If n and p are unsigned int variables in a C program. We wish to set p to nC3. If n is large, which of the following statements is most likely to set p correctly?', 'p = n * (n-1) * (n-2) / 6;', 'p = n * (n-1) / 2 * (n-2) / 3;', 'p = n * (n-1) / 3 * (n-2) / 2;', 'p = n * (n-1) * (n-2) / 6.0;', 2, '', 0),
+(619, 175, 'Choose option which contain error', 'After the death of their father', 'all property was divided equally', 'between the two brothers.', 'No Error', 3, 'After the death of their father all property was divided equally among the two brothers.\r\n\r\nReplace &quot;between&quot; with &quot;among&quot; in option C', 0),
+(620, 175, 'Choose option which contain error', 'In order to save petrol', 'motorists must have to', 'be very cautious', 'while driving along the highways.', 2, 'In order to save petrol motorists have to be very cautious while driving along the highways.\r\n\r\nDrop &quot;must&quot; from option B', 0),
+(621, 175, 'Spelling test - find correct spelling :', 'Heamoglobin', 'Haemoglobin', 'Haeimoglobin', 'Haemogloben', 2, '', 0),
+(622, 175, 'Choose option which contain error', 'She has hunted and', 'shot herself', 'so she know what', 'it is like.', 2, '\'herself\' is unwanted\' so remove herself.', 0),
+(623, 175, 'Choose option which contain error', 'Rahul is Often coming', 'to me', 'on Sundays', 'No Error', 1, 'Rahul often comes to me on Sundays.', 0),
+(624, 175, 'Choose option which contain error', 'Sheela just completed', 'the letter', 'then', 'No error', 1, 'Sheela had just completed the letter then.', 0),
+(625, 175, 'Choose option which contain error', 'It came to', 'my notice', 'lately', 'No Error', 1, 'It has came to my notice lately.', 0),
+(626, 175, 'Choose option which contain error', 'If you had seen', 'yesterday\'s cricket I am sure you', 'would have enjoyed seeing our team bat', 'No Error', 4, '', 0),
+(627, 175, 'Choose option which contain error', 'I enquired of him', 'why he is so negligent', 'in his studies', 'No Error', 2, 'I enquired of him why he was so negligent in his studies.', 0),
+(628, 175, 'Choose option which contain error', 'As the meeting', 'was about to end', 'he insisted to ask', 'several questions', 3, 'As the meeting was about to end he insisted on asking several questions.', 0),
+(629, 175, 'Choose option which contain error', 'The ship', 'was', 'loaded', 'with cotton', 3, 'The ship was laden with cotton.', 0),
+(630, 175, 'Choose option which contain error', 'When Hanish will come', 'I will', 'make sure', 'I meet him', 1, 'When Hanish comes I will make sure I meet him.', 0),
+(631, 175, 'Choose option which contain error', 'The traveller being weary', 'he sat by', 'wood-side to rest', 'No Error', 2, 'The traveller being weary sat by wood-side to rest.', 0),
+(632, 175, 'Choose option which contain error', 'It is high time', 'that', 'we leave', 'this place', 3, 'It is high time that we left this place.', 0),
+(635, 175, 'Choose option which container error', 'Now-a-days he', 'along with his friends go', 'for a ride', 'every evening', 2, 'Now-a-days he along with his friends goes for a ride every evening.', 0),
+(636, 176, 'Eight people P, Q, R, S, T, U, V and W are sitting around a circular table, facing the centre. Each of them is drinking a different beverages &ndash; Tea, Coffee, Juice, Mineral Water, Lemonade, Cola, Coconut Water and Milk, but not necessarily in the same order. Q is sitting second to the left of U. The person drinking milk is an immediate neighbour of U. Only one person sits between the persondrinking mineral water and P. The person drinking coffee is on the immediate right of the person drinking mineral water. W is second to the right of U. S is drinking milk. R and T are immediate neighbours. Neither R nor T is drinking mineral water. The person drinking lemonade is on the immediate left of Q. The person drinking cola is second to the right of person drinking coffee. The person drinking coconut water is an immediate neighbour of the person drinking mineral water. R is second to the right of the person drinking tea.\r\n\r\nWho is second to the right of P ?', 'Q', 'R', 'S', 'T', 2, '', 0),
+(637, 176, 'Eight people P, Q, R, S, T, U, V and W are sitting around a circular table, facing the centre. Each of them is drinking a different beverages &ndash; Tea, Coffee, Juice, Mineral Water, Lemonade, Cola, Coconut Water and Milk, but not necessarily in the same order. Q is sitting second to the left of U. The person drinking milk is an immediate neighbour of U. Only one person sits between the persondrinking mineral water and P. The person drinking coffee is on the immediate right of the person drinking mineral water. W is second to the right of U. S is drinking milk. R and T are immediate neighbours. Neither R nor T is drinking mineral water. The person drinking lemonade is on the immediate left of Q. The person drinking cola is second to the right of person drinking coffee. The person drinking coconut water is an immediate neighbour of the person drinking mineral water. R is second to the right of the person drinking tea.\r\n\r\nWho among the following is drinking coconut water ?', 'Q', 'V', 'W', 'U', 4, '', 0),
+(638, 176, 'Eight people P, Q, R, S, T, U, V and W are sitting around a circular table, facing the centre. Each of them is drinking a different beverages &ndash; Tea, Coffee, Juice, Mineral Water, Lemonade, Cola, Coconut Water and Milk, but not necessarily in the same order. Q is sitting second to the left of U. The person drinking milk is an immediate neighbour of U. Only one person sits between the persondrinking mineral water and P. The person drinking coffee is on the immediate right of the person drinking mineral water. W is second to the right of U. S is drinking milk. R and T are immediate neighbours. Neither R nor T is drinking mineral water. The person drinking lemonade is on the immediate left of Q. The person drinking cola is second to the right of person drinking coffee. The person drinking coconut water is an immediate neighbour of the person drinking mineral water. R is second to the right of the person drinking tea.\r\n\r\nWhat is the position of V with respect to the person drinking milk ?', 'Third to the left', 'Second to the right', 'Second to the left', 'Third to the right', 2, '', 0),
+(639, 176, 'Eight people P, Q, R, S, T, U, V and W are sitting around a circular table, facing the centre. Each of them is drinking a different beverages &ndash; Tea, Coffee, Juice, Mineral Water, Lemonade, Cola, Coconut Water and Milk, but not necessarily in the same order. Q is sitting second to the left of U. The person drinking milk is an immediate neighbour of U. Only one person sits between the persondrinking mineral water and P. The person drinking coffee is on the immediate right of the person drinking mineral water. W is second to the right of U. S is drinking milk. R and T are immediate neighbours. Neither R nor T is drinking mineral water. The person drinking lemonade is on the immediate left of Q. The person drinking cola is second to the right of person drinking coffee. The person drinking coconut water is an immediate neighbour of the person drinking mineral water. R is second to the right of the person drinking tea.\r\n\r\nour of the following five are alike in a certain way based on the given arrangement and hence form a group. Which of the following does not belong to the group ?', 'Tea - S', 'Juice - W', 'Mineral water - T', 'Lemonade - V', 3, '', 0),
+(640, 176, 'Eight people P, Q, R, S, T, U, V and W are sitting around a circular table, facing the centre. Each of them is drinking a different beverages &ndash; Tea, Coffee, Juice, Mineral Water, Lemonade, Cola, Coconut Water and Milk, but not necessarily in the same order. Q is sitting second to the left of U. The person drinking milk is an immediate neighbour of U. Only one person sits between the persondrinking mineral water and P. The person drinking coffee is on the immediate right of the person drinking mineral water. W is second to the right of U. S is drinking milk. R and T are immediate neighbours. Neither R nor T is drinking mineral water. The person drinking lemonade is on the immediate left of Q. The person drinking cola is second to the right of person drinking coffee. The person drinking coconut water is an immediate neighbour of the person drinking mineral water. R is second to the right of the person drinking tea.\r\n\r\nWhich of the following person is drinking tea ?', 'P', 'R', 'T', 'V', 1, '', 0),
+(641, 176, 'Eight people P, Q, R, S, T, U, V and W are sitting around a circular table, facing the centre. Each of them is drinking a different beverages &ndash; Tea, Coffee, Juice, Mineral Water, Lemonade, Cola, Coconut Water and Milk, but not necessarily in the same order. Q is sitting second to the left of U. The person drinking milk is an immediate neighbour of U. Only one person sits between the persondrinking mineral water and P. The person drinking coffee is on the immediate right of the person drinking mineral water. W is second to the right of U. S is drinking milk. R and T are immediate neighbours. Neither R nor T is drinking mineral water. The person drinking lemonade is on the immediate left of Q. The person drinking cola is second to the right of person drinking coffee. The person drinking coconut water is an immediate neighbour of the person drinking mineral water. R is second to the right of the person drinking tea.\r\n\r\nWhich of the following statements is true according to the given arrangement ?', 'The person drinking cola is sitting second to the left of the person drinking juice', 'P is an immediate neighbour of the person drinking Lemonade', 'S sits exactly between Q and R', 'Only four people sit between W and Q', 1, '', 0);
 
 -- --------------------------------------------------------
 
@@ -428,26 +477,30 @@ CREATE TABLE `quizes` (
   `passing_percentage` int NOT NULL,
   `admin_email_id` int NOT NULL,
   `time_stamp` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Dumping data for table `quizes`
 --
 
 INSERT INTO `quizes` (`quiz_id`, `quiz_name`, `difficulty_level`, `description`, `number_of_questions`, `is_active`, `active_timing`, `inactive_timing`, `Exam_key`, `key_access`, `show_evaluation`, `shuffle`, `time_duration`, `marks_per_question`, `negative_marking`, `passing_percentage`, `admin_email_id`, `time_stamp`) VALUES
-(103, 'C++ Programming', 'Intermediate', 'This Online C Programming Test is specially designed for you by industry experts.', 10, 0, 0, 0, '9911', 0, 0, 1, 1800, 1, 0, 60, 24, '2020-12-14 23:36:05'),
+(103, 'C++ Programming', 'Intermediate', 'This Online C Programming Test is specially designed for you by industry experts.', 10, 0, 0, 0, '991100', 0, 0, 1, 1800, 1, 0, 60, 24, '2020-12-14 23:36:05'),
 (126, 'Design and Analysis of Algorithms', 'Intermediate', 'Exam Key : daa@1999\r\n<br/>\r\n<br/>Design and Analysis of Algorithm is very important for designing algorithm to solve different types of problems in the branch of computer science and information technology.', 10, 0, 0, 0, 'daa@1999', 0, 0, 0, 2700, 0, 0, 0, 24, '2020-12-15 14:54:36'),
 (134, 'CODE - C', 'Intermediate', 'C and C++ Programming based Questions.\r\nTypes\r\n-> Output based\r\n-> Error search\r\n-> Theory\r\n- >Architecture\r\n-> OOPS', 5, 0, 1611859500, 1611861300, '23031999', 1, 0, 1, -1, 1, 0.5, 50, 24, '2020-12-15 14:54:23'),
-(140, 'Quantitative Aptitude', 'Beginner', 'Arithmetic Ability test helps measure one\'s numerical ability, problem solving and mathematical skills. ... Every aspirant giving Quantitative Aptitude Aptitude test tries to solve maximum number of problems with maximum accuracy and speed.', 30, 0, 0, 0, 'QA2021', 0, 0, 1, 3600, 1, 0, 60, 24, '2021-04-12 02:35:41'),
-(141, 'C Programming Basic', 'Beginner', 'Practice Test', 10, 0, 0, 0, 'CP2021', 1, 0, 1, 900, 2, 1, 50, 24, '2021-04-12 14:33:29'),
-(150, 'General Aptitude 1.0', 'Intermediate', 'Quantitative Aptitude : 20 Questions\r\nLogical Reasoning : 20 Questions\r\nVerbal ability : 20 Questions', 60, 0, 0, 0, 'GA2021', 1, 0, 0, 7200, 2, 1, 60, 41, '2021-04-15 04:33:11'),
+(140, 'Quantitative Aptitude 1.0', 'Beginner', 'Arithmetic Ability test helps measure one\'s numerical ability, problem solving and mathematical skills. ... Every aspirant giving Quantitative Aptitude Aptitude test tries to solve maximum number of problems with maximum accuracy and speed.', 30, 1, 0, 0, 'QA2021', 1, 1, 1, 3600, 2, 1, 60, 24, '2021-04-12 02:35:41'),
+(141, 'C Programming Basic', 'Beginner', 'Practice Test', 15, 0, 0, 0, 'CP2021', 1, 0, 1, 900, 2, 1, 50, 24, '2021-04-12 14:33:29'),
+(150, 'General Aptitude 1.0', 'Intermediate', 'Quantitative Aptitude : 20 Questions\r\nLogical Reasoning : 20 Questions\r\nVerbal ability : 20 Questions', 60, 1, 0, 0, 'GA2021', 1, 1, 0, 7200, 2, 1, 60, 41, '2021-04-15 04:33:11'),
 (155, 'Quantitative Aptitude SBI PO', 'Intermediate', 'Quantitative Aptitude\r\nSBI PO', 30, 1, 0, 0, 'QASBIPO2021', 1, 1, 1, 3600, 4, 1, 60, 41, '2021-04-16 17:18:36'),
-(156, 'Logical Reasoning 1.0', 'Intermediate', 'Logical Reasoning Questions To Prepare For SBI PO Exams', 30, 0, 0, 0, 'LR2021', 1, 0, 0, 3600, 1, 0, 60, 41, '2021-04-16 19:25:22'),
+(156, 'Logical Reasoning 1.0', 'Intermediate', 'Logical Reasoning Questions To Prepare For SBI PO Exams', 30, 1, 0, 0, 'LR2021', 1, 1, 1, 3600, 1, 0, 60, 41, '2021-04-16 19:25:22'),
 (167, 'C++ Programming 2.0', 'Intermediate', 'Predict Output', 5, 0, 0, 0, 'CP2021', 0, 0, 0, -1, 2, 1, 60, 24, '2021-04-17 15:08:53'),
 (169, 'Verbal Ability Statements and Conclusion', 'Intermediate', 'The given Statements and Conclusions Quiz Questions will make you efficient in the topic. By taking this Quiz, it will improve your Communication skills in the statements formation also it overcomes the difficulties in different competitive level of exams.', 15, 1, 0, 0, 'VA2021', 1, 1, 1, 1800, 1, 0, 60, 41, '2021-04-21 17:22:28'),
 (170, 'Python', 'Beginner', 'Nothing', 5, 0, 0, 0, 'mypython', 0, 0, 1, 900, 1, 1, 70, 44, '2021-04-21 13:42:02'),
 (171, 'Verbal Ability Spotting Errors 1.0', 'Intermediate', 'You need to spot sentences and error which are grammatically incorrect. This error can be anything. From noun to pronoun to singular/plural to word usage they can be anything.', 15, 1, 0, 0, 'VA2021', 1, 1, 1, 1800, 1, 0, 60, 41, '2021-04-21 15:54:52'),
-(172, 'Verbal Ability Spotting Errors 2.0', 'Intermediate', 'You need to spot sentences and error which are grammatically incorrect. This error can be anything. From noun to pronoun to singular/plural to word usage they can be anything.', 10, 1, 0, 0, 'VA2021', 1, 1, 1, 900, 1, 0, 60, 41, '2021-04-21 17:07:07');
+(172, 'Verbal Ability Spotting Errors 2.0', 'Intermediate', 'You need to spot sentences and error which are grammatically incorrect. This error can be anything. From noun to pronoun to singular/plural to word usage they can be anything.', 10, 1, 0, 0, 'VA2021', 1, 1, 1, 900, 1, 0, 60, 41, '2021-04-21 17:07:07'),
+(173, 'Quantitative Aptitude 2.0', 'Beginner', 'Arithmetic Ability test helps measure one\'s numerical ability, problem solving and mathematical skills. ... Every aspirant giving Quantitative Aptitude Aptitude test tries to solve maximum number of problems with maximum accuracy and speed.', 5, 1, 0, 0, 'QA2021', 1, 1, 1, 900, 1, 0, 70, 41, '2021-04-22 15:40:53'),
+(174, 'C Programming Predict Output', 'Intermediate', 'NA', 10, 1, 0, 0, 'CP2021', 1, 1, 1, 900, 1, 0, 60, 24, '2021-04-22 19:05:15'),
+(175, 'Verbal Ability Spotting Errors 3.0', 'Intermediate', 'You need to spot sentences and error which are grammatically incorrect. This error can be anything. From noun to pronoun to singular/plural to word usage they can be anything.', 15, 1, 0, 0, 'VA2021', 1, 1, 1, 1800, 2, 1, 50, 41, '2021-04-23 11:03:01'),
+(176, 'Sitting Arrangement', 'Intermediate', 'The information given specifies the position of a few or all the persons in the arrangement. The positions are specified through conditions like: a particular person is sitting right or left of the other person.\r\nYou have to determine the correct sitting order then answer the provided questions.', 6, 1, 0, 0, 'SA2021', 1, 1, 0, 900, 4, 2, 60, 41, '2021-04-23 14:27:42');
 
 -- --------------------------------------------------------
 
@@ -467,7 +520,7 @@ CREATE TABLE `registered_admin` (
   `institution_name` varchar(50) NOT NULL,
   `admin_email` varchar(50) NOT NULL,
   `admin_password` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Dumping data for table `registered_admin`
@@ -492,7 +545,7 @@ CREATE TABLE `reported_questions` (
   `problem` varchar(3000) NOT NULL,
   `amend` tinyint NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Dumping data for table `reported_questions`
@@ -571,13 +624,13 @@ ALTER TABLE `reported_questions`
 -- AUTO_INCREMENT for table `attempts`
 --
 ALTER TABLE `attempts`
-  MODIFY `attempt_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `attempt_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `certifications`
 --
 ALTER TABLE `certifications`
-  MODIFY `certificate_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `certificate_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -601,13 +654,13 @@ ALTER TABLE `profile_photo`
 -- AUTO_INCREMENT for table `question_bank`
 --
 ALTER TABLE `question_bank`
-  MODIFY `question_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=590;
+  MODIFY `question_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=642;
 
 --
 -- AUTO_INCREMENT for table `quizes`
 --
 ALTER TABLE `quizes`
-  MODIFY `quiz_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `quiz_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
 -- AUTO_INCREMENT for table `registered_admin`

@@ -471,9 +471,9 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
     </div>
     <div class="main-banner">
         <div class="main-banner-content">
-                <h3 id="index-slogan">Why QuizWit ?</h3>
+                <h3 id="index-slogan" class="f-w-bold" style="color:#2222c3;">Why QuizWit ?</h3>
                 <div>
-                  <span style="font-weight: 350;color: #3a39a0;">
+                  <span style="font-weight: 400;color: #3a39a0;">
                       Online Quizzes are a popular form of entertainment with learning. 
                       <br/>
                       We provide you one of the most flexible and impeccable platform that enhance your experience in online learning.
@@ -497,21 +497,45 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                 if($result->num_rows>0){
                        ?>
 <!--                        <img style="width: 90px;height: 80px;" src="images/happy.jpg">
- -->          
-              <h3 style="padding-left:23px;padding-bottom:15px">Currently Active Quizzes</h3>
+ -->          <span class="opening-quiz-details">
+                  <i class="fas fa-sync fa-spin mr-1"></i> Quiz Details. . .
+              </span>
+              <h3 style="padding-bottom:10px; color:#2222c3;font-weight:bold;text-align:center;">Currently Active Quizzes</h3>
+              <div class="search-quiz">
+                  <div class="search-container">
+                    <input type="text" id="search-quiz-name" placeholder="Search quiz via name. . .">
+                    <i class="fas fa-search"></i>
+                  </div>
+              </div>
+              <script>
+                  $('#search-quiz-name').on('input', () => {
+                    $('.search-quizzes-response').html('<span style="color:blue"><i class="fas fa-sync fa-spin mr-1"></i> Searching. . .</span>')
+                    let quizName = $('#search-quiz-name').val()
+                    let reqData = {
+                      quizName
+                    }
+                    let url = 'search-quiz.php'
+                    $.ajax({
+                      url,
+                      type : 'POST',
+                      dataType : 'html',
+                      success : (msg) => {
+                        
+                      },
+                      complete : (res) => {
+                        $('.search-quizzes-response').html(res.responseText)
+                      },
+                      data : reqData
+                    })
+                  })
+              </script>
               <div class="description-popup">
                 <div id="description-popup-content">
 
                 </div>
               </div>
-              <table class="table card-table table-vcenter text-nowrap">
-                <thead>
-                  <tr>
-                       <th style="font-weight:bold;">Quiz Name</th>
-                       <th style="font-weight:bold;">Info</th>
-                   </tr>
-
-                </thead>
+              <div class="search-quizzes-response">
+              <table class="table card-table table-vcenter text-nowrap mt-15px">
                 <tbody>
                        <?php
                        $i=0;
@@ -523,20 +547,30 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                        		{
 		                        ?>
 		                             <tr>
-		                                 <td><?php echo $row['quiz_name'];?></td>
-		                                 <td style="color:#3498db;">
-                                        <span class="view-description-popup" style="cursor:pointer;padding-left: 15px;">View Details</span>
+		                                 <td class="view-description-popup">
+                                       <div class="space-between">
+                                         <span><?php echo $row['quiz_name'];?></span>
+                                         <span class="ml-20px"><?php echo $row['difficulty_level']; ?></span>
+                                       </div>
+                                       
+                                      </td>
                                         <script type="text/javascript">
                                           $(document).ready(function(){
                                             $(".view-description-popup").eq(<?php echo $i;?>).click(function(){
+                                              $('.opening-quiz-details').show()
+                                              // $(".view-description-popup").eq(<?php echo $i ?>).html('<i style="font-size:12px" class="fas fa-sync fa-spin m-1"></i> Loading')
                                               var url = 'description_popup.php'
-                                              $("#description-popup-content").load(url,{
-                                                 quizID : <?php echo $row['quiz_id'];?>
-                                              });
+                                              setTimeout(() => {
+                                                $("#description-popup-content").load(url,{
+                                                  quizID : <?php echo $row['quiz_id'];?>
+                                                });
+                                                
+                                                $('.opening-quiz-details').hide()
+                                                // $(".view-description-popup").eq(<?php echo $i ?>).html('View Details')
+                                              }, 500)
                                             });
                                           });
                                         </script>
-                                      </td>
 		                             </tr>
 		                        <?php
                             $i++;
@@ -548,6 +582,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                                                                   <!-- user -->
                 </tbody>
               </table>
+              </div>
               <?php 
             }
             else {
@@ -632,6 +667,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
       </div>
     </div>
 
+
     <div class="flex-center f-c-c">
       <div class="left">
         <div class="view-certificate-container">
@@ -650,7 +686,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
       <div class="right">
         <div class="certificate-response p-5">
             <div id="why-certificate">
-              <h2>Why Certificates ?</h2>
+              <h2 class="f-w-bold">Why Certificates ?</h2>
               <div>
                 The importance of certifications starts right from the academic journey in the initial stages.
                 <br/>
@@ -675,7 +711,6 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
               let errorIcon = '<i class="fas fa-exclamation-circle mr-1"></i>'
               btn.innerHTML = '<i class="fas fa-sync fa spin mr-1"></i> Preparing'
               res = JSON.parse(res)
-              console.log(res)
               if(res.success){
                   let resBlock = document.getElementById('certificate-fetch-response')
                   resBlock.innerHTML = ''
@@ -696,8 +731,10 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                     // main.appendChild(name)
                     main.appendChild(link)
                     resBlock.appendChild(main)
-                    console.log(resBlock)
-                  })
+                    $('html,body').animate({
+                        scrollTop: $(".certificate-response").offset().top+125},
+                        'fast');
+                      })
                   if(totalCertificates == 1)
                     msg = '1 certificate'
                   else msg = totalCertificates + ' certificates'

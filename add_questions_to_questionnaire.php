@@ -60,6 +60,15 @@
 
           if($control){
             $questions_inserted++;
+            
+            $len = strlen($que);
+            $end_index = 50;
+            if($len < 50)
+              $end_index = $len;
+            $show_question_part = substr($que, 0, $end_index);
+            
+            $_SESSION['success_msg'] .= 'Q'.$questions_inserted.' '.$show_question_part.'...<br/>';
+
             $sql = "INSERT INTO `question_bank` (`question_id`, `quiz_id`, `question`, `option_1`, `option_2`, `option_3`, `option_4`, `answer`, `reason`, `formatted`) VALUES (NULL, '$quiz_id', '$que', '$o1', '$o2', '$o3', '$o4', '$ans', '$res', '$form')";
             mysqli_query($conn,$sql);
           }
@@ -70,7 +79,7 @@
               $msg = 'Question';
             else $msg = 'Questions'; 
 
-            $_SESSION['success_msg'] = $questions_inserted.' '.$msg.' added to quiz successfully';
+            $_SESSION['success_msg'] .= '<br/>'.$questions_inserted.' '.$msg.' added to quiz successfully';
           }
 
           if($error_control){

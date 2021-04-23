@@ -1397,8 +1397,8 @@ a.move-top span {
     padding: 15px 150px;
 }
 .our-team-container > div{
-    background: #467fcf4d;
-    color : black;
+    background: #0e2596d1;
+    color :white;
     width: 100%;
 }
 
@@ -1429,7 +1429,7 @@ a.move-top span {
     display: flex;
     width: 100%;
     justify-content: center;
-    background: linear-gradient(to bottom,#b8d6ff4d 0%,#467fcf4d 50%,white 50%,white 50%,white 100%);
+    background: linear-gradient(to bottom,#394ca9d1 0%,#000000a8 50%,white 50%,white 50%,white 100%);
 
 }
 .our-team-images-container > div > div{

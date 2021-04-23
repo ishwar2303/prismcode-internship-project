@@ -76,8 +76,8 @@ $passing_error = '';
 		}
 		else if(strlen($key)<6 || strlen($key) > 15){
 			$control = 0;
-			$key_error = $icon.' Minimum 6 characters and Maximum 15 characters';
-			array_push($errors,'Minimum 6 characters and Maximum 15 characters');
+			$key_error = $icon.'Exam Key : Minimum 6 characters and Maximum 15 characters';
+			array_push($errors,'Exam Key : Minimum 6 characters and Maximum 15 characters');
 		}
 	
 		if(isset($_POST['time'])){
