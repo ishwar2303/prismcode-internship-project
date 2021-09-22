@@ -36,7 +36,17 @@ if(isset($_POST['quizID'])){
                   <?php 
                   }
                   ?>
-                  <div id="questions-time"><span>Questions <span class="no-of-questions"><?php echo $row['number_of_questions'];?></span></span><span>Duration <span class="duration"><?php echo $time_duration;?></span></span></div>
+                  <div id="questions-time"><span>Questions 
+                    <span class="no-of-questions">
+                    <?php 
+                          if($row['object_type'] == 2) {
+                            echo $row['fetch_limit'];
+                          }
+                          else echo $row['number_of_questions'];
+                    ?>
+                      
+                    </span></span>
+                    <span>Duration <span class="duration"><?php echo $time_duration;?></span></span></div>
                   <div class="desc-block">
                     <span>Marks per Question 
                       <span class="mark-per-question"> <?php echo $row['marks_per_question']; ?></span>

@@ -535,8 +535,8 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                 </div>
               </div>
               <div class="search-quizzes-response">
-              <table class="table card-table table-vcenter text-nowrap mt-15px">
-                <tbody>
+              <div class="table card-table table-vcenter text-nowrap mt-15px">
+                <div class="quiz-blocks">
                        <?php
                        $i=0;
                        while($row = $result->fetch_assoc())
@@ -546,14 +546,14 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                        	if($result1->num_rows>0)
                        		{
 		                        ?>
-		                             <tr>
-		                                 <td class="view-description-popup">
+		                             <div style="display: inline;">
+		                                 <div class="view-description-popup">
                                        <div class="space-between">
                                          <span><?php echo $row['quiz_name'];?></span>
                                          <span class="ml-20px"><?php echo $row['difficulty_level']; ?></span>
                                        </div>
                                        
-                                      </td>
+                                      </div>
                                         <script type="text/javascript">
                                           $(document).ready(function(){
                                             $(".view-description-popup").eq(<?php echo $i;?>).click(function(){
@@ -571,7 +571,7 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                                             });
                                           });
                                         </script>
-		                             </tr>
+		                             </div>
 		                        <?php
                             $i++;
 		                    }
@@ -580,8 +580,8 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
                    ?>
        
                                                                   <!-- user -->
-                </tbody>
-              </table>
+                </div>
+              </div>
               </div>
               <?php 
             }

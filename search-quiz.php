@@ -44,8 +44,8 @@ if(isset($_POST['quizName'])){
     ?>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
-    <table class="table card-table table-vcenter text-nowrap mt-15px">
-        <tbody>
+    <div class="table card-table table-vcenter text-nowrap mt-15px">
+        <div class="quiz-blocks">
     <?php
     
     $i=0;
@@ -57,13 +57,13 @@ if(isset($_POST['quizName'])){
                    if($result1->num_rows>0)
                        {
                         ?>
-                             <tr>
-                                 <td class="view-description-popup">
+                             <div>
+                                 <div class="view-description-popup">
                                        <div class="space-between">
                                          <span><?php echo $row['quiz_name'];?></span>
                                          <span class="ml-20px"><?php echo $row['difficulty_level']; ?></span>
                                        </div>
-                                 </td>
+                                 </div>
                                     <script type="text/javascript">
                                         $(document).ready(function(){
                                         $(".view-description-popup").eq(<?php echo $i;?>).click(function(){
@@ -80,7 +80,7 @@ if(isset($_POST['quizName'])){
                                         });
                                         });
                                     </script>
-                             </tr>
+                             </div>
                         <?php
                     $i++;
                     }
@@ -93,5 +93,5 @@ if(isset($_POST['quizName'])){
 
 ?>
 
-</tbody>
-      </table>
+</div>
+      </div>
