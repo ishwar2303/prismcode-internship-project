@@ -28,13 +28,17 @@ if(isset($_SESSION['login_time']))
                     $temp = mysqli_query($conn,$sql);  
                     if($temp->num_rows == 0)
                     {   
-                       $sql = "UPDATE quizes SET number_of_questions='0', is_active='0' WHERE quiz_id='$row[quiz_id]'";
+                       $sql = "UPDATE quizes SET number_of_questions='0', fetch_limit = '0', is_active='0' WHERE quiz_id='$row[quiz_id]'";
                         mysqli_query($conn,$sql);
                     }
                     else{
                        $QueNum = $temp->num_rows;
                        $sql = "UPDATE quizes SET number_of_questions='$QueNum' WHERE quiz_id='$row[quiz_id]'";
                         mysqli_query($conn,$sql);
+                       if($QueNum < $row['fetch_limit']) {
+                          $sql = "UPDATE quizes SET fetch_limit='$QueNum' WHERE quiz_id='$row[quiz_id]'";
+                          mysqli_query($conn, $sql);
+                       }
                     }
                 }
 
@@ -204,7 +208,7 @@ include('includes/navbar.php');
       </div>
       <?php 
 
-      $temp = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]' ORDER BY quiz_name";
+      $temp = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]' ORDER BY quiz_id DESC";
       $result = mysqli_query($conn,$temp);
       if($result->num_rows>0){
 
@@ -248,7 +252,14 @@ include('includes/navbar.php');
               <td><?php echo $attempt_res->num_rows; ?></td>
               <td><?php echo $max_score['MAX(score)']!='' ? $max_score['MAX(score)'].'/'.$max_score['total_marks'].' <br/> '.'<span style="font-size:11px;">'.$max_score['fullname'].'</span>' : '-'; ?></td>
               <td><span class="key-block"><?php echo $row['Exam_key']; ?></span></td>
-              <td style="text-align: center;"><?php echo $row['number_of_questions'];?></td>
+              <td style="text-align: center;">
+                <?php
+                  if($row['object_type'] == 2) { // question bank
+                    echo $row['fetch_limit'].'/'.$row['number_of_questions'];
+                  } 
+                  else echo $row['number_of_questions'];
+                ?>
+              </td>
               <td>
                 <?php 
                    if($row['is_active'])

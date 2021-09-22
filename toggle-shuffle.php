@@ -17,7 +17,7 @@
             }
             else{
                 $toggle = $row['shuffle'];
-                $toggle = !$toggle;
+                $toggle = $toggle ? 0 : 1;
                 if ($toggle) {
                     $message = 'Questions will appear in randomize fashion';
                 } else {

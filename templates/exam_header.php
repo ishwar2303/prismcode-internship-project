@@ -58,11 +58,11 @@
     });
     
     </script>
-    <script type="text/javascript" src="js/stop-copy-paste.js"></script>
+    <!-- <script type="text/javascript" src="js/stop-copy-paste.js"></script> -->
     <script type="text/javascript" src="take_quizJAVAscript.js"></script>
 
 </head>
-<body onload="hideAll();<?php echo $time_duration!=-1 ? 'setInterval(Timer,1000);Timer();' : '';?>">
+<body onload="hideAll();<?php echo $time_duration!=-1 ? 'setInterval(Timer,1000);Timer();' : '';?>" id="output">
 
     <div class="marking-popup">
       <div class="small-popup">
@@ -126,6 +126,8 @@
                         }
                     ?>
                 </div>
+
+                <button id="full-screen-mode" class="btn">Full Screen</button>
                 <button style="margin-left: 0;background:#cd201f;color:white;" class="btn btn-outline-danger ml-auto end-quiz" onclick="autoSubmit()">
                     End Quiz
                 </button>

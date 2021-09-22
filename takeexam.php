@@ -76,7 +76,7 @@
 ?>
 	<?php include 'templates/exam_header.php'; ?>
 	<div class="top-padding"></div>
-	<div class="main-container">
+	<div class="main-container" >
 		<div class="container-left">
 			<!-- <div class="page-header">
 				<h1 class="page-title">
@@ -425,7 +425,6 @@ $t = 0;
 					</div>
 				</div>
 				<div  style="height: 60px;"></div>
-	</div>
 	<div id="for-load"></div>
 
 	<div id="proctored-popup">
@@ -459,6 +458,7 @@ $t = 0;
 	</div>
 	<div id="black-cover-for-report"></div>
 	<div class="question-report-response"></div>
+	</div>
 	<script>
 		document.getElementById('close-proctored-popup').addEventListener('click', () => {
 			document.getElementById('proctored-popup').style.display = 'none'
@@ -507,12 +507,33 @@ $t = 0;
     </script>
 <script>
 	
-removeCookie()
+//removeCookie()
+
 examStarted()
 $(window).blur(() => {
   checkCookie() // proctoring user via checking if window looses focus
 })
 document.getElementsByClassName('main-container')[0].style.display = 'flex'
+
+
+// full screen trigger
+let fullScreenModeBtn = document.getElementById('full-screen-mode')
+let controlMode = 1;
+let output = document.getElementById('output')
+fullScreenModeBtn.addEventListener('click', () => {
+    if(controlMode) {
+    	controlMode = 0;
+	    output.requestFullscreen()
+	    fullScreenModeBtn.innerText = 'Exit Full Screen'
+    }
+    else {
+    	controlMode = 1;
+	    document.exitFullscreen() 
+	    fullScreenModeBtn.innerText = 'Full Screen'
+    }
+})
+showSwitchQuestionOption()
+
 </script>
 
 

@@ -3,6 +3,8 @@ session_start();
 require_once('connection.php');
 require_once('middleware.php');
 $quiz_name_error = '';
+$object_type_error = '';
+$fetch_limit_error = '';
 $level_error = '';
 $description_error = '';
 $question_num_error = '';
@@ -12,10 +14,12 @@ $time_error = '';
 $marks_error = '';
 $negative_error = '';
 $passing_error = '';
-	if(isset($_POST['test']) && isset($_POST['level']) && isset($_POST['description'])  && isset($_POST['state']) && isset($_POST['exam_key']) && isset($_POST['time']) && isset($_POST['quizID'])){
+	if(isset($_POST['test']) && isset($_POST['level']) && isset($_POST['description'])  && isset($_POST['state']) && isset($_POST['exam_key']) && isset($_POST['time']) && isset($_POST['quizID']) && isset($_POST['fetch_limit'])){
 		$quiz_name = cleanInput($_POST['test']);
 		$description = cleanInput($_POST['description']);
 		$key = cleanInput($_POST['exam_key']);
+		$fetch_limit = cleanInput($_POST['fetch_limit']);
+		$object_type = 1;
 		$icon = '<i class="fas fa-exclamation-circle"></i>';
 		$control = 1;
 		$errors = array();
@@ -25,6 +29,23 @@ $passing_error = '';
 			array_push($errors,'Quiz name required');
 		}
 		
+		if(isset($_POST['object_type'])) {
+			$object_type = cleanInput($_POST['object_type']);
+			if($object_type != 1 && $object_type != 2) {
+				$object_type_error = $icon.' Invalid Object Type';
+				$control = 0;
+				array_push($errors, 'Invalid Object Type');
+			}
+		}
+
+		if($object_type == 2) {
+			if($fetch_limit <= 0) {
+				$fetch_limit_error = $icon.' Invalid Fetch Limit';
+				$control = 0;
+				array_push($errors, 'Invalid Fetch Limit');
+			}
+		}
+
 		if(isset($_POST['level'])){
 		  $level = cleanInput($_POST['level']);
 		  if($level == ''){
@@ -143,7 +164,7 @@ $passing_error = '';
 				$level = 'Intermediate';
 			if($level == 3)
 				$level = 'Advance';
-			$sql = "UPDATE quizes SET quiz_name='$quiz_name', difficulty_level='$level', description='$description', is_active='$state', Exam_key='$key', time_duration='$time', marks_per_question='$marks', negative_marking='$negative', passing_percentage='$passing' WHERE quiz_id='$quizID'";
+			$sql = "UPDATE quizes SET quiz_name='$quiz_name', difficulty_level='$level', description='$description', is_active='$state', Exam_key='$key', time_duration='$time', marks_per_question='$marks', negative_marking='$negative', passing_percentage='$passing', fetch_limit = '$fetch_limit', object_type='$object_type' WHERE quiz_id='$quizID'";
 			mysqli_query($conn,$sql) or die(mysqli_error($conn));
 			$_SESSION['message'] = 'Quiz Updated Successfully';
 			$_SESSION['color'] = '#68a030';

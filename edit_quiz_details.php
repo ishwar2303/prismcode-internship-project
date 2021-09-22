@@ -14,6 +14,52 @@ if(isset($_POST['updateQuizDetails']) && isset($_POST['quizID'])){
                  <input id="quiz_name"   type="text" name="test" maxlength="100" class="form-control ht-50" placeholder="Quiz Name" value="<?php echo $row['quiz_name'];?>" required="">
                </div>
              </div>
+
+             <?php 
+                $object_type = $row['object_type'];
+                $type_quiz = '';
+                $type_question_Bank = '';
+                if($object_type == 1)
+                  $type_quiz = 'checked';
+                else $type_question_Bank = 'checked';
+             ?>
+             <div class="col-sm-12 col-lg-12">
+               <div class="form-group">
+                <label class="form-label">Object Type</label>
+                <div class="selectgroup w-100">
+                   <label class="selectgroup-item m-0">
+                     <input type="radio" name="object_type" value="1" class="selectgroup-input objectType" <?php echo $type_quiz; ?>>
+                     <span class="selectgroup-button">Quiz</span>
+                   </label>
+                   <label class="selectgroup-item m-0">
+                     <input type="radio" name="object_type" value="2" class="selectgroup-input objectType" <?php echo $type_question_Bank; ?>>
+                     <span class="selectgroup-button">Question Bank</span>
+                   </label>
+                </div>
+               </div>
+             </div>
+             <div class="col-sm-12 col-lg-12" id="fetchLimitOption" >
+               <div style="position: relative;" class="form-group">
+                 <label class="form-label">Fetch Limit</label>
+                 <input  id="fetch-limit" type="number" name="fetch_limit" class="form-control ht-50" placeholder="Number of Questions" value="<?php echo $row['fetch_limit']; ?>">
+               </div>
+             </div>
+             <script type="text/javascript">
+                let fetchLimitOption = document.getElementById('fetchLimitOption')
+                let objectType = document.getElementsByClassName('objectType')
+                const toggleFetchLimitOption = () => {
+                  if(objectType[1].checked) {
+                    fetchLimitOption.style.display = 'block'
+                  }
+                  else {
+                    fetchLimitOption.style.display = 'none'
+                  }
+                }
+                for(let i=0; i<objectType.length; i++) {
+                  objectType[i].addEventListener('click', toggleFetchLimitOption)
+                }
+                toggleFetchLimitOption()
+             </script>
              <div class="col-sm-12 col-lg-12">
                <div class="form-group">
                 <label class="form-label">Difficulty Level</label>

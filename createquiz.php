@@ -22,6 +22,7 @@
   $_SESSION['quiz_details_Set'] = true;
   
   $quiz_name = '';
+  $object_type = '';
   $description = '';
   $question_num = '';
   $level = '';
@@ -31,8 +32,10 @@
   $marks = '';
   $negative = '';
   $passing = '';
+  $fetch_limit = '';
 
   $quiz_name_error = '';
+  $object_type_error = '';
   $level_error = '';
   $description_error = '';
   $question_num_error = '';
@@ -42,7 +45,7 @@
   $marks_error = '';
   $negative_error = '';
   $passing_error = '';
-
+  $fetch_limit_error = '';
 ?>
 
 <?php 
@@ -60,6 +63,25 @@ if(isset($_POST['test']) && isset($_POST['description']) && isset($_POST['questi
         $quiz_name_error = $icon.' Quiz name required';
     }
     
+    if(isset($_POST['object_type'])) {
+      $object_type = cleanInput($_POST['object_type']);
+      if($object_type != 1 && $object_type != 2) {
+        $object_type_error = 'Select Object type';
+        $control = 0;
+      }
+      else if($object_type == 2 && isset($_POST['fetch_limit'])) {
+        $fetch_limit = cleanInput($_POST['fetch_limit']);
+        if($fetch_limit <= 0) {
+          $fetch_limit_error = $icon.' Object type is "Question Bank" so please mention number of questions to fetch from the Question Bank. <br/> You can update this any time via Edit Quiz Option.';
+          $control = 0;
+        }
+      }
+    }
+    else {
+      $object_type_error = $icon.' Select Object type';
+      $control = 0;
+    }
+
     if(isset($_POST['level'])){
       $level = cleanInput($_POST['level']);
       if($level == ''){
@@ -170,7 +192,7 @@ if(isset($_POST['test']) && isset($_POST['description']) && isset($_POST['questi
           $level = 'Intermediate';
       if($level == 3)
           $level = 'Advance';
-      $sql = "INSERT INTO `quizes` (`quiz_id`, `quiz_name`, `difficulty_level`, `description`, `number_of_questions`, `is_active`, `Exam_key`, `key_access`, `shuffle`, `time_duration`, `marks_per_question`, `negative_marking`, `passing_percentage`, `admin_email_id`, `time_stamp`) VALUES (NULL, '$quiz_name', '$level', '$description', '$question_num', '$state', '$key', '0', '0', '$time', '$marks', '$negative', '$passing', '$_SESSION[admin_id]', current_timestamp())";
+      $sql = "INSERT INTO `quizes` (`quiz_id`, `quiz_name`, `difficulty_level`, `description`, `number_of_questions`, `is_active`, `Exam_key`, `key_access`, `shuffle`, `time_duration`, `marks_per_question`, `negative_marking`, `passing_percentage`, `admin_email_id`, `time_stamp`, `object_type`, `fetch_limit`) VALUES (NULL, '$quiz_name', '$level', '$description', '$question_num', '$state', '$key', '0', '0', '$time', '$marks', '$negative', '$passing', '$_SESSION[admin_id]', current_timestamp(), '$object_type', '$fetch_limit')";
       mysqli_query($conn,$sql) or die(mysqli_error($conn));
       $last_id = $conn->insert_id;
       $_SESSION['question_num'] = $question_num;
@@ -221,32 +243,43 @@ if(isset($_POST['test']) && isset($_POST['description']) && isset($_POST['questi
 $(document).ready(function(){
 
   $(".help-hint").slideUp();
-  // $("#description").focusin(function(){
-  //     $(".help-hint").eq(0).slideDown();
-  // });
 
-  // $("#description").focusout(function(){
-  //  $(".help-hint").eq(0).slideUp();
-  // });
+  $("#fetch-limit").focusin(function(){
+      $(".help-hint").eq(0).slideDown();
+  });
+
+  $("#fetch-limit").focusout(function(){
+   $(".help-hint").eq(0).slideUp();
+  });
+
+
+  $("#description").focusin(function(){
+      $(".help-hint").eq(1).slideDown();
+  });
+
+  $("#description").focusout(function(){
+   $(".help-hint").eq(1).slideUp();
+  });
+
 
 
   $("#questions").focusin(function(){
-    $(".help-hint").eq(0).slideDown();
+    $(".help-hint").eq(2).slideDown();
   });
 
 
   $("#questions").focusout(function(){
-    $(".help-hint").eq(0).slideUp();
+    $(".help-hint").eq(2).slideUp();
   });
 
 
   $("#exam").focusin(function(){
-    $(".help-hint").eq(1).slideDown();
+    $(".help-hint").eq(3).slideDown();
   });
 
 
   $("#exam").focusout(function(){
-    $(".help-hint").eq(1).slideUp();
+    $(".help-hint").eq(3).slideUp();
   });
 });
  </script>
@@ -268,6 +301,48 @@ $(document).ready(function(){
                  <div class="form-error"><?php echo $quiz_name_error; ?></div>
                </div>
              </div>
+
+             <div class="col-sm-12 col-lg-12">
+               <div class="form-group m-0">
+                <label class="form-label">Object Type</label>
+                <div class="selectgroup w-100">
+                   <label class="selectgroup-item m-0">
+                     <input type="radio" name="object_type" value="1" class="selectgroup-input objectType" <?php echo $object_type == 1 ? 'checked' : ''; ?>>
+                     <span class="selectgroup-button">Quiz</span>
+                   </label>
+                   <label class="selectgroup-item m-0">
+                     <input type="radio" name="object_type" value="2" class="selectgroup-input objectType" <?php echo $object_type == 2 ? 'checked' : ''; ?>>
+                     <span class="selectgroup-button">Question Bank</span>
+                   </label>
+                </div>
+                 <div class="form-error"><?php echo $object_type_error; ?></div>
+               </div>
+             </div>
+             <div class="col-sm-12 col-lg-12" id="fetchLimitOption" >
+               <div style="position: relative;" class="form-group m-0">
+                 <label class="form-label">Fetch Limit</label>
+                 <input  id="fetch-limit" type="number" min= "1" max="100" name="fetch_limit" class="form-control ht-50" placeholder="Number of Questions" value="<?php echo $fetch_limit; ?>">
+                 <div class="help-hint">
+                   Number of questions to fetch from Question Bank.
+                 </div>
+               </div>
+               <div class="form-error"><?php echo $fetch_limit_error; ?></div>
+             </div>
+             <script type="text/javascript">
+                let fetchLimitOption = document.getElementById('fetchLimitOption')
+                let objectType = document.getElementsByClassName('objectType')
+                const toggleFetchLimitOption = () => {
+                  if(objectType[1].checked) {
+                    fetchLimitOption.style.display = 'block'
+                  }
+                  else {
+                    fetchLimitOption.style.display = 'none'
+                  }
+                }
+                for(let i=0; i<objectType.length; i++) {
+                  objectType[i].addEventListener('click', toggleFetchLimitOption)
+                }
+             </script>
              <div class="col-sm-12 col-lg-12">
                <div class="form-group m-0">
                 <label class="form-label">Difficulty Level</label>
@@ -297,10 +372,10 @@ $(document).ready(function(){
                </span>
              </label> 
              <textarea id="description" onkeyup="$('#character_count').text(this.value.length);" maxlength="1500" class="form-control" name="description" rows="4" placeholder="Quiz Description..." ><?php echo $description; ?></textarea>
-             <!-- <div style="top:143px;" class="help-hint">
+             <div style="top:143px;" class="help-hint">
                  Give a detailed description that explains about the Quiz. Visitors can see the description on home page.
                  There is no need to write number of question or time allotted as it will be already mention.
-               </div> -->
+               </div>
              </div>
              <div class="form-error"><?php echo $description_error; ?></div>
            </div>
@@ -309,6 +384,8 @@ $(document).ready(function(){
                <label class="form-label">Number of Questions</label>
                <input id="questions" type="number" min= "1" max="100" name="question_num" class="form-control ht-50" placeholder="Number of Questions" value="<?php echo $question_num; ?>">
                <div class="help-hint">
+                 After filling this form a new form will open to feed questions.
+                 <br/>
                  You can add more questions to a quiz using expand quiz option in Quiz Action.
                </div>
              </div>
@@ -487,6 +564,10 @@ $(document).ready(function(){
 <?php
   include('includes/scripts.php');
 ?>
+
+<script type="text/javascript">
+  toggleFetchLimitOption()
+</script>
 </body>
 
 </html>

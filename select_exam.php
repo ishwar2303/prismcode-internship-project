@@ -6,10 +6,9 @@
   session_start();
   require_once('connection.php');
     if(isset($_SESSION['test_started'])){
-        header('Location: takeexam.php');
-        return;
-      }
-
+      header('Location: takeexam.php');
+      return;
+    }
 
     if(isset($_SESSION['student_login_time']))
      {

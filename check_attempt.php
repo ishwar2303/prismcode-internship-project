@@ -60,6 +60,8 @@
             			$time_duration = $row['time_duration'];
                   $numberOfQuestions = $row['number_of_questions'];
                   $shuffle = $row['shuffle'];
+                  $fetch_limit = $row['fetch_limit'];
+                  $object_type = $row['object_type'];
             		 if($KEY != $exam_key){
                   ?>
                     <script type="text/javascript">showIncorrectKeypopup();</script>
@@ -89,6 +91,12 @@
                             $time_duration = "3 Hours";
 
                           $sql = "SELECT * FROM question_bank WHERE quiz_id='$quiz_id'";
+                          if($row['object_type'] == 2) { // question bank
+                            $fetch_limit = $row['fetch_limit'];
+                            if($fetch_limit <= 0)
+                              $fetch_limit = 100;
+                            $sql = $sql." LIMIT ".$fetch_limit;
+                          }
                           $resultQue = mysqli_query($conn,$sql);
                           if(isset($_SESSION['QUESTIONS']))
                             unset($_SESSION['QUESTIONS']);
@@ -128,7 +136,14 @@
                             <label style="display: flex;justify-content: flex-end;padding-right: 20px;font-weight: 600;"><?php echo $row['difficulty_level'];?></label>
                             <label style="font-weight: 600;font-size: 17px;padding-left: -10px;"><?php echo $row['quiz_name'];?></label>
                             <ul id="" style="list-style: circle;">
-                              <li><i class="fas fa-angle-right list-icon"></i>Quiz contain <?php echo $numberOfQuestions;?> Questions.</li>
+                              <li><i class="fas fa-angle-right list-icon"></i>Quiz contain 
+                                <?php 
+                                if($object_type == 2) {// question bank
+                                  $numberOfQuestions = $fetch_limit;
+                                }
+                                echo $numberOfQuestions;
+                                ?> Questions.
+                              </li>
                               <li><i class="fas fa-angle-right list-icon"></i><?php echo $time_duration!=-1  ? 'Time duration for Quiz is '.$time_duration : 'No Time Limit';?>.</li>
                               <li><i class="fas fa-angle-right list-icon"></i>Each Question constitute <?php echo $marks;?> marks.</li>
                               <li><i class="fas fa-angle-right list-icon"></i>

@@ -1009,7 +1009,7 @@ body{
     position: fixed;
     /* background: blue; */
     z-index: 50;
-    padding: 7px 0px;
+    padding: 10px 0px;
     display: flex;
     justify-content: space-between;
 }
@@ -1024,9 +1024,23 @@ form{
 .timer-test{
     display: none;
 }
+
 /* .main-container{
     display: none;
 } */
 .question-operations > span:last-child{
     margin-right: 0;
+}
+
+#full-screen-mode {
+    border: 3px solid rgba(0, 0, 0, 0.4);
+    border-radius: 3px;
+    background: #4b87ba;
+    color: white;
+    margin: 5px;
+    border:  none;
+}
+
+#full-screen-mode:focus {
+    outline: none;
 }
