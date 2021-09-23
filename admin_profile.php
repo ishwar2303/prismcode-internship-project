@@ -137,6 +137,23 @@
 													<span id="no-file-choosen"></span>
 												</div>
 												<input id="choose-input-field" type="file"  name="img">
+												<script type="text/javascript">
+													let chooseImageBtn = document.getElementById('choose-img-btn')
+													let imageInput = document.getElementById('choose-input-field')
+													imageInput.addEventListener('change', () => {
+														console.log('ok')
+														let file = imageInput.files[0]
+														if(file) {
+															chooseImageBtn.innerText = file.name
+															console.log(file.name)
+														}
+														else {
+															console.log('empty')
+															chooseImageBtn.innerText = 'Edit Profile Image'
+														}
+
+													})
+												</script>
 											</div>
 											<?php 
 											
@@ -147,8 +164,8 @@
 											if($result->num_rows==1){
 											?>
 
-											<div class="btn btn-primary ml-auto">
-												<a style="text-decoration: none;" href="remove_profile_photo.php?image_id=<?php echo $image_id;?>&image_name=<?php echo $image_name;?>" class="text-white">Remove
+											<div class="">
+												<a style="text-decoration: none;" href="remove_profile_photo.php?image_id=<?php echo $image_id;?>&image_name=<?php echo $image_name;?>" onclick="return confirm('Are you sure!')" class="btn btn-primary ml-auto text-white">Remove
 		</a>
 											</div>	
 											<?php } ?>

@@ -15,44 +15,6 @@
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
 
-
-  <!-- <?php
-
-
-$connection = mysqli_connect("localhost","root","","adminpanel");
-
-if(isset($_POST['registerbtn']))
-{
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirmpassword'];
-
-    if($password === $confirm_password)
-    {
-        $query = "INSERT INTO register (username,email,password) VALUES ('$username','$email','$password')";
-        $query_run = mysqli_query($connection, $query);
-    
-        if($query_run)
-        {
-            echo "done";
-            $_SESSION['success'] =  "Admin is Added Successfully";
-            header('Location: register.php');
-        }
-        else 
-        {
-            echo "not done";
-            $_SESSION['status'] =  "Admin is Not Added";
-            header('Location: register.php');
-        }
-    }
-    else 
-    {
-        echo "pass no match";
-        $_SESSION['status'] =  "Password and Confirm Password Does not Match";
-        header('Location: register.php');
-    }
-
-}
-
-?> -->
+ <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.js"></script>

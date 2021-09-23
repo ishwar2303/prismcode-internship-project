@@ -18935,6 +18935,7 @@ a{
 } */
 .p-img-c{
 
+  border: 0.2px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   overflow: hidden;
   background: #ecf0f1;
@@ -19270,5 +19271,42 @@ a{
   padding: 20px;
 }
 .active-row{
-  background: #e6ffe6c7;
+  color: #03a9f4;
+}
+
+
+.table.dataTable tbody tr {
+  background: transparent;
+}
+
+.field-info-block {
+  position: relative;
+  font-size: 18px;
+  cursor: pointer;
+}
+.field-info-block > div {
+   display: none;
+   position: absolute;
+   font-size: 14px;
+   left: 0;
+   top:  0;
+   display: none;
+   min-width: 600px;
+   color: #dadada;
+    background: #585858;
+    font-weight: 200;
+   box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.6);
+   padding: 15px;
+   z-index: 9999999;
+   border-radius: 5px;
+}
+.field-info-block:hover > div {
+  display: block;
+}
+
+@media screen and (max-width:  600px) {
+  .field-info-block > div {
+    min-width: 370px;
+    font-size: 12px;
+  }
 }

@@ -244,42 +244,34 @@ $(document).ready(function(){
 
   $(".help-hint").slideUp();
 
-  $("#fetch-limit").focusin(function(){
+
+  $("#description").focusin(function(){
       $(".help-hint").eq(0).slideDown();
   });
 
-  $("#fetch-limit").focusout(function(){
-   $(".help-hint").eq(0).slideUp();
-  });
-
-
-  $("#description").focusin(function(){
-      $(".help-hint").eq(1).slideDown();
-  });
-
   $("#description").focusout(function(){
-   $(".help-hint").eq(1).slideUp();
+   $(".help-hint").eq(0).slideUp();
   });
 
 
 
   $("#questions").focusin(function(){
-    $(".help-hint").eq(2).slideDown();
+    $(".help-hint").eq(1).slideDown();
   });
 
 
   $("#questions").focusout(function(){
-    $(".help-hint").eq(2).slideUp();
+    $(".help-hint").eq(1).slideUp();
   });
 
 
   $("#exam").focusin(function(){
-    $(".help-hint").eq(3).slideDown();
+    $(".help-hint").eq(2).slideDown();
   });
 
 
   $("#exam").focusout(function(){
-    $(".help-hint").eq(3).slideUp();
+    $(".help-hint").eq(2).slideUp();
   });
 });
  </script>
@@ -301,10 +293,20 @@ $(document).ready(function(){
                  <div class="form-error"><?php echo $quiz_name_error; ?></div>
                </div>
              </div>
-
              <div class="col-sm-12 col-lg-12">
                <div class="form-group m-0">
-                <label class="form-label">Object Type</label>
+                <label class="form-label">Object Type 
+                  <span class="field-info-block">
+                    <i class="fas fa-info-circle"></i> 
+                    <div>
+                      Object type let you handle how to serve the questions. 
+                      <br/> 
+                      Quiz type is standard all questions will be served in quiz.
+                      <br/> 
+                      Question Bank type let you set fetch limit(x number of questions will be served from total questions in that quiz)
+                    </div> 
+                  </span> 
+                </label>
                 <div class="selectgroup w-100">
                    <label class="selectgroup-item m-0">
                      <input type="radio" name="object_type" value="1" class="selectgroup-input objectType" <?php echo $object_type == 1 ? 'checked' : ''; ?>>
@@ -320,11 +322,16 @@ $(document).ready(function(){
              </div>
              <div class="col-sm-12 col-lg-12" id="fetchLimitOption" >
                <div style="position: relative;" class="form-group m-0">
-                 <label class="form-label">Fetch Limit</label>
+                 <label class="form-label">Fetch Limit
+                  <span class="field-info-block">
+                    <i class="fas fa-info-circle"></i> 
+                    <div>
+                      Number of questions to fetch from Question Bank.
+                    </div> 
+                  </span> 
+                 </label>
                  <input  id="fetch-limit" type="number" min= "1" max="100" name="fetch_limit" class="form-control ht-50" placeholder="Number of Questions" value="<?php echo $fetch_limit; ?>">
-                 <div class="help-hint">
-                   Number of questions to fetch from Question Bank.
-                 </div>
+                 
                </div>
                <div class="form-error"><?php echo $fetch_limit_error; ?></div>
              </div>

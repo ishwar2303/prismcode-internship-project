@@ -203,9 +203,6 @@ include('includes/navbar.php');
   <div class="col-12">
     <div class="card">
 			<?php require 'includes/flash-message.php'; ?>
-      <div class="card-header">
-        <h3 class="card-title">Quizes</h3>
-      </div>
       <?php 
 
       $temp = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]' ORDER BY quiz_id DESC";
@@ -214,8 +211,8 @@ include('includes/navbar.php');
 
       ?>
 
-      <div class="table-responsive">
-        <table class="table table-card table-vcenter te
+      <div class="table-responsive" style="margin-top: 10px;">
+        <table id="dashboard-table" class="table table-card table-vcenter te
         xt-nowrap">
           <thead>
             <tr>
@@ -244,11 +241,11 @@ include('includes/navbar.php');
                $max_res = $conn->query($sql);
                $max_score = $max_res->fetch_assoc();
             ?>
-            <tr class="<?php echo $row['is_active']==1 ? 'active-row' : ''; ?>">
-              <td>
+            <tr>
+              <td >
                 <span class="text-muted"><?php echo $i; ?></span>
               </td>
-              <td><?php echo $row['quiz_name']; ?></td>
+              <td class="<?php echo $row['is_active']==1 ? 'active-row' : ''; ?>"><?php echo $row['quiz_name']; ?></td>
               <td><?php echo $attempt_res->num_rows; ?></td>
               <td><?php echo $max_score['MAX(score)']!='' ? $max_score['MAX(score)'].'/'.$max_score['total_marks'].' <br/> '.'<span style="font-size:11px;">'.$max_score['fullname'].'</span>' : '-'; ?></td>
               <td><span class="key-block"><?php echo $row['Exam_key']; ?></span></td>
@@ -316,25 +313,24 @@ include('includes/navbar.php');
                       <i style="cursor: pointer;"  class="fas fa-trash-alt"></i>
                     </span>
                   </div>
-
+                  <script type="text/javascript">
+                    $(document).ready(function(){
+                      $('.quiz-edit-icon').eq(<?php echo $i-1;?>).click(function(){
+                            var url = 'edit_quiz_details.php';
+                            $("#quiz-details-content").load(url,{
+                              updateQuizDetails : true,
+                              quizID : <?php echo $row['quiz_id'];?>
+                            });
+                      });
+                    });
+                  </script>
               </td>
-              <script type="text/javascript">
-                $(document).ready(function(){
-                  $('.quiz-edit-icon').eq(<?php echo $i-1;?>).click(function(){
-                        var url = 'edit_quiz_details.php';
-                        $("#quiz-details-content").load(url,{
-                          updateQuizDetails : true,
-                          quizID : <?php echo $row['quiz_id'];?>
-                        });
-                  });
-                });
-              </script>
             </tr>
-          </tbody>
           <?php
           $i =$i + 1;
         }
         ?>
+          </tbody>
         </table>
       </div>
       <?php 
@@ -386,6 +382,14 @@ include('includes/scripts.php');
         let el = document.getElementById('shuffle-quiz-questions')
         el.style.display = 'none'
     }
+
+  $(document).ready( function () {
+    $('#dashboard-table').DataTable({
+      pageLength : 5,
+      paging : true,
+      lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'All']]
+    });
+  } );
 </script>
 <div onclick="onClickBlackCoverOfQuizUpdate()" class="black-cover-quiz-details"></div>
 </body>
