@@ -1,10 +1,24 @@
 <?php
   session_start();
   require_once('connection.php');
+  require_once('middleware.php');
 if(isset($_SESSION['test_started'])){
     header('Location: takeexam.php');
     return;
   }
+
+if(isset($_GET['student_login']) && isset($_GET['auto_quiz'])) {
+  $_SESSION['auto_quiz'] = cleanInput($_GET['auto_quiz']);
+  $_SESSION['open_student_login'] = true;
+}
+else {
+  unset($_SESSION['auto_quiz']);
+  unset($_SESSION['open_student_login']);
+}
+
+if(isset($_SESSION['student_login_time']) && isset($_SESSION['auto_quiz'])) {
+  header('Location: select_exam.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -102,11 +116,6 @@ if(isset($_SESSION['test_started'])){
         var x = document.getElementsByClassName('login-option-container')[0].getElementsByTagName('label');
         document.getElementById('admin-login-label').style.display = 'block';
         document.getElementById('student-login-label').style.display = 'none';
-        /*
-        x[0].style.background = '#3498db';
-        x[0].style.color = 'white';
-        x[1].style.background = 'white';
-        x[1].style.color = 'black';*/
       }
       function showStudentLoginForm(){
         document.getElementById('student-login-form').style.display = 'block';
@@ -961,6 +970,15 @@ if(isset($_SESSION['message']) && isset($_SESSION['color']))
         <span style="width: 100%;height: 30px;display: flex;justify-content: center;align-items: center;color : #cd201f;"><i class="fas fa-exclamation-circle mr-1"></i> Incorrect Credentials</span>
       </div>
     </div>
+
+
+    <?php 
+      if(isset($_SESSION['open_student_login'])) {
+        ?>
+        <script type="text/javascript">showLoginFormPopup();showStudentLoginForm();</script>
+        <?php
+      }
+    ?>
 </body>
 
 </html>

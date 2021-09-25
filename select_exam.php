@@ -23,7 +23,13 @@
     $sql = "SELECT * FROM quizes WHERE is_active='1' ORDER BY quiz_name";
     $result = mysqli_query($conn,$sql);
     $num = $result->num_rows;
- 
+    
+    $auto_quiz = '';
+    $control_quiz = 1;
+    if(isset($_SESSION['auto_quiz'])) {
+      $auto_quiz = base64_decode($_SESSION['auto_quiz']);
+      $control_quiz = 0;
+    }
 ?>
 
 <?php include 'templates/headerlogin.php'; ?>
@@ -97,8 +103,8 @@
 			<div class="field-container">
       <label style="font-size: 18px;"><b>Select Exam</b></label>
 				
-				<select id="select-exam" name='test_selected'>
-					<option value disabled>Select Quiz</option>
+				<select id="select-exam" name='test_selected' >
+					<option value disabled id="select-quiz-default-option">Select Quiz</option>
          <?php
                
                while($row = $result->fetch_assoc())
@@ -120,14 +126,48 @@
                     $sql = "SELECT * FROM question_bank WHERE quiz_id='$row[quiz_id]'";
                     $temp = mysqli_query($conn,$sql);  
                   if($temp->num_rows>0)
-                  {    
-                      if($row['is_active'] == 1)  // for active test
-                      echo "<option value ='$row[quiz_id]'>$row[quiz_name], ID : $row[quiz_id]</option>";
+                  {   
+                      if($row['is_active'] == 1 && $auto_quiz == '')  // for active test
+                        echo "<option value ='$row[quiz_id]'>$row[quiz_name]</option>";
+                      else if($row['is_active'] == 1 && $row['quiz_id'] == $auto_quiz){
+                        echo "<option value ='$row[quiz_id]'>$row[quiz_name]</option>";
+
+                        $control_quiz = 1;
+                        break;
+                      }
+                      else if($row['is_active'] == 0 && $row['quiz_id'] == $auto_quiz) {
+                        $control_quiz = 2;
+                        break;
+                      }
                   }  
                }
          ?>
          </select>
+
+         <script type="text/javascript">
+           document.getElementById('select-quiz-default-option').remove();
+         </script>
 			</div>
+      <?php 
+        if($control_quiz == 0) {
+          $_SESSION['message'] = 'No such Quiz exist';
+          $_SESSION['color'] = 'red';
+        }
+        if($control_quiz == 2) {
+          $_SESSION['message'] = 'Quiz is not live';
+          $_SESSION['color'] = 'red';
+        }
+        if($control_quiz == 0 || $control_quiz == 2) {
+          ?>
+          <script type="text/javascript">
+            let a = document.createElement('a')
+            a.href = 'index.php';
+            
+            a.click();
+          </script>
+          <?php
+        }
+      ?>
 
 			<div style="margin-top: 15px;" class="field-container">
 			<label style="font-size: 18px;"><b>Exam Key</b></label>

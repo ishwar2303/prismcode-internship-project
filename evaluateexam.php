@@ -27,6 +27,8 @@
       $not_attempt = array();
       $num = $_SESSION['question_no'];
       $ans = 0;
+      $spline_data = Array();
+      $spline_temp = 0;
       if(isset($_SESSION['ANSWER']))
       {
         $selected_answer = $_SESSION['ANSWER'];
@@ -35,13 +37,20 @@
         {
                 if($selected_answer[$i+1]!=0)
                 {
-                   if($selected_answer[$i+1]==$answer["$i"])
+                   if($selected_answer[$i+1]==$answer["$i"]) {
                      array_push($right,$i+1);
-                   else array_push($wrong,$i+1);
+                     $spline_temp += 1;
+                   }
+                   else {
+                        array_push($wrong,$i+1);
+                        $spline_temp -= 1;
+                    }
                 }
                 else array_push($not_attempt,$i+1);
+                
+                array_push($spline_data, $spline_temp);
         }
-    
+    $spline_data = json_encode($spline_data);
     $sql = "SELECT * FROM quizes WHERE quiz_id='$_SESSION[exam_id]'";
     $result = mysqli_query($conn,$sql);
     $row = $result->fetch_assoc();
@@ -95,38 +104,18 @@
      <link href="css/dashboard.css" rel="stylesheet">
      <link rel="stylesheet" href="css/sb-admin-2.css">
      <link rel="stylesheet" href="css/custom/evaluate-exam.css">
-     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+    <!-- Highcharts -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <!-- Crossfilter -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
     <script type="text/javascript">
-    // Load google charts
     
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    // Draw the chart and set the chart values
-    function drawChart() {
-      
-      var r = <?php echo sizeof($right);?>;
-      var w = <?php echo sizeof($wrong);?>;
-      var n = <?php echo sizeof($not_attempt);?>;
-      var t = r+w+n;
-      var data = google.visualization.arrayToDataTable([
-      ['Task', 'Hours per Day'],
-     /*['Work', 10],*/
-      ['Wrong Answer', w/t],
-      /*['TV', 4],*/
-      ['Correct Answer', r/t],
-       ['Not Attempted', n/t],
-/*      ['Sleep', 8]*/
-    ]);
-    
-      // Optional; add a title and set the width and height of the chart
-      var options = {'title':'My Average Day', 'height':400, colors:['#CD201F','#5EBA00','#E1B12C'],is3D: true};
-
-      // Display the chart inside the <div> element with id="piechart"
-      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-      chart.draw(data, options);
-    }
+    var rightAnswers = <?php echo sizeof($right);?>;
+    var wrongAnswers = <?php echo sizeof($wrong);?>;
+    var notAttemptedAnswers = <?php echo sizeof($not_attempt);?>;
+    var totalQuestions = rightAnswers + wrongAnswers + notAttemptedAnswers;
     </script>
     
        <script>
@@ -266,7 +255,7 @@
 <?php 
 if($showEvaluation){
 ?>
-  <!-- <label class="print-question-paper">
+   <!-- <label class="print-question-paper">
     <span id="right-arrow-container">
       <i class="fas fa-chevron-right"></i>
     </span>
@@ -282,7 +271,7 @@ if($showEvaluation){
       </span>
       <span>Question Paper</span>
     </span>
-  </label> -->
+  </label>  -->
     <div style="margin-top: 5px;margin-right: 7px;display: flex;justify-content: center;" class="my-3 my-md-5">
         <div style="padding : 10px 5px; margin : 0;" class="container">
             <?php 
@@ -302,65 +291,38 @@ if($showEvaluation){
                 </h4>
             </div>
             
-            <div class="row row-cards row-deck">
-                <div  class="col-xl-3 col-md-6 mb-4 height115">
-                    <div style="padding: 0;"class="card border-bottom-primary h-100 py-2 shadow-c">
-                        <div class="card-body p-3 text-center">
-                            <div class="h4 m-0"><?php echo $score."/".$totalMarks; ?></div>
-                            <div class="text-xxs font-weight-bold text-primary text-uppercase mb-1">Your Score</div>
-                        </div>
-                    </div>
-                 </div>
-                <div class="col-xl-3 col-md-6 mb-4 height115">
-                    <div style="padding: 0;" class="card border-bottom-primary h-100 py-2 shadow-c">
-                        <div class="card-body p-3 text-center">
-                            <div class="h4 m-0"><?php echo $ans."%";?></div>
-                            <div class="text-xxs font-weight-bold text-primary text-uppercase mb-1">Percentage</div>
-                        </div>
-                    </div>
-                 </div>
-                <div class="col-xl-3 col-md-6 mb-4 height115">
-                    <div style="padding: 0;" class="card border-bottom-primary shadow-c h-100 py-2">
-                        <div class="card-body p-3 text-center">
-                            <div class="h4 m-0"><?php echo $_SESSION['question_no'];?></div>
-                            <div class="text-xxs font-weight-bold text-primary text-uppercase mb-1">Total Question</div>
-                        </div>
-                    </div>
-                 </div>
-                <div class="col-xl-3 col-md-6 mb-4 height115">
-                    <div style="padding: 0;" class="card border-bottom-success shadow-c h-100 py-2">
-                        <div class="card-body p-3 text-center">
-                            <div class="h4 m-0 attempted"><?php echo sizeof($right); ?></div>
-                            <div class="text-success text-xxs font-weight-bold text-primary text-uppercase mb-1 ">Correct</div>
-                        </div>
-                    </div>
+            <div class="score-card-container">
+                <div >
+                    <div>Your Score</div>
+                    <div><?php echo $score."/".$totalMarks; ?></div>
                 </div>
-                <div class="col-xl-3 col-md-6 mb-4 height115">
-                    <div style="padding: 0;" class="card shadow-c border-bottom-warning h-100 py-2">
-                        <div class="card-body p-3 text-center">
-                            <div class="h4 m-0 remaining"><?php echo sizeof($wrong); ?></div>
-                            <div class="text-danger text-xxs font-weight-bold text-primary text-uppercase mb-1">Wrong</div>
-                        </div>
-                    </div>
+                <div>
+                    <div>Percentage</div>
+                    <div><?php echo $ans."%";?></div>
                 </div>
-                <div class="col-xl-3 col-md-6 mb-4 height115">
-                    <div style="padding: 0;" class="card shadow-c border-bottom-info h-100 py-2">
-                        <div class="card-body p-3 text-center">
-                            <div  class="h4 m-0 timer-test"><?php echo sizeof($not_attempt); ?></div>
-                            <div style="color:#f1c40f" class="text-xxs font-weight-bold text-uppercase mb-1">Not Attempted</div>
-                        </div>
-                    </div>
+                <div>
+                    <div>Total Questions</div>
+                    <div><?php echo $_SESSION['question_no'];?></div>
+                </div>
+                <div style="color: #80a25c;">
+                    <div>Correct</div>
+                    <div><?php echo sizeof($right); ?></div>
+                </div>
+                <div style="color: #a0403f;">
+                    <div>Wrong</div>
+                    <div><?php echo sizeof($wrong); ?></div>
+                </div>
+                <div style="color: #ac9740;">
+                    <div>Not Attempted</div>
+                    <div><?php echo sizeof($not_attempt); ?></div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Performance Chart</h3>
-                        </div>
-                        <div class="card-body">
-                           <div id="piechart">
-                           </div>                        
+                        <div class="card-body performance-chart-container">
+                            <div id="performanceChart1"></div> 
+                            <div id="performanceChart2"></div>                   
                         </div>
                      </div>
                 </div>
@@ -619,6 +581,142 @@ else{
 <?php 
 }
 ?>
+
+<script type="text/javascript">
+    Highcharts.chart('performanceChart1', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Performance Chart'
+    },
+    accessibility: {
+        announceNewData: {
+            enabled: true
+        }
+    },
+    xAxis: {
+        type: 'category'
+    },
+    yAxis: {
+        title: {
+            text: ''
+        }
+
+    },
+    legend: {
+        enabled: false
+    },
+    plotOptions: {
+        series: {
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>',
+        formatter: function(){
+            return ((this.y/(totalQuestions))*100).toFixed(2) + "%"
+        }
+    },
+
+    series: [
+        {
+            name: "Browsers",
+            colorByPoint: true,
+            data: [
+                {
+                    name: "Correct",
+                    y: rightAnswers,
+                    color: '#80a25c'
+                },
+                {
+                    name: "Not Attempted",
+                    y: notAttemptedAnswers,
+                    color: '#ac9740'
+                },
+                {
+                    name: "Wrong",
+                    y: wrongAnswers,
+                    color: '#a0403f'
+                }
+            ]
+        }
+    ]
+});
+
+var splineData = <?php echo $spline_data; ?>;
+var tempFlow = 0;
+var flowStatus = [];
+const flowCalculate = () => {
+    for(let i=0; i<splineData.length; i++) {
+        if(splineData[i] > tempFlow) {
+            flowStatus.push('Correct');
+        }
+        else if(splineData[i] == tempFlow) {
+            flowStatus.push('Not Attempted');
+        }
+        else {
+            flowStatus.push('Wrong');
+        }
+        tempFlow = splineData[i];
+    }
+}
+flowCalculate()
+Highcharts.chart('performanceChart2', {
+    chart: {
+        type: 'spline'
+    },
+    title: {
+        text: 'Attempt Flow'
+    },
+    yAxis: {
+        labels: {
+            formatter: function () {
+                return this.value ;
+            }
+        }
+    },
+    xAxis: {
+        title: {
+            text: ''
+        }
+    },
+    tooltip: {
+        crosshairs: true,
+        shared: true,
+        formatter: function() {
+            var temp = 'Question ' + (this.x+1) + '<br/>' + flowStatus[this.x]
+            return temp
+        }
+    },
+    legend: {
+        enabled: false
+    },
+    credits: {
+        enabled: false
+    },
+    plotOptions: {
+        spline: {
+            marker: {
+                radius: 4,
+                lineColor: 'green',
+                lineWidth: 1
+            }
+        }
+    },
+    series: [{
+        data: <?php echo $spline_data; ?>
+
+    }]
+});
+</script>
 </body>
 </html>
 

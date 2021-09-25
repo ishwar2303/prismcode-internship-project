@@ -261,7 +261,7 @@
       font-weight: bold;
     }
     .shadow-c{
-      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
+      /*box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);*/
     }
     .certificate-btn-container{
       margin-top: 20px;
@@ -284,3 +284,47 @@
       color: white;
     }
     
+  .performance-chart-container{
+    display: flex;
+  }
+  .performance-chart-container > div{
+    flex: 1;
+  }
+  .performance-chart-container > div:nth-child {
+    margin-right: 10px;
+  }
+  
+.score-card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.score-card-container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  background: white;
+  flex:  1;
+  margin:  5px;
+}
+
+.score-card-container div div:nth-child(1) {
+  font-weight: bold;
+}
+body {
+  background: blue;
+}
+  @media screen and (max-width:  800px) {
+    .performance-chart-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .performance-chart-container > div:nth-child {
+      margin-right: 0px;
+    }
+  }
+

@@ -6,8 +6,25 @@
 <?php
 
 require_once('connection.php');
-
 session_start();
+
+function getCurrentUrl() {
+    if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+          $l = 1;  
+         $url = "https://";   
+    }
+    else  {
+         $url = "http://";  $l = 0;
+    } 
+    // Append the host(domain name, ip) to the URL.   
+    $url.= $_SERVER['HTTP_HOST'];   
+    
+    // Append the requested resource location to the URL   
+    $url.= $_SERVER['REQUEST_URI'];    
+      
+    return substr($url, 0, strlen($url) - strlen("admin_dashboard.php") + $l)."index.php?student_login=success&auto_quiz=";  
+}
+
 if(isset($_SESSION['login_time']))
      {
       $current_time = time();
@@ -221,6 +238,7 @@ include('includes/navbar.php');
               <th>Attempts</th>
               <th>Highest</th>
               <th>Key</th>
+              <th>URL</th>
               <th style="text-align: center;">Questions</th>
               <th>Status</th> 
               <th>Created</th>
@@ -249,6 +267,9 @@ include('includes/navbar.php');
               <td><?php echo $attempt_res->num_rows; ?></td>
               <td><?php echo $max_score['MAX(score)']!='' ? $max_score['MAX(score)'].'/'.$max_score['total_marks'].' <br/> '.'<span style="font-size:11px;">'.$max_score['fullname'].'</span>' : '-'; ?></td>
               <td><span class="key-block"><?php echo $row['Exam_key']; ?></span></td>
+              <td>
+                <button class="btn btn-primary copy-quiz-url" onclick="quizURLCopy(this, '<?php echo getCurrentUrl().base64_encode($row['quiz_id']); ?>', 'Quiz URL Copied Successfully')">Copy</button>
+              </td>
               <td style="text-align: center;">
                 <?php
                   if($row['object_type'] == 2) { // question bank
@@ -257,14 +278,14 @@ include('includes/navbar.php');
                   else echo $row['number_of_questions'];
                 ?>
               </td>
-              <td>
+              <td style="text-align: center; font-size: 14px;">
                 <?php 
                    if($row['is_active'])
-                   {echo "<span class='status-icon bg-success'></span>Active<div class='count-active'></div>"; } 
-                   else echo "<span class='status-icon bg-unsuccess'></span>Inactive";
+                   {echo "<span class='status-icon bg-success'></span><br/>Active<div class='count-active'></div>"; } 
+                   else echo "<span class='status-icon bg-unsuccess'></span><br/>Inactive";
                 ?>
               </td>
-              <td>
+              <td style="font-size: 14px;">
                 <?php
                     $timestamp = $row['time_stamp'];
                     $date_obj = new DateTime($timestamp);
@@ -273,7 +294,7 @@ include('includes/navbar.php');
                     echo $date_obj->format('h:i:sa');
                 ?>
               </td>
-              <td>
+              <td style="text-align: center;">
                 <?php 
                   $checked = '';
                   if($row['shuffle'])
@@ -395,3 +416,34 @@ include('includes/scripts.php');
 </body>
 
 </html>
+
+<script type="text/javascript">
+  
+const quizURLCopy = (btn, copyCode, message) => {
+    copyCode = copyCode.trim()
+    let textarea = document.createElement('textarea')
+    let body = document.body
+    textarea.value = copyCode
+    document.body.appendChild(textarea)
+    textarea.select()
+    document.execCommand('copy')
+    body.removeChild(textarea)
+    textarea.remove()
+    if(copyCode != ''){
+        btn.classList.remove('url-copy')
+        btn.classList.add('url-copied')
+        btn.innerHTML = 'Copied'
+    }
+    else{
+        btn.innerHTML = 'Empty cannot be copied'
+    }   
+    btn.disabled = true
+    setTimeout(() => {
+        btn.classList.add('url-copy')
+        btn.classList.remove('url-copied')
+        btn.innerHTML = 'Copy'
+        btn.disabled = false
+
+    }, 2000)
+}
+</script>

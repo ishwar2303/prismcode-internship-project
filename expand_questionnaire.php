@@ -71,9 +71,16 @@ require_once('connection.php');
 												$temp = "SELECT * FROM quizes WHERE admin_email_id='$_SESSION[admin_id]' ORDER BY quiz_name";
 										                 $result = mysqli_query($conn,$temp);
 
+																if(isset($_REQUEST['exam_id'])){
+																	$e_id = $_REQUEST['exam_id'];
+																}
 										            while($row = $result->fetch_assoc())
 										            {
-										                echo "<option value='$row[quiz_id]'>$row[quiz_name]</option>";
+																		if($e_id == $row['quiz_id']){
+																			$selected = 'selected';
+																		}
+																		else $selected = '';
+										                echo "<option value='$row[quiz_id]' $selected>$row[quiz_name]</option>";
 										                 
 										            }
 												?>
@@ -156,7 +163,7 @@ echo "</div>";
 						<div class="col-sm-12 col-lg-12">
 							<div class="form-group">
 								<label class="form-label">Question <?php echo  $i; ?></label>
-								<textarea name="question[]" class="form-control" rows="4" placeholder="Question <?php echo  $i; ?>" required></textarea>
+								<textarea name="question[]" class="form-control" rows="4" placeholder="Question <?php echo  $i; ?>" ></textarea>
 							</div>
 							<div>
 								<label class="formatted-label">Formatted : </label>
@@ -168,36 +175,36 @@ echo "</div>";
 						</div>
 						<div class="col-sm-12 col-lg-6">
 							<div class="form-group">
-								<label class="form-label">Option 1</label>
-								<textarea type="text" name="option1[]" class="form-control" placeholder="Option 1"  required></textarea>
+								<label class="form-label">Option A</label>
+								<textarea type="text" name="option1[]" class="form-control" placeholder="Option 1"></textarea>
 							</div>
 						</div>
 						<div class="col-sm-12 col-lg-6">
 							<div class="form-group">
-								<label class="form-label">Option 2</label>
-								<textarea type="text" name="option2[]" class="form-control" placeholder="Option 2"  required></textarea>
+								<label class="form-label">Option B</label>
+								<textarea type="text" name="option2[]" class="form-control" placeholder="Option 2"></textarea>
 							</div>
 						</div>
 						<div class="col-sm-12 col-lg-6">
 							<div class="form-group">
-								<label class="form-label">Option 3</label>
-								<textarea type="text" name="option3[]" class="form-control" placeholder="Option 3"  required></textarea>
+								<label class="form-label">Option C</label>
+								<textarea type="text" name="option3[]" class="form-control" placeholder="Option 3"></textarea>
 							</div>
 						</div>
 						<div class="col-sm-12 col-lg-6">
 							<div class="form-group">
-								<label class="form-label">Option 4</label>
-								<textarea type="text" name="option4[]" class="form-control" placeholder="Option 4"  required></textarea>
+								<label class="form-label">Option D</label>
+								<textarea type="text" name="option4[]" class="form-control" placeholder="Option 4" ></textarea>
 							</div>
 						</div>
 						<div class="col-sm-12 col-lg-12">
 							<div class="form-group">
 								<label class="form-label">Answer</label>
-								<select name="answer[]" class="form-control ht-50 custom-select" required>
-									<option value='1'>Option 1</option>
-									<option value='2'>Option 2</option>
-									<option value='3'>Option 3</option>
-									<option value='4'>Option 4</option>
+								<select name="answer[]" class="form-control ht-50 custom-select">
+									<option value='1'>Option A</option>
+									<option value='2'>Option B</option>
+									<option value='3'>Option C</option>
+									<option value='4'>Option D</option>
 								</select>
 							</div>
 						</div>
@@ -215,7 +222,7 @@ echo "</div>";
 			
 			                           <div class="card-footer text-right">
 								         <div style="display: flex;justify-content: flex-end;" class="d-flex">
-								           <button  type="submit" class="btn btn-primary ml-auto" id="save-changes" value="Save Changes">Submit</button>
+								           <button  onclick="return confirm('Are you sure!')" type="submit" class="btn btn-primary ml-auto" id="save-changes" value="Save Changes">Submit</button>
 								         </div>
 								       </div> 
 		

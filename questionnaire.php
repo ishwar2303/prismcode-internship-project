@@ -252,25 +252,25 @@ echo "</div>";
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
-													<label class="form-label">Option 1</label>
+													<label class="form-label">Option A</label>
 													<textarea type="text" name="option1[]" class="form-control option1" placeholder="Option 1" required="true" disabled="true"><?php echo $option1;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
-													<label class="form-label">Option 2</label>
+													<label class="form-label">Option B</label>
 													<textarea type="text" name="option2[]" class="form-control option2" placeholder="Option 2" required="true" disabled="true"><?php echo $option2;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
-													<label class="form-label">Option 3</label>
+													<label class="form-label">Option C</label>
 													<textarea type="text" name="option3[]" class="form-control option3" placeholder="Option 3" required="true" disabled="true"><?php echo $option3;?></textarea>
 												</div>
 											</div>
 											<div class="col-sm-12 col-lg-6">
 												<div class="form-group">
-													<label class="form-label">Option 4</label>
+													<label class="form-label">Option D</label>
 													<textarea type="text" name="option4[]" class="form-control option4" placeholder="Option 4" required="true" disabled="true"><?php echo $option4;?></textarea>
 												</div>
 											</div>
@@ -281,17 +281,17 @@ echo "</div>";
 														<?php
 														$ans = $row['answer'];
 														if($ans==1)
-														echo "<option value='1' selected>Option 1</option>";
-													    else echo "<option value='1'>Option 1</option>";
+														echo "<option value='1' selected>Option A</option>";
+													    else echo "<option value='1'>Option A</option>";
 														if($ans==2)
-														echo "<option value='2' selected>Option 2</option>";
-													    else echo "<option value='2'>Option 2</option>";
+														echo "<option value='2' selected>Option B</option>";
+													    else echo "<option value='2'>Option B</option>";
 														if($ans==3)
-														echo "<option value='3' selected>Option 3</option>";
-													    else echo "<option value='3'>Option 3</option>";
+														echo "<option value='3' selected>Option C</option>";
+													    else echo "<option value='3'>Option C</option>";
 														if($ans==4)
-														echo "<option value='4' selected>Option 4</option>";
-														else echo "<option value='4'>Option 4</option>";
+														echo "<option value='4' selected>Option D</option>";
+														else echo "<option value='4'>Option D</option>";
 														?>
 													</select>
 												</div>

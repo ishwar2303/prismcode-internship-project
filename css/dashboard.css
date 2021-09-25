@@ -19260,6 +19260,7 @@ a{
   background: #626262;
   padding: 10px;
   border-radius: 3px;
+  font-size: 14px;
 }
 
 .space-between{
@@ -19309,4 +19310,12 @@ a{
     min-width: 370px;
     font-size: 12px;
   }
+}
+.copy-quiz-url {
+
+    width: 60px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

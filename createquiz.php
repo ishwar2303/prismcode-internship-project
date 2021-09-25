@@ -32,7 +32,7 @@
   $marks = '';
   $negative = '';
   $passing = '';
-  $fetch_limit = '';
+  $fetch_limit = 100;
 
   $quiz_name_error = '';
   $object_type_error = '';

@@ -36,7 +36,6 @@
 	 <!-- Compiled and minified CSS -->
     <link href="css/sb-admin-2.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/custom/exam_header.css">
     <script type="text/javascript">
         function showCustomAlertPopup(){
             document.getElementsByClassName('custom-alert')[0].style.display='block';
@@ -60,6 +59,7 @@
     </script>
     <!-- <script type="text/javascript" src="js/stop-copy-paste.js"></script> -->
     <script type="text/javascript" src="take_quizJAVAscript.js"></script>
+    <link rel="stylesheet" href="css/custom/exam_header.css">
 
 </head>
 <body onload="hideAll();<?php echo $time_duration!=-1 ? 'setInterval(Timer,1000);Timer();' : '';?>" id="output">
