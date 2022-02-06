@@ -31,9 +31,6 @@
   <link href="css/sb-admin-2.css" rel="stylesheet">
   <link href="css/dashboard.css" rel="stylesheet">
      <style>
-      body{
-        font-family: -webkit-pictograph;
-      }
     /* questionnaire.php */
     
     .updating-msg,.deleting-msg{

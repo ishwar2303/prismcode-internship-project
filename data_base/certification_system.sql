@@ -12,7 +12,7 @@ MySQL - 8.0.20 : Database - certification_system
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`certification_system` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`certification_system` /*!40100 DEFAULT CHARACTER SET utf8mb4 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `certification_system`;
 
@@ -35,7 +35,7 @@ CREATE TABLE `attempts` (
   `no_of_questions` int NOT NULL,
   `time_stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`attempt_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 /*Data for the table `attempts` */
 
@@ -51,7 +51,7 @@ CREATE TABLE `certifications` (
   `score` varchar(10) NOT NULL,
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`certificate_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 ;
 
 /*Data for the table `certifications` */
 
@@ -70,7 +70,7 @@ CREATE TABLE `feedback` (
   `attempt_id` int NOT NULL,
   PRIMARY KEY (`feedback_id`),
   KEY `attempt_id` (`attempt_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 /*Data for the table `feedback` */
 
@@ -85,7 +85,7 @@ CREATE TABLE `message` (
   `email` varchar(30) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`message_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 /*Data for the table `message` */
 
@@ -98,7 +98,7 @@ CREATE TABLE `profile_photo` (
   `image_name` text NOT NULL,
   `admin_email` varchar(50) NOT NULL,
   PRIMARY KEY (`image_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 /*Data for the table `profile_photo` */
 
@@ -118,7 +118,7 @@ CREATE TABLE `question_bank` (
   `reason` varchar(4000) DEFAULT NULL,
   `formatted` tinyint NOT NULL,
   PRIMARY KEY (`question_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=656 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=656 DEFAULT CHARSET=utf8mb4 ;
 
 /*Data for the table `question_bank` */
 
@@ -432,7 +432,7 @@ CREATE TABLE `quizes` (
   `fetch_limit` int NOT NULL,
   PRIMARY KEY (`quiz_id`),
   KEY `admin_email_id` (`admin_email_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=utf8mb4 ;
 
 /*Data for the table `quizes` */
 
@@ -474,7 +474,7 @@ CREATE TABLE `registered_admin` (
   `admin_password` varchar(30) NOT NULL,
   PRIMARY KEY (`admin_id`),
   UNIQUE KEY `admin_email` (`admin_email`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 ;
 
 /*Data for the table `registered_admin` */
 
@@ -495,7 +495,7 @@ CREATE TABLE `reported_questions` (
   `amend` tinyint NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`report_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 /*Data for the table `reported_questions` */
 

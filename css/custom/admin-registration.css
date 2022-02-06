@@ -158,7 +158,6 @@ form{
 
 .select-option-container {
     display: flex;
-    font-family: -webkit-pictograph;
 }
 
 .select-option-container>label {
